@@ -15,7 +15,10 @@ public class PlayerBehaviour : MonoBehaviour
     private InputAction playerMove, playerJump;
 
     private BoxCollider2D hitbox;
+
+    [Header("Layer Masks")]
     [SerializeField] private LayerMask ground;
+    [SerializeField] private LayerMask slow;
 
     [Header("Player Movement")]
 
@@ -25,8 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("A multipler for slowing the player down")]
     [SerializeField] private float slowMultipler;
 
-    [Tooltip("A visual in the inspector to show the player's current speed multipler")]
-    [SerializeField] private float speedMultiplier;
+    private float speedMultiplier;
 
     [Tooltip("How far the player jumps into the air")]
     [SerializeField] private float jumpHeight;
@@ -102,5 +104,21 @@ public class PlayerBehaviour : MonoBehaviour
     private bool CanJump()
     {
         return Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
+    }
+
+    /// <summary>
+    /// Slows the player down when they enter the slow batter
+    /// </summary>
+    public void SlowPlayer()
+    {
+        speedMultiplier = slowMultipler;
+    }
+
+    /// <summary>
+    /// Sets the player's speed back to normal
+    /// </summary>
+    public void NormalSpeed()
+    {
+        speedMultiplier = BASE_MULTIPLER;
     }
 }
