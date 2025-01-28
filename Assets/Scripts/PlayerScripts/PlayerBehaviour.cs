@@ -121,4 +121,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         speedMultiplier = BASE_MULTIPLER;
     }
+
+    /// <summary>
+    /// Disables the map and jump callback function when the script is disabled
+    /// </summary>
+    private void OnDisable()
+    {
+        playerJump.performed -= PlayerJump_performed;
+        actions.Disable();
+    }
 }
