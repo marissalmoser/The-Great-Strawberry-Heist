@@ -46,10 +46,8 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     public void NextTier()
     {
-        //update current tier
-        //switch camera (priority does this automatically?)
-        //remove cam in tier
         tiers[currentTier].DiableCam();
         currentTier++;
+        print(currentTier);
     }
 }

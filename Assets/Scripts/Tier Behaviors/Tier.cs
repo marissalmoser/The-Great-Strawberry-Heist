@@ -14,6 +14,7 @@ using UnityEngine;
 public class Tier : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera tierCam;
+    [SerializeField] private GameObject tierSpawnPt;
 
     void Awake()
     {
@@ -23,5 +24,10 @@ public class Tier : MonoBehaviour
     public void DiableCam()
     {
         tierCam.gameObject.SetActive(false);
+    }
+
+    Transform GetTierSpawn()
+    {
+        return tierSpawnPt.transform;
     }
 }
