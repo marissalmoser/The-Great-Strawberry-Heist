@@ -15,6 +15,8 @@ public class Tier : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera tierCam;
     [SerializeField] private GameObject tierSpawnPt;
+    [SerializeField] private AnimationCurve _turnEaseCurve;
+
 
     void Awake()
     {
@@ -29,5 +31,35 @@ public class Tier : MonoBehaviour
     Transform GetTierSpawn()
     {
         return tierSpawnPt.transform;
+    }
+
+    public void Swipe()
+    {
+        StartCoroutine(MoveTier());
+    }
+
+    private IEnumerator MoveTier()
+    {
+        float timeElapsed = 0f;
+        float totalDuration = _turnEaseCurve.keys[_turnEaseCurve.length - 1].time;
+
+        float startPositionX = transform.position.x;
+
+        //randomply decides a direction
+        float targetPositionX = Random.Range(0,2) > 1 ? startPositionX - 40f : startPositionX + 40f;
+
+        while (timeElapsed < totalDuration)
+        {
+            float t = _turnEaseCurve.Evaluate(timeElapsed);
+
+            startPositionX = Mathf.Lerp(startPositionX, targetPositionX, t);
+
+            transform.position = new Vector3(startPositionX, transform.position.y, 0);
+
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+        transform.position = new Vector3(startPositionX, transform.position.y, 0);
     }
 }

@@ -8,12 +8,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class TierManager : Singleton<TierManager>
 {
     [SerializeField] List<GameObject> cakeTiers;
     List<Tier> tiers = new List<Tier>();
-    private int currentTier;    //0 is bottom tier
+    private int currentTier = 0;    //0 is bottom tier
 
     protected override void Awake()
     {
@@ -28,9 +29,12 @@ public class TierManager : Singleton<TierManager>
         //starting tier count?
     }
 
-    void Start()
+    void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SwipeTier();
+        }
     }
 
     /// <summary>
@@ -38,7 +42,24 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     public void SwipeTier()
     {
-        //update current tier
+        //move player to next tier
+        if(currentTier == 0)
+        {
+            //TODO: call move player somehow
+            tiers[0].DiableCam();
+
+        }
+        else
+        {
+            currentTier--;
+        }
+
+        tiers[0].Swipe();
+
+        cakeTiers.RemoveAt(0);
+        tiers.RemoveAt(0);
+
+        //TODO: Camera shake
     }
 
     /// <summary>
