@@ -43,7 +43,7 @@ public class Tier : MonoBehaviour
     }
 
     //gets the transform of the spawn point in this tier
-    Transform GetTierSpawn()
+    public Transform GetTierSpawn()
     {
         return tierSpawnPt.transform;
     }

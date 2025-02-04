@@ -6,6 +6,7 @@
 // Brief Description : Derived from Sigleton Monobehavior. Reference using TierManager.Instance
     contains functionality to control the tiers.
 *****************************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class TierManager : Singleton<TierManager>
         "bottom tier as index 0.")]
     [SerializeField] List<GameObject> cakeTiers;
     List<Tier> tiers = new List<Tier>();
+    private Vector3 nextSpawnPt;
 
     private int currentTier = 0;    //0 is bottom tier
 
@@ -27,6 +29,9 @@ public class TierManager : Singleton<TierManager>
     [Tooltip("Edit this to change how long the camera shakes when a tier is swiped")]
     [SerializeField] float tierCamShakeDuration;
 
+    public static Action<float> SwipeTierAction;
+    public static Action NextTierAction;
+
     protected override void Awake()
     {
         base.Awake();
@@ -36,24 +41,47 @@ public class TierManager : Singleton<TierManager>
         {
             tiers.Add(tier.GetComponent<Tier>());
         }
+
+        SwipeTierAction += SwipeTier;
+        NextTierAction += NextTier;
+
     }
 
     /// <summary>
-    /// Will be reomoved after testing is sufficient
+    /// Will be removed after testing is sufficient
     /// </summary>
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SwipeTier(tierCamShakeDuration);
+            SwipeTierAction?.Invoke(tierCamShakeDuration);
         }
     }
 
     /// <summary>
-    /// Called when the cat swipes the bottom cake tier
+    /// function that returns true if the player is in the bottom tier.
+    /// </summary>
+    public bool IsInBottomTier()
+    {
+        return currentTier == 0;
+    }
+
+    public Vector3 GetNextSpawn()
+    {
+        return nextSpawnPt;
+    }
+
+    /// <summary>
+    /// Called when the cat swipes the bottom cake tier. Duration is the pause while
+    /// the camera shakes before the tier is swiped.
     /// </summary>
     public void SwipeTier(float duration)
     {
+        if(IsInBottomTier())
+        {
+            nextSpawnPt = tiers[1].GetTierSpawn().position;
+        }
+        
         StartCoroutine(SwipeCoroutine(duration));
     }
 
@@ -64,12 +92,12 @@ public class TierManager : Singleton<TierManager>
     {
         tiers[currentTier].DisableCam();
         currentTier++;
-        print(currentTier);
+        nextSpawnPt = tiers[currentTier + 1].GetTierSpawn().position;
     }
 
     /// <summary>
-    /// Swipes the tier from the cake. Camera with shake for the duration before the
-    /// sjake is performed.
+    /// Swipes the tier from the cake. Camera will shake for the duration before the
+    /// swipe is performed.
     /// </summary>
     private IEnumerator SwipeCoroutine(float duration)
     {
@@ -77,10 +105,8 @@ public class TierManager : Singleton<TierManager>
 
         yield return new WaitForSeconds(duration);
 
-        //move player to next tier
         if (currentTier == 0)
         {
-            //TODO: call move player somehow, get spawn transition from tier 1
             tiers[0].DisableCam();
         }
         else
@@ -92,5 +118,17 @@ public class TierManager : Singleton<TierManager>
 
         cakeTiers.RemoveAt(0);
         tiers.RemoveAt(0);
+
+        if (tiers.Count < 2)
+        {
+            //TODO: trigger end game
+            print("last tier swiped");
+        }
+    }
+
+    private void OnDisable()
+    {
+        SwipeTierAction -= SwipeTier;
+        NextTierAction -= NextTier;
     }
 }

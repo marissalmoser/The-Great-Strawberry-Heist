@@ -51,4 +51,4 @@ MonoBehaviour:
   - {fileID: 0}
   tierCamShakeAmplitude: 3
   tierCamShakeFrequency: 1
-  tierCamShakeDuration: 0.6
+  tierCamShakeDuration: 1
