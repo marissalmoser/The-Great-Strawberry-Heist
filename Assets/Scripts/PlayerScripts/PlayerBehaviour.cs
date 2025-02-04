@@ -148,6 +148,9 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves the player to the next tier when they are swiped out of their current one.
+    /// </summary>
     private IEnumerator MovePlayerToNextTier(float delay, Vector3 nextSpawn)
     {
         //wait for camera shake
