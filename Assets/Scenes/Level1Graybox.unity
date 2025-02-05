@@ -955,7 +955,7 @@ MonoBehaviour:
   slow:
     serializedVersion: 2
     m_Bits: 256
-  playerSpeed: 6
+  playerSpeed: 8
   slowMultipler: 0.5
   jumpHeight: 24
   rb2d: {fileID: 610583088}
