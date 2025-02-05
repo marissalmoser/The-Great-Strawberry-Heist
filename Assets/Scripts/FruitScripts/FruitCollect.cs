@@ -1,3 +1,13 @@
+/*****************************************************************************
+// File Name :         FruitCollect.cs
+// Author :            Kadin Harris
+// Creation Date :     01/30/2025
+//
+// Brief Description : Added to fruit to add how much score said fruit is worth 
+Derived from Sigleton Monobehavior. Reference using ScoreManage.Instance
+*****************************************************************************/
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,57 +17,21 @@ using UnityEngine;
 public class FruitCollect : MonoBehaviour
 {
     // This variable can be modified in the Inspector
-    public int score;
-
-    // Multiplier that can be changed in the Inspector
     [SerializeField]
-    private float multiplier = 1f;
+    private int score;
 
-    // Static Action for adding score
-    public static Action<int> OnAddScore;
 
-    void Awake()
+
+    ///<summary>
+    /// Method to collect fruit 
+    ///<summary>
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the method is already subscribed
-        if (OnAddScore == null || !OnAddScore.GetInvocationList().Contains((Delegate)(Action<int>)AddScore))
+      
+        if (collision.TryGetComponent(out PlayerBehaviour pb))
         {
-            OnAddScore += AddScore;
-        }
-        Debug.Log("Awake called");
-    }
+            ScoreManager.Instance.AddScore(score);
 
-    void OnDestroy()
-    {
-        // Unsubscribe from the OnAddScore action when the object is destroyed
-        OnAddScore -= AddScore;
-    }
-
-    // Static method to change the score multiplier
-    // Static method to change the score multiplier
-    public void ChangeMultiplier(float newMultiplier)
-    {
-        multiplier = newMultiplier;
-        Debug.Log("Multiplier changed to: " + multiplier);
-    }
-
-    // Method to add score with the multiplier
-    private void AddScore(int amount)
-    {
-        score += Mathf.RoundToInt(amount * multiplier);
-        Debug.Log("Updated Score: " + score);
-        Debug.Log("Amount: " + amount);
-        Debug.Log("Multiplier: " + multiplier);
-    }
-
-    //Method to collect fruit 
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            if (!(OnAddScore is null))
-                OnAddScore(score);
-           
             Destroy(gameObject);
         }
     }
