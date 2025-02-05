@@ -19,6 +19,7 @@ public class TierManager : Singleton<TierManager>
     [SerializeField] List<GameObject> cakeTiers;
     List<Tier> tiers = new List<Tier>();
     private Vector3 nextSpawnPt;
+    private bool canSwipe;
 
     private int currentTier = 0;    //0 is bottom tier
 
@@ -45,6 +46,7 @@ public class TierManager : Singleton<TierManager>
         SwipeTierAction += SwipeTier;
         NextTierAction += NextTier;
 
+        canSwipe = true;
     }
 
     /// <summary>
@@ -77,6 +79,11 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     public void SwipeTier(float duration)
     {
+        if(!canSwipe)
+        {
+            return;
+        }
+
         if(IsInBottomTier())
         {
             nextSpawnPt = tiers[1].GetTierSpawn().position;
@@ -122,6 +129,7 @@ public class TierManager : Singleton<TierManager>
         if (tiers.Count < 2)
         {
             //TODO: trigger end game
+            canSwipe = false;
             print("last tier swiped");
         }
     }

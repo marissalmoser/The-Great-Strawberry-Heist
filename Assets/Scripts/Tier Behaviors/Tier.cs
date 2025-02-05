@@ -42,7 +42,9 @@ public class Tier : MonoBehaviour
         StartCoroutine(Shake(amplitude, frequency, duration));
     }
 
-    //gets the transform of the spawn point in this tier
+    /// <summary>
+    /// gets the transform of the spawn point in this tier
+    /// </summary>
     public Transform GetTierSpawn()
     {
         return tierSpawnPt.transform;
