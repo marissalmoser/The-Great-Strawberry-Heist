@@ -54,7 +54,7 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.T))
         {
             SwipeTierAction?.Invoke(tierCamShakeDuration);
         }
