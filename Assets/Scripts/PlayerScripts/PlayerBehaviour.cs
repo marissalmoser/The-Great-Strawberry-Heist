@@ -39,6 +39,11 @@ public class PlayerBehaviour : MonoBehaviour
     private float moveValue;
 
     private float isGrounded;
+    private bool canMove;
+
+    [Tooltip("How many seconds the player takes to be moved from the bottom tier when" +
+        "they get swiped")]
+    [SerializeField] private float tierSwipeTransitionTime;
 
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
@@ -56,6 +61,9 @@ public class PlayerBehaviour : MonoBehaviour
         speedMultiplier = BASE_MULTIPLER;
 
         hitbox = GetComponent<BoxCollider2D>();
+
+        TierManager.SwipeTierAction += MoveToNextTier;
+        canMove = true;
     }
 
     /// <summary>
@@ -64,7 +72,10 @@ public class PlayerBehaviour : MonoBehaviour
     /// <param name="obj"></param>
     private void PlayerJump_performed(InputAction.CallbackContext obj)
     {
-        PlayerJump();
+        if (canMove)
+        {
+            PlayerJump();
+        }
     }
 
     /// <summary>
@@ -72,7 +83,10 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (canMove)
+        {
+            MovePlayer();
+        }
     }
 
     /// <summary>
@@ -120,6 +134,50 @@ public class PlayerBehaviour : MonoBehaviour
     public void NormalSpeed()
     {
         speedMultiplier = BASE_MULTIPLER;
+    }
+
+    /// <summary>
+    /// Called when the cat swipes the bottom cake tier. Duration is the pause while
+    /// the camera shakes before the tier is swiped.
+    /// </summary>
+    private void MoveToNextTier(float delay)
+    {
+        if(TierManager.Instance.IsInBottomTier())
+        {
+            StartCoroutine(MovePlayerToNextTier(delay, TierManager.Instance.GetNextSpawn()));
+        }
+    }
+
+    /// <summary>
+    /// Moves the player to the next tier when they are swiped out of their current one.
+    /// </summary>
+    private IEnumerator MovePlayerToNextTier(float delay, Vector3 nextSpawn)
+    {
+        //wait for camera shake
+        yield return new WaitForSeconds(delay);
+
+        //TODO: play swipe animation :D
+
+        //Stop player movement and collisions
+        canMove = false;
+        hitbox.enabled = false;
+        rb2d.isKinematic = true;
+
+        //move player
+        Vector3 startPos = transform.position;
+        float t = 0;
+        while (t <= 1.0f)
+        {
+            t += Time.deltaTime / tierSwipeTransitionTime; 
+            transform.position = Vector3.Lerp(startPos, nextSpawn, t);
+            yield return new WaitForFixedUpdate();         
+        }
+        transform.position = nextSpawn;
+
+        //resume player movement and collisions
+        canMove = true;
+        hitbox.enabled = true;
+        rb2d.isKinematic = false;
     }
 
     /// <summary>
