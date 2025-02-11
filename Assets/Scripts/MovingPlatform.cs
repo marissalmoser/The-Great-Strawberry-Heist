@@ -4,7 +4,6 @@
 // Creation Date :     02/10/2025
 // Brief Description : The script on the moving platform objects. Contains customizable
     functinality for the platforms to move between two positions at a variable speed.
-
 *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +32,11 @@ public class MovingPlatform : MonoBehaviour
         StartCoroutine(MovePlatform());
     }
 
+    /// <summary>
+    /// Moves the platform from start pos to end pos, then back to start pos. Loops
+    /// as long as the isMoving bool is true;
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MovePlatform()
     {
         Vector3 startPos = startPosGO.transform.position;
