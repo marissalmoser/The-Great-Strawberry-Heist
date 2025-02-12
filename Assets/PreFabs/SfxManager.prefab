@@ -54,4 +54,4 @@ MonoBehaviour:
     pitch: 1
     doLoop: 0
     source: {fileID: 0}
-  _masterMixer: {fileID: 0}
+  _masterMixer: {fileID: 24100000, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
