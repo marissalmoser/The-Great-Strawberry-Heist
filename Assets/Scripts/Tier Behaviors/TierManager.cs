@@ -4,16 +4,34 @@
 // Creation Date :     01/30/2025
 //
 // Brief Description : Derived from Sigleton Monobehavior. Reference using TierManager.Instance
+    contains functionality to control the tiers.
 *****************************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class TierManager : Singleton<TierManager>
 {
+    [Tooltip("Every tier game object should be added to this list i norder, with the" +
+        "bottom tier as index 0.")]
     [SerializeField] List<GameObject> cakeTiers;
     List<Tier> tiers = new List<Tier>();
-    private int currentTier;    //0 is bottom tier
+    private Vector3 nextSpawnPt;
+    private bool canSwipe;
+
+    private int currentTier = 0;    //0 is bottom tier
+
+    [Tooltip("Edit this to change how big each shake is when a tier is swiped")]
+    [SerializeField] float tierCamShakeAmplitude;
+    [Tooltip("Edit this to change how often the camera shakes when a tier is swiped")]
+    [SerializeField] float tierCamShakeFrequency;
+    [Tooltip("Edit this to change how long the camera shakes when a tier is swiped")]
+    [SerializeField] float tierCamShakeDuration;
+
+    public static Action<float> SwipeTierAction;
+    public static Action NextTierAction;
 
     protected override void Awake()
     {
@@ -25,20 +43,53 @@ public class TierManager : Singleton<TierManager>
             tiers.Add(tier.GetComponent<Tier>());
         }
 
-        //starting tier count?
-    }
+        SwipeTierAction += SwipeTier;
+        NextTierAction += NextTier;
 
-    void Start()
-    {
-        
+        canSwipe = true;
     }
 
     /// <summary>
-    /// Called when the cat swipes the bottom cake tier
+    /// Will be removed after testing is sufficient
     /// </summary>
-    public void SwipeTier()
+    void Update()
     {
-        //update current tier
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            SwipeTierAction?.Invoke(tierCamShakeDuration);
+        }
+    }
+
+    /// <summary>
+    /// function that returns true if the player is in the bottom tier.
+    /// </summary>
+    public bool IsInBottomTier()
+    {
+        return currentTier == 0;
+    }
+
+    public Vector3 GetNextSpawn()
+    {
+        return nextSpawnPt;
+    }
+
+    /// <summary>
+    /// Called when the cat swipes the bottom cake tier. Duration is the pause while
+    /// the camera shakes before the tier is swiped.
+    /// </summary>
+    public void SwipeTier(float duration)
+    {
+        if(!canSwipe)
+        {
+            return;
+        }
+
+        if(IsInBottomTier())
+        {
+            nextSpawnPt = tiers[1].GetTierSpawn().position;
+        }
+        
+        StartCoroutine(SwipeCoroutine(duration));
     }
 
     /// <summary>
@@ -46,8 +97,46 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     public void NextTier()
     {
-        tiers[currentTier].DiableCam();
+        tiers[currentTier].DisableCam();
         currentTier++;
-        print(currentTier);
+        nextSpawnPt = tiers[currentTier + 1].GetTierSpawn().position;
+    }
+
+    /// <summary>
+    /// Swipes the tier from the cake. Camera will shake for the duration before the
+    /// swipe is performed.
+    /// </summary>
+    private IEnumerator SwipeCoroutine(float duration)
+    {
+        tiers[0].ShakeCam(tierCamShakeAmplitude, tierCamShakeFrequency, duration);
+
+        yield return new WaitForSeconds(duration);
+
+        if (currentTier == 0)
+        {
+            tiers[0].DisableCam();
+        }
+        else
+        {
+            currentTier--;
+        }
+
+        tiers[0].Swipe();
+
+        cakeTiers.RemoveAt(0);
+        tiers.RemoveAt(0);
+
+        if (tiers.Count < 2)
+        {
+            //TODO: trigger end game
+            canSwipe = false;
+            print("last tier swiped");
+        }
+    }
+
+    private void OnDisable()
+    {
+        SwipeTierAction -= SwipeTier;
+        NextTierAction -= NextTier;
     }
 }
