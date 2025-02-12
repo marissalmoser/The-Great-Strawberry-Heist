@@ -30,6 +30,7 @@ public class SfxManager : Singleton<SfxManager>
             _SFXs[i].source.pitch = _SFXs[i].pitch;
             _SFXs[i].source.playOnAwake = false;
             _SFXs[i].source.loop = _SFXs[i].doLoop;
+            _SFXs[i].source.clip = _SFXs[i].clips[0];
         }
     }
 
@@ -44,7 +45,7 @@ public class SfxManager : Singleton<SfxManager>
         SFX sfx = _SFXs[_SFXs.FindIndex(i => i.name == name)];
         sfx.source.clip = sfx.clips[UnityEngine.Random.Range(0, sfx.clips.Length)];
         sfx.source.volume = sfx.maxVolume;
-        sfx.source.Play();
+        sfx.source.PlayOneShot(sfx.source.clip, 1);
     }
 
     /// <summary>
