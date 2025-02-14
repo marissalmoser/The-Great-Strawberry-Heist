@@ -2736,6 +2736,14 @@ PrefabInstance:
       value: RollingFruitSpawner (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
+      propertyPath: maxWaitTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
+      propertyPath: minWaitTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: RollingFruitPrefab
       value: 
       objectReference: {fileID: 3596868594772921216, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
