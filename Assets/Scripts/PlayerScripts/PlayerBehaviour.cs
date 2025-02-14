@@ -40,8 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float isGrounded;
     private bool canMove;
-
-    
+    private Animator animator;
 
     [Tooltip("How many seconds the player takes to be moved from the bottom tier when" +
         "they get swiped")]
@@ -66,6 +65,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         TierManager.SwipeTierAction += MoveToNextTier;
         canMove = true;
+
+        animator = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -92,6 +93,14 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     /// <summary>
+    /// Checks the speed of the player to switch the animations as needed
+    /// </summary>
+    private void Update()
+    {
+        animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
+    }
+
+    /// <summary>
     /// Moves the player left and right
     /// </summary>
     private void MovePlayer()
@@ -100,6 +109,28 @@ public class PlayerBehaviour : MonoBehaviour
         moveValue = moveValue * playerSpeed * speedMultiplier;
 
         rb2d.velocity = new Vector2(moveValue, rb2d.velocity.y);
+    }
+
+    /// <summary>
+    /// Makes the player look the right way
+    /// </summary>
+    private void RotatePlayer()
+    {
+        //float lookValue = playerMove.ReadValue<float>();
+
+        //switch(lookValue)
+        //{
+        //    case 0:
+        //        break;
+        //    case -1:
+        //        transform.rotation = 
+        //        break;
+        //    case 1:
+        //        break;
+        //    default:
+        //        Debug.Log("UH OH");
+        //        break;
+        //}
     }
 
     /// <summary>
