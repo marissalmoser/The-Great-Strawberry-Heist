@@ -41,6 +41,8 @@ public class PlayerBehaviour : MonoBehaviour
     private float isGrounded;
     private bool canMove;
 
+    
+
     [Tooltip("How many seconds the player takes to be moved from the bottom tier when" +
         "they get swiped")]
     [SerializeField] private float tierSwipeTransitionTime;
@@ -187,5 +189,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         playerJump.performed -= PlayerJump_performed;
         actions.Disable();
+    }
+
+    public void GotHitByIcing()
+    {
+        //rb2d.velocity.x = 0f;
     }
 }
