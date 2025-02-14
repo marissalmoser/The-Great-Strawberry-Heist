@@ -23,6 +23,7 @@ public class RollingFruitSpawner : MonoBehaviour
 
     void Start()
     {
+        isSpawning = true;
         StartCoroutine(RollingFruit() );
     }
 
