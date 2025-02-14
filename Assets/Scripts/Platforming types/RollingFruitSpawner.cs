@@ -30,7 +30,7 @@ public class RollingFruitSpawner : MonoBehaviour
     {
         while( isSpawning )
         {
-            Instantiate(RollingFruitPrefab, transform);
+            Instantiate(RollingFruitPrefab);
 
             yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime + 1));
         }
