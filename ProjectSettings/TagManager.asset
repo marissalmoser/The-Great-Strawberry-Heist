@@ -14,17 +14,17 @@ TagManager:
   - Ground
   - Platform
   - Slow
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground1
+  - Ground2
+  - Ground3
+  - Ground4
+  - Ground5
+  - FallingIcing1
+  - FallingIcing2
+  - FallingIcing3
+  - FallingIcing4
+  - FallingIcing5
+  - Player
   - 
   - 
   - 
