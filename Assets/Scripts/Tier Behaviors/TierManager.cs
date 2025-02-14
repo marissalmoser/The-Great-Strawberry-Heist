@@ -99,7 +99,12 @@ public class TierManager : Singleton<TierManager>
     {
         tiers[currentTier].DisableCam();
         currentTier++;
-        nextSpawnPt = tiers[currentTier + 1].GetTierSpawn().position;
+
+        //prevents null error
+        if(tiers.Count > currentTier + 1)
+        {
+            nextSpawnPt = tiers[currentTier + 1].GetTierSpawn().position;
+        }
     }
 
     /// <summary>
