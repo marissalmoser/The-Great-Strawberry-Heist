@@ -18,6 +18,9 @@ public class RollingFruitSpawner : MonoBehaviour
     [SerializeField] private int minWaitTime;
     [Tooltip("Maximum time for another fruit to spawn")]
     [SerializeField] private int maxWaitTime;
+
+    bool isSpawning;
+
     void Start()
     {
         StartCoroutine(RollingFruit() );
@@ -25,8 +28,11 @@ public class RollingFruitSpawner : MonoBehaviour
 
     IEnumerator RollingFruit()
     {
-        Instantiate(RollingFruitPrefab, transform);
+        while( isSpawning )
+        {
+            Instantiate(RollingFruitPrefab);
 
-        yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime + 1));
+            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime + 1));
+        }
     }
 }
