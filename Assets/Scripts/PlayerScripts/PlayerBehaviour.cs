@@ -86,6 +86,8 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        RotatePlayer();
+
         if (canMove)
         {
             MovePlayer();
@@ -116,21 +118,22 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void RotatePlayer()
     {
-        //float lookValue = playerMove.ReadValue<float>();
+        float lookValue = playerMove.ReadValue<float>();
 
-        //switch(lookValue)
-        //{
-        //    case 0:
-        //        break;
-        //    case -1:
-        //        transform.rotation = 
-        //        break;
-        //    case 1:
-        //        break;
-        //    default:
-        //        Debug.Log("UH OH");
-        //        break;
-        //}
+        switch (lookValue)
+        {
+            case 0:
+                break;
+            case -1:
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                break;
+            case 1:
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                break;
+            default:
+                Debug.Log("UH OH");
+                break;
+        }
     }
 
     /// <summary>
