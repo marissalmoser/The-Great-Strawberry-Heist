@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1836302015437306573, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836302015437306573, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836302015437306573, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.1428573
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836302015437306573, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.42
       objectReference: {fileID: 0}
@@ -48,25 +60,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1836302015437306573, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.16804293
       objectReference: {fileID: 0}
     - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.0959997
       objectReference: {fileID: 0}
     - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Color.r
-      value: 0.8274932
+      value: 0.18598378
       objectReference: {fileID: 0}
     - target: {fileID: 5290225617893858521, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: score
-      value: 200
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
-      value: Raspberry Variant
+      value: Blackberry
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
