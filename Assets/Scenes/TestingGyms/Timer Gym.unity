@@ -4908,16 +4908,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerImage: {fileID: 1691161548}
+  testOneTier: 0
   startDelayTime: 0
   tierTimes:
   - 10
   - 10
-  - 10
-  - 10
-  - 10
   tierCamShakeDuration: 2
-  triggerFallingIcingTime: 4
   playerMoveAfterSwipeTransitionTime: 1.5
+  triggerFallingIcingTime: 4
+  delayFallingIcingTime: 0
 --- !u!1 &2112901549
 GameObject:
   m_ObjectHideFlags: 0

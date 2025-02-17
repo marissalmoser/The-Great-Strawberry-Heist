@@ -6,21 +6,29 @@ using UnityEngine.UI;
 
 public class TimerSystem : MonoBehaviour
 {
+    [Tooltip("Reference to the timer object on the canvas.")]
     [SerializeField] Image timerImage;
 
+    [Tooltip("Enable this if you only want the to test the timer for one tier. Arrange" +
+        "the tier manager so the tier you are testing is the first tier, and ensure the " +
+        "first index of the timers below is set for your tier.")]
+    [SerializeField] bool testOneTier;
+
+    [Tooltip("Edit this to change the delay before the game starts (for the opening sequence)")]
     [SerializeField] float startDelayTime;
-
+    [Tooltip("How long the timer for each tier should be. Assign a new index per tier. " +
+        "You do not need a timer for the top strawberry 'tier'.")]
     [SerializeField] List<float> tierTimes = new List<float>();
-
     [Tooltip("Edit this to change how long the camera shakes before a tier is swiped.")]
     [SerializeField] float tierCamShakeDuration;
-
-    [Tooltip("Edit this to change how long into each tier the falling icing is triggered.")]
-    [SerializeField] float triggerFallingIcingTime;
-
     [Tooltip("How many seconds the player takes to be moved from the bottom tier when" +
         "they get swiped")]
     [SerializeField] private float playerMoveAfterSwipeTransitionTime;
+    [Tooltip("Edit this to change how long into each tier the falling icing is triggered.")]
+    [SerializeField] float triggerFallingIcingTime; //should this be a range?
+    [Tooltip("Edit this to change the time in between each falling icing splotch after" +
+        "they have been triggered.")]
+    [SerializeField] float delayFallingIcingTime;
 
     private float currentTime;
     private float currentMaxTime;
@@ -117,7 +125,15 @@ public class TimerSystem : MonoBehaviour
         //tier is swiped
         currentTime = 0;
         tierTimes.RemoveAt(0);
-        //TODO: check if count is 0, endgame lose condition, stop coroutine
+
+        //checks for the last tier, evaulates end condition
+        if(tierTimes.Count <= 0)
+        {
+            print("time ran out in the last tier!");
+            //TODO: trigger end condition
+            yield break;
+        }
+
         currentMaxTime = tierTimes[0];
 
         UpdateTimerUI();
@@ -125,8 +141,26 @@ public class TimerSystem : MonoBehaviour
         //Wait for player to be moved
         yield return new WaitForSeconds(playerMoveAfterSwipeTransitionTime);
 
-        //start next tier's timer;
-        currentTimer = StartCoroutine(TierTimer());
+        //start next tier's timer if not testing
+        if (!testOneTier)
+        {
+            currentTimer = StartCoroutine(TierTimer());
+        }
+    }
+
+    /// <summary>
+    /// Triggeres all the falling icing in this tier.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator TriggerFallingIcing()
+    {
+        //while there is icing left in this tier to fall
+        while(true)
+        {
+            //TODO: trigger next in order splotch
+
+            yield return new WaitForSeconds(delayFallingIcingTime);
+        }
     }
 
     private void OnDisable()
