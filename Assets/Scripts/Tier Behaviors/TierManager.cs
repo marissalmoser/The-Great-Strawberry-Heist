@@ -27,8 +27,6 @@ public class TierManager : Singleton<TierManager>
     [SerializeField] float tierCamShakeAmplitude;
     [Tooltip("Edit this to change how often the camera shakes when a tier is swiped")]
     [SerializeField] float tierCamShakeFrequency;
-    [Tooltip("Edit this to change how long the camera shakes when a tier is swiped")]
-    [SerializeField] float tierCamShakeDuration;
 
     public static Action<float> SwipeTierAction;
     public static Action NextTierAction;
@@ -56,7 +54,7 @@ public class TierManager : Singleton<TierManager>
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            SwipeTierAction?.Invoke(tierCamShakeDuration);
+            //SwipeTierAction?.Invoke(tierCamShakeDuration);
         }
     }
 
