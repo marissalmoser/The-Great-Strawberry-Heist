@@ -28,7 +28,7 @@ public class TierManager : Singleton<TierManager>
     [Tooltip("Edit this to change how often the camera shakes when a tier is swiped")]
     [SerializeField] float tierCamShakeFrequency;
 
-    public static Action<float> SwipeTierAction;
+    public static Action<float, float> SwipeTierAction;
     public static Action NextTierAction;
 
     protected override void Awake()
@@ -75,7 +75,7 @@ public class TierManager : Singleton<TierManager>
     /// Called when the cat swipes the bottom cake tier. Duration is the pause while
     /// the camera shakes before the tier is swiped.
     /// </summary>
-    public void SwipeTier(float duration)
+    public void SwipeTier(float shakeDuration, float playerMoveDuration)
     {
         if(!canSwipe)
         {
@@ -87,7 +87,7 @@ public class TierManager : Singleton<TierManager>
             nextSpawnPt = tiers[1].GetTierSpawn().position;
         }
         
-        StartCoroutine(SwipeCoroutine(duration));
+        StartCoroutine(SwipeCoroutine(shakeDuration));
     }
 
     /// <summary>
