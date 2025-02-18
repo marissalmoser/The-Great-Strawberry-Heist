@@ -9,6 +9,7 @@ public class TimerSystem : MonoBehaviour
     [Tooltip("Reference to the timer object on the canvas.")]
     [SerializeField] Image timerImage;
 
+    [Header("Timers")]
     [Tooltip("Enable this if you only want the to test the timer for one tier. Arrange" +
         "the tier manager so the tier you are testing is the first tier, and ensure the " +
         "first index of the timers below is set for your tier.")]
@@ -30,8 +31,20 @@ public class TimerSystem : MonoBehaviour
         "they have been triggered.")]
     [SerializeField] float delayFallingIcingTime;
 
+    [Header("Falling Batter")]
+    [Tooltip("Add all the falling batter in each tier to a new list in this list.")]
+    [SerializeField] List<GameObject> fallingIcingTier1 = new List<GameObject>();
+    [SerializeField] List<GameObject> fallingIcingTier2 = new List<GameObject>();
+    [SerializeField] List<GameObject> fallingIcingTier3 = new List<GameObject>();
+    [SerializeField] List<GameObject> fallingIcingTier4 = new List<GameObject>();
+    [SerializeField] List<GameObject> fallingIcingTier5 = new List<GameObject>();
+    List<List<GameObject>> fallingIcing = new List<List<GameObject>>();
+
+
     private float currentTime;
     private float currentMaxTime;
+    private bool isShaking;
+    private bool triggeredIcing;
 
     private Coroutine currentTimer;
 
@@ -39,11 +52,13 @@ public class TimerSystem : MonoBehaviour
     {
         TierManager.NextTierAction += NextTier;
 
-        //update time values 
-        for (int i = 0; i < tierTimes.Count; i++)
-        {
-            tierTimes[i] -= tierCamShakeDuration;
-        }
+        //add falling icing to main list
+        fallingIcing.Add(fallingIcingTier1);
+        fallingIcing.Add(fallingIcingTier2);
+        fallingIcing.Add(fallingIcingTier3);
+        fallingIcing.Add(fallingIcingTier4);
+        fallingIcing.Add(fallingIcingTier5);
+
         currentTime = 0;
         currentMaxTime = tierTimes[0];
 
@@ -59,9 +74,18 @@ public class TimerSystem : MonoBehaviour
     private void NextTier()
     {
         tierTimes.RemoveAt(0);
-        currentMaxTime = tierTimes[0] + (currentMaxTime - currentTime); //TODO: add cam shake time if camera is not shaking
 
-        print(currentTime + " and " + currentMaxTime);
+        //check for win condition
+        if (tierTimes.Count <= 0)
+        {
+            StopAllCoroutines();
+            print("player made it to the strawberry");
+            //TODO: trigger win condition
+            return;
+        }
+
+        float time = currentMaxTime - currentTime;
+        currentMaxTime = tierTimes[0] + time;
         currentTime = 0;
 
         UpdateTimerUI();
@@ -75,7 +99,7 @@ public class TimerSystem : MonoBehaviour
     /// </summary>
     private void UpdateTimerUI()
     {
-        float time = (currentTime) / (currentMaxTime + tierCamShakeDuration);
+        float time = (currentTime) / (currentMaxTime);
         timerImage.fillAmount = (1 - time);
     }
 
@@ -96,15 +120,18 @@ public class TimerSystem : MonoBehaviour
     /// <returns></returns>
     IEnumerator TierTimer()
     {
+        triggeredIcing = false;
+
         //count until swipe shaking should start
-        while(currentTime < (currentMaxTime))
+        while(currentTime < (currentMaxTime - tierCamShakeDuration))
         {
             yield return new WaitForSeconds(0.1f);
 
             //check for falling icing time
-            if (currentTime == triggerFallingIcingTime) //maybe make <= and bool
+            if (!triggeredIcing && currentTime >= triggerFallingIcingTime)
             {
                 //TODO: trigger falling icing for this tier
+                triggeredIcing = true;
                 print("ICING");
             }
 
@@ -112,10 +139,10 @@ public class TimerSystem : MonoBehaviour
             UpdateTimerUI();
         }
 
-        print("start shake");
         //start tier swipe sequence
         TierManager.SwipeTierAction?.Invoke(tierCamShakeDuration, playerMoveAfterSwipeTransitionTime);
-        while (currentTime < (currentMaxTime + tierCamShakeDuration))
+        isShaking = true;
+        while (currentTime < currentMaxTime)
         {
             yield return new WaitForSeconds(0.1f);
             currentTime += 0.1f;
@@ -137,6 +164,7 @@ public class TimerSystem : MonoBehaviour
         currentMaxTime = tierTimes[0];
 
         UpdateTimerUI();
+        isShaking = false;
 
         //Wait for player to be moved
         yield return new WaitForSeconds(playerMoveAfterSwipeTransitionTime);
@@ -155,12 +183,16 @@ public class TimerSystem : MonoBehaviour
     private IEnumerator TriggerFallingIcing()
     {
         //while there is icing left in this tier to fall
-        while(true)
+        while (fallingIcing[0].Count >= 0)
         {
-            //TODO: trigger next in order splotch
+            //trigger next in order splotch, then delete
+            fallingIcing[0][0].GetComponent<FallingBatter>().TriggerFall();
+            fallingIcing[0].RemoveAt(0);
 
             yield return new WaitForSeconds(delayFallingIcingTime);
         }
+
+        fallingIcing.RemoveAt(0);
     }
 
     private void OnDisable()

@@ -20,10 +20,9 @@ public class FallingBatter : MonoBehaviour
     /// <summary>
     /// Makes the icing fall
     /// </summary>
-    private void TriggerFall()
+    public void TriggerFall()
     {
         GetComponent<Rigidbody2D>().gravityScale = 1;
-        Debug.Log("worked");
     }
 
     /// <summary>
