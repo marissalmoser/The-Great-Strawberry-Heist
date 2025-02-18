@@ -16,12 +16,19 @@ public class FallingBatter : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().gravityScale = 0;
     }
+
+    /// <summary>
+    /// Makes the icing fall
+    /// </summary>
     private void TriggerFall()
     {
         GetComponent<Rigidbody2D>().gravityScale = 1;
         Debug.Log("worked");
     }
 
+    /// <summary>
+    /// press L to make icing fall
+    /// </summary>
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.L))
