@@ -912,14 +912,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114210578673431639, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
-      propertyPath: maxWaitTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114210578673431639, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
-      propertyPath: minWaitTime
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 511241900789092313, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -960,13 +952,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2306731546778743851, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
-      propertyPath: maxWaitTime
-      value: 5
+    - target: {fileID: 1292612996996824353, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2306731546778743851, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
-      propertyPath: minWaitTime
-      value: 5
+    - target: {fileID: 3487652362259578205, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3636063472875565881, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
       propertyPath: m_Name
