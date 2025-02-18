@@ -23,6 +23,7 @@ public class FallingBatter : MonoBehaviour
     public void TriggerFall()
     {
         GetComponent<Rigidbody2D>().gravityScale = 1;
+        print("here");
     }
 
     /// <summary>

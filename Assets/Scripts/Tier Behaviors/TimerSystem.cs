@@ -131,6 +131,7 @@ public class TimerSystem : MonoBehaviour
             if (!triggeredIcing && currentTime >= triggerFallingIcingTime)
             {
                 //TODO: trigger falling icing for this tier
+                StartCoroutine(TriggerFallingIcing());
                 triggeredIcing = true;
                 print("ICING");
             }
@@ -182,6 +183,7 @@ public class TimerSystem : MonoBehaviour
     /// <returns></returns>
     private IEnumerator TriggerFallingIcing()
     {
+            print(fallingIcing[0].Count);
         //while there is icing left in this tier to fall
         while (fallingIcing[0].Count >= 0)
         {

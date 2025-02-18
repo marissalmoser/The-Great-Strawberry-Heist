@@ -1243,6 +1243,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &288378789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4087045453027995144, guid: 2bfeaf1428ec6594e8041184c91e4bf1, type: 3}
+  m_PrefabInstance: {fileID: 318386170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &295088714
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,6 +3067,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1006776403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4087045453027995144, guid: 2bfeaf1428ec6594e8041184c91e4bf1, type: 3}
+  m_PrefabInstance: {fileID: 1238226921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1021549478
 GameObject:
   m_ObjectHideFlags: 0
@@ -4532,6 +4542,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3554721410270378785, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
   m_PrefabInstance: {fileID: 1206810554}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1627007119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4087045453027995144, guid: 2bfeaf1428ec6594e8041184c91e4bf1, type: 3}
+  m_PrefabInstance: {fileID: 577473714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1673986697 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 853950655343950420, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
@@ -5155,6 +5170,14 @@ MonoBehaviour:
   playerMoveAfterSwipeTransitionTime: 1.5
   triggerFallingIcingTime: 4
   delayFallingIcingTime: 1.5
+  fallingIcingTier1:
+  - {fileID: 1006776403}
+  - {fileID: 1627007119}
+  - {fileID: 288378789}
+  fallingIcingTier2: []
+  fallingIcingTier3: []
+  fallingIcingTier4: []
+  fallingIcingTier5: []
 --- !u!1 &2112901549
 GameObject:
   m_ObjectHideFlags: 0
@@ -5296,6 +5319,14 @@ PrefabInstance:
     - target: {fileID: 2886799416642492437, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: m_Name
       value: Tier 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609889731169481149, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+      propertyPath: m_AmplitudeGain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609889731169481149, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+      propertyPath: m_FrequencyGain
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6911144639704588602, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: m_LocalPosition.x
