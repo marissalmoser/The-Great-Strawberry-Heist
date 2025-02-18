@@ -1,6 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.Sqlite;
+/*****************************************************************************
+// File Name :         FallingBatter.cs
+// Author :            Kadin Harris
+// Creation Date :     02/14/2025
+//
+// Brief Description :Behavior for the falling batter
+*****************************************************************************/
 using UnityEngine;
 
 public class FallingBatter : MonoBehaviour
@@ -9,8 +13,7 @@ public class FallingBatter : MonoBehaviour
     public Transform spawnPoint;
     
     [SerializeField] LayerMask layerToHit;
-
-    //Turn of rigid body in start function and the write a PUBLIC function to turn it on.2
+    [SerializeField] GameObject alienBar;
 
     private void Start()
     {
@@ -20,23 +23,12 @@ public class FallingBatter : MonoBehaviour
     /// <summary>
     /// Makes the icing fall
     /// </summary>
-    private void TriggerFall()
+    public void TriggerFall()
     {
         GetComponent<Rigidbody2D>().gravityScale = 1;
-        Debug.Log("worked");
+        alienBar.SetActive(true);
     }
 
-    /// <summary>
-    /// press L to make icing fall
-    /// </summary>
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            TriggerFall();
-        }
-
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
