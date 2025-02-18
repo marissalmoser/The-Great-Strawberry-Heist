@@ -1,4 +1,12 @@
-using System;
+/*****************************************************************************
+// File Name :         TimerSystem.cs
+// Author :            Marissa Moser
+// Creation Date :     02/14/2025
+//
+// Brief Description : Manages the game's timer. Contains customizable times for
+    designers to edit. Triggers the tier swipe action and falling icing. Triggers
+    the game's end and win conditions.
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,6 +67,7 @@ public class TimerSystem : MonoBehaviour
         fallingIcing.Add(fallingIcingTier4);
         fallingIcing.Add(fallingIcingTier5);
 
+        //set startting times
         currentTime = 0;
         currentMaxTime = tierTimes[0];
 
@@ -130,7 +139,6 @@ public class TimerSystem : MonoBehaviour
             //check for falling icing time
             if (!triggeredIcing && currentTime >= triggerFallingIcingTime)
             {
-                //TODO: trigger falling icing for this tier
                 StartCoroutine(TriggerFallingIcing());
                 triggeredIcing = true;
                 print("ICING");
@@ -183,9 +191,8 @@ public class TimerSystem : MonoBehaviour
     /// <returns></returns>
     private IEnumerator TriggerFallingIcing()
     {
-            print(fallingIcing[0].Count);
         //while there is icing left in this tier to fall
-        while (fallingIcing[0].Count >= 0)
+        while (fallingIcing[0].Count > 0)
         {
             //trigger next in order splotch, then delete
             fallingIcing[0][0].GetComponent<FallingBatter>().TriggerFall();
@@ -194,6 +201,7 @@ public class TimerSystem : MonoBehaviour
             yield return new WaitForSeconds(delayFallingIcingTime);
         }
 
+        //remove empty list of icing
         fallingIcing.RemoveAt(0);
     }
 
