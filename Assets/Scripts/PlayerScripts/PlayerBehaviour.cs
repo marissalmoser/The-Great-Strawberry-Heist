@@ -40,11 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float isGrounded;
     private bool canMove;
-    private Animator animator;
 
-    [Tooltip("How many seconds the player takes to be moved from the bottom tier when" +
-        "they get swiped")]
-    [SerializeField] private float tierSwipeTransitionTime;
 
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
@@ -65,8 +61,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         TierManager.SwipeTierAction += MoveToNextTier;
         canMove = true;
-
-        animator = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -86,20 +80,10 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        RotatePlayer();
-
         if (canMove)
         {
             MovePlayer();
         }
-    }
-
-    /// <summary>
-    /// Checks the speed of the player to switch the animations as needed
-    /// </summary>
-    private void Update()
-    {
-        animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
     }
 
     /// <summary>
@@ -111,29 +95,6 @@ public class PlayerBehaviour : MonoBehaviour
         moveValue = moveValue * playerSpeed * speedMultiplier;
 
         rb2d.velocity = new Vector2(moveValue, rb2d.velocity.y);
-    }
-
-    /// <summary>
-    /// Makes the player look the right way
-    /// </summary>
-    private void RotatePlayer()
-    {
-        float lookValue = playerMove.ReadValue<float>();
-
-        switch (lookValue)
-        {
-            case 0:
-                break;
-            case -1:
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                break;
-            case 1:
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                break;
-            default:
-                Debug.Log("UH OH");
-                break;
-        }
     }
 
     /// <summary>
@@ -176,18 +137,18 @@ public class PlayerBehaviour : MonoBehaviour
     /// Called when the cat swipes the bottom cake tier. Duration is the pause while
     /// the camera shakes before the tier is swiped.
     /// </summary>
-    private void MoveToNextTier(float delay)
+    private void MoveToNextTier(float shakeDuration, float playerMoveDuration)
     {
         if(TierManager.Instance.IsInBottomTier())
         {
-            StartCoroutine(MovePlayerToNextTier(delay, TierManager.Instance.GetNextSpawn()));
+            StartCoroutine(MovePlayerToNextTier(shakeDuration, playerMoveDuration, TierManager.Instance.GetNextSpawn()));
         }
     }
 
     /// <summary>
     /// Moves the player to the next tier when they are swiped out of their current one.
     /// </summary>
-    private IEnumerator MovePlayerToNextTier(float delay, Vector3 nextSpawn)
+    private IEnumerator MovePlayerToNextTier(float delay, float playerMoveDuration, Vector3 nextSpawn)
     {
         //wait for camera shake
         yield return new WaitForSeconds(delay);
@@ -204,7 +165,7 @@ public class PlayerBehaviour : MonoBehaviour
         float t = 0;
         while (t <= 1.0f)
         {
-            t += Time.deltaTime / tierSwipeTransitionTime; 
+            t += Time.deltaTime / playerMoveDuration; 
             transform.position = Vector3.Lerp(startPos, nextSpawn, t);
             yield return new WaitForFixedUpdate();         
         }
