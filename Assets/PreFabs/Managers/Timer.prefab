@@ -57,14 +57,8 @@ MonoBehaviour:
   playerMoveAfterSwipeTransitionTime: 1.5
   triggerFallingIcingTime: 4
   delayFallingIcingTime: 1.5
-  fallingIcingTier1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  fallingIcingTier2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  fallingIcingTier1: []
+  fallingIcingTier2: []
   fallingIcingTier3: []
   fallingIcingTier4: []
   fallingIcingTier5: []
