@@ -41,6 +41,8 @@ public class PlayerBehaviour : MonoBehaviour
     private float isGrounded;
     private bool canMove;
 
+    private Animator animator;
+
 
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
@@ -61,6 +63,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         TierManager.SwipeTierAction += MoveToNextTier;
         canMove = true;
+
+        animator = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -80,9 +84,36 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        RotatePlayer();
+
+        animator.SetFloat("yVelocity", rb2d.velocity.y);
+
         if (canMove)
         {
             MovePlayer();
+        }
+    }
+
+    /// <summary>
+    /// Animation event to trigger a change in the jump animation
+    /// </summary>
+    public void StopJumpAnim()
+    {
+        animator.SetBool("Jump", false);
+    }
+
+    /// <summary>
+    /// Rotates the player to look left or right
+    /// </summary>
+    private void RotatePlayer()
+    {
+        if(moveValue > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if(moveValue < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
@@ -93,6 +124,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         moveValue = playerMove.ReadValue<float>();
         moveValue = moveValue * playerSpeed * speedMultiplier;
+
+        animator.SetFloat("Speed", Mathf.Abs(moveValue));
 
         rb2d.velocity = new Vector2(moveValue, rb2d.velocity.y);
     }
@@ -105,6 +138,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(CanJump())
         {
             SfxManager.Instance.PlaySFX("HamsterJump");
+            animator.SetBool("Jump", true);
             rb2d.AddForce(new Vector2(rb2d.velocity.x, jumpHeight), ForceMode2D.Impulse);
         }
     }
