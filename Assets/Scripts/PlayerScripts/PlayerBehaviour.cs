@@ -41,6 +41,11 @@ public class PlayerBehaviour : MonoBehaviour
     private float isGrounded;
     private bool canMove;
 
+    
+
+    [Tooltip("How many seconds the player takes to be moved from the bottom tier when" +
+        "they get swiped")]
+    [SerializeField] private float tierSwipeTransitionTime;
 
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
@@ -137,18 +142,18 @@ public class PlayerBehaviour : MonoBehaviour
     /// Called when the cat swipes the bottom cake tier. Duration is the pause while
     /// the camera shakes before the tier is swiped.
     /// </summary>
-    private void MoveToNextTier(float shakeDuration, float playerMoveDuration)
+    private void MoveToNextTier(float delay)
     {
         if(TierManager.Instance.IsInBottomTier())
         {
-            StartCoroutine(MovePlayerToNextTier(shakeDuration, playerMoveDuration, TierManager.Instance.GetNextSpawn()));
+            StartCoroutine(MovePlayerToNextTier(delay, TierManager.Instance.GetNextSpawn()));
         }
     }
 
     /// <summary>
     /// Moves the player to the next tier when they are swiped out of their current one.
     /// </summary>
-    private IEnumerator MovePlayerToNextTier(float delay, float playerMoveDuration, Vector3 nextSpawn)
+    private IEnumerator MovePlayerToNextTier(float delay, Vector3 nextSpawn)
     {
         //wait for camera shake
         yield return new WaitForSeconds(delay);
@@ -165,7 +170,7 @@ public class PlayerBehaviour : MonoBehaviour
         float t = 0;
         while (t <= 1.0f)
         {
-            t += Time.deltaTime / playerMoveDuration; 
+            t += Time.deltaTime / tierSwipeTransitionTime; 
             transform.position = Vector3.Lerp(startPos, nextSpawn, t);
             yield return new WaitForFixedUpdate();         
         }

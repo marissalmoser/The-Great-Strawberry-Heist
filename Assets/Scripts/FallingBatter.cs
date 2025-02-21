@@ -1,33 +1,14 @@
-/*****************************************************************************
-// File Name :         FallingBatter.cs
-// Author :            Kadin Harris
-// Creation Date :     02/14/2025
-//
-// Brief Description :Behavior for the falling batter
-*****************************************************************************/
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class FallingBatter : MonoBehaviour
 {
     public GameObject objectToSpawn; 
     public Transform spawnPoint;
-    
-    [SerializeField] LayerMask layerToHit;
-    [SerializeField] GameObject alienBar;
 
-    private void Start()
-    {
-        GetComponent<Rigidbody2D>().gravityScale = 0;
-    }
-
-    /// <summary>
-    /// Makes the icing fall
-    /// </summary>
-    public void TriggerFall()
-    {
-        GetComponent<Rigidbody2D>().gravityScale = 1;
-        alienBar.SetActive(true);
-    }
+  //Turn of rigid body in start function and the write a PUBLIC function to turn it on. Add alien Beam
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -36,7 +17,7 @@ public class FallingBatter : MonoBehaviour
             pb.GotHitByIcing();
         }
 
-        if ((layerToHit.value & (1 << collision.gameObject.layer)) > 0)
+        if (collision.gameObject.CompareTag("Ground"))  
         {
             Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
             Destroy(gameObject);
