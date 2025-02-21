@@ -10,7 +10,8 @@ using UnityEngine;
 
 public class Trapdoor : MonoBehaviour
 {
-    private void OnCollisionStay2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         //can use pb to reference player behavior, to move them to the right position?
         if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
@@ -18,6 +19,7 @@ public class Trapdoor : MonoBehaviour
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb.velocity.y <= 0.1f)
             {
+                TimerSystem.DoMovePlayer = false;
                 TierManager.NextTierAction?.Invoke();
                 Destroy(this);
             }
