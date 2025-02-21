@@ -6,23 +6,26 @@
     moves to the next tier, and invkokes that action
 *****************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 public class Trapdoor : MonoBehaviour
 {
-    [SerializeField] private GameObject door;
-
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         //can use pb to reference player behavior, to move them to the right position?
-        if(collision.TryGetComponent(out PlayerBehaviour pb))
+        if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
         {
-            TierManager.NextTierAction?.Invoke();
-            door.SetActive(true);   //delay this?
-            Destroy(this);
-        }
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rb.velocity.y <= 0.1f)
+            {
+                TierManager.NextTierAction?.Invoke();
+                Destroy(this);
+            }
+        }     
+    }
+
+    public void DisableDoor()
+    {
+        Destroy(this);
     }
 }
