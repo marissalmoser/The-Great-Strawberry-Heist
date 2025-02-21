@@ -508,6 +508,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5737400799922350544, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+      propertyPath: Trapdoor
+      value: 
+      objectReference: {fileID: 1404314045}
     - target: {fileID: 5846743675773230335, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
       propertyPath: m_LocalScale.x
       value: 6
@@ -550,6 +554,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6179828266159084692, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
+      propertyPath: Trapdoor
+      value: 
+      objectReference: {fileID: 1761104523}
     - target: {fileID: 6210157834427330739, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -626,6 +634,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1148975535474249138, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+      propertyPath: Trapdoor
+      value: 
+      objectReference: {fileID: 1897137513}
     - target: {fileID: 2886799416642492437, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: m_Name
       value: Tier 4
@@ -910,6 +922,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1404314045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8072093283105751594, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+  m_PrefabInstance: {fileID: 103365238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1430083435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1003,6 +1020,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 321149077102233059, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
+      propertyPath: Trapdoor
+      value: 
+      objectReference: {fileID: 1532694743}
     - target: {fileID: 2330067436766412556, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
       propertyPath: m_LocalScale.y
       value: 21
@@ -1083,6 +1104,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9018173712198131138, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
   m_PrefabInstance: {fileID: 1456480803}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1532694743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1539689013968570729, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
+  m_PrefabInstance: {fileID: 690458426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1600104748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1144,6 +1170,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+--- !u!1 &1761104523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7168805915054054776, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+  m_PrefabInstance: {fileID: 1017749038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1847488612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1293,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 9.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8663444125898321133, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: Trapdoor
+      value: 
+      objectReference: {fileID: 1456480804}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 790063944012763838, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
@@ -1302,6 +1337,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+--- !u!1 &1897137513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6133996875345286841, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+  m_PrefabInstance: {fileID: 665855131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
