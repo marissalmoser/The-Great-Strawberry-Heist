@@ -84,6 +84,8 @@ public class TimerSystem : MonoBehaviour
     private void NextTier()
     {
         tierTimes.RemoveAt(0);
+        SfxManager.Instance.StopSFX("CatHiss");
+        SfxManager.Instance.PlaySFX("CatSad");
         TierManager.SwipeCanceledAction?.Invoke(currentMaxTime - currentTime);
 
         //check for win condition
@@ -151,6 +153,7 @@ public class TimerSystem : MonoBehaviour
         }
 
         //start tier swipe sequence
+        SfxManager.Instance.PlaySFX("CatHiss");
         TierManager.SwipeTierAction?.Invoke(tierCamShakeDuration, playerMoveAfterSwipeTransitionTime);
         isShaking = true;
         while (currentTime < currentMaxTime)

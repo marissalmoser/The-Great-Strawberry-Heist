@@ -31,7 +31,7 @@ public class FruitCollect : MonoBehaviour
         if (collision.TryGetComponent(out PlayerBehaviour pb))
         {
             ScoreManager.Instance.AddScore(score);
-
+            SfxManager.Instance.PlaySFX("FruitPickup");
             Destroy(gameObject);
         }
     }

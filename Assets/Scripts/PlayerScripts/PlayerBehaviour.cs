@@ -104,6 +104,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if(CanJump())
         {
+            SfxManager.Instance.PlaySFX("HamsterJump");
             rb2d.AddForce(new Vector2(rb2d.velocity.x, jumpHeight), ForceMode2D.Impulse);
         }
     }
