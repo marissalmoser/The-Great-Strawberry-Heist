@@ -16,8 +16,6 @@ public class Tier : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera tierCam;
     [SerializeField] private GameObject tierSpawnPt;
-    [Tooltip("The trapdoor that leads out of this tier")]
-    [SerializeField] private GameObject Trapdoor;
     [SerializeField] private AnimationCurve _swipeEaseCurve;
     private CinemachineBasicMultiChannelPerlin _perlinNoise;
 
@@ -58,10 +56,6 @@ public class Tier : MonoBehaviour
     public void Swipe()
     {
         StartCoroutine(MoveTier());
-        if (Trapdoor != null)
-        {
-            Trapdoor.GetComponent<Trapdoor>().DisableDoor();
-        }
     }
 
     /// <summary>
