@@ -558,7 +558,6 @@ MonoBehaviour:
   slowMultipler: 0.5
   jumpHeight: 24
   rb2d: {fileID: 610583088}
-  tierSwipeTransitionTime: 0
 --- !u!1001 &874896132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -950,14 +949,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 511241900789092313, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292612996996824353, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3487652362259578205, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3636063472875565881, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
