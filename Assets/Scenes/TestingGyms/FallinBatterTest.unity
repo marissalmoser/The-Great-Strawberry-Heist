@@ -896,15 +896,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground:
     serializedVersion: 2
-    m_Bits: 16064
+    m_Bits: 704
   slow:
     serializedVersion: 2
     m_Bits: 256
   playerSpeed: 2
   slowMultipler: 0.5
   jumpHeight: 6
+  fallingIcingSlowTime: 3
   rb2d: {fileID: 2137390589}
-  tierSwipeTransitionTime: 0
 --- !u!114 &2137390588
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,13 @@ public class FallingBatter : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().gravityScale = 0;
     }
+    private void Update()
+    {
+       if(Input.GetKey(KeyCode.E))
+       {
+            TriggerFall();
+       }
+    }
 
     /// <summary>
     /// Makes the icing fall
@@ -34,6 +41,7 @@ public class FallingBatter : MonoBehaviour
         if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
         {
             pb.GotHitByIcing();
+            Destroy(gameObject);
         }
 
         if ((layerToHit.value & (1 << collision.gameObject.layer)) > 0)
@@ -41,5 +49,5 @@ public class FallingBatter : MonoBehaviour
             Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
             Destroy(gameObject);
         }
-    }
+    } 
 }
