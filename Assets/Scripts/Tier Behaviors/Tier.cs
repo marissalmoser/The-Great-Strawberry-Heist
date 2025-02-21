@@ -58,6 +58,10 @@ public class Tier : MonoBehaviour
     public void Swipe()
     {
         StartCoroutine(MoveTier());
+        if(Trapdoor == null)
+        {
+            return;
+        }
         if (Trapdoor.GetComponent<Trapdoor>() != null)
         {
             Trapdoor.GetComponent<Trapdoor>().DisableDoor();
