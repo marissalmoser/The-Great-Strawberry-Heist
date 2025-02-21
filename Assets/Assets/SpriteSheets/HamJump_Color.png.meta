@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 08119cf7c8375d343ae01759dbcabb5c
+guid: efeedd176c02afc438d56ca8d28491d3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,133 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HamIdle_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1600
-        width: 1000
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 827aabe514d7bba4d85f9e0bd559c59f
-      internalID: -762611707
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HamIdle_1
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 1600
-        width: 1000
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddd650896dc5abd449dc69e2239bf445
-      internalID: 727030009
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HamIdle_2
-      rect:
-        serializedVersion: 2
-        x: 2000
-        y: 1600
-        width: 1000
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5938f2d4bd5b8904faed04c498b62f88
-      internalID: -867273216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HamIdle_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 800
-        width: 1000
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da92f7f7d03548245ae127fd96590011
-      internalID: 175970420
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HamIdle_4
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 800
-        width: 1000
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49955e83be437734580e9dad51076536
-      internalID: -687629445
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HamIdle_5
-      rect:
-        serializedVersion: 2
-        x: 2000
-        y: 800
-        width: 1000
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9b1d24caa5d11b4e894e8187012e52b
-      internalID: 1025632360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HamIdle_6
+      name: HamJump_Color_0
       rect:
         serializedVersion: 2
         x: 0
@@ -263,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d002c6001f92ff40a675231230bf88f
-      internalID: -2031678228
+      spriteID: 33c454ec8013d7c48bf3ca6b7d96a9cc
+      internalID: -319927304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HamIdle_7
+      name: HamJump_Color_1
       rect:
         serializedVersion: 2
         x: 1000
@@ -284,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aefb0b4320591df49846c3fa6dac048c
-      internalID: -1162236285
+      spriteID: f70c0a3eefc53734b8b2c1b96454f1a4
+      internalID: -371575940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HamIdle_8
+      name: HamJump_Color_2
       rect:
         serializedVersion: 2
         x: 2000
@@ -305,8 +179,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b6f02ed6b0dd904c87027141b7a04a0
-      internalID: -1525993885
+      spriteID: 3eec3b7f0d6f01d4fad2f534cb0648da
+      internalID: 386961224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamJump_Color_3
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a05035539c1b8e41ac3db82ffab7825
+      internalID: -1269362724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamJump_Color_4
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5be4085a0bd7704d804b22f51283260
+      internalID: 575424633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamJump_Color_5
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374e7aba6ef32f848932aef1df8a2abb
+      internalID: -1217048612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamJump_Color_6
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cafbabe4546c63c4aa322bf75e6abc88
+      internalID: -218894042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamJump_Color_7
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfd487d5fb76394a9d11df8fbc36d14
+      internalID: -131680421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamJump_Color_8
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27fa3832c6aaab84e90c345a034883d5
+      internalID: 2012472832
       vertices: []
       indices: 
       edges: []
@@ -322,15 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HamIdle_0: -762611707
-      HamIdle_1: 727030009
-      HamIdle_2: -867273216
-      HamIdle_3: 175970420
-      HamIdle_4: -687629445
-      HamIdle_5: 1025632360
-      HamIdle_6: -2031678228
-      HamIdle_7: -1162236285
-      HamIdle_8: -1525993885
+      HamJump_Color_0: -319927304
+      HamJump_Color_1: -371575940
+      HamJump_Color_2: 386961224
+      HamJump_Color_3: -1269362724
+      HamJump_Color_4: 575424633
+      HamJump_Color_5: -1217048612
+      HamJump_Color_6: -218894042
+      HamJump_Color_7: -131680421
+      HamJump_Color_8: 2012472832
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

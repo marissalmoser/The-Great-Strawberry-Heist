@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f612b1c05c79e834da0d6746d9df85ea
+guid: d53fe64cd60566c43a3175b354f8fb9c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HamRun_0
+      name: HamIdle_Color_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b683db6b61b1b1743b5c7d1ce0bfad36
-      internalID: -362700144
+      spriteID: 80aa9c88b2b13b948b7feb81e799f3c3
+      internalID: 1825746733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HamRun_1
+      name: HamIdle_Color_1
       rect:
         serializedVersion: 2
         x: 1000
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf8c6445f25405544985a4b315d918aa
-      internalID: 1980666790
+      spriteID: f46f684bbe5d7b04ca41ff6f99ab006f
+      internalID: 273513741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HamRun_2
+      name: HamIdle_Color_2
       rect:
         serializedVersion: 2
         x: 2000
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8cc2ab6a39eb5847b84212d0c64b808
-      internalID: -1451050129
+      spriteID: 2a87cbe72e7c3a44a868b4765a67773f
+      internalID: -377470353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HamRun_3
+      name: HamIdle_Color_3
       rect:
         serializedVersion: 2
         x: 3000
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66636f25d9d2f234f95425087c6525aa
-      internalID: -1408179793
+      spriteID: 07d81586e81b82643b85be1afbd803df
+      internalID: 1570292654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HamRun_4
+      name: HamIdle_Color_4
       rect:
         serializedVersion: 2
         x: 4000
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02cc899951b420542863c6fb805724cd
-      internalID: -853710305
+      spriteID: 0ba1cdd566f4d614ebdf4310c140fb96
+      internalID: 153553340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HamRun_5
+      name: HamIdle_Color_5
       rect:
         serializedVersion: 2
         x: 5000
@@ -242,8 +242,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0606cf1b31b6c44196bb0e5c3b65807
-      internalID: 738625805
+      spriteID: 7f7ca335650300b4eb75d525d9be28b9
+      internalID: -421193274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamIdle_Color_6
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1438df8aefad47243a4557a1925da52d
+      internalID: -991118835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamIdle_Color_7
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac8efd141b28224d801135f2f64152a
+      internalID: -46367635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HamIdle_Color_8
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 0
+        width: 1000
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e6f00ea58da27498ec946a0970e103
+      internalID: 202378557
       vertices: []
       indices: 
       edges: []
@@ -259,12 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HamRun_0: -362700144
-      HamRun_1: 1980666790
-      HamRun_2: -1451050129
-      HamRun_3: -1408179793
-      HamRun_4: -853710305
-      HamRun_5: 738625805
+      HamIdle_Color_0: 1825746733
+      HamIdle_Color_1: 273513741
+      HamIdle_Color_2: -377470353
+      HamIdle_Color_3: 1570292654
+      HamIdle_Color_4: 153553340
+      HamIdle_Color_5: -421193274
+      HamIdle_Color_6: -991118835
+      HamIdle_Color_7: -46367635
+      HamIdle_Color_8: 202378557
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
