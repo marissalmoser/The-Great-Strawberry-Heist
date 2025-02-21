@@ -1290,7 +1290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463037700833457300, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 6.6666665
       objectReference: {fileID: 0}
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Sprite
@@ -1960,7 +1960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463037700833457300, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1666667
+      value: -4.666667
       objectReference: {fileID: 0}
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Sprite
@@ -2966,7 +2966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463037700833457300, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1666666
+      value: 4.6666665
       objectReference: {fileID: 0}
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Sprite
@@ -3189,7 +3189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463037700833457300, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3333333
+      value: 9.333333
       objectReference: {fileID: 0}
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Sprite
@@ -3657,7 +3657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463037700833457300, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 6.6666665
       objectReference: {fileID: 0}
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Sprite
