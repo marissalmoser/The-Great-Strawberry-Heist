@@ -104,6 +104,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if(CanJump())
         {
+            SfxManager.Instance.PlaySFX("HamsterJump");
             rb2d.AddForce(new Vector2(rb2d.velocity.x, jumpHeight), ForceMode2D.Impulse);
         }
     }
@@ -152,6 +153,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         //wait for camera shake
         yield return new WaitForSeconds(delay);
+
+        //check if player should actually move
+        if(!TimerSystem.DoMovePlayer)
+        {
+            yield break;
+        }
 
         //TODO: play swipe animation :D
 

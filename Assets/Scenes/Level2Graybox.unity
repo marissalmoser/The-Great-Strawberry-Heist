@@ -948,7 +948,6 @@ MonoBehaviour:
   slowMultipler: 0.5
   jumpHeight: 24
   rb2d: {fileID: 610583088}
-  tierSwipeTransitionTime: 0
 --- !u!1 &665887248
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,7 +963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &665887249
 Transform:
   m_ObjectHideFlags: 0
@@ -2374,7 +2373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2075792572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,7 +2386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b932386232cd7443b8668a5861278b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 2044567374}
 --- !u!61 &2075792573
 BoxCollider2D:
   m_ObjectHideFlags: 0

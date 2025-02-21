@@ -227,11 +227,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
---- !u!1 &1057031991 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9018173712198131138, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
-  m_PrefabInstance: {fileID: 1057031990}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1292048416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -284,10 +279,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tier 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7300470347562569536, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
-      propertyPath: cakeTiers.Array.data[1]
-      value: 
-      objectReference: {fileID: 1057031991}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
