@@ -86,10 +86,20 @@ public class PlayerBehaviour : MonoBehaviour
     {
         RotatePlayer();
 
+        animator.SetFloat("yVelocity", rb2d.velocity.y);
+
         if (canMove)
         {
             MovePlayer();
         }
+    }
+
+    /// <summary>
+    /// Animation event to trigger a change in the jump animation
+    /// </summary>
+    public void StopJumpAnim()
+    {
+        animator.SetBool("Jump", false);
     }
 
     /// <summary>
@@ -128,6 +138,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(CanJump())
         {
             SfxManager.Instance.PlaySFX("HamsterJump");
+            animator.SetBool("Jump", true);
             rb2d.AddForce(new Vector2(rb2d.velocity.x, jumpHeight), ForceMode2D.Impulse);
         }
     }
