@@ -30,6 +30,7 @@ public class TierManager : Singleton<TierManager>
 
     public static Action<float, float> SwipeTierAction;
     public static Action NextTierAction;
+    public static Action<float> SwipeCanceledAction;
 
     protected override void Awake()
     {
@@ -42,7 +43,7 @@ public class TierManager : Singleton<TierManager>
         }
 
         SwipeTierAction += SwipeTier;
-        NextTierAction += NextTier;
+        SwipeCanceledAction += NextTier;
 
         canSwipe = true;
     }
@@ -93,10 +94,12 @@ public class TierManager : Singleton<TierManager>
     /// <summary>
     /// Called when the payer passes into the next cake tier
     /// </summary>
-    public void NextTier()
+    public void NextTier(float duration)
     {
         tiers[currentTier].DisableCam();
-        currentTier++;
+        StartCoroutine(tiers[currentTier].SwipeCanceled(duration));
+        cakeTiers.RemoveAt(0);
+        tiers.RemoveAt(0);
 
         //prevents null error
         if(tiers.Count > currentTier + 1)
@@ -131,7 +134,6 @@ public class TierManager : Singleton<TierManager>
 
         if (tiers.Count < 2)
         {
-            //TODO: trigger end game
             canSwipe = false;
             print("last tier swiped");
         }
@@ -140,6 +142,6 @@ public class TierManager : Singleton<TierManager>
     private void OnDisable()
     {
         SwipeTierAction -= SwipeTier;
-        NextTierAction -= NextTier;
+        SwipeCanceledAction -= NextTier;
     }
 }

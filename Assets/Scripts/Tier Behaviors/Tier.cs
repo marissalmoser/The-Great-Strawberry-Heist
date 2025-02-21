@@ -58,10 +58,17 @@ public class Tier : MonoBehaviour
     public void Swipe()
     {
         StartCoroutine(MoveTier());
-        if (Trapdoor != null)
+        if (Trapdoor.GetComponent<Trapdoor>() != null)
         {
             Trapdoor.GetComponent<Trapdoor>().DisableDoor();
         }
+    }
+
+   
+    public IEnumerator SwipeCanceled(float timeRemaining)
+    { 
+        yield return new WaitForSeconds(timeRemaining);
+        Swipe();
     }
 
     /// <summary>
@@ -69,6 +76,7 @@ public class Tier : MonoBehaviour
     /// </summary>
     private IEnumerator MoveTier()
     {
+        DisableCam();
         float timeElapsed = 0f;
         float totalDuration = _swipeEaseCurve.keys[_swipeEaseCurve.length - 1].time;
 

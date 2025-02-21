@@ -153,6 +153,12 @@ public class PlayerBehaviour : MonoBehaviour
         //wait for camera shake
         yield return new WaitForSeconds(delay);
 
+        //check if player should actually move
+        if(!TimerSystem.DoMovePlayer)
+        {
+            yield break;
+        }
+
         //TODO: play swipe animation :D
 
         //Stop player movement and collisions

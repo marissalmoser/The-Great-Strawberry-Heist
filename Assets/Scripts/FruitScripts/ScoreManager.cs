@@ -43,9 +43,9 @@ public class ScoreManager : Singleton<ScoreManager>
     public void AddScore(int amount)
     {
         Totalscore += Mathf.RoundToInt(amount * multiplier);
-        Debug.Log("Updated Score: " + Totalscore);
-        Debug.Log("Amount: " + amount);
-        Debug.Log("Multiplier: " + multiplier);
+        //Debug.Log("Updated Score: " + Totalscore);
+        //Debug.Log("Amount: " + amount);
+        //Debug.Log("Multiplier: " + multiplier);
 
         ScoreText.text = "Score: " + Totalscore.ToString();
     }
