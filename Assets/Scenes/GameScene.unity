@@ -409,23 +409,23 @@ PrefabInstance:
       objectReference: {fileID: 142971631}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: tierTimes.Array.data[0]
-      value: 28
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: tierTimes.Array.data[1]
-      value: 26
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: tierTimes.Array.data[2]
-      value: 24
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: tierTimes.Array.data[3]
-      value: 22
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: tierTimes.Array.data[4]
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
