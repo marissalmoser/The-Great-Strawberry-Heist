@@ -33,6 +33,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("How far the player jumps into the air")]
     [SerializeField] private float jumpHeight;
 
+    [Tooltip("How long the player is slowed after being hit by icing")]
+    [SerializeField] private float fallingIcingSlowTime; 
+
     //A base value for returning the player's speed to normal
     private const float BASE_MULTIPLER = 1;
     [SerializeField] private Rigidbody2D rb2d;
@@ -229,6 +232,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void GotHitByIcing()
     {
-        //rb2d.velocity.x = 0f;
+        StartCoroutine(FallingIcingCooldown());
+    }
+
+    private IEnumerator FallingIcingCooldown()
+    {
+        SlowPlayer();
+        yield return new WaitForSeconds(fallingIcingSlowTime);
+        NormalSpeed();
     }
 }
