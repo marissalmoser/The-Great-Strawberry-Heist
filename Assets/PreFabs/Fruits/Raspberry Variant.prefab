@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: score
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 6183272876383069629, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 002a3b64f63850e419b72357263227a6, type: 2}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Raspberry Variant
