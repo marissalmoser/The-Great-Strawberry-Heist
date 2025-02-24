@@ -241,4 +241,23 @@ public class PlayerBehaviour : MonoBehaviour
         yield return new WaitForSeconds(fallingIcingSlowTime);
         NormalSpeed();
     }
+
+    /// <summary>
+    /// Syncs timing of hamster idle with fruit bounce animation
+    /// Called on frame 0 of hamster idle
+    /// Does not run if no fruits are left in the scene to sync to
+    /// </summary>
+    public void SyncIdle()
+    {
+        var fruit = FindObjectOfType<FruitCollect>();
+        if (fruit != null)
+        {
+            Animator reference = fruit.GetComponent<Animator>();
+            if (reference.GetCurrentAnimatorStateInfo(0).normalizedTime != animator.GetCurrentAnimatorStateInfo(0).normalizedTime)
+            {
+                animator.Play("PlayerIdle", 0, reference.GetCurrentAnimatorStateInfo(0).normalizedTime);
+                //print("Synced idle from " + animator.GetCurrentAnimatorStateInfo(0).normalizedTime + "to " + reference.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            }
+        }
+    }
 }
