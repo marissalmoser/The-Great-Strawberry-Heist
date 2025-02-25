@@ -247,7 +247,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void GotHitByIcing()
     {
-        KnockBack();
+        if (invincibilitySecondsRemaining <= 0)
+        {
+            // Knocks hamster back in opposite of the direction it's facing
+            KnockBack(!facingLeft);
+        }
         StartCoroutine(FallingIcingCooldown());
     }
 
@@ -256,6 +260,15 @@ public class PlayerBehaviour : MonoBehaviour
         SlowPlayer();
         yield return new WaitForSeconds(fallingIcingSlowTime);
         NormalSpeed();
+    }
+
+    public void GotHitByOrange(bool direction)
+    {
+        if (invincibilitySecondsRemaining <= 0)
+        {
+            // Knocks hamster back in the direction the orange is moving
+            KnockBack(direction);
+        }
     }
 
     /// <summary>
@@ -279,34 +292,21 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Touching the ground while in knockback re-enables movement
-        if (inKnockback && ((LayerMask.LayerToName(collision.gameObject.layer) == "Ground")
-            || (LayerMask.LayerToName(collision.gameObject.layer) == "Platform"))) 
+        // Becoming grounded while in knockback re-enables movement
+        if (inKnockback && CanJump())
         {
             inKnockback = false;
             canMove = true;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Rolling fruit interaction causes knockback, unless I-frames are active
-        if (invincibilitySecondsRemaining <= 0)
-        {
-            if (collision.tag == "RollingFruit")
-            {
-                KnockBack();
-            }
-        }
-    }
-
     /// <summary>
     /// Applies knockback velocity to hamster, disables controls, sets I-frames
     /// </summary>
-    private void KnockBack()
+    private void KnockBack(bool knockHamsterLeft)
     {
         // TO DO: play the animation for getting knocked back
-        rb2d.velocity = new Vector2(_knockbackVelocity.x * (facingLeft ? -1 : 1), _knockbackVelocity.y);
+        rb2d.velocity = new Vector2(_knockbackVelocity.x * (knockHamsterLeft ? -1 : 1), _knockbackVelocity.y);
         inKnockback = true;
         canMove = false;
         StartCoroutine(InvincibilityFrames());

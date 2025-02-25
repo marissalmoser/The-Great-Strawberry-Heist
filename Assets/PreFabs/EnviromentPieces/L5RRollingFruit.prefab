@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 578671847069664140}
   m_Layer: 0
   m_Name: L5RRollingFruit
-  m_TagString: RollingFruit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5689266c2ebbd0246b3430cb90020218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movesLeft: 1
 --- !u!95 &578671847069664140
 Animator:
   serializedVersion: 5
