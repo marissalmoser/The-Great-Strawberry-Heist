@@ -41,6 +41,7 @@ public class FallingBatter : MonoBehaviour
         if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
         {
             pb.GotHitByIcing();
+            GetComponent<Collider2D>().enabled = false;
             Destroy(gameObject);
         }
 

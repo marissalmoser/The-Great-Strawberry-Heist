@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6365611049139988311}
   m_Layer: 0
   m_Name: L5LRollingFruit
-  m_TagString: Untagged
+  m_TagString: RollingFruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
