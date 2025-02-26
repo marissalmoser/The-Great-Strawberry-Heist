@@ -194,14 +194,14 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if(TierManager.Instance.IsInBottomTier())
         {
-            StartCoroutine(MovePlayerToNextTier(shakeDuration, playerMoveDuration, TierManager.Instance.GetNextSpawn()));
+            StartCoroutine(MovePlayerToNextTier(shakeDuration, playerMoveDuration));
         }
     }
 
     /// <summary>
     /// Moves the player to the next tier when they are swiped out of their current one.
     /// </summary>
-    private IEnumerator MovePlayerToNextTier(float delay, float playerMoveDuration, Vector3 nextSpawn)
+    private IEnumerator MovePlayerToNextTier(float delay, float playerMoveDuration)
     {
         //wait for camera shake
         yield return new WaitForSeconds(delay);
@@ -213,6 +213,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         rb2d.velocity = Vector2.zero;
+
         //TODO: play swipe animation :D
 
         //Stop player movement and collisions
@@ -222,14 +223,15 @@ public class PlayerBehaviour : MonoBehaviour
 
         //move player
         Vector3 startPos = transform.position;
+        Vector3 endPos = TierManager.Instance.GetNextSpawn();
         float t = 0;
         while (t <= 1.0f)
         {
             t += Time.deltaTime / playerMoveDuration; 
-            transform.position = Vector3.Lerp(startPos, nextSpawn, t);
+            transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return new WaitForFixedUpdate();         
         }
-        transform.position = nextSpawn;
+        transform.position = endPos;
 
         //resume player movement and collisions
         canMove = true;
@@ -243,6 +245,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void OnDisable()
     {
         playerJump.performed -= PlayerJump_performed;
+        TierManager.SwipeTierAction -= MoveToNextTier;
         actions.Disable();
     }
 

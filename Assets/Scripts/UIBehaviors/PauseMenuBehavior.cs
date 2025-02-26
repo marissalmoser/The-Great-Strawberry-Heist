@@ -30,12 +30,15 @@ public class PauseMenuBehavior : MonoBehaviour
         restart.Disable();
     }
 
-
+    /// <summary>
+    /// toggles the pause menu on and off. Invokes an action when the pause menu is
+    /// toggled, and passes if it is being turned on or off.
+    /// </summary>
     private void TogglePause(InputAction.CallbackContext context)
     {
         isPaused = !isPaused;
         PauseGame?.Invoke(isPaused);
-        print("pause game");
+
         //pausing game
         if(isPaused)
         {
@@ -54,16 +57,23 @@ public class PauseMenuBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Restarts the game scene and sets the time scale back to 1.
+    /// </summary>
+    /// <param name="context"></param>
     private void RestartGame(InputAction.CallbackContext context)
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Quits the game application;
+    /// </summary>
+    /// <param name="context"></param>
     private void ConfirmQuit(InputAction.CallbackContext context)
     {
         Time.timeScale = 1;
-        print("quit game");
         Application.Quit();
     }
 
