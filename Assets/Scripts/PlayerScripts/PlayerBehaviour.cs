@@ -212,6 +212,7 @@ public class PlayerBehaviour : MonoBehaviour
             yield break;
         }
 
+        rb2d.velocity = Vector2.zero;
         //TODO: play swipe animation :D
 
         //Stop player movement and collisions
