@@ -2125,7 +2125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9018173712198131138, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9029484164529222268, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
       propertyPath: m_SortingOrder
@@ -2360,6 +2360,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 842407331086338606, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
     - target: {fileID: 998284215597688040, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -2455,6 +2459,14 @@ PrefabInstance:
     - target: {fileID: 3434534477640476813, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462016431832708743, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873476474381703382, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
       objectReference: {fileID: 0}
     - target: {fileID: 4078858048998944968, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: m_SortingOrder
