@@ -212,7 +212,12 @@ MonoBehaviour:
   playerSpeed: 8
   slowMultipler: 0.5
   jumpHeight: 24
+  fallingIcingSlowTime: 0
   rb2d: {fileID: 3168102203269571171}
+  _invincibilityFramesInSeconds: 1.25
+  _invincibilityFlashingSpeed: 2000
+  _invincibilityFlashingMinOpacity: 0
+  _knockbackVelocity: {x: 6, y: 12}
 --- !u!95 &5175299643839234148
 Animator:
   serializedVersion: 5

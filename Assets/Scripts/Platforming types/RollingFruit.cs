@@ -11,12 +11,14 @@ using UnityEngine;
 
 public class RollingFruit : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    [Tooltip("Value affects hamster knockback, not movement of orange")]
+    [SerializeField] private bool _movesLeft;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
+        if (collision.TryGetComponent(out PlayerBehaviour pb))
         {
-            //TODO: Call function on player for hit functionality? IDK talk to design
-            Debug.Log("Rolling Fruit Hit Player");
+            pb.GotHitByOrange(_movesLeft);
         }
     }
 

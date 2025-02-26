@@ -43,9 +43,21 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float isGrounded;
     private bool canMove;
+    private bool facingLeft;
 
+    private SpriteRenderer sr;
     private Animator animator;
 
+    [Header("Collision with obstacles")]
+
+    [SerializeField] private float _invincibilityFramesInSeconds;
+    private float invincibilitySecondsRemaining;
+    private bool inKnockback;
+    [SerializeField] private float _invincibilityFlashingSpeed;
+
+    [Tooltip("Value between 0 and 255, smaller numbers meaning less opaque at minimum")]
+    [SerializeField] private float _invincibilityFlashingMinOpacity;
+    [SerializeField] private Vector2 _knockbackVelocity;
 
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
@@ -67,6 +79,7 @@ public class PlayerBehaviour : MonoBehaviour
         TierManager.SwipeTierAction += MoveToNextTier;
         canMove = true;
 
+        sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
 
@@ -113,10 +126,12 @@ public class PlayerBehaviour : MonoBehaviour
         if(moveValue > 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            facingLeft = false;
         }
         else if(moveValue < 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
+            facingLeft = true;
         }
     }
 
@@ -232,6 +247,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void GotHitByIcing()
     {
+        if (invincibilitySecondsRemaining <= 0)
+        {
+            // Knocks hamster back in opposite of the direction it's facing
+            KnockBack(!facingLeft);
+        }
         StartCoroutine(FallingIcingCooldown());
     }
 
@@ -240,6 +260,15 @@ public class PlayerBehaviour : MonoBehaviour
         SlowPlayer();
         yield return new WaitForSeconds(fallingIcingSlowTime);
         NormalSpeed();
+    }
+
+    public void GotHitByOrange(bool direction)
+    {
+        if (invincibilitySecondsRemaining <= 0)
+        {
+            // Knocks hamster back in the direction the orange is moving
+            KnockBack(direction);
+        }
     }
 
     /// <summary>
@@ -259,5 +288,59 @@ public class PlayerBehaviour : MonoBehaviour
                 //print("Synced idle from " + animator.GetCurrentAnimatorStateInfo(0).normalizedTime + "to " + reference.GetCurrentAnimatorStateInfo(0).normalizedTime);
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Becoming grounded while in knockback re-enables movement
+        if (inKnockback && CanJump())
+        {
+            inKnockback = false;
+            canMove = true;
+        }
+    }
+
+    /// <summary>
+    /// Applies knockback velocity to hamster, disables controls, sets I-frames
+    /// </summary>
+    private void KnockBack(bool knockHamsterLeft)
+    {
+        // TO DO: play the animation for getting knocked back
+        rb2d.velocity = new Vector2(_knockbackVelocity.x * (knockHamsterLeft ? -1 : 1), _knockbackVelocity.y);
+        inKnockback = true;
+        canMove = false;
+        StartCoroutine(InvincibilityFrames());
+    }
+
+    /// <summary>
+    /// Tracks I-frames and visually indicates your invincibility
+    /// </summary>
+    private IEnumerator InvincibilityFrames()
+    {
+        bool opacityGoingDown = true;
+        invincibilitySecondsRemaining = _invincibilityFramesInSeconds;
+        while (invincibilitySecondsRemaining > 0)
+        {
+            yield return null;
+            invincibilitySecondsRemaining -= Time.deltaTime;
+
+            if (opacityGoingDown)
+            {
+                sr.color = sr.color - new Color(0, 0, 0, _invincibilityFlashingSpeed / 255f * Time.deltaTime);
+                if (sr.color.a < _invincibilityFlashingMinOpacity / 255f)
+                {
+                    opacityGoingDown = false;
+                }
+            }
+            else
+            {
+                sr.color = sr.color + new Color(0, 0, 0, _invincibilityFlashingSpeed / 255f * Time.deltaTime);
+                if (sr.color.a >= 1)
+                {
+                    opacityGoingDown = true;
+                }
+            }
+        }
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
     }
 }
