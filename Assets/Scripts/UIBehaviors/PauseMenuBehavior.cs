@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         PauseMenuBehavior.cs
+// Author :            Marissa Moser
+// Creation Date :     02/26/2025
+//
+// Brief Description : Manages the pause menu, and quit and restart inputs.
+*****************************************************************************/
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
