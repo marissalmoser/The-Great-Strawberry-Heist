@@ -899,7 +899,7 @@ GameObject:
   - component: {fileID: 592947544268295364}
   - component: {fileID: 3485906087088304035}
   - component: {fileID: 2717427112462364305}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ GameObject:
   - component: {fileID: 5600192224234416506}
   - component: {fileID: 157237949748619053}
   - component: {fileID: 8734232142022861310}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1815,6 +1815,10 @@ PrefabInstance:
     - target: {fileID: 6887949849979510489, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790598174605702012, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
       objectReference: {fileID: 0}
     - target: {fileID: 8544222290449762138, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3078,8 +3082,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneWayPlatform (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3255,8 +3262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneWayPlatform (10)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3526,6 +3536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneWayPlatform (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3635,6 +3649,10 @@ PrefabInstance:
     - target: {fileID: 3933233407222568873, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Name
       value: OneWayPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3824,8 +3842,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneWayPlatform (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3934,6 +3955,10 @@ PrefabInstance:
     - target: {fileID: 3933233407222568873, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Name
       value: OneWayPlatform (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4209,8 +4234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneWayPlatform (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4402,8 +4430,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneWayPlatform (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4747,6 +4778,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7790598174605702012, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
     - target: {fileID: 8544222290449762138, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.153
@@ -4865,8 +4900,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneWayPlatform (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+    - target: {fileID: 8078048919375609676, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 32759
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
