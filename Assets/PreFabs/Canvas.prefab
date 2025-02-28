@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 6597490476288915377}
   - component: {fileID: 1694238825317575200}
   m_Layer: 5
-  m_Name: Breakpoint 2 (1)
+  m_Name: Breakpoint 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 3826328629048108132}
   - component: {fileID: 381309459921683050}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Timer Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
