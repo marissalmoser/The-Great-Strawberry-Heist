@@ -146,26 +146,6 @@ PrefabInstance:
       propertyPath: MultiplierText
       value: 
       objectReference: {fileID: 1756846975}
-    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
-      propertyPath: breakpoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
-      propertyPath: breakpoints.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
-      propertyPath: breakpoints.Array.data[1]
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
-      propertyPath: breakpoints.Array.data[2]
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
-      propertyPath: breakpoints.Array.data[3]
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6989577316145350444, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -471,10 +451,6 @@ PrefabInstance:
     - target: {fileID: 6529645051514947130, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7822048131239214596, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
-      propertyPath: m_Name
-      value: Timer Image
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

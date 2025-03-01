@@ -64,7 +64,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public void AddScore(int scoreAmt, int vitalityAmt)
     {
         Totalscore += Mathf.RoundToInt(scoreAmt * multiplier);
-        Vitalitymeter = Mathf.Max(vitalityAmt + Vitalitymeter, maxVitalityMeter);
+        Vitalitymeter = Mathf.Min(vitalityAmt + Vitalitymeter, maxVitalityMeter);
         //Debug.Log("Updated Score: " + Totalscore);
         //Debug.Log("Amount: " + amount
         //Debug.Log("Vitality Meter: " + Vitalitymeter + " | Vitality Progress: " + vitalityProgress);
@@ -73,19 +73,30 @@ public class ScoreManager : Singleton<ScoreManager>
         ChangeVitality();
     }
 
+    /// <summary>
+    /// UI and Logical code for changing Vitality
+    /// </summary>
     private void ChangeVitality() 
     {
-        //Vitality Logic Change
+        //--Vitality Logic Change--
+        //The the floor int function allows the multiplier to be chosen based on the interval of the breakpoint
         int breakpointMultiplierIndex = Mathf.FloorToInt(Vitalitymeter / vitalityBreakpointInterval);
+
+        //The min function ensures that the index is constrained to the max indices of the breakpoints, so even if the max cap of vitality is raised, it only ever stops at the lastmost multiplier
+        breakpointMultiplierIndex = Mathf.Min(breakpoints.Count - 1 , breakpointMultiplierIndex);
+
         ChangeMultiplier(breakpoints[breakpointMultiplierIndex]);
 
-        //Vitality UI change
+        //--Vitality UI change--
         BarFillImage.fillAmount = (float)Vitalitymeter / maxVitalityMeter;
         MultiplierText.text = multiplier + "x";
     }
 
     [ContextMenu("Player Hit")]
-    public void PlayerHit() 
+    /// <summary>
+    /// public method that can be called which decreases the player's multiplier by the set amount (vitalityDecreasePoints) in the inspector. 
+    /// </summary>
+    public void PlayerHit()
     {
         Vitalitymeter = Mathf.Max(Vitalitymeter - vitalityDecreasePoints, 0);
         ChangeVitality();
