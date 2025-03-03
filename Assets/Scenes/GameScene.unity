@@ -1420,6 +1420,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9018173712198131138, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
   m_PrefabInstance: {fileID: 1456480803}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1456480805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5209081612398289021, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
+  m_PrefabInstance: {fileID: 1456480803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1456480807 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5447952990727594294, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
@@ -1613,7 +1618,7 @@ PrefabInstance:
     - target: {fileID: 8663444125898321133, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: Trapdoor
       value: 
-      objectReference: {fileID: 1456480804}
+      objectReference: {fileID: 1456480805}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
