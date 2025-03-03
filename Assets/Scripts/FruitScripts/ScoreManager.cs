@@ -101,4 +101,15 @@ public class ScoreManager : Singleton<ScoreManager>
         Vitalitymeter = Mathf.Max(Vitalitymeter - vitalityDecreasePoints, 0);
         ChangeVitality();
     }
+
+
+    [ContextMenu("Layer Swipe")]
+    /// <summary>
+    /// public method thats called when the layer is swiped and vitality is reset
+    /// </summary>
+    public void LayerSwipeVitalityChange() 
+    {
+        Vitalitymeter = 0;
+        ChangeVitality();
+    }
 }
