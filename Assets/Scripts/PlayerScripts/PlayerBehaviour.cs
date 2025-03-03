@@ -167,7 +167,8 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns></returns>
     private bool CanJump()
     {
-        return Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
+        return (rb2d.velocity.y < 0.1f) && 
+            Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
     }
 
     /// <summary>
