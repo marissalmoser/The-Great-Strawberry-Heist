@@ -167,12 +167,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns></returns>
     private bool CanJump()
     {
-        var hit = Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
-        if (hit.collider != null)
-        {
-            return hitbox.bounds.min.y > hit.collider.bounds.max.y;
-        }
-        return false;
+        return Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
     }
 
     /// <summary>

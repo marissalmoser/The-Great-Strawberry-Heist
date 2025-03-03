@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 100
-  vitality: 10
 --- !u!58 &5681594258967410585
 CircleCollider2D:
   m_ObjectHideFlags: 0

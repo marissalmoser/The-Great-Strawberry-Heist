@@ -84,10 +84,6 @@ PrefabInstance:
       propertyPath: score
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 5290225617893858521, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
-      propertyPath: vitality
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 6183272876383069629, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Controller
       value: 
