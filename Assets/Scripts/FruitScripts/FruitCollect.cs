@@ -19,6 +19,8 @@ public class FruitCollect : MonoBehaviour
     // This variable can be modified in the Inspector
     [SerializeField]
     private int score;
+    [SerializeField]
+    private int vitality;
 
 
 
@@ -30,7 +32,7 @@ public class FruitCollect : MonoBehaviour
       
         if (collision.TryGetComponent(out PlayerBehaviour pb))
         {
-            ScoreManager.Instance.AddScore(score);
+            ScoreManager.Instance.AddScore(score, vitality);
             SfxManager.Instance.PlaySFX("FruitPickup");
             Destroy(gameObject);
         }
