@@ -45,4 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 0}
+  MultiplierText: {fileID: 0}
+  BarFillImage: {fileID: 0}
+  breakpoints:
+  - 1
+  - 1.25
+  - 1.5
+  - 2
+  maxVitalityMeter: 100
+  vitalityBreakpointInterval: 30
+  vitalityDecreasePoints: 10
   multiplier: 1
