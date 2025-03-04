@@ -205,11 +205,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 31936
   slow:
     serializedVersion: 2
     m_Bits: 256
-  playerSpeed: 8
+  playerSpeed: 10
   slowMultipler: 0.5
   jumpHeight: 24
   fallingIcingSlowTime: 0
