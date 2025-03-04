@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 2023104293196848208}
   - component: {fileID: 5341037751945049968}
   - component: {fileID: 1163108842042760540}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlayerMoveRegion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

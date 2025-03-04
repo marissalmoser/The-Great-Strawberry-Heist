@@ -108,6 +108,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             MovePlayer();
         }
+
+        print(rb2d.velocity.y);
     }
 
     /// <summary>
@@ -167,7 +169,15 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns></returns>
     private bool CanJump()
     {
-        return Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
+        var hit = Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
+        if (hit.collider != null)
+        {
+            // Bounds check: hamster is entirely above the surface it is interacting with (rather than within)
+            // Velocity check: hamster is not currently jumping (needed because there are some platforms you can
+            //                 stand inside of and should be able to jump inside of)
+            return (hitbox.bounds.min.y > hit.collider.bounds.max.y - 0.1f) || (Mathf.Abs(rb2d.velocity.y) < 0.01f);
+        }
+        return false;
     }
 
     /// <summary>
@@ -311,6 +321,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         // TO DO: play the animation for getting knocked back
         rb2d.velocity = new Vector2(_knockbackVelocity.x * (knockHamsterLeft ? -1 : 1), _knockbackVelocity.y);
+        Singleton<ScoreManager>.Instance.PlayerHit();
         inKnockback = true;
         canMove = false;
         StartCoroutine(InvincibilityFrames());

@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 1dabc8df222ce744e90bdb96e7643c2f, type: 3}
-  m_Color: {r: 0.9469141, g: 0.8190109, b: 0.9946091, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fda351b266a6e794fa16561b56cc4821, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 563264648462042465}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.5, y: 9.5, z: 0}
+  m_LocalPosition: {x: -19.5, y: 9.5, z: 1}
   m_LocalScale: {x: 1, y: 21, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -157,9 +157,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.9319577, b: 0.80188674, a: 0.03137255}
+  m_Color: {r: 1, g: 0.9319577, b: 0.80188674, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -287,8 +287,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 1dabc8df222ce744e90bdb96e7643c2f, type: 3}
-  m_Color: {r: 0.9469141, g: 0.8190109, b: 0.9946091, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fda351b266a6e794fa16561b56cc4821, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -371,7 +371,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 31
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.9319577, b: 0.80188674, a: 1}
   m_FlipX: 0
@@ -455,7 +455,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -15.31, z: 0}
-  m_LocalScale: {x: 2, y: 2.1, z: 2}
+  m_LocalScale: {x: 2.4, y: 2.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6681600470928382826}
@@ -500,8 +500,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 358d751c082e4014d923986df4db9d86, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 525d6148414d5544e85bb98b327a6179, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -539,7 +539,7 @@ Transform:
   m_GameObject: {fileID: 3184309452722691359}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.5, y: 9.5, z: 0}
+  m_LocalPosition: {x: 19.5, y: 9.5, z: 1}
   m_LocalScale: {x: 1, y: 21, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -585,9 +585,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.9319577, b: 0.80188674, a: 0.03137255}
+  m_Color: {r: 1, g: 0.9319577, b: 0.80188674, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -793,7 +793,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -10.55, z: 0}
-  m_LocalScale: {x: 2, y: 2.1, z: 2}
+  m_LocalScale: {x: 2.4, y: 2.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6681600470928382826}
@@ -838,8 +838,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 259b0f6a6cf81bd4780f58428fccb883, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 225697e13e9b06041bddc6ecd7f67ac3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -877,8 +877,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.1411, z: 0}
-  m_LocalScale: {x: 2, y: 2.1, z: 2}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 2.4, y: 2.1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6681600470928382826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -922,8 +922,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: dc26cd37ea099c94486877dc8636ae9b, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 2d8cd7378b65a804d8dc68304c0b5d73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -961,7 +961,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -5.58, z: 0}
-  m_LocalScale: {x: 2, y: 2.1, z: 2}
+  m_LocalScale: {x: 2.4, y: 2.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6681600470928382826}
@@ -1006,8 +1006,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: af6abc3eb91fccc489cdabb45d889018, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: cb6b325250974364bbca551b094a035f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1091,7 +1091,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 31
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.9319577, b: 0.80188674, a: 1}
   m_FlipX: 0
@@ -1376,7 +1376,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.061869174, y: 17.25, z: 0.01414551}
-  m_LocalScale: {x: 1.15, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2037191183267273215}
@@ -1493,8 +1493,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 1dabc8df222ce744e90bdb96e7643c2f, type: 3}
-  m_Color: {r: 0.9469141, g: 0.8190109, b: 0.9946091, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fda351b266a6e794fa16561b56cc4821, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1577,8 +1577,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 1dabc8df222ce744e90bdb96e7643c2f, type: 3}
-  m_Color: {r: 0.9469141, g: 0.8190109, b: 0.9946091, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fda351b266a6e794fa16561b56cc4821, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1638,6 +1638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2879338470175760604}
   - component: {fileID: 321149077102233059}
+  - component: {fileID: 5447952990727594294}
   m_Layer: 0
   m_Name: Tier 2
   m_TagString: Untagged
@@ -1703,6 +1704,27 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &5447952990727594294
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018173712198131138}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9031244866068870422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,6 +1882,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6887949849979510489, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -1989,6 +2015,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (2)
@@ -2050,6 +2080,10 @@ PrefabInstance:
     - target: {fileID: 21360027468156565, guid: ed510a31a8e34704dbeb13bf7cf62f89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: ed510a31a8e34704dbeb13bf7cf62f89, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: ed510a31a8e34704dbeb13bf7cf62f89, type: 3}
       propertyPath: m_Name
@@ -2129,6 +2163,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (15)
@@ -2198,6 +2236,10 @@ PrefabInstance:
     - target: {fileID: 21360027468156565, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
@@ -2277,6 +2319,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (12)
@@ -2355,6 +2401,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (11)
@@ -2424,6 +2474,10 @@ PrefabInstance:
     - target: {fileID: 21360027468156565, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
@@ -2503,6 +2557,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (4)
@@ -2573,6 +2631,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
       value: Raspberry Variant (6)
@@ -2642,6 +2704,10 @@ PrefabInstance:
     - target: {fileID: 21360027468156565, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
@@ -2721,6 +2787,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (10)
@@ -2798,6 +2868,10 @@ PrefabInstance:
     - target: {fileID: 1836302015437306573, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
@@ -2877,6 +2951,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (3)
@@ -2950,7 +3028,7 @@ PrefabInstance:
     - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a5edc41b01d65ca47ba8b2a2bcad8c9d, type: 3}
+      objectReference: {fileID: 21300000, guid: 1cf8a75725b6cb6448396566e8599442, type: 3}
     - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2963,21 +3041,25 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Size.x
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Size.y
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 6.3
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.69
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 3933233407222568873, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Name
@@ -3056,7 +3138,7 @@ PrefabInstance:
     - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1dabc8df222ce744e90bdb96e7643c2f, type: 3}
+      objectReference: {fileID: 21300000, guid: a59c9af9d81841f438f24da95fff82d1, type: 3}
     - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -3069,21 +3151,25 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Size.x
       value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Size.y
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 4.43
+      value: 4.41
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.73
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3933233407222568873, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Name
@@ -3162,7 +3248,7 @@ PrefabInstance:
     - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a5edc41b01d65ca47ba8b2a2bcad8c9d, type: 3}
+      objectReference: {fileID: 21300000, guid: 1cf8a75725b6cb6448396566e8599442, type: 3}
     - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -3175,21 +3261,25 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Size.x
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Size.y
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 6.3
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.69
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 3933233407222568873, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Name
@@ -3265,6 +3355,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
       value: Raspberry Variant (3)
@@ -3334,6 +3428,10 @@ PrefabInstance:
     - target: {fileID: 21360027468156565, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
@@ -3413,6 +3511,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry
@@ -3482,6 +3584,10 @@ PrefabInstance:
     - target: {fileID: 21360027468156565, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
@@ -3553,6 +3659,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
       value: Raspberry Variant (4)
@@ -3606,6 +3716,10 @@ PrefabInstance:
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6887949849979510489, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalScale.x
@@ -3728,6 +3842,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
       value: Raspberry Variant (2)
@@ -3754,13 +3872,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: trapdoor
       objectReference: {fileID: 0}
+    - target: {fileID: 2922806102543658633, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210080718088774863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 39.81463
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210080718088774863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.606525
+      objectReference: {fileID: 0}
     - target: {fileID: 3210080718088774863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.125
+      value: -0.8987
       objectReference: {fileID: 0}
     - target: {fileID: 3210080718088774863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.625
+      value: 19.6967
       objectReference: {fileID: 0}
     - target: {fileID: 3210080718088774863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3793,6 +3923,10 @@ PrefabInstance:
     - target: {fileID: 3210080718088774863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884086669759611792, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3868,6 +4002,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (7)
@@ -3925,6 +4063,10 @@ PrefabInstance:
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6887949849979510489, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalScale.x
@@ -4055,6 +4197,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (13)
@@ -4133,6 +4279,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (5)
@@ -4186,6 +4336,10 @@ PrefabInstance:
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6887949849979510489, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalScale.x
@@ -4316,6 +4470,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (1)
@@ -4394,6 +4552,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (9)
@@ -4463,6 +4625,10 @@ PrefabInstance:
     - target: {fileID: 21360027468156565, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475329879708912429, guid: 888f80a2973576342a015bf03883d377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8317601952247738516, guid: 888f80a2973576342a015bf03883d377, type: 3}
       propertyPath: m_Name
@@ -4537,7 +4703,7 @@ PrefabInstance:
     - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 95c5786a624af624aa47fb40b9d9c84f, type: 3}
+      objectReference: {fileID: 21300000, guid: 4fdef793350337e4a999ad1f9c97f79d, type: 3}
     - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -4550,21 +4716,25 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2361401215298430026, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Size.x
       value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Size.y
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 8.63
+      value: 8.48
       objectReference: {fileID: 0}
     - target: {fileID: 2857967740153199231, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.72
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 3933233407222568873, guid: 907527b099109fe49a5fd542b0295e4e, type: 3}
       propertyPath: m_Name
@@ -4648,6 +4818,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
       value: Blueberry (8)
@@ -4725,6 +4899,10 @@ PrefabInstance:
     - target: {fileID: 1836302015437306573, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957424852891434869, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7664623852496536780, guid: f3de35d046b8bc64980f1293c72607d1, type: 3}
       propertyPath: m_Name
