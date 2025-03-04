@@ -11,7 +11,6 @@ using UnityEngine;
 public class HowToPlayPan : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera;
-    private Vector3 cameraPos;
     private Vector3 newPos;
     [SerializeField] private string gameScene;
 

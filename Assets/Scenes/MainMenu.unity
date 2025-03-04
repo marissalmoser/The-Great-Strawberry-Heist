@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4e37e4daa65c54984bafe931911d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: HowToPlay
+  nextScene: HowToPlay
   creditButton: {fileID: 210050429}
   backButton: {fileID: 917215273}
 --- !u!4 &852388356

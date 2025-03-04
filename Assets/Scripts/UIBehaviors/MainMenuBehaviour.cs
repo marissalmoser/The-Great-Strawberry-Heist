@@ -15,7 +15,7 @@ public class MainMenuBehaviour : MonoBehaviour
 {
     InputActionMap actionMap;
 
-    [SerializeField] private string gameScene;
+    [SerializeField] private string nextScene;
     [SerializeField] private GameObject creditButton;
     [SerializeField] private GameObject backButton;
 
@@ -34,7 +34,7 @@ public class MainMenuBehaviour : MonoBehaviour
     /// </summary>
     public void PressStart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(gameScene);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
     }
 
     /// <summary>
