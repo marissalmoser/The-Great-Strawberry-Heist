@@ -413,7 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 757919357}
   gameScene: GameScene
-  panSpeed: 5
+  panSpeed: 1
   minYValue: -5
 --- !u!4 &1471708547
 Transform:
