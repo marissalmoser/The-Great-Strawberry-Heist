@@ -8,12 +8,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEditor;
+using UnityEngine.EventSystems;
 
 public class MainMenuBehaviour : MonoBehaviour
 {
     InputActionMap actionMap;
 
     [SerializeField] private string gameScene;
+    [SerializeField] private GameObject creditButton;
+    [SerializeField] private GameObject backButton;
 
     private void Awake()
     {
@@ -27,11 +31,23 @@ public class MainMenuBehaviour : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameScene);
     }
 
+    public void PressCredits()
+    {
+        //Sets the event system to select the back button
+        EventSystem.current.SetSelectedGameObject(backButton);
+    }
+
+    public void PressBack()
+    {
+        //Sets the event system to select the credit button
+        EventSystem.current.SetSelectedGameObject(creditButton);
+    }
+
     public void PressQuit()
     {
-        if(UnityEditor.EditorApplication.isPlaying)
+        if(EditorApplication.isPlaying)
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            EditorApplication.isPlaying = false;
         }
         else
         {
