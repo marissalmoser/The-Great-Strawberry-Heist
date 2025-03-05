@@ -145,3 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disappearTime: 1
   reappearTime: 3
+  _shakeIntensity: 0.25
+  _timeToReachMaxShake: 1
+  _timeBetweenShakes: 0.05
