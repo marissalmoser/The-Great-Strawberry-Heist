@@ -116,7 +116,15 @@ public class TierManager : Singleton<TierManager>
     {
         tiers[0].ShakeCam(tierCamShakeAmplitude, tierCamShakeFrequency, duration);
 
+        TimerSystem.DoMovePlayer = true;
+
         yield return new WaitForSeconds(duration);
+
+        //check if tier should actually swipe
+        if (!TimerSystem.DoMovePlayer)
+        {
+            yield break;
+        }
 
         if (currentTier == 0)
         {

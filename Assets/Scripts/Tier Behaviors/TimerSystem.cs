@@ -51,8 +51,8 @@ public class TimerSystem : MonoBehaviour
 
     private float currentTime;
     private float currentMaxTime;
-    private bool isShaking;
     private bool triggeredIcing;
+    private bool triggeredTimerSound;
     public static bool DoMovePlayer;
 
     private Coroutine currentTimer;
@@ -84,6 +84,7 @@ public class TimerSystem : MonoBehaviour
     private void NextTier()
     {
         tierTimes.RemoveAt(0);
+        SfxManager.Instance.StopSFX("TimerClick");
         SfxManager.Instance.StopSFX("CatHiss");
         SfxManager.Instance.PlaySFX("CatSad");
         TierManager.SwipeCanceledAction?.Invoke(currentMaxTime - currentTime);
@@ -134,7 +135,7 @@ public class TimerSystem : MonoBehaviour
     IEnumerator TierTimer()
     {
         triggeredIcing = false;
-        DoMovePlayer = true;
+        triggeredTimerSound = false;
 
         //count until swipe shaking should start
         while(currentTime < (currentMaxTime - tierCamShakeDuration))
@@ -147,6 +148,12 @@ public class TimerSystem : MonoBehaviour
                 StartCoroutine(TriggerFallingIcing());
                 triggeredIcing = true;
             }
+            //check to trigger sfx
+            if(!triggeredTimerSound && (currentMaxTime - currentTime) <= 18)
+            {
+                SfxManager.Instance.FadeInSFX("TimerClick", 10);
+                triggeredTimerSound = true;
+            }
 
             currentTime += 0.1f;
             UpdateTimerUI();
@@ -155,7 +162,6 @@ public class TimerSystem : MonoBehaviour
         //start tier swipe sequence
         SfxManager.Instance.PlaySFX("CatHiss");
         TierManager.SwipeTierAction?.Invoke(tierCamShakeDuration, playerMoveAfterSwipeTransitionTime);
-        isShaking = true;
         while (currentTime < currentMaxTime)
         {
             yield return new WaitForSeconds(0.1f);
@@ -178,7 +184,6 @@ public class TimerSystem : MonoBehaviour
         currentMaxTime = tierTimes[0];
 
         UpdateTimerUI();
-        isShaking = false;
 
         //Wait for player to be moved
         yield return new WaitForSeconds(playerMoveAfterSwipeTransitionTime);
