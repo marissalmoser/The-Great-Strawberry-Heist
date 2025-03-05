@@ -55,7 +55,6 @@ public class ScoreManager : Singleton<ScoreManager>
     public void ChangeMultiplier(float newMultiplier)
     {
         multiplier = newMultiplier;
-        Debug.Log("Multiplier changed to: " + multiplier);
     }
 
     /// <summary>
@@ -65,9 +64,6 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         Totalscore += Mathf.RoundToInt(scoreAmt * multiplier);
         Vitalitymeter = Mathf.Min(vitalityAmt + Vitalitymeter, maxVitalityMeter);
-        //Debug.Log("Updated Score: " + Totalscore);
-        //Debug.Log("Amount: " + amount
-        //Debug.Log("Vitality Meter: " + Vitalitymeter + " | Vitality Progress: " + vitalityProgress);
 
         ScoreText.text = "Score: " + Totalscore.ToString();
         ChangeVitality();

@@ -108,8 +108,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             MovePlayer();
         }
-
-        print(rb2d.velocity.y);
     }
 
     /// <summary>
