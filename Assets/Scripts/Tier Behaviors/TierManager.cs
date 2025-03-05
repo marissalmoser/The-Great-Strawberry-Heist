@@ -145,6 +145,8 @@ public class TierManager : Singleton<TierManager>
             canSwipe = false;
             print("last tier swiped");
         }
+
+        ScoreManager.Instance.LayerSwipeVitalityChange();
     }
 
     private void OnDisable()
