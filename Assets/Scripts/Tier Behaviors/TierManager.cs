@@ -49,17 +49,6 @@ public class TierManager : Singleton<TierManager>
     }
 
     /// <summary>
-    /// Will be removed after testing is sufficient
-    /// </summary>
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            //SwipeTierAction?.Invoke(tierCamShakeDuration);
-        }
-    }
-
-    /// <summary>
     /// function that returns true if the player is in the bottom tier.
     /// </summary>
     public bool IsInBottomTier()
