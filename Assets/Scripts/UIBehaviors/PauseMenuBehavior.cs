@@ -81,7 +81,8 @@ public class PauseMenuBehavior : MonoBehaviour
     private void ConfirmQuit(InputAction.CallbackContext context)
     {
         Time.timeScale = 1;
-        Application.Quit();
+        SceneManager.LoadScene(0);
+        //Application.Quit();
     }
 
     private void OnDisable()
