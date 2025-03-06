@@ -31,6 +31,7 @@ public class TierManager : Singleton<TierManager>
     public static Action<float, float> SwipeTierAction;
     public static Action NextTierAction;
     public static Action<float> SwipeCanceledAction;
+    public static Action<bool> EndSequence;
 
     protected override void Awake()
     {

@@ -77,6 +77,7 @@ public class PlayerBehaviour : MonoBehaviour
         hitbox = GetComponent<BoxCollider2D>();
 
         TierManager.SwipeTierAction += MoveToNextTier;
+        TierManager.EndSequence += EndAnim;
         canMove = true;
 
         sr = GetComponent<SpriteRenderer>();
@@ -192,6 +193,18 @@ public class PlayerBehaviour : MonoBehaviour
     public void NormalSpeed()
     {
         speedMultiplier = BASE_MULTIPLER;
+    }
+
+    private void EndAnim(bool wasSwiped)
+    {
+        if(wasSwiped)
+        {
+            Debug.Log("AHHHHHHHHHHHHHHHH");
+        }
+        else
+        {
+            Debug.Log("Made it");
+        }
     }
 
     /// <summary>

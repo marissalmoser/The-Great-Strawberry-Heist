@@ -94,7 +94,7 @@ public class TimerSystem : MonoBehaviour
         {
             StopAllCoroutines();
             print("player made it to the strawberry");
-            //TODO: trigger win condition
+            TierManager.EndSequence?.Invoke(false);
             return;
         }
 
@@ -177,7 +177,7 @@ public class TimerSystem : MonoBehaviour
         if(tierTimes.Count <= 0)
         {
             print("time ran out in the last tier!");
-            //TODO: trigger end condition
+            TierManager.EndSequence?.Invoke(true);
             yield break;
         }
 
