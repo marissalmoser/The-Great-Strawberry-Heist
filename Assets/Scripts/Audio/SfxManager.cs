@@ -108,6 +108,15 @@ public class SfxManager : Singleton<SfxManager>
 
     #endregion
 
+    /// <summary>
+    /// Only changes the pickup sounds for the fruits when the tier is swiped. Can be expanded upon to include changing of other SFX as well
+    /// </summary>
+    /// <param name="SFXindex"></param>
+    public void SFXTierChange(int SFXindex) 
+    {
+        _SFXs[0].source.clip = _SFXs[0].clips[SFXindex];
+    }
+
     #region mixer functions
 
     /// <summary>

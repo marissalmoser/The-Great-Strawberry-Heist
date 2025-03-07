@@ -12,11 +12,16 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
 
-    
+    [Tooltip("(Don't assign to this list) Keeps track of all of the AudioSource objects")]
     [SerializeField] private List<AudioSource> _BGMs = new();
-    [SerializeField] private float timeIncrements = 100f;
     [SerializeField] [Range(0,1)] private float maxVolume = 0.45f;
+
+    [Header("Time Variables/Settings")]
+    [Tooltip("How much the volume change for fading in/out should change by. 0 Means it changes instantly ")]
+    [SerializeField] private float timeIncrements = 100f;
+    [Tooltip("Duration in seconds for the length of time that the new track fades in for")]
     [SerializeField] private float fadeInDuration = 3.0f;
+    [Tooltip("Duration in seconds for the length of time that the old track fades out for")]
     [SerializeField] private float fadeOutDuration = 1.5f;
     private int musicIndex = 0;
     private void Awake()
@@ -36,6 +41,7 @@ public class MusicManager : MonoBehaviour
         StopAllCoroutines();
         FadeOutTrack();
         musicIndex = (musicIndex + 1) % _BGMs.Count;
+        SfxManager.Instance.SFXTierChange(musicIndex);
         FadeInTrack();
     }
     [ContextMenu("Fade Current Track Out")]
