@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: -5.7904134, y: 25.789438, z: -0.49701834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4930080706808906375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2801074129756890357
@@ -48,8 +49,10 @@ MonoBehaviour:
   - name: FruitPickup
     clips:
     - {fileID: 8300000, guid: 930a724cd70d7d74d9ede93798ee2cdd, type: 3}
-    - {fileID: 8300000, guid: ac28e9d5ffded574683fdf7eb42e9c63, type: 3}
-    - {fileID: 8300000, guid: 7c741db25af287a48b97d71bf8ab7d0a, type: 3}
+    - {fileID: 8300000, guid: 87bc3e665a4da5f49b49c45188465652, type: 3}
+    - {fileID: 8300000, guid: d49344832cd746a42ac5f779965ea6a7, type: 3}
+    - {fileID: 8300000, guid: f3013bf2c5fbe9640af0a8d32c856f0b, type: 3}
+    - {fileID: 8300000, guid: 74c5630171c4f9e40a0996e414baf408, type: 3}
     clip: {fileID: 0}
     mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
     maxVolume: 0.5
@@ -93,23 +96,131 @@ MonoBehaviour:
     doLoop: 0
     source: {fileID: 0}
   _masterMixer: {fileID: 24100000, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
-  T1FruitSFXs:
-  - {fileID: 8300000, guid: 930a724cd70d7d74d9ede93798ee2cdd, type: 3}
-  - {fileID: 8300000, guid: ac28e9d5ffded574683fdf7eb42e9c63, type: 3}
-  - {fileID: 8300000, guid: 7c741db25af287a48b97d71bf8ab7d0a, type: 3}
-  T2FruitSFXs:
-  - {fileID: 8300000, guid: 87bc3e665a4da5f49b49c45188465652, type: 3}
-  - {fileID: 8300000, guid: d63752a6ffe10654ea8791f26cdb391f, type: 3}
-  - {fileID: 8300000, guid: f54d65319832add4ea855c096457c2e2, type: 3}
-  T3FruitSFXs:
-  - {fileID: 8300000, guid: d49344832cd746a42ac5f779965ea6a7, type: 3}
-  - {fileID: 8300000, guid: 949d737c596db9447b65cb5d0c7337a5, type: 3}
-  - {fileID: 8300000, guid: 4be2f60bd000bbb4f9a6636a400b3834, type: 3}
-  T4FruitSFXs:
-  - {fileID: 8300000, guid: f3013bf2c5fbe9640af0a8d32c856f0b, type: 3}
-  - {fileID: 8300000, guid: d3dbc742dfbb12949856f4861229ea4a, type: 3}
-  - {fileID: 8300000, guid: 136c0c7096c96cf439e5ca24d815b6bf, type: 3}
-  T5FruitSFXs:
-  - {fileID: 8300000, guid: 74c5630171c4f9e40a0996e414baf408, type: 3}
-  - {fileID: 8300000, guid: 1f87f0e0b8759284492b0a2dcd2b2b05, type: 3}
-  - {fileID: 8300000, guid: 21b62f8e63aacad4fafa77385859633f, type: 3}
+--- !u!1 &6245147678060305891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4930080706808906375}
+  - component: {fileID: 3799801844435321876}
+  m_Layer: 0
+  m_Name: BGMTier1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4930080706808906375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245147678060305891}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.7904134, y: -25.789438, z: 0.49701834}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2176545601000055263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &3799801844435321876
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245147678060305891}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+  m_audioClip: {fileID: 8300000, guid: e47b0f56f7fb51b4092ab9c9b94d056f, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.45
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 60
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -6,7 +6,6 @@
  *******************************************************************/
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -14,13 +13,6 @@ public class SfxManager : Singleton<SfxManager>
 {
     [SerializeField] private List<SFX> _SFXs = new List<SFX>();
     [SerializeField] private AudioMixer _masterMixer;
-    [Header("Fruit Sound Effects Lists")]
-    [SerializeField] private AudioClip[] T1FruitSFXs;
-    [SerializeField] private AudioClip[] T2FruitSFXs;
-    [SerializeField] private AudioClip[] T3FruitSFXs;
-    [SerializeField] private AudioClip[] T4FruitSFXs;
-    [SerializeField] private AudioClip[] T5FruitSFXs;
-    private List<AudioClip[]> AllFruitSFXs = new();
 
     protected override void Awake()
     {
@@ -40,19 +32,6 @@ public class SfxManager : Singleton<SfxManager>
             _SFXs[i].source.loop = _SFXs[i].doLoop;
             _SFXs[i].source.clip = _SFXs[i].clips[0];
         }
-        FruitSFXSetup();
-    }
-
-    /// <summary>
-    /// Adds all the Fruit sound effect arrays to the master sound effect array.
-    /// </summary>
-    private void FruitSFXSetup() 
-    {
-        AllFruitSFXs.Add(T1FruitSFXs);
-        AllFruitSFXs.Add(T2FruitSFXs);
-        AllFruitSFXs.Add(T3FruitSFXs);
-        AllFruitSFXs.Add(T4FruitSFXs);
-        AllFruitSFXs.Add(T5FruitSFXs);
     }
 
     #region playing sfx functions
@@ -128,21 +107,6 @@ public class SfxManager : Singleton<SfxManager>
     }
 
     #endregion
-
-    /// <summary>
-    /// Only changes the pickup sounds for the fruits when the tier is swiped. Can be expanded upon to include changing of other SFX as well
-    /// </summary>
-    /// <param name="SFXindex"></param>
-    public void SFXTierChange(int SFXindex) 
-    {
-        _SFXs[0].clips = AllFruitSFXs[SFXindex];
-        string debugMessage = "Fruit SFX are now set to: ";
-        foreach (var sfx in _SFXs[0].clips) 
-        {
-            debugMessage += sfx.name + ", ";
-        }
-        Debug.Log(debugMessage);
-    }
 
     #region mixer functions
 
