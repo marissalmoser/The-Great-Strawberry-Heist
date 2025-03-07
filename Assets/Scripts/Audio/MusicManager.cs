@@ -73,8 +73,8 @@ public class MusicManager : MonoBehaviour
         float incrementalWaitDuration = fadeDuration / timeIncrements;
         float incrementalVolumeChange = 
             (currentTrack.volume <= 0 ? targetVolume : -currentTrack.volume) / timeIncrements;
-        Debug.Log("Volume Change: " + incrementalVolumeChange);
-        Debug.Log("Wait Duration: " + incrementalWaitDuration);
+        //Debug.Log("Volume Change: " + incrementalVolumeChange);
+        //Debug.Log("Wait Duration: " + incrementalWaitDuration);
 
         for (int i = 0; i < timeIncrements; i++) 
         {
