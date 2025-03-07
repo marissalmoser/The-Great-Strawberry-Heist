@@ -41,7 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2d;
     private float moveValue;
 
-    private float isGrounded;
+    private bool inEnd = false;
     private bool canMove;
     private bool facingLeft;
 
@@ -90,7 +90,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// <param name="obj"></param>
     private void PlayerJump_performed(InputAction.CallbackContext obj)
     {
-        if (canMove)
+        if (canMove && !inEnd)
         {
             PlayerJump();
         }
@@ -105,7 +105,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         animator.SetFloat("yVelocity", rb2d.velocity.y);
 
-        if (canMove)
+        if (canMove && !inEnd)
         {
             MovePlayer();
         }
@@ -195,16 +195,49 @@ public class PlayerBehaviour : MonoBehaviour
         speedMultiplier = BASE_MULTIPLER;
     }
 
+    /// <summary>
+    /// Plays the appropriate animation sequence based on whether the player 
+    /// got swiped at the end
+    /// </summary>
+    /// <param name="wasSwiped"></param>
     private void EndAnim(bool wasSwiped)
     {
+        inEnd = true;
+
         if(wasSwiped)
         {
-            Debug.Log("AHHHHHHHHHHHHHHHH");
+            animator.SetBool("End", true);
         }
         else
         {
-            Debug.Log("Made it");
+            RunToStrawberry();
         }
+    }
+
+    /// <summary>
+    /// Moves the player right until they reach the strawberry
+    /// </summary>
+    public void RunToStrawberry()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        rb2d.velocity = new Vector2(playerSpeed, 0);
+    }
+
+    /// <summary>
+    /// Plays the strawberry collection animation
+    /// </summary>
+    public void ReachedStrawberry()
+    {
+        rb2d.velocity = Vector2.zero;
+        animator.SetBool("Collect", true);
+    }
+
+    /// <summary>
+    /// Returns the player to the main menu
+    /// </summary>
+    public void ReturnToMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     /// <summary>
@@ -322,6 +355,14 @@ public class PlayerBehaviour : MonoBehaviour
         {
             inKnockback = false;
             canMove = true;
+        }
+
+        //Plays the strawberry collection anim
+        if(collision.gameObject.name.Contains("Strawberry"))
+        {
+            rb2d.velocity = Vector2.zero;
+            collision.gameObject.SetActive(false);
+            animator.SetBool("Collect", true);
         }
     }
 
