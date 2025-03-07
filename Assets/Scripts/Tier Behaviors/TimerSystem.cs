@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerSystem : MonoBehaviour
@@ -95,6 +96,7 @@ public class TimerSystem : MonoBehaviour
             StopAllCoroutines();
             print("player made it to the strawberry");
             //TODO: trigger win condition
+            StartCoroutine(TempEndCondition());
             return;
         }
 
@@ -178,6 +180,7 @@ public class TimerSystem : MonoBehaviour
         {
             print("time ran out in the last tier!");
             //TODO: trigger end condition
+            StartCoroutine(TempEndCondition());
             yield break;
         }
 
@@ -213,6 +216,13 @@ public class TimerSystem : MonoBehaviour
 
         //remove empty list of icing
         fallingIcing.RemoveAt(0);
+    }
+
+
+    IEnumerator TempEndCondition()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(0);
     }
 
     private void OnDisable()
