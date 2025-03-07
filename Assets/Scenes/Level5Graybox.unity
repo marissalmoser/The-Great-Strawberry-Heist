@@ -557,7 +557,12 @@ MonoBehaviour:
   playerSpeed: 8
   slowMultipler: 0.5
   jumpHeight: 24
+  fallingIcingSlowTime: 0
   rb2d: {fileID: 610583088}
+  _invincibilityFramesInSeconds: 0
+  _invincibilityFlashingSpeed: 0
+  _invincibilityFlashingMinOpacity: 0
+  _knockbackVelocity: {x: 0, y: 0}
 --- !u!1001 &874896132
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class DisapearingPlatforms : MonoBehaviour
     [SerializeField] private float reappearTime = 5f;
     
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer _shadow;
     private Collider2D platformCollider;
 
     [SerializeField] private float _shakeIntensity;
@@ -70,10 +71,12 @@ public class DisapearingPlatforms : MonoBehaviour
             }
         }
         spriteRenderer.enabled = false;
+        if (_shadow != null) _shadow.enabled = false;
         platformCollider.enabled = false;
 
         yield return new WaitForSeconds(reappearTime);
         spriteRenderer.enabled = true;
+        if (_shadow != null) _shadow.enabled = true;
         platformCollider.enabled = true;
     }
 }
