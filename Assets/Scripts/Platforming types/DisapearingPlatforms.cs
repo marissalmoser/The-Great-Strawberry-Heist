@@ -11,6 +11,11 @@ using UnityEngine;
 
 public class DisapearingPlatforms : MonoBehaviour
 {
+    [Tooltip("True means the player has to touch the top for the platform to disappear")]
+    [SerializeField] private bool CoroutineStarted;
+    Rigidbody2D rb;
+
+
     private Vector3 defaultPosition;
     [SerializeField] private float disappearTime = 2f;
     [SerializeField] private float reappearTime = 5f;
@@ -33,17 +38,16 @@ public class DisapearingPlatforms : MonoBehaviour
         platformCollider = GetComponent<Collider2D>();
     }
 
-
-    /// <summary>
-    /// Checks if it is the player
-    /// </summary>
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        PlayerBehaviour playerBehaviour = collision.gameObject.GetComponent<PlayerBehaviour>();
-
-        if (playerBehaviour != null)
+        if (!CoroutineStarted && collision.collider.TryGetComponent<PlayerBehaviour>(out PlayerBehaviour pb))
         {
-            StartCoroutine(DisappearAndReappear());
+           if (pb.PlayerPlatformCheck())
+           {
+                StartCoroutine(DisappearAndReappear());
+                CoroutineStarted = true;
+           }
+            
         }
     }
 
@@ -78,5 +82,7 @@ public class DisapearingPlatforms : MonoBehaviour
         spriteRenderer.enabled = true;
         if (_shadow != null) _shadow.enabled = true;
         platformCollider.enabled = true;
+
+        CoroutineStarted = false;
     }
 }
