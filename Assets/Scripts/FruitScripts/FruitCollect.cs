@@ -37,7 +37,8 @@ public class FruitCollect : MonoBehaviour
         {
             ScoreManager.Instance.AddScore(score, vitality);
             SfxManager.Instance.PlaySFX("FruitPickup");
-            Instantiate(textScorePrefab, transform.position, Quaternion.identity);
+            var textObj = Instantiate(textScorePrefab, transform.position, Quaternion.identity).GetComponent<TextRise>();
+            textObj.SetRisingText("+" + ScoreManager.Instance.RecentlyAddedScore);
             Destroy(gameObject);
         }
     }

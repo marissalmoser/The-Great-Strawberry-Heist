@@ -43,6 +43,7 @@ public class ScoreManager : Singleton<ScoreManager>
     // Multiplier that can be changed in the Inspector
     [SerializeField]
     private float multiplier = 1f;
+    private PlayerBehaviour player;
 
     private int recentlyAddedScore;
 
@@ -50,6 +51,7 @@ public class ScoreManager : Singleton<ScoreManager>
 
     public void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         ScoreText.text = "Score: " + Totalscore.ToString();
     }
    
@@ -58,6 +60,11 @@ public class ScoreManager : Singleton<ScoreManager>
     /// </summary>
     public void ChangeMultiplier(float newMultiplier)
     {
+        //if the multiplier changed at all, display the new multiplier at the player's recent location
+        if (newMultiplier != multiplier) 
+        {
+            player.DisplayMultiplierChange(newMultiplier);
+        }
         multiplier = newMultiplier;
     }
 

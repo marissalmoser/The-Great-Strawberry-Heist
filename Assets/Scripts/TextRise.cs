@@ -11,23 +11,28 @@ using UnityEngine;
 
 public class TextRise : MonoBehaviour
 {
-    private RectTransform rt;
-    private TMP_Text text;
     private float initialY;
     private Color initialColor;
     [SerializeField] private int riseDistance;
     [SerializeField] private float riseSeconds;
     [SerializeField] private bool destroy;
     [SerializeField] private bool fade;
+    [SerializeField] private TMP_Text text;
+    [SerializeField] private RectTransform rt;
+    [SerializeField] private float yOffset;
 
     void Start()
     {
-        rt = GetComponent<RectTransform>();
-        text = GetComponentInChildren<TMP_Text>();
-        initialY = rt.anchoredPosition.y;
+        initialY = rt.anchoredPosition.y + yOffset;
         initialColor = text.color;
-        text.text = "+" + ScoreManager.Instance.RecentlyAddedScore;
         StartCoroutine(Rise());
+    }
+    /// <summary>
+    /// public function to set the TMP text of the rising text
+    /// </summary>
+    public void SetRisingText(string risingText) 
+    {
+        text.text = risingText;
     }
 
     /// <summary>
