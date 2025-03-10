@@ -834,18 +834,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 24582299826418800, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
-      propertyPath: maxWaitTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 24582299826418800, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
-      propertyPath: minWaitTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 24582299826418800, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
-      propertyPath: RollingFruitPrefab
-      value: 
-      objectReference: {fileID: 3596868594772921216, guid: 10b875b95848f9d46a2a7c6a261d0b49, type: 3}
     - target: {fileID: 1270952782958351528, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: m_Name
       value: Tier 3
@@ -854,14 +842,6 @@ PrefabInstance:
       propertyPath: Trapdoor
       value: 
       objectReference: {fileID: 1761104523}
-    - target: {fileID: 6583179931481865090, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 16.900002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6583179931481865090, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.92499924
-      objectReference: {fileID: 0}
     - target: {fileID: 9193269327771333583, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6
