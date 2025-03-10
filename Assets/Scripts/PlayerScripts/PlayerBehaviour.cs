@@ -165,7 +165,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// Checks if the player is grounded to see if they can jump
     /// </summary>
     /// <returns></returns>
-    private bool CanJump()
+    public bool CanJump()
     {
         var hit = Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
         if (hit.collider != null)
@@ -176,6 +176,11 @@ public class PlayerBehaviour : MonoBehaviour
             return (hitbox.bounds.min.y > hit.collider.bounds.max.y - 0.1f) || (Mathf.Abs(rb2d.velocity.y) < 0.01f);
         }
         return false;
+    }
+    
+    public bool PlayerPlatformCheck()
+    {
+        return rb2d.velocity.y <= 0.01f;
     }
 
     /// <summary>
