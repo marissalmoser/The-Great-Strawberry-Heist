@@ -12,7 +12,7 @@ public class HowToPlayAnimation : MonoBehaviour
 {
     [SerializeField] private string _gameScene;
     [SerializeField] private Animator _animator;
-    private enum State { Undefined, TutorialFadeIn, OnTutorial, ControlsFadeIn, OnControls }
+    private enum State { Undefined, TutorialFadeIn, OnTutorial, ControlsFadeIn, OnControls, ControlsFadeOut }
     private State state;
     private AsyncOperation asyncOperation;
 
@@ -38,7 +38,8 @@ public class HowToPlayAnimation : MonoBehaviour
         }
         if (state == State.OnControls)
         {
-            asyncOperation.allowSceneActivation = true;
+            _animator.Play("ControlsFadeOut");
+            state = State.ControlsFadeOut;
         }
     }
 
@@ -54,6 +55,10 @@ public class HowToPlayAnimation : MonoBehaviour
         if (state == State.ControlsFadeIn)
         {
             state = State.OnControls;
+        }
+        if (state == State.ControlsFadeOut)
+        {
+            asyncOperation.allowSceneActivation = true;
         }
     }
 }
