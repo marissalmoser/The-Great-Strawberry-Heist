@@ -798,10 +798,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tier 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1270952782958351528, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6179828266159084692, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: Trapdoor
       value: 
@@ -995,10 +991,6 @@ PrefabInstance:
     - target: {fileID: 2886799416642492437, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: m_Name
       value: Tier 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2886799416642492437, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6911144639704588602, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: m_LocalPosition.x

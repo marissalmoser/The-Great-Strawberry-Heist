@@ -30,6 +30,9 @@ public class PlayerTransportable : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        collision.transform.parent = null;
+        if (collision.gameObject.activeInHierarchy)
+        {
+            collision.transform.parent = null;
+        }
     }
 }
