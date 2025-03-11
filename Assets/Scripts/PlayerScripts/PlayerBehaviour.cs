@@ -108,6 +108,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         animator.SetFloat("yVelocity", rb2d.velocity.y);
 
+        animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
+
         if (canMove && !inEnd)
         {
             MovePlayer();
@@ -146,8 +148,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         moveValue = playerMove.ReadValue<float>();
         moveValue = moveValue * playerSpeed * speedMultiplier;
-
-        animator.SetFloat("Speed", Mathf.Abs(moveValue));
 
         rb2d.velocity = new Vector2(moveValue, rb2d.velocity.y);
     }
@@ -231,14 +231,14 @@ public class PlayerBehaviour : MonoBehaviour
         rb2d.velocity = new Vector2(playerSpeed, 0);
     }
 
-    /// <summary>
-    /// Plays the strawberry collection animation
-    /// </summary>
-    public void ReachedStrawberry()
-    {
-        rb2d.velocity = Vector2.zero;
-        animator.SetBool("Collect", true);
-    }
+    ///// <summary>
+    ///// Plays the strawberry collection animation
+    ///// </summary>
+    //public void ReachedStrawberry()
+    //{
+    //    rb2d.velocity = Vector2.zero;
+    //    animator.SetBool("Collect", true);
+    //}
 
     /// <summary>
     /// Returns the player to the main menu
@@ -365,9 +365,22 @@ public class PlayerBehaviour : MonoBehaviour
             canMove = true;
         }
 
+        ////Plays the strawberry collection anim
+        //if(collision.gameObject.name.Contains("Strawberry"))
+        //{
+        //    rb2d.velocity = Vector2.zero;
+        //    collision.gameObject.SetActive(false);
+        //    animator.SetBool("Collect", true);
+        //}
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
         //Plays the strawberry collection anim
-        if(collision.gameObject.name.Contains("Strawberry"))
+        if (collision.gameObject.name.Contains("Strawberry") && (transform.position.x >= collision.transform.position.x))
         {
+            Debug.Log("jkshkjfdshkjsdhfsdkjshk");
             rb2d.velocity = Vector2.zero;
             collision.gameObject.SetActive(false);
             animator.SetBool("Collect", true);
