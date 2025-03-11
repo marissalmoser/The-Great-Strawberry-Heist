@@ -1799,6 +1799,14 @@ PrefabInstance:
       propertyPath: MultiplierText
       value: 
       objectReference: {fileID: 406320700}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: maxVitalityMeter
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: vitalityDecreasePoints
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6989577316145350444, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
