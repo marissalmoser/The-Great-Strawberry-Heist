@@ -5652,15 +5652,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 673335074416741084, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.5
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 673335074416741084, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.57
+      value: 15.82
       objectReference: {fileID: 0}
     - target: {fileID: 673335074416741084, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.01414551
       objectReference: {fileID: 0}
     - target: {fileID: 673335074416741084, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5696,11 +5696,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: maxWaitTime
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: minWaitTime
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: RollingFruitPrefab
@@ -6510,15 +6510,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 673335074416741084, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13
+      value: -16.5
       objectReference: {fileID: 0}
     - target: {fileID: 673335074416741084, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.57
+      value: 15.82
       objectReference: {fileID: 0}
     - target: {fileID: 673335074416741084, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.01414551
       objectReference: {fileID: 0}
     - target: {fileID: 673335074416741084, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6554,11 +6554,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: maxWaitTime
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: minWaitTime
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5932182521653839150, guid: 89a8d63a40705ce4f89407b3b05349fd, type: 3}
       propertyPath: RollingFruitPrefab

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 100
   vitality: 10
+  textScorePrefab: {fileID: 7082361868057328209, guid: 72747f9268357af43bd6b1ff3ac5c0fe, type: 3}
 --- !u!58 &5681594258967410585
 CircleCollider2D:
   m_ObjectHideFlags: 0
