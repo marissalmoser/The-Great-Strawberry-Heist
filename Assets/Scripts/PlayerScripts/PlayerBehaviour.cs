@@ -59,6 +59,9 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float _invincibilityFlashingMinOpacity;
     [SerializeField] private Vector2 _knockbackVelocity;
 
+    [Tooltip("Prefabs")]
+    [SerializeField] private GameObject multiplierChangePrefab;
+
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
     /// </summary>
@@ -360,5 +363,14 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+    }
+    /// <summary>
+    /// Displays text related to multiplier changes through a prefab on the player
+    /// </summary>
+    /// <param name="newMultiplier"></param>
+    public void DisplayMultiplierChange(float newMultiplier) 
+    {
+        var text = Instantiate(multiplierChangePrefab, transform.position, Quaternion.identity).GetComponent<TextRise>();
+        text.SetRisingText(newMultiplier + "x");
     }
 }
