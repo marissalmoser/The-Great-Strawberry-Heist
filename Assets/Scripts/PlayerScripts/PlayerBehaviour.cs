@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -77,16 +78,23 @@ public class PlayerBehaviour : MonoBehaviour
         hitbox = GetComponent<BoxCollider2D>();
 
         TierManager.SwipeTierAction += MoveToNextTier;
-        canMove = true;
-
+        canMove = false;
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        
+    }
+    private void OnEnable()
+    {
+        // Subscribe to the Start Game event
+        TierManager.StartGameAction += UnlockPlayerControls;
     }
 
-    /// <summary>
-    /// Executes when the jump button is pressed
-    /// </summary>
-    /// <param name="obj"></param>
+    private void UnlockPlayerControls()
+    {
+        Debug.Log("Player controls unlocked!");
+        canMove = true; // Allow player movement when event is triggered
+    }
+
     private void PlayerJump_performed(InputAction.CallbackContext obj)
     {
         if (canMove)
@@ -94,7 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
             PlayerJump();
         }
     }
-
+    
     /// <summary>
     /// Executes player code at a fixed rate
     /// </summary>
@@ -260,6 +268,7 @@ public class PlayerBehaviour : MonoBehaviour
         playerJump.performed -= PlayerJump_performed;
         TierManager.SwipeTierAction -= MoveToNextTier;
         actions.Disable();
+        TierManager.StartGameAction -= UnlockPlayerControls;
     }
 
     public void GotHitByIcing()

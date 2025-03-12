@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.Events;
 
 public class TierManager : Singleton<TierManager>
 {
@@ -28,6 +29,11 @@ public class TierManager : Singleton<TierManager>
     [Tooltip("Edit this to change how often the camera shakes when a tier is swiped")]
     [SerializeField] float tierCamShakeFrequency;
 
+    [Tooltip("Edit this to change when the game starts")]
+    [SerializeField] private float startDelay = 20f;
+    public static UnityAction StartGameAction; // Static action for starting the game
+    public static bool DoMovePlayer; // Controls if the player can move (default is false)
+
     public static Action<float, float> SwipeTierAction;
     public static Action NextTierAction;
     public static Action<float> SwipeCanceledAction;
@@ -35,6 +41,8 @@ public class TierManager : Singleton<TierManager>
     protected override void Awake()
     {
         base.Awake();
+
+        StartCoroutine(StartDelay());
 
         //get tier behaviors from game objects and save in a list
         foreach (GameObject tier in cakeTiers)
@@ -46,6 +54,21 @@ public class TierManager : Singleton<TierManager>
         SwipeCanceledAction += NextTier;
 
         canSwipe = true;
+    }
+    
+    /// <summary>
+    /// Handles the delay at the start of the game and invokes the StartGameAction.
+    /// </summary>
+    private IEnumerator StartDelay()
+    {
+        Debug.Log("Starting delay...");
+
+        yield return new WaitForSeconds(startDelay); // Wait for the specified start delay
+
+        Debug.Log("Start game event invoked!");
+        StartGameAction?.Invoke(); // Invoke the Start Game event
+
+        DoMovePlayer = true; 
     }
 
     /// <summary>

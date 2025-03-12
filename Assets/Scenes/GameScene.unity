@@ -1518,6 +1518,10 @@ PrefabInstance:
       value: Tier Manager
       objectReference: {fileID: 0}
     - target: {fileID: 6322938008441149609, guid: 50b717964b32d464297aaaf61a349a6f, type: 3}
+      propertyPath: startDelay
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322938008441149609, guid: 50b717964b32d464297aaaf61a349a6f, type: 3}
       propertyPath: cakeTiers.Array.size
       value: 6
       objectReference: {fileID: 0}
