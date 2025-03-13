@@ -19,13 +19,13 @@ public class FallingBatter : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().gravityScale = 0;
     }
-    //private void Update()
-    //{
-    //   if(Input.GetKey(KeyCode.E))
-    //   {
-    //        TriggerFall();
-    //   }
-    //}
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            TriggerFall();
+        }
+    }
 
     /// <summary>
     /// Makes the icing fall
@@ -50,5 +50,7 @@ public class FallingBatter : MonoBehaviour
             Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
             Destroy(gameObject);
         }
+
+        print(collision.gameObject.layer + " and " + gameObject.layer);
     } 
 }
