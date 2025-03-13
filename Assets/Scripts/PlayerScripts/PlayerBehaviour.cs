@@ -6,6 +6,7 @@
  * ***************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,6 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
     private bool inEnd = false;
     private bool canMove;
     private bool facingLeft;
+    private bool isSpinning;
 
     private SpriteRenderer sr;
     private Animator animator;
@@ -273,7 +275,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         rb2d.velocity = Vector2.zero;
 
-        //TODO: play swipe animation :D
+        //play swipe animation
+        animator.SetTrigger("Swipe");
 
         //Stop player movement and collisions
         canMove = false;
@@ -286,6 +289,12 @@ public class PlayerBehaviour : MonoBehaviour
         float t = 0;
         while (t <= 1.0f)
         {
+            if (inEnd && !isSpinning)
+            {
+                //transition to dizzy swipe animation
+                isSpinning = true;
+                StartCoroutine(RotateForSeconds(playerMoveDuration - t, 400));
+            }
             t += Time.deltaTime / playerMoveDuration; 
             transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return new WaitForFixedUpdate();         
@@ -300,15 +309,80 @@ public class PlayerBehaviour : MonoBehaviour
         //checks if move player to strawberry
         if(inEnd)
         {
-            //add any extra loss anims here
-            RunToStrawberry();
+            StartCoroutine(DizzySwipeAnim());
+            yield break;
         }
+
+        animator.SetTrigger("EndSwipe");
     }
 
-    /// <summary>
-    /// Disables the map and jump callback function when the script is disabled
-    /// </summary>
-    private void OnDisable()
+    private IEnumerator DizzySwipeAnim()
+    {
+        //transition to slide
+        animator.SetBool("StartSlide", true);
+        print("start slide");
+
+        //move player for slide
+        Vector3 startPos = transform.position;
+        Vector3 endPos = startPos + new Vector3(-3, 0, 0);
+        float t = 0;
+        while (t <= 0.7f)
+        {
+            t += Time.deltaTime / 1;
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            yield return new WaitForFixedUpdate();
+        }
+        transform.position = endPos;
+
+        //wait for stars
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("StopStars");
+
+        //anim event calls run to strawberry
+    }
+
+
+    private IEnumerator RotateForSeconds(float duration, float speed)
+    {
+        float elapsedTime = 0f;
+        animator.SetTrigger("DizzySwipe");
+
+        // Keep rotating the object while elapsed time is less than the duration
+        while (elapsedTime < duration)
+        {
+            transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // After rotation, return the object to 0 degrees rotation
+        float currentRotation = transform.eulerAngles.z;
+        float targetRotation = 0f;
+        float timeToReset = 0.5f;
+        float resetTimeElapsed = 0f;
+
+        while (resetTimeElapsed < timeToReset)
+        {
+            // Interpolate back to 0 degrees using Mathf.LerpAngle
+            float newRotation = Mathf.LerpAngle(currentRotation, targetRotation, resetTimeElapsed / timeToReset);
+            transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
+
+            resetTimeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // Ensure the final rotation is exactly 0 degrees
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotation);
+    }
+
+
+
+/// <summary>
+/// Disables the map and jump callback function when the script is disabled
+/// </summary>
+private void OnDisable()
     {
         playerJump.performed -= PlayerJump_performed;
         TierManager.SwipeTierAction -= MoveToNextTier;
@@ -384,10 +458,10 @@ public class PlayerBehaviour : MonoBehaviour
         //Plays the strawberry collection anim
         if (collision.gameObject.name.Contains("Strawberry") && (transform.position.x >= collision.transform.position.x))
         {
-            Debug.Log("jkshkjfdshkjsdhfsdkjshk");
+            //Debug.Log("jkshkjfdshkjsdhfsdkjshk");
             rb2d.velocity = Vector2.zero;
             collision.gameObject.SetActive(false);
-            animator.SetBool("Collect", true);
+            //animator.SetBool("Collect", true);
         }
     }
 
