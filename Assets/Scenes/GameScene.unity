@@ -186,6 +186,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1044476339847700581, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5606557238021027936, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06313133
@@ -226,9 +230,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5716115902332364418, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6973969665100999634, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
       propertyPath: m_Name
       value: Strawberry Tier
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973969665100999634, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468106106010020111, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8072093283105751594, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674424580623573525, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -387,7 +411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &351084320
 Transform:
   m_ObjectHideFlags: 0
@@ -469,6 +493,10 @@ PrefabInstance:
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: startDelayTime
       value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
+      propertyPath: delayFallingIcingTime
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: tierTimes.Array.data[0]
@@ -761,6 +789,10 @@ PrefabInstance:
       propertyPath: Trapdoor
       value: 
       objectReference: {fileID: 1404314045}
+    - target: {fileID: 6133996875345286841, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -797,6 +829,10 @@ PrefabInstance:
     - target: {fileID: 1270952782958351528, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: m_Name
       value: Tier 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539689013968570729, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6179828266159084692, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: Trapdoor
@@ -1015,6 +1051,10 @@ PrefabInstance:
     - target: {fileID: 6911144639704588602, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7168805915054054776, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1312,6 +1352,7 @@ MonoBehaviour:
   _invincibilityFlashingSpeed: 0
   _invincibilityFlashingMinOpacity: 0
   _knockbackVelocity: {x: 0, y: 0}
+  multiplierChangePrefab: {fileID: 0}
 --- !u!212 &1342144091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1626,6 +1667,10 @@ PrefabInstance:
       propertyPath: Trapdoor
       value: 
       objectReference: {fileID: 1532694743}
+    - target: {fileID: 2176999456229598376, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2879338470175760604, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2187,6 +2232,18 @@ PrefabInstance:
     - target: {fileID: 5862979321915109285, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: m_Name
       value: Tier 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479558361919341633, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479558361919341633, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747721921335734300, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8663444125898321133, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: Trapdoor

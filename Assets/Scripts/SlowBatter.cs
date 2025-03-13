@@ -14,11 +14,11 @@ public class SlowBatter : MonoBehaviour
     /// Slows the player
     /// </summary>
     /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.GetComponent<PlayerBehaviour>())
         {
-            Debug.Log("slow");
+            //Debug.Log("slow");
             collision.GetComponent<PlayerBehaviour>().SlowPlayer();
         }
     }
@@ -31,7 +31,7 @@ public class SlowBatter : MonoBehaviour
     {
         if (collision.GetComponent<PlayerBehaviour>())
         {
-            Debug.Log("normal");
+            //Debug.Log("normal");
             collision.GetComponent<PlayerBehaviour>().NormalSpeed();
         }
     }

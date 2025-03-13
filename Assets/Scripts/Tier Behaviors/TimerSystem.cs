@@ -202,7 +202,7 @@ public class TimerSystem : MonoBehaviour
     private IEnumerator TriggerFallingIcing()
     {
         //while there is icing left in this tier to fall
-        while (fallingIcing[0].Count > 0)
+        while (fallingIcing[0].Count > 0 && fallingIcing[0][0].gameObject != null)
         {
             //trigger next in order splotch, then delete
             fallingIcing[0][0].GetComponent<FallingBatter>().TriggerFall();
