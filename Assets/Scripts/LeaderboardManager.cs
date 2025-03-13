@@ -9,7 +9,9 @@ using Newtonsoft.Json;
 
 public class LeaderboardManager : MonoBehaviour
 {
-    //List<string> names = new List<string>();
+    public static LeaderboardManager Instance;
+
+    string playerName = "";
 
     //ID of the leaderboard
     private const string LeaderboardID = "TGSHLeaderboard";
@@ -21,101 +23,85 @@ public class LeaderboardManager : MonoBehaviour
     {
         await UnityServices.InitializeAsync(); //Waits for the initialize to
                                                //finish before continuing
-        //await SignInAnonymously();
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
-    async Task SignInAnonymously()
+    /// <summary>
+    /// Adds a letter to the character's name
+    /// </summary>
+    /// <param name="letter"></param>
+    public void UpdateName(char letter)
     {
-        AuthenticationService.Instance.SignedIn += () =>
-        {
-            Debug.Log("Signed in as: " + AuthenticationService.Instance.PlayerId);
-        };
-        AuthenticationService.Instance.SignInFailed += s =>
-        {
-            // Take some action here...
-            Debug.Log(s);
-        };
-
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        await AuthenticationService.Instance.UpdatePlayerNameAsync(name);
-        Debug.Log("Done");
+        playerName += letter;
     }
 
-    public async void AddScore(int score, string name)
+    public async void AddScore(int score)
     {
         // await SignInAnonymously();
-        await AddPlayer(name);
+        await AddPlayer(playerName);
 
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardID, score);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
 
         AuthenticationService.Instance.SignOut(true);
+
+        playerName = "";
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            int i = Random.Range(1, 11);
-        string name;
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    int i = Random.Range(1, 11);
+        ////string name;
 
-        switch(i)
-        {
-            case 1:
-                name = "AAA";
-                break;
-            case 2:
-                name = "BBB";
-                break;
-            case 3:
-                name = "CCC";
-                break;
-            case 4:
-                name = "DDD";
-                break;
-            case 5:
-                name = "EEE";
-                break;
-            case 6:
-                name = "FFF";
-                break;
-            case 7:
-                name = "GGG";
-                break;
-            case 8:
-                name = "HHH";
-                break;
-            case 9:
-                name = "III";
-                break;
-            case 10:
-                name = "JJJ";
-                break;
-            default:
-                name = "MORG";
-                break;
-        }
-        //if (names.Count <= 0)
-        //{
-            //await AddPlayer(name);
+        ////switch(i)
+        ////{
+        ////    case 1:
+        ////        name = "AAA";
+        ////        break;
+        ////    case 2:
+        ////        name = "BBB";
+        ////        break;
+        ////    case 3:
+        ////        name = "CCC";
+        ////        break;
+        ////    case 4:
+        ////        name = "DDD";
+        ////        break;
+        ////    case 5:
+        ////        name = "EEE";
+        ////        break;
+        ////    case 6:
+        ////        name = "FFF";
+        ////        break;
+        ////    case 7:
+        ////        name = "GGG";
+        ////        break;
+        ////    case 8:
+        ////        name = "HHH";
+        ////        break;
+        ////    case 9:
+        ////        name = "III";
+        ////        break;
+        ////    case 10:
+        ////        name = "JJJ";
+        ////        break;
+        ////    default:
+        ////        name = "MORG";
+        ////        break;
+        ////}
+ 
+        //    AddScore(i * 100);
         //}
-        //else
-        //{
-        //    //foreach(string n in names)
-        //    //{
-        //    //    if(n.Equals(name))
-        //    //    {
-        //    //        newPlayer = false;
-        //    //    }
-        //    //}
-        //}
-
-        //if(newPlayer)
-        //{
-        //    await AddPlayer(name);
-        //}
-            AddScore(i * 100, name);
-        }
     }
 
     async Task AddPlayer(string name)
