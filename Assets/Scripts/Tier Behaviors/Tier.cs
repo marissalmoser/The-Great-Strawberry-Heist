@@ -66,9 +66,11 @@ public class Tier : MonoBehaviour
         {
             Trapdoor.GetComponent<Trapdoor>().DisableDoor();
         }
+
+        BackgroundBehavior.MoveBackgroundAction?.Invoke();
     }
 
-   
+
     public IEnumerator SwipeCanceled(float timeRemaining)
     { 
         yield return new WaitForSeconds(timeRemaining);

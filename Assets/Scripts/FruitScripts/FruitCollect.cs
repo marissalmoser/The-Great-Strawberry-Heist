@@ -12,6 +12,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class FruitCollect : MonoBehaviour
@@ -21,6 +22,8 @@ public class FruitCollect : MonoBehaviour
     private int score;
     [SerializeField]
     private int vitality;
+    [SerializeField]
+    private GameObject textScorePrefab;
 
 
 
@@ -34,6 +37,8 @@ public class FruitCollect : MonoBehaviour
         {
             ScoreManager.Instance.AddScore(score, vitality);
             SfxManager.Instance.PlaySFX("FruitPickup");
+            var textObj = Instantiate(textScorePrefab, transform.position, Quaternion.identity).GetComponent<TextRise>();
+            textObj.SetRisingText("+" + ScoreManager.Instance.RecentlyAddedScore);
             Destroy(gameObject);
         }
     }

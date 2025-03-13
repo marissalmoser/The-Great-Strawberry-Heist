@@ -59,6 +59,9 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float _invincibilityFlashingMinOpacity;
     [SerializeField] private Vector2 _knockbackVelocity;
 
+    [Tooltip("Prefabs")]
+    [SerializeField] private GameObject multiplierChangePrefab;
+
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
     /// </summary>
@@ -108,8 +111,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             MovePlayer();
         }
-
-        print(rb2d.velocity.y);
     }
 
     /// <summary>
@@ -167,7 +168,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// Checks if the player is grounded to see if they can jump
     /// </summary>
     /// <returns></returns>
-    private bool CanJump()
+    public bool CanJump()
     {
         var hit = Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
         if (hit.collider != null)
@@ -178,6 +179,11 @@ public class PlayerBehaviour : MonoBehaviour
             return (hitbox.bounds.min.y > hit.collider.bounds.max.y - 0.1f) || (Mathf.Abs(rb2d.velocity.y) < 0.01f);
         }
         return false;
+    }
+    
+    public bool PlayerPlatformCheck()
+    {
+        return rb2d.velocity.y <= 0.01f;
     }
 
     /// <summary>
@@ -357,5 +363,14 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+    }
+    /// <summary>
+    /// Displays text related to multiplier changes through a prefab on the player
+    /// </summary>
+    /// <param name="newMultiplier"></param>
+    public void DisplayMultiplierChange(float newMultiplier) 
+    {
+        var text = Instantiate(multiplierChangePrefab, transform.position, Quaternion.identity).GetComponent<TextRise>();
+        text.SetRisingText(newMultiplier + "x");
     }
 }

@@ -55,7 +55,7 @@ MonoBehaviour:
   - 10
   tierCamShakeDuration: 2
   playerMoveAfterSwipeTransitionTime: 1.5
-  triggerFallingIcingTime: 4
+  triggerFallingIcingTime: 2
   delayFallingIcingTime: 1.5
   fallingIcingTier1: []
   fallingIcingTier2: []

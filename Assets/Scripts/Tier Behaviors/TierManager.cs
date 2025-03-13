@@ -49,17 +49,6 @@ public class TierManager : Singleton<TierManager>
     }
 
     /// <summary>
-    /// Will be removed after testing is sufficient
-    /// </summary>
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            //SwipeTierAction?.Invoke(tierCamShakeDuration);
-        }
-    }
-
-    /// <summary>
     /// function that returns true if the player is in the bottom tier.
     /// </summary>
     public bool IsInBottomTier()
@@ -116,7 +105,15 @@ public class TierManager : Singleton<TierManager>
     {
         tiers[0].ShakeCam(tierCamShakeAmplitude, tierCamShakeFrequency, duration);
 
+        TimerSystem.DoMovePlayer = true;
+
         yield return new WaitForSeconds(duration);
+
+        //check if tier should actually swipe
+        if (!TimerSystem.DoMovePlayer)
+        {
+            yield break;
+        }
 
         if (currentTier == 0)
         {
@@ -137,6 +134,8 @@ public class TierManager : Singleton<TierManager>
             canSwipe = false;
             print("last tier swiped");
         }
+
+        ScoreManager.Instance.LayerSwipeVitalityChange();
     }
 
     private void OnDisable()

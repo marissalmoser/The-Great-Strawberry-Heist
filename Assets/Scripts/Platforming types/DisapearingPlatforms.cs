@@ -11,32 +11,43 @@ using UnityEngine;
 
 public class DisapearingPlatforms : MonoBehaviour
 {
+    [Tooltip("True means the player has to touch the top for the platform to disappear")]
+    [SerializeField] private bool CoroutineStarted;
+    Rigidbody2D rb;
+
+
+    private Vector3 defaultPosition;
     [SerializeField] private float disappearTime = 2f;
     [SerializeField] private float reappearTime = 5f;
     
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer _shadow;
     private Collider2D platformCollider;
+
+    [SerializeField] private float _shakeIntensity;
+    [SerializeField] private float _timeToReachMaxShake;
+    [SerializeField] private float _timeBetweenShakes;
 
     /// <summary>
     /// Grabs Components
     /// </summary>
     void Start()
     {
+        defaultPosition = transform.localPosition;
         spriteRenderer = GetComponent<SpriteRenderer>();
         platformCollider = GetComponent<Collider2D>();
     }
 
-
-    /// <summary>
-    /// Checks if it is the player
-    /// </summary>
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        PlayerBehaviour playerBehaviour = collision.gameObject.GetComponent<PlayerBehaviour>();
-
-        if (playerBehaviour != null)
+        if (!CoroutineStarted && collision.collider.TryGetComponent<PlayerBehaviour>(out PlayerBehaviour pb))
         {
-            StartCoroutine(DisappearAndReappear());
+           if (pb.PlayerPlatformCheck())
+           {
+                StartCoroutine(DisappearAndReappear());
+                CoroutineStarted = true;
+           }
+            
         }
     }
 
@@ -45,12 +56,33 @@ public class DisapearingPlatforms : MonoBehaviour
     /// </summary>
     IEnumerator DisappearAndReappear()
     {
-        yield return new WaitForSeconds(disappearTime);
+        float t = 0;
+        float direction = 1;
+        int shakeCount = 1;
+        float timeSinceLastShake = 0;
+        while (t < disappearTime)
+        {
+            yield return null;
+            t += Time.deltaTime;
+            timeSinceLastShake += Time.deltaTime;
+            if (timeSinceLastShake > _timeBetweenShakes)
+            {
+                transform.localPosition = defaultPosition +
+                    new Vector3(Mathf.Min(t, _timeToReachMaxShake) * direction * _shakeIntensity, 0, 0);
+                shakeCount++;
+                direction = Mathf.Sin(shakeCount * (Mathf.PI / 2));
+                timeSinceLastShake -= _timeBetweenShakes;
+            }
+        }
         spriteRenderer.enabled = false;
+        if (_shadow != null) _shadow.enabled = false;
         platformCollider.enabled = false;
 
         yield return new WaitForSeconds(reappearTime);
         spriteRenderer.enabled = true;
+        if (_shadow != null) _shadow.enabled = true;
         platformCollider.enabled = true;
+
+        CoroutineStarted = false;
     }
 }
