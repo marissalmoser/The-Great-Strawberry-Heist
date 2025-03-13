@@ -212,11 +212,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         inEnd = true;
 
-        if(wasSwiped)
-        {
-            animator.SetBool("End", true);
-        }
-        else
+        if(!wasSwiped)
         {
             RunToStrawberry();
         }
@@ -245,6 +241,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public void ReturnToMenu()
     {
+        //TODO: go through high score secquence first
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
@@ -299,6 +296,13 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = true;
         hitbox.enabled = true;
         rb2d.isKinematic = false;
+
+        //checks if move player to strawberry
+        if(inEnd)
+        {
+            //add any extra loss anims here
+            RunToStrawberry();
+        }
     }
 
     /// <summary>
