@@ -50,10 +50,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("Collision with obstacles")]
 
+    [Tooltip("Timer starts after hamster's dizziness has cleared")]
     [SerializeField] private float _invincibilityFramesInSeconds;
     private float invincibilitySecondsRemaining;
     private bool inKnockback;
     [SerializeField] private float _invincibilityFlashingSpeed;
+    [SerializeField] private float _lengthOfDizzy;
+    private bool dizzy;
 
     [Tooltip("Value between 0 and 255, smaller numbers meaning less opaque at minimum")]
     [SerializeField] private float _invincibilityFlashingMinOpacity;
@@ -313,10 +316,11 @@ public class PlayerBehaviour : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Becoming grounded while in knockback re-enables movement
-        if (inKnockback && CanJump())
+        if (inKnockback && CanJump() && !dizzy)
         {
+            dizzy = true;
             inKnockback = false;
-            canMove = true;
+            StartCoroutine(Dizzy());
         }
     }
 
@@ -338,8 +342,10 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private IEnumerator InvincibilityFrames()
     {
-        bool opacityGoingDown = true;
         invincibilitySecondsRemaining = _invincibilityFramesInSeconds;
+        yield return new WaitUntil(() => !inKnockback && !dizzy);
+
+        bool opacityGoingDown = true;
         while (invincibilitySecondsRemaining > 0)
         {
             yield return null;
@@ -364,6 +370,22 @@ public class PlayerBehaviour : MonoBehaviour
         }
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
     }
+
+    public IEnumerator Dizzy()
+    {
+        sr.color = new Color(1, 0, 1);
+        float t = 0;
+        while (t < _lengthOfDizzy)
+        {
+            yield return null;
+            t += Time.deltaTime;
+            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+        }
+        dizzy = false;
+        canMove = true;
+        sr.color = Color.white;
+    }
+
     /// <summary>
     /// Displays text related to multiplier changes through a prefab on the player
     /// </summary>
