@@ -43,9 +43,15 @@ public class ScoreManager : Singleton<ScoreManager>
     // Multiplier that can be changed in the Inspector
     [SerializeField]
     private float multiplier = 1f;
+    private PlayerBehaviour player;
+
+    private int recentlyAddedScore;
+
+    public int RecentlyAddedScore { get => recentlyAddedScore; private set => recentlyAddedScore = value; }
 
     public void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         ScoreText.text = "Score: " + Totalscore.ToString();
     }
    
@@ -54,6 +60,11 @@ public class ScoreManager : Singleton<ScoreManager>
     /// </summary>
     public void ChangeMultiplier(float newMultiplier)
     {
+        //if the multiplier changed at all, display the new multiplier at the player's recent location
+        if (newMultiplier != multiplier) 
+        {
+            player.DisplayMultiplierChange(newMultiplier);
+        }
         multiplier = newMultiplier;
     }
 
@@ -62,12 +73,14 @@ public class ScoreManager : Singleton<ScoreManager>
     /// </summary>
     public void AddScore(int scoreAmt, int vitalityAmt)
     {
-        Totalscore += Mathf.RoundToInt(scoreAmt * multiplier);
+        recentlyAddedScore = Mathf.RoundToInt(scoreAmt * multiplier);
+        Totalscore += recentlyAddedScore;
         Vitalitymeter = Mathf.Min(vitalityAmt + Vitalitymeter, maxVitalityMeter);
 
         ScoreText.text = "Score: " + Totalscore.ToString();
         ChangeVitality();
     }
+
 
     /// <summary>
     /// UI and Logical code for changing Vitality
