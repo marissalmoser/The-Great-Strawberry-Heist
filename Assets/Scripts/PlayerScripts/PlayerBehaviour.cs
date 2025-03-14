@@ -235,7 +235,11 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public IEnumerator RunToStrawberry()
     {
-        while(inEnd)
+        //makes player face right and disable their input
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        actions.Disable();
+
+        while (inEnd)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             rb2d.velocity = new Vector2(playerSpeed, 0);
@@ -325,7 +329,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         //transition to slide
         animator.SetBool("StartSlide", true);
-        print("start slide");
 
         //move player for slide
         Vector3 startPos = transform.position;
@@ -467,7 +470,6 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.name.Contains("Strawberry") && //isSpinning &&
             (transform.position.x >= collision.transform.position.x))
         {
-            Debug.Log("jkshkjfdshkjsdhfsdkjshk");
             inEnd = false;
             isSpinning = false;
             rb2d.velocity = Vector2.zero;
