@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: -131680421, guid: efeedd176c02afc438d56ca8d28491d3, type: 3}
+  m_Sprite: {fileID: 1825746733, guid: d53fe64cd60566c43a3175b354f8fb9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012175143, y: -0.14831205}
+  m_Offset: {x: 0.0032888427, y: -0.11987592}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.453758, y: 0.408115}
+  m_Size: {x: 0.32224017, y: 0.48631445}
   m_EdgeRadius: 0
 --- !u!50 &3168102203269571171
 Rigidbody2D:
@@ -216,6 +216,7 @@ MonoBehaviour:
   rb2d: {fileID: 3168102203269571171}
   _invincibilityFramesInSeconds: 1.25
   _invincibilityFlashingSpeed: 2000
+  _lengthOfDizzy: 1
   _invincibilityFlashingMinOpacity: 0
   _knockbackVelocity: {x: 6, y: 12}
   multiplierChangePrefab: {fileID: 8849869566059387272, guid: 5a268c78373cee04a81e2e2e29cc5693, type: 3}

@@ -7,6 +7,7 @@
     designers to edit. Triggers the tier swipe action and falling icing. Triggers
     the game's end and win conditions.
 *****************************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,12 +49,16 @@ public class TimerSystem : MonoBehaviour
     [SerializeField] List<GameObject> fallingIcingTier5 = new List<GameObject>();
     List<List<GameObject>> fallingIcing = new List<List<GameObject>>();
 
+    [Header("Timer start text")]
+    [Tooltip("Game object to be enabled when timer begins.")]
+    [SerializeField] private GameObject startText;
 
     private float currentTime;
     private float currentMaxTime;
     private bool triggeredIcing;
     private bool triggeredTimerSound;
     public static bool DoMovePlayer;
+    public static Action StartGame;
 
     private Coroutine currentTimer;
 
@@ -94,7 +99,7 @@ public class TimerSystem : MonoBehaviour
         {
             StopAllCoroutines();
             print("player made it to the strawberry");
-            //TODO: trigger win condition
+            TierManager.EndSequence?.Invoke(false);
             return;
         }
 
@@ -125,7 +130,9 @@ public class TimerSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelayTime);
 
+        startText.SetActive(true);
         currentTimer = StartCoroutine(TierTimer());
+        StartGame?.Invoke();
     }
 
     /// <summary>
@@ -177,7 +184,7 @@ public class TimerSystem : MonoBehaviour
         if(tierTimes.Count <= 0)
         {
             print("time ran out in the last tier!");
-            //TODO: trigger end condition
+            TierManager.EndSequence?.Invoke(true);
             yield break;
         }
 
