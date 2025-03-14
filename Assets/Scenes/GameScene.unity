@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5606557238021027936, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 101.5
+      value: 101.82
       objectReference: {fileID: 0}
     - target: {fileID: 5606557238021027936, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -393,17 +393,6 @@ PrefabInstance:
       addedObject: {fileID: 4203479335953205466}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
---- !u!114 &142971631 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 381309459921683050, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
-  m_PrefabInstance: {fileID: 142971630}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &142971632 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4161853898200416069, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
@@ -521,7 +510,7 @@ PrefabInstance:
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: timerImage
       value: 
-      objectReference: {fileID: 142971631}
+      objectReference: {fileID: 381309458544652885}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: startDelayTime
       value: 7.5
@@ -1730,7 +1719,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7470058385859114211}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 67eab2801d6fe2d42aae68b56bbaf434, type: 2}
   m_CullingMode: 0
@@ -2651,6 +2640,7 @@ GameObject:
   - component: {fileID: 4203479335953205466}
   - component: {fileID: 490059382691990519}
   - component: {fileID: 4812342072600933261}
+  - component: {fileID: 7470058385859114212}
   - component: {fileID: 1445736513}
   m_Layer: 5
   m_Name: TimerParent
@@ -2659,6 +2649,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7470058385859114212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470058385859114211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427e0e3dd9ab03641aa91634f98cca18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7822048131946204731
 GameObject:
   m_ObjectHideFlags: 0

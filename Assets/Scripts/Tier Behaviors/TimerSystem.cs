@@ -57,6 +57,7 @@ public class TimerSystem : MonoBehaviour
     private float currentMaxTime;
     private bool triggeredIcing;
     private bool triggeredTimerSound;
+    private bool triggeredTimerMidAnim;
     public static bool DoMovePlayer;
     public static Action StartGame;
 
@@ -108,6 +109,7 @@ public class TimerSystem : MonoBehaviour
         currentTime = 0;
 
         UpdateTimerUI();
+        TimerUIAnimEvents.CancelAnim?.Invoke(true);
 
         StopCoroutine(currentTimer);
         currentTimer = StartCoroutine(TierTimer());
@@ -130,6 +132,10 @@ public class TimerSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelayTime);
 
+        TimerUIAnimEvents.PlayTimerStart?.Invoke();
+
+        yield return new WaitForSeconds(1);
+
         startText.SetActive(true);
         currentTimer = StartCoroutine(TierTimer());
         StartGame?.Invoke();
@@ -143,9 +149,11 @@ public class TimerSystem : MonoBehaviour
     {
         triggeredIcing = false;
         triggeredTimerSound = false;
+        triggeredTimerMidAnim = false;
+        TimerUIAnimEvents.CancelAnim?.Invoke(false);
 
         //count until swipe shaking should start
-        while(currentTime < (currentMaxTime - tierCamShakeDuration))
+        while (currentTime < (currentMaxTime - tierCamShakeDuration))
         {
             yield return new WaitForSeconds(0.1f);
 
@@ -161,12 +169,19 @@ public class TimerSystem : MonoBehaviour
                 SfxManager.Instance.FadeInSFX("TimerClick", 10);
                 triggeredTimerSound = true;
             }
+            //play timer midpoint anim
+            if(!triggeredTimerMidAnim && ((currentMaxTime/2) - 1) <= currentTime)
+            {
+                triggeredTimerMidAnim = true;
+                TimerUIAnimEvents.PlayTimerMidpoint?.Invoke();
+            }
 
             currentTime += 0.1f;
             UpdateTimerUI();
         }
 
         //start tier swipe sequence
+        TimerUIAnimEvents.PlayTimerAlarm?.Invoke();
         SfxManager.Instance.PlaySFX("CatHiss");
         TierManager.SwipeTierAction?.Invoke(tierCamShakeDuration, playerMoveAfterSwipeTransitionTime);
         while (currentTime < currentMaxTime)
