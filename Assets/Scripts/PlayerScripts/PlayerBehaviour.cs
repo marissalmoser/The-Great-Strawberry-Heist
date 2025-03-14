@@ -79,7 +79,6 @@ public class PlayerBehaviour : MonoBehaviour
         playerJump = actions.FindAction("Jump");
 
         playerJump.performed += PlayerJump_performed;
-        TimerSystem.StartGame += StartGameplay;
 
         speedMultiplier = BASE_MULTIPLER;
 
@@ -87,7 +86,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         TierManager.SwipeTierAction += MoveToNextTier;
         TierManager.EndSequence += EndAnim;
-        //canMove = true;
+        canMove = true;
 
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -186,11 +185,6 @@ public class PlayerBehaviour : MonoBehaviour
             return (hitbox.bounds.min.y > hit.collider.bounds.max.y - 0.1f) || (Mathf.Abs(rb2d.velocity.y) < 0.01f);
         }
         return false;
-    }
-
-    private void StartGameplay()
-    {
-        canMove = true;
     }
     
     public bool PlayerPlatformCheck()
@@ -384,15 +378,14 @@ public class PlayerBehaviour : MonoBehaviour
 
 
 
-    /// <summary>
-    /// Disables the map and jump callback function when the script is disabled
-    /// </summary>
-    private void OnDisable()
+/// <summary>
+/// Disables the map and jump callback function when the script is disabled
+/// </summary>
+private void OnDisable()
     {
         playerJump.performed -= PlayerJump_performed;
         TierManager.SwipeTierAction -= MoveToNextTier;
         TierManager.EndSequence -= EndAnim;
-        TimerSystem.StartGame -= StartGameplay;
 
         actions.Disable();
     }
