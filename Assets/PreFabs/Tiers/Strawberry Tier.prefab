@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6104640013352264262}
   - component: {fileID: 7942074245180621017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TierCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 4399397419434173169}
   - component: {fileID: 1066193040397100479}
   - component: {fileID: 3496323788042431337}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StrawberryShine_Color (1)_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 5606557238021027936}
   - component: {fileID: 5615058673861537545}
   - component: {fileID: 1818243313309070874}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Strawberry Tier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 4398770079678994611}
   - component: {fileID: 6796849125188344226}
   - component: {fileID: 4880816626634886040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5531671390490729369}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +590,7 @@ Transform:
   m_GameObject: {fileID: 8674424580623573525}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.563131, y: 0.7499969, z: 0}
+  m_LocalPosition: {x: -8, y: 0.7499969, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -607,6 +607,10 @@ PrefabInstance:
     - target: {fileID: 2922806102543658633, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_Name
       value: trapdoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922806102543658633, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3210080718088774863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_LocalScale.x

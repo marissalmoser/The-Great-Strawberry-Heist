@@ -216,27 +216,23 @@ public class PlayerBehaviour : MonoBehaviour
 
         if(!wasSwiped)
         {
-            RunToStrawberry();
+            print("run heree");
+            StartCoroutine(RunToStrawberry());
         }
     }
 
     /// <summary>
     /// Moves the player right until they reach the strawberry
     /// </summary>
-    public void RunToStrawberry()
+    public IEnumerator RunToStrawberry()
     {
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-        rb2d.velocity = new Vector2(playerSpeed, 0);
+        while(inEnd)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            rb2d.velocity = new Vector2(playerSpeed, 0);
+            yield return null;
+        }
     }
-
-    ///// <summary>
-    ///// Plays the strawberry collection animation
-    ///// </summary>
-    //public void ReachedStrawberry()
-    //{
-    //    rb2d.velocity = Vector2.zero;
-    //    animator.SetBool("Collect", true);
-    //}
 
     /// <summary>
     /// Returns the player to the main menu
@@ -324,7 +320,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         //move player for slide
         Vector3 startPos = transform.position;
-        Vector3 endPos = startPos + new Vector3(-3, 0, 0);
+        Vector3 endPos = startPos + new Vector3(-7, 0, 0);
         float t = 0;
         while (t <= 0.7f)
         {
@@ -332,7 +328,7 @@ public class PlayerBehaviour : MonoBehaviour
             transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return new WaitForFixedUpdate();
         }
-        transform.position = endPos;
+        //transform.position = endPos;
 
         //wait for stars
         yield return new WaitForSeconds(1);
@@ -386,6 +382,8 @@ private void OnDisable()
     {
         playerJump.performed -= PlayerJump_performed;
         TierManager.SwipeTierAction -= MoveToNextTier;
+        TierManager.EndSequence -= EndAnim;
+
         actions.Disable();
     }
 
@@ -454,14 +452,19 @@ private void OnDisable()
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-
         //Plays the strawberry collection anim
-        if (collision.gameObject.name.Contains("Strawberry") && (transform.position.x >= collision.transform.position.x))
+        if (collision.gameObject.name.Contains("Strawberry") && //isSpinning &&
+            (transform.position.x >= collision.transform.position.x))
         {
-            //Debug.Log("jkshkjfdshkjsdhfsdkjshk");
+            Debug.Log("jkshkjfdshkjsdhfsdkjshk");
+            inEnd = false;
+            isSpinning = false;
             rb2d.velocity = Vector2.zero;
+            rb2d.isKinematic = true;
             collision.gameObject.SetActive(false);
-            //animator.SetBool("Collect", true);
+            transform.position = transform.position + new Vector3(0, 1.39f, 0);
+
+            animator.SetBool("Collect", true);
         }
     }
 
