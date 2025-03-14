@@ -506,6 +506,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
+      propertyPath: startText
+      value: 
+      objectReference: {fileID: 1421759165}
+    - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: timerImage
       value: 
       objectReference: {fileID: 142971631}
@@ -1644,6 +1648,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8072093283105751594, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
   m_PrefabInstance: {fileID: 103365238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1421759165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7237420640594726794, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1430083435
 PrefabInstance:
