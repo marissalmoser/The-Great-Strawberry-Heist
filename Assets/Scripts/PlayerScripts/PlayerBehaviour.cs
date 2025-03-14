@@ -6,6 +6,7 @@
  * ***************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,9 +42,10 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2d;
     private float moveValue;
 
-    private float isGrounded;
+    private bool inEnd = false;
     private bool canMove;
     private bool facingLeft;
+    private bool isSpinning;
 
     private SpriteRenderer sr;
     private Animator animator;
@@ -83,6 +85,7 @@ public class PlayerBehaviour : MonoBehaviour
         hitbox = GetComponent<BoxCollider2D>();
 
         TierManager.SwipeTierAction += MoveToNextTier;
+        TierManager.EndSequence += EndAnim;
         canMove = true;
 
         sr = GetComponent<SpriteRenderer>();
@@ -95,7 +98,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// <param name="obj"></param>
     private void PlayerJump_performed(InputAction.CallbackContext obj)
     {
-        if (canMove)
+        if (canMove && !inEnd)
         {
             PlayerJump();
         }
@@ -110,7 +113,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         animator.SetFloat("yVelocity", rb2d.velocity.y);
 
-        if (canMove)
+        animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
+
+        if (canMove && !inEnd)
         {
             MovePlayer();
         }
@@ -148,8 +153,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         moveValue = playerMove.ReadValue<float>();
         moveValue = moveValue * playerSpeed * speedMultiplier;
-
-        animator.SetFloat("Speed", Mathf.Abs(moveValue));
 
         rb2d.velocity = new Vector2(moveValue, rb2d.velocity.y);
     }
@@ -206,6 +209,44 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     /// <summary>
+    /// Plays the appropriate animation sequence based on whether the player 
+    /// got swiped at the end
+    /// </summary>
+    /// <param name="wasSwiped"></param>
+    private void EndAnim(bool wasSwiped)
+    {
+        inEnd = true;
+
+        if(!wasSwiped)
+        {
+            print("run heree");
+            StartCoroutine(RunToStrawberry());
+        }
+    }
+
+    /// <summary>
+    /// Moves the player right until they reach the strawberry
+    /// </summary>
+    public IEnumerator RunToStrawberry()
+    {
+        while(inEnd)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            rb2d.velocity = new Vector2(playerSpeed, 0);
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// Returns the player to the main menu
+    /// </summary>
+    public void ReturnToMenu()
+    {
+        //TODO: go through high score secquence first
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    /// <summary>
     /// Called when the cat swipes the bottom cake tier. Duration is the pause while
     /// the camera shakes before the tier is swiped.
     /// </summary>
@@ -233,7 +274,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         rb2d.velocity = Vector2.zero;
 
-        //TODO: play swipe animation :D
+        //play swipe animation
+        animator.SetTrigger("Swipe");
 
         //Stop player movement and collisions
         canMove = false;
@@ -246,6 +288,12 @@ public class PlayerBehaviour : MonoBehaviour
         float t = 0;
         while (t <= 1.0f)
         {
+            if (inEnd && !isSpinning)
+            {
+                //transition to dizzy swipe animation
+                isSpinning = true;
+                StartCoroutine(RotateForSeconds(playerMoveDuration - t, 400));
+            }
             t += Time.deltaTime / playerMoveDuration; 
             transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return new WaitForFixedUpdate();         
@@ -256,15 +304,89 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = true;
         hitbox.enabled = true;
         rb2d.isKinematic = false;
+
+        //checks if move player to strawberry
+        if(inEnd)
+        {
+            StartCoroutine(DizzySwipeAnim());
+            yield break;
+        }
+
+        animator.SetTrigger("EndSwipe");
     }
 
-    /// <summary>
-    /// Disables the map and jump callback function when the script is disabled
-    /// </summary>
-    private void OnDisable()
+    private IEnumerator DizzySwipeAnim()
+    {
+        //transition to slide
+        animator.SetBool("StartSlide", true);
+        print("start slide");
+
+        //move player for slide
+        Vector3 startPos = transform.position;
+        Vector3 endPos = startPos + new Vector3(-7, 0, 0);
+        float t = 0;
+        while (t <= 0.7f)
+        {
+            t += Time.deltaTime / 1;
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            yield return new WaitForFixedUpdate();
+        }
+        //transform.position = endPos;
+
+        //wait for stars
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("StopStars");
+
+        //anim event calls run to strawberry
+    }
+
+
+    private IEnumerator RotateForSeconds(float duration, float speed)
+    {
+        float elapsedTime = 0f;
+        animator.SetTrigger("DizzySwipe");
+
+        // Keep rotating the object while elapsed time is less than the duration
+        while (elapsedTime < duration)
+        {
+            transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // After rotation, return the object to 0 degrees rotation
+        float currentRotation = transform.eulerAngles.z;
+        float targetRotation = 0f;
+        float timeToReset = 0.5f;
+        float resetTimeElapsed = 0f;
+
+        while (resetTimeElapsed < timeToReset)
+        {
+            // Interpolate back to 0 degrees using Mathf.LerpAngle
+            float newRotation = Mathf.LerpAngle(currentRotation, targetRotation, resetTimeElapsed / timeToReset);
+            transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
+
+            resetTimeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // Ensure the final rotation is exactly 0 degrees
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotation);
+    }
+
+
+
+/// <summary>
+/// Disables the map and jump callback function when the script is disabled
+/// </summary>
+private void OnDisable()
     {
         playerJump.performed -= PlayerJump_performed;
         TierManager.SwipeTierAction -= MoveToNextTier;
+        TierManager.EndSequence -= EndAnim;
+
         actions.Disable();
     }
 
@@ -321,6 +443,32 @@ public class PlayerBehaviour : MonoBehaviour
             dizzy = true;
             inKnockback = false;
             StartCoroutine(Dizzy());
+        }
+
+        ////Plays the strawberry collection anim
+        //if(collision.gameObject.name.Contains("Strawberry"))
+        //{
+        //    rb2d.velocity = Vector2.zero;
+        //    collision.gameObject.SetActive(false);
+        //    animator.SetBool("Collect", true);
+        //}
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //Plays the strawberry collection anim
+        if (collision.gameObject.name.Contains("Strawberry") && //isSpinning &&
+            (transform.position.x >= collision.transform.position.x))
+        {
+            Debug.Log("jkshkjfdshkjsdhfsdkjshk");
+            inEnd = false;
+            isSpinning = false;
+            rb2d.velocity = Vector2.zero;
+            rb2d.isKinematic = true;
+            collision.gameObject.SetActive(false);
+            transform.position = transform.position + new Vector3(0, 1.39f, 0);
+
+            animator.SetBool("Collect", true);
         }
     }
 
