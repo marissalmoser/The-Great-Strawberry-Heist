@@ -7,6 +7,7 @@
     designers to edit. Triggers the tier swipe action and falling icing. Triggers
     the game's end and win conditions.
 *****************************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,6 +58,7 @@ public class TimerSystem : MonoBehaviour
     private bool triggeredIcing;
     private bool triggeredTimerSound;
     public static bool DoMovePlayer;
+    public static Action StartGame;
 
     private Coroutine currentTimer;
 
@@ -130,6 +132,7 @@ public class TimerSystem : MonoBehaviour
 
         startText.SetActive(true);
         currentTimer = StartCoroutine(TierTimer());
+        StartGame?.Invoke();
     }
 
     /// <summary>
