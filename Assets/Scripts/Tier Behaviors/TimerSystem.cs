@@ -48,6 +48,9 @@ public class TimerSystem : MonoBehaviour
     [SerializeField] List<GameObject> fallingIcingTier5 = new List<GameObject>();
     List<List<GameObject>> fallingIcing = new List<List<GameObject>>();
 
+    [Header("Timer start text")]
+    [Tooltip("Game object to be enabled when timer begins.")]
+    [SerializeField] private GameObject startText;
 
     private float currentTime;
     private float currentMaxTime;
@@ -125,6 +128,7 @@ public class TimerSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelayTime);
 
+        startText.SetActive(true);
         currentTimer = StartCoroutine(TierTimer());
     }
 
