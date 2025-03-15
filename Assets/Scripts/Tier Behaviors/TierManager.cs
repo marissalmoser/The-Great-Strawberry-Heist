@@ -104,11 +104,11 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     private IEnumerator SwipeCoroutine(float duration)
     {
-        tiers[0].ShakeCam(tierCamShakeAmplitude, tierCamShakeFrequency, duration);
+        tiers[0].ShakeCam(tierCamShakeAmplitude, tierCamShakeFrequency, duration + 1);
 
         TimerSystem.DoMovePlayer = true;
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(duration + 1);
 
         //check if tier should actually swipe
         if (!TimerSystem.DoMovePlayer)

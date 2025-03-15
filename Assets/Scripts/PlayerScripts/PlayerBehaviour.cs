@@ -287,6 +287,9 @@ public class PlayerBehaviour : MonoBehaviour
         //play swipe animation
         animator.SetTrigger("Swipe");
 
+        //wait for anim look around
+        yield return new WaitForSeconds(1f);
+
         //Stop player movement and collisions
         canMove = false;
         hitbox.enabled = false;
@@ -304,7 +307,7 @@ public class PlayerBehaviour : MonoBehaviour
                 isSpinning = true;
                 StartCoroutine(RotateForSeconds(playerMoveDuration - t, 400));
             }
-            t += Time.deltaTime / playerMoveDuration; 
+            t += Time.deltaTime / (playerMoveDuration - 1); 
             transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return new WaitForFixedUpdate();         
         }
