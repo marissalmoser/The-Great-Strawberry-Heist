@@ -56,54 +56,6 @@ public class LeaderboardManager : MonoBehaviour
         playerName = "";
     }
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    int i = Random.Range(1, 11);
-        ////string name;
-
-        ////switch(i)
-        ////{
-        ////    case 1:
-        ////        name = "AAA";
-        ////        break;
-        ////    case 2:
-        ////        name = "BBB";
-        ////        break;
-        ////    case 3:
-        ////        name = "CCC";
-        ////        break;
-        ////    case 4:
-        ////        name = "DDD";
-        ////        break;
-        ////    case 5:
-        ////        name = "EEE";
-        ////        break;
-        ////    case 6:
-        ////        name = "FFF";
-        ////        break;
-        ////    case 7:
-        ////        name = "GGG";
-        ////        break;
-        ////    case 8:
-        ////        name = "HHH";
-        ////        break;
-        ////    case 9:
-        ////        name = "III";
-        ////        break;
-        ////    case 10:
-        ////        name = "JJJ";
-        ////        break;
-        ////    default:
-        ////        name = "MORG";
-        ////        break;
-        ////}
- 
-        //    AddScore(i * 100);
-        //}
-    }
-
     async Task AddPlayer(string name)
     {
         AuthenticationService.Instance.SignedIn += () =>
@@ -119,5 +71,14 @@ public class LeaderboardManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
         await AuthenticationService.Instance.UpdatePlayerNameAsync(name);
         Debug.Log("Done");
+    }
+
+    public async void GetScores()
+    {
+        var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
+            LeaderboardID,
+            new GetScoresOptions { Limit = 5 } //Limits to top 5 scores
+        );
+        Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 }
