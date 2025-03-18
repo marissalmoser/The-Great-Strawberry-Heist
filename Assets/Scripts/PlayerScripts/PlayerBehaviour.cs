@@ -284,14 +284,16 @@ public class PlayerBehaviour : MonoBehaviour
 
         rb2d.velocity = Vector2.zero;
 
+        //Stop player movement and collisions
+        canMove = false;
+
         //play swipe animation
         animator.SetTrigger("Swipe");
 
         //wait for anim look around
         yield return new WaitForSeconds(1f);
+        SfxManager.Instance.PlaySFX("CatSwipe");
 
-        //Stop player movement and collisions
-        canMove = false;
         hitbox.enabled = false;
         rb2d.isKinematic = true;
 
@@ -357,6 +359,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         float elapsedTime = 0f;
         animator.SetTrigger("DizzySwipe");
+
+        //TODO: in this loop also move the player scale from 5 to 8 and back
 
         // Keep rotating the object while elapsed time is less than the duration
         while (elapsedTime < duration)
