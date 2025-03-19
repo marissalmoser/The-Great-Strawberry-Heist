@@ -6,10 +6,14 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TMPro;
 
 public class DisplayLeaderboard : MonoBehaviour
 {
     private const string LeaderboardID = "TGSHLeaderboard";
+
+    [SerializeField] List<TMP_Text> names = new List<TMP_Text>();
+    [SerializeField] List<TMP_Text> scores = new List<TMP_Text>();
 
     private async void Awake()
     {
@@ -28,10 +32,29 @@ public class DisplayLeaderboard : MonoBehaviour
 
     public async void GetScores()
     {
-        var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
-            LeaderboardID,
-            new GetScoresOptions { Limit = 5 } //Limits to top 5 scores
-        );
-        Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+        for (int i = 0; i < 5; ++i)
+        {
+            var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
+                LeaderboardID,
+                new GetScoresOptions { Offset = i, Limit = i + 1 } //Limits to top 5 scores
+            );
+            //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+
+            string s = JsonConvert.SerializeObject(scoresResponse);
+
+            //Debug.Log(s.IndexOf("playerName"));
+            if (s.IndexOf("playerName") != -1)
+            {
+                int nameStart = s.IndexOf("playerName") + 13;
+                names[i].text = s.Substring(nameStart, 3);
+                //Debug.Log(s.Substring(nameStart, 3));
+
+                int scoreStart = s.IndexOf("score") + 7;
+                scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+                //string score = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+
+                //Debug.Log(int.Parse(score));
+            }
+        }
     }
 }
