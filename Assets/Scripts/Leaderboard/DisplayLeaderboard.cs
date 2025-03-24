@@ -36,9 +36,9 @@ public class DisplayLeaderboard : MonoBehaviour
         {
             var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
                 LeaderboardID,
-                new GetScoresOptions { Offset = i, Limit = i + 1 } //Limits to top 5 scores
+                new GetScoresOptions { Offset = i, Limit = i + 1} //Limits to top 5 scores
             );
-            //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+            Debug.Log(JsonConvert.SerializeObject(scoresResponse));
 
             string s = JsonConvert.SerializeObject(scoresResponse);
 
@@ -50,7 +50,13 @@ public class DisplayLeaderboard : MonoBehaviour
                 //Debug.Log(s.Substring(nameStart, 3));
 
                 int scoreStart = s.IndexOf("score") + 7;
-                scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+                // scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+                string test = s.Substring(scoreStart, 4);
+                if(test.Contains("."))
+                {
+                    test = test.Substring(0, 3);
+                }
+                scores[i].text = test;
                 //string score = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
 
                 //Debug.Log(int.Parse(score));
