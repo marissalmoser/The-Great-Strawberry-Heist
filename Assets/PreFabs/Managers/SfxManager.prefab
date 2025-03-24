@@ -83,6 +83,15 @@ MonoBehaviour:
     pitch: 1
     doLoop: 0
     source: {fileID: 0}
+  - name: CatSwipe
+    clips:
+    - {fileID: 8300000, guid: cdf5787c0dfa46a4593c8c8068f1a349, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
   - name: TimerClick
     clips:
     - {fileID: 8300000, guid: 7ff94ea7b3c551f4085e93a2af53f5d2, type: 3}

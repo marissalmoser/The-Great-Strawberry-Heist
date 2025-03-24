@@ -57,8 +57,9 @@ public class Tier : MonoBehaviour
     /// </summary>
     public void Swipe()
     {
-        StartCoroutine(MoveTier());
-        if(Trapdoor == null)
+        //StartCoroutine(MoveTier());
+        DisableCam();
+        if (Trapdoor == null)
         {
             return;
         }

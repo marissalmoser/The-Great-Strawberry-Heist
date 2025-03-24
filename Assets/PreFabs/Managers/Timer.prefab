@@ -46,19 +46,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerImage: {fileID: 0}
   testOneTier: 0
-  startDelayTime: 0
+  startDelayTime: 7.5
   tierTimes:
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  tierCamShakeDuration: 2
-  playerMoveAfterSwipeTransitionTime: 1.5
+  - 18
+  - 18
+  - 18
+  - 18
+  - 18
+  tierCamShakeDuration: 4
+  playerMoveAfterSwipeTransitionTime: 2.75
   triggerFallingIcingTime: 2
-  delayFallingIcingTime: 1.5
+  delayFallingIcingTime: 4
   fallingIcingTier1: []
   fallingIcingTier2: []
   fallingIcingTier3: []
   fallingIcingTier4: []
   fallingIcingTier5: []
+  startText: {fileID: 0}
