@@ -55,6 +55,8 @@ public class FallingBatter : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<Animator>().SetTrigger("Fall");
         GetComponent<Rigidbody2D>().gravityScale = 1;
+
+        SfxManager.Instance.PlaySFX("IcingFalling");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
