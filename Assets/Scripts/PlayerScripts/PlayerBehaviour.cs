@@ -43,7 +43,8 @@ public class PlayerBehaviour : MonoBehaviour
     private float moveValue;
 
     private bool inEnd = false;
-    private bool canMove;
+    [SerializeField]
+    private bool canMove = false;
     private bool facingLeft;
     private bool isSpinning;
 
@@ -87,7 +88,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         TierManager.SwipeTierAction += MoveToNextTier;
         TierManager.EndSequence += EndAnim;
-        //canMove = true;
+        canMove = true;
 
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
