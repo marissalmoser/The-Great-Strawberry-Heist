@@ -89,7 +89,10 @@ public class TimerSystem : MonoBehaviour
     /// </summary>
     private void NextTier()
     {
-        tierTimes.RemoveAt(0);
+        if (tierTimes.Count != 0)
+        {
+            tierTimes.RemoveAt(0);
+        }
         SfxManager.Instance.StopSFX("TimerClick");
         SfxManager.Instance.StopSFX("CatHiss");
         SfxManager.Instance.PlaySFX("CatSad");
