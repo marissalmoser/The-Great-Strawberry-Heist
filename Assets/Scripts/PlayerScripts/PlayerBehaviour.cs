@@ -430,6 +430,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             // Knocks hamster back in the direction the orange is moving
             KnockBack(direction);
+            SfxManager.Instance.PlaySFX("HitByOrange");
         }
     }
 

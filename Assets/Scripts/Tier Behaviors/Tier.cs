@@ -109,7 +109,10 @@ public class Tier : MonoBehaviour
 
 
         //play cake swipe sounds
-        SfxManager.Instance.PlaySFX("CakeSwiped");
+        if (TierManager.Instance.IsInBottomTier())
+        {
+            SfxManager.Instance.PlaySFX("CakeSwiped");
+        }
         yield return new WaitForSeconds(1);
         SfxManager.Instance.PlaySFX("CakeLand");
     }
