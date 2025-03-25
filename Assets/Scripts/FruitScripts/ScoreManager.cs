@@ -44,6 +44,7 @@ public class ScoreManager : Singleton<ScoreManager>
     [SerializeField]
     private float multiplier = 1f;
     private PlayerBehaviour player;
+    private bool multiplierHit;
 
     private int recentlyAddedScore;
 
@@ -64,6 +65,28 @@ public class ScoreManager : Singleton<ScoreManager>
         if (newMultiplier != multiplier) 
         {
             player.DisplayMultiplierChange(newMultiplier);
+
+            //plays sound if multiplier went up, loss sound if it went down
+            if (!multiplierHit)
+            {
+                switch (newMultiplier)
+                {
+                    case 1.25f:
+                        SfxManager.Instance.PlaySFX("Multiplier1.25");
+                        break;
+                    case 1.5f:
+                        SfxManager.Instance.PlaySFX("Multiplier1.5");
+                        break;
+                    case 2f:
+                        SfxManager.Instance.PlaySFX("Multiplier2.0");
+                        break;
+                }
+            }
+            else
+            {
+                SfxManager.Instance.PlaySFX("MultiplierLoss");
+            }
+            multiplierHit = false;
         }
         multiplier = newMultiplier;
     }
@@ -108,6 +131,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public void PlayerHit()
     {
         Vitalitymeter = Mathf.Max(Vitalitymeter - vitalityDecreasePoints, 0);
+        multiplierHit = true;
         ChangeVitality();
     }
 
@@ -119,6 +143,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public void LayerSwipeVitalityChange() 
     {
         Vitalitymeter = 0;
+        multiplierHit = true;
         ChangeVitality();
     }
 }
