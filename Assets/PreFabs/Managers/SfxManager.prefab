@@ -101,6 +101,105 @@ MonoBehaviour:
     pitch: 1
     doLoop: 0
     source: {fileID: 0}
+  - name: CakeLand
+    clips:
+    - {fileID: 8300000, guid: a3d8a07ef9692d14a92405e2bac2003d, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: CakeSwiped
+    clips:
+    - {fileID: 8300000, guid: 36822769a42f679458cf17753d377ab9, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: HitByOrange
+    clips:
+    - {fileID: 8300000, guid: f51acc7590ca4c245b7387b140b57d15, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: IcingFalling
+    clips:
+    - {fileID: 8300000, guid: 429227b46aca0ac40b4a70aafa463bc1, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: IcingLand
+    clips:
+    - {fileID: 8300000, guid: 64404c29addb6b941a5aed175e7b06ff, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: Multiplier1.5
+    clips:
+    - {fileID: 8300000, guid: ff4e29e8cf4046d4987e50888b133dc8, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: Multiplier1.25
+    clips:
+    - {fileID: 8300000, guid: a700562f4774115428d5ce141f01284e, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: Multiplier2.0
+    clips:
+    - {fileID: 8300000, guid: 8ce42f314e89fc84abc8bbe9e936aca1, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: MultiplierLoss
+    clips:
+    - {fileID: 8300000, guid: a6087fcc10a1b324c9e89205e2789316, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: StrawberryPickup
+    clips:
+    - {fileID: 8300000, guid: d8a83bcae0f0c5f4a97b41f600d5d3bb, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: StrawberryShine
+    clips:
+    - {fileID: 8300000, guid: a0c46231f05ce1744b26082ed2783e59, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.5
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
   _masterMixer: {fileID: 24100000, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   T1FruitSFXs:
   - {fileID: 8300000, guid: 930a724cd70d7d74d9ede93798ee2cdd, type: 3}
