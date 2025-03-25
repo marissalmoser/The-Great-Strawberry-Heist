@@ -57,7 +57,7 @@ public class Tier : MonoBehaviour
     /// </summary>
     public void Swipe()
     {
-        //StartCoroutine(MoveTier());
+        StartCoroutine(MoveTier());
         DisableCam();
         if (Trapdoor == null)
         {
@@ -69,6 +69,7 @@ public class Tier : MonoBehaviour
         }
 
         BackgroundBehavior.MoveBackgroundAction?.Invoke();
+
     }
 
 
@@ -83,28 +84,34 @@ public class Tier : MonoBehaviour
     /// </summary>
     private IEnumerator MoveTier()
     {
-        DisableCam();
-        float timeElapsed = 0f;
-        float totalDuration = _swipeEaseCurve.keys[_swipeEaseCurve.length - 1].time;
+        //DisableCam();
+        //float timeElapsed = 0f;
+        //float totalDuration = _swipeEaseCurve.keys[_swipeEaseCurve.length - 1].time;
 
-        float startPositionX = transform.position.x;
+        //float startPositionX = transform.position.x;
 
-        //randomply decides a direction
-        float targetPositionX = Random.Range(0,2) >= 1 ? startPositionX - 40f : startPositionX + 40f;
+        ////randomply decides a direction
+        //float targetPositionX = Random.Range(0,2) >= 1 ? startPositionX - 40f : startPositionX + 40f;
 
-        while (timeElapsed < totalDuration)
-        {
-            float t = _swipeEaseCurve.Evaluate(timeElapsed);
+        //while (timeElapsed < totalDuration)
+        //{
+        //    float t = _swipeEaseCurve.Evaluate(timeElapsed);
 
-            startPositionX = Mathf.Lerp(startPositionX, targetPositionX, t);
+        //    startPositionX = Mathf.Lerp(startPositionX, targetPositionX, t);
 
-            transform.position = new Vector3(startPositionX, transform.position.y, 0);
+        //    transform.position = new Vector3(startPositionX, transform.position.y, 0);
 
-            timeElapsed += Time.deltaTime;
+        //    timeElapsed += Time.deltaTime;
 
-            yield return null;
-        }
-        transform.position = new Vector3(startPositionX, transform.position.y, 0);
+        //    yield return null;
+        //}
+        //transform.position = new Vector3(startPositionX, transform.position.y, 0);
+
+
+        //play cake swipe sounds
+        SfxManager.Instance.PlaySFX("CakeSwiped");
+        yield return new WaitForSeconds(1);
+        SfxManager.Instance.PlaySFX("CakeLand");
     }
 
     /// <summary>
