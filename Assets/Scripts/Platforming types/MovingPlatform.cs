@@ -39,9 +39,15 @@ public class MovingPlatform : MonoBehaviour
     /// <returns></returns>
     IEnumerator MovePlatform()
     {
-        Vector3 startPos = startPosGO.transform.position;
-        Vector3 endPos = endPosGO.transform.position;
-        transform.position = startPos;
+        Transform startPos = startPosGO.transform;
+        Transform endPos = endPosGO.transform;
+        transform.position = startPos.position;
+
+        // Make the positions siblings of the platform instead of children,
+        // so that we can check their position every frame without
+        // it being modified by the movement of the platform
+        startPosGO.transform.parent = transform.parent;
+        endPosGO.transform.parent = transform.parent;
 
         yield return new WaitForSeconds(delayStartTime);
 
@@ -52,10 +58,10 @@ public class MovingPlatform : MonoBehaviour
             while (t <= 1.0f)
             {
                 t += Time.deltaTime / moveTime;
-                transform.position = Vector3.Lerp(startPos, endPos, t);
+                transform.position = Vector3.Lerp(startPos.position, endPos.position, t);
                 yield return new WaitForFixedUpdate();
             }
-            transform.position = endPos;
+            transform.position = endPos.position;
 
             //wait
             yield return new WaitForSeconds(waitTime);
@@ -65,10 +71,10 @@ public class MovingPlatform : MonoBehaviour
             while (t <= 1.0f)
             {
                 t += Time.deltaTime / moveTime;
-                transform.position = Vector3.Lerp(endPos, startPos, t);
+                transform.position = Vector3.Lerp(endPos.position, startPos.position, t);
                 yield return new WaitForFixedUpdate();
             }
-            transform.position = startPos;
+            transform.position = startPos.position;
 
             //wait
             yield return new WaitForSeconds(waitTime);

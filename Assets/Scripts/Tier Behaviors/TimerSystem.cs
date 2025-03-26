@@ -59,7 +59,7 @@ public class TimerSystem : MonoBehaviour
     private bool triggeredTimerSound;
     private bool triggeredTimerMidAnim;
     public static bool DoMovePlayer;
-    public static Action StartGame;
+    public static Action StartGame, CatSwipeAnim;
 
     private Coroutine currentTimer;
 
@@ -153,6 +153,7 @@ public class TimerSystem : MonoBehaviour
         triggeredIcing = false;
         triggeredTimerSound = false;
         triggeredTimerMidAnim = false;
+
         TimerUIAnimEvents.CancelAnim?.Invoke(false);
 
         //count until swipe shaking should start
@@ -193,6 +194,7 @@ public class TimerSystem : MonoBehaviour
             currentTime += 0.1f;
             UpdateTimerUI();
         }
+        CatSwipeAnim?.Invoke();
 
         //tier is swiped
         currentTime = 0;
