@@ -297,6 +297,7 @@ public class PlayerBehaviour : MonoBehaviour
         canMove = false;
 
         //play swipe animation
+        //TODO: Hamster Sound Here
         animator.SetTrigger("Swipe");
 
         //wait for anim look around
@@ -472,13 +473,38 @@ public class PlayerBehaviour : MonoBehaviour
             StartCoroutine(Dizzy());
         }
 
-        ////Plays the strawberry collection anim
-        //if(collision.gameObject.name.Contains("Strawberry"))
-        //{
-        //    rb2d.velocity = Vector2.zero;
-        //    collision.gameObject.SetActive(false);
-        //    animator.SetBool("Collect", true);
-        //}
+        //Wall bump functionality
+        if (collision.gameObject.name.Contains("Wall") && CanJump())
+        {
+            StartCoroutine(WallBump());
+        }
+    }
+
+    /// <summary>
+    /// Wall bump functionality
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator WallBump()
+    {
+        //TODO: play animation?
+        SfxManager.Instance.PlaySFX("HamsterWallBump");
+        canMove = false;
+
+        rb2d.velocity = new Vector2(facingLeft ? 8 : -8, 10);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(facingLeft ? 7 : -7, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(facingLeft ? 5 : -5, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(facingLeft ? 3 : -3, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        canMove = true;
+        rb2d.velocity = new Vector2(facingLeft ? 1.5f : -1.5f, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(facingLeft ? .8f : -.8f, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

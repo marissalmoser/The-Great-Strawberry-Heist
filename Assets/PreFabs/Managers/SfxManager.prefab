@@ -200,6 +200,27 @@ MonoBehaviour:
     pitch: 1
     doLoop: 0
     source: {fileID: 0}
+  - name: HamsterWallBump
+    clips:
+    - {fileID: 8300000, guid: 7148743c0e8ef5447b70bc42aa6d4777, type: 3}
+    - {fileID: 8300000, guid: bf51166e5e389af4b893a7751f2905ba, type: 3}
+    - {fileID: 8300000, guid: 555756daf52396941a62fc1854f6194d, type: 3}
+    - {fileID: 8300000, guid: 256a7dbfbc988aa4482454ec4c10b7a9, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.86
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: HamsterShake
+    clips:
+    - {fileID: 8300000, guid: ee0d44f655c7e7e449cbcb50bbf4b9ed, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.471
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
   _masterMixer: {fileID: 24100000, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   T1FruitSFXs:
   - {fileID: 8300000, guid: 930a724cd70d7d74d9ede93798ee2cdd, type: 3}
