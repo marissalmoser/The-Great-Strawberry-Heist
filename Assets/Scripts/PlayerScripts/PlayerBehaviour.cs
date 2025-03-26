@@ -238,6 +238,7 @@ public class PlayerBehaviour : MonoBehaviour
         //makes player face right and disable their input
         transform.rotation = Quaternion.Euler(0, 0, 0);
         actions.Disable();
+        Invoke("CallStrawberrySound", 0.5f);
 
         while (inEnd)
         {
@@ -245,6 +246,14 @@ public class PlayerBehaviour : MonoBehaviour
             rb2d.velocity = new Vector2(playerSpeed, 0);
             yield return null;
         }
+    }
+
+    /// <summary>
+    /// Invoked in RunToStrawberry();
+    /// </summary>
+    void CallStrawberrySound()
+    {
+        SfxManager.Instance.PlaySFX("StrawberryPickup");
     }
 
     /// <summary>
@@ -475,7 +484,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Plays the strawberry collection anim
-        if (collision.gameObject.name.Contains("Strawberry") && //isSpinning &&
+        if (collision.gameObject.name.Contains("Strawberry") &&
             (transform.position.x >= collision.transform.position.x))
         {
             inEnd = false;
