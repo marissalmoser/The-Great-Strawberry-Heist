@@ -44,7 +44,6 @@ public class ScoreManager : Singleton<ScoreManager>
     [Tooltip("How long star mode lasts and how many seconds for the vitality bar to deplete until its empty")]
     private float starModeDuration = 5;
 
-    private  float msTime = 0.01f;
     // Multiplier that can be changed in the Inspector
     [SerializeField]
     private float multiplier = 1f;
