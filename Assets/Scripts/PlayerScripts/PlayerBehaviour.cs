@@ -88,7 +88,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         TierManager.SwipeTierAction += MoveToNextTier;
         TierManager.EndSequence += EndAnim;
-        canMove = true;
+        //canMove = true;
 
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
