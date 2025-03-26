@@ -422,6 +422,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (invincibilitySecondsRemaining <= 0)
         {
             // Knocks hamster back in opposite of the direction it's facing
+            if(canMove)
+            {
+                animator.SetTrigger("Splat");
+            }
             KnockBack(!facingLeft);
         }
         StartCoroutine(FallingIcingCooldown());
@@ -439,6 +443,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (invincibilitySecondsRemaining <= 0)
         {
             // Knocks hamster back in the direction the orange is moving
+            if (canMove)
+            {
+                animator.SetTrigger("Stun");
+            }
             KnockBack(direction);
             SfxManager.Instance.PlaySFX("HitByOrange");
         }
@@ -573,7 +581,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public IEnumerator Dizzy()
     {
-        sr.color = new Color(1, 0, 1);
         float t = 0;
         while (t < _lengthOfDizzy)
         {
@@ -583,7 +590,6 @@ public class PlayerBehaviour : MonoBehaviour
         }
         dizzy = false;
         canMove = true;
-        sr.color = Color.white;
     }
 
     /// <summary>
