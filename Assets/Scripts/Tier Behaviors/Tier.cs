@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tier : MonoBehaviour
@@ -73,8 +74,21 @@ public class Tier : MonoBehaviour
 
 
     public IEnumerator SwipeCanceled(float timeRemaining)
-    { 
+    {
+        if(timeRemaining <= 0.8f)
+        {
+            //Does not call the cat anim if the player makes it to the next tier with
+            //  less than 0.8 seconds left. This would involve speeding up the anim 
+            //  which would look odd, and not worth it in my opinion.
+            yield return new WaitForSeconds(timeRemaining);
+            Swipe();
+            yield break;
+        }
+
+        timeRemaining -= 0.8f;
         yield return new WaitForSeconds(timeRemaining);
+        TimerSystem.CatSwipeAnim?.Invoke();
+        yield return new WaitForSeconds(0.8f);
         Swipe();
     }
 
