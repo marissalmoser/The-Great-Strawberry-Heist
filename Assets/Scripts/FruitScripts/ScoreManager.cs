@@ -53,6 +53,7 @@ public class ScoreManager : Singleton<ScoreManager>
     private int recentlyAddedScore;
 
     public int RecentlyAddedScore { get => recentlyAddedScore; private set => recentlyAddedScore = value; }
+    public bool IsInStarMode { get => isInStarMode; private set => isInStarMode = value; }
 
     public void Start()
     {
