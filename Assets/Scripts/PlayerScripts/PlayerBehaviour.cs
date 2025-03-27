@@ -335,8 +335,6 @@ public class PlayerBehaviour : MonoBehaviour
             StartCoroutine(DizzySwipeAnim());
             yield break;
         }
-
-        animator.SetTrigger("EndSwipe");
     }
 
     private IEnumerator DizzySwipeAnim()
