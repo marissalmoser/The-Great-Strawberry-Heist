@@ -225,7 +225,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         if(!wasSwiped)
         {
-            print("run heree");
             StartCoroutine(RunToStrawberry());
         }
     }
