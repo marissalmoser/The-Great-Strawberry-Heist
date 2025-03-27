@@ -20,14 +20,8 @@ public class DisplayLeaderboard : MonoBehaviour
         await UnityServices.InitializeAsync();
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-    }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            GetScores();
-        }
+        InvokeRepeating("GetScores", 0, 5);
     }
 
     public async void GetScores()
@@ -47,6 +41,10 @@ public class DisplayLeaderboard : MonoBehaviour
             {
                 int nameStart = s.IndexOf("playerName") + 13;
                 names[i].text = s.Substring(nameStart, 3);
+                if(names[i].text.Equals("ASS"))
+                {
+                    names[i].text = "???";
+                }
                 //Debug.Log(s.Substring(nameStart, 3));
 
                 int scoreStart = s.IndexOf("score") + 7;
