@@ -802,7 +802,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 13
+  m_SortingOrder: 14
   m_Sprite: {fileID: 21300000, guid: 1ea1966535a287d458f7d99691c1e69f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -919,7 +919,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 5fd32916af8369b478e8ea428eed135d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1034,7 +1034,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: d9bfff00893a65f4294094e13eb39530, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1730,7 +1730,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: 38bbd5dedf1571646b8db0a54090f467, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2216,7 +2216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2677352740290200636}
   - component: {fileID: 8876633466274048989}
-  - component: {fileID: 3257490356870491697}
+  - component: {fileID: 1504228685785164091}
   m_Layer: 0
   m_Name: TierCamera
   m_TagString: Untagged
@@ -2279,7 +2279,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1500834725460237695}
---- !u!95 &3257490356870491697
+--- !u!95 &1504228685785164091
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -2821,7 +2821,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: 63d2a49396264b645b3dc3fbb9618410, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3035,7 +3035,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: d9bfff00893a65f4294094e13eb39530, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -169,7 +169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 13
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 90e5c6e76b1d30e488e8cbf0c4f40fdb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -718,7 +718,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: 1a37bfab341ebb44d98b8d0dc602eba6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -934,7 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5012674016871218792}
   - component: {fileID: 7648729593704254285}
-  - component: {fileID: 923572505102123643}
+  - component: {fileID: 7106577154057246733}
   m_Layer: 0
   m_Name: TierCamera
   m_TagString: Untagged
@@ -997,7 +997,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 673649714802141083}
---- !u!95 &923572505102123643
+--- !u!95 &7106577154057246733
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -1121,7 +1121,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 14
   m_Sprite: {fileID: 21300000, guid: e15865f003f1bcf49be1912d46316459, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
