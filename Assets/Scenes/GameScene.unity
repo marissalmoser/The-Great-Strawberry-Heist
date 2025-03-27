@@ -257,18 +257,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6973969665100999634, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 103365240}
   m_SourcePrefab: {fileID: 100100000, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
 --- !u!1 &103365239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6973969665100999634, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
   m_PrefabInstance: {fileID: 103365238}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &103365243 stripped
+--- !u!95 &103365240
 Animator:
-  m_CorrespondingSourceObject: {fileID: 1818243313309070874, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
-  m_PrefabInstance: {fileID: 103365238}
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103365239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &142971630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -658,11 +677,13 @@ PlayableDirector:
   - key: {fileID: 8457238662890161922, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
     value: {fileID: 665855135}
   - key: {fileID: -7188744818791722126, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
-    value: {fileID: 103365243}
+    value: {fileID: 0}
   - key: {fileID: 1386845341257660083, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
     value: {fileID: 773996936}
   - key: {fileID: 690422836803691994, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
     value: {fileID: 923437506}
+  - key: {fileID: -7381698593748768121, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &417234733
@@ -1275,7 +1296,7 @@ PlayableDirector:
   - key: {fileID: 7588301749219689000, guid: 0572ed4261b6902469c26407b7889a91, type: 2}
     value: {fileID: 665855135}
   - key: {fileID: 8450596039051848609, guid: 0572ed4261b6902469c26407b7889a91, type: 2}
-    value: {fileID: 103365243}
+    value: {fileID: 0}
   - key: {fileID: 1907785512603710877, guid: 0572ed4261b6902469c26407b7889a91, type: 2}
     value: {fileID: 690458432}
   m_ExposedReferences:
@@ -1617,7 +1638,7 @@ PlayableDirector:
   - key: {fileID: 9062752878270885145, guid: 3a5385f9e49b5c246b48ed4cd6ec9521, type: 2}
     value: {fileID: 665855135}
   - key: {fileID: -370295547463424153, guid: 3a5385f9e49b5c246b48ed4cd6ec9521, type: 2}
-    value: {fileID: 103365243}
+    value: {fileID: 0}
   - key: {fileID: -2510416804874903472, guid: 3a5385f9e49b5c246b48ed4cd6ec9521, type: 2}
     value: {fileID: 1456480808}
   m_ExposedReferences:
@@ -2159,7 +2180,7 @@ PlayableDirector:
   - key: {fileID: -3297516992599030133, guid: 3fa680040e8b60440ad20239f8b1f866, type: 2}
     value: {fileID: 665855135}
   - key: {fileID: 3550634408262797114, guid: 3fa680040e8b60440ad20239f8b1f866, type: 2}
-    value: {fileID: 103365243}
+    value: {fileID: 103365240}
   - key: {fileID: 8570432701164115759, guid: 3fa680040e8b60440ad20239f8b1f866, type: 2}
     value: {fileID: 1017749044}
   m_ExposedReferences:
@@ -2520,7 +2541,7 @@ PlayableDirector:
   - key: {fileID: 1817551196450915082, guid: 37abeaaa4a835b04687e85601bc20254, type: 2}
     value: {fileID: 665855135}
   - key: {fileID: -4892690793620307784, guid: 37abeaaa4a835b04687e85601bc20254, type: 2}
-    value: {fileID: 103365243}
+    value: {fileID: 103365240}
   - key: {fileID: 3340822865263956846, guid: 37abeaaa4a835b04687e85601bc20254, type: 2}
     value: {fileID: 665855137}
   m_ExposedReferences:
