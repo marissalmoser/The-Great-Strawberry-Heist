@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 public class tempHTP : MonoBehaviour
 {
     [SerializeField] private GameObject screen;
-    void Start()
-    {
-
-    }
 
     private void OnJump()
     {
