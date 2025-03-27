@@ -1160,7 +1160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4476717397372847227}
   - component: {fileID: 4513513697162741227}
-  - component: {fileID: 377594523838988055}
+  - component: {fileID: 7823065553234989148}
   m_Layer: 0
   m_Name: TierCamera
   m_TagString: Untagged
@@ -1223,7 +1223,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1069874904830015523}
---- !u!95 &377594523838988055
+--- !u!95 &7823065553234989148
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
