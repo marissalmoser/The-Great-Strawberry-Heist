@@ -29,6 +29,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("A multipler for slowing the player down")]
     [SerializeField] private float slowMultipler;
 
+    [Tooltip("A multipler for speeding the player up while in Star Mode")]
+    [SerializeField] private float starModeMultiplier;
+
     private float speedMultiplier;
 
     [Tooltip("How far the player jumps into the air")]
@@ -213,8 +216,16 @@ public class PlayerBehaviour : MonoBehaviour
     public void NormalSpeed()
     {
         speedMultiplier = BASE_MULTIPLER;
+        animator.SetFloat("Multiplier", speedMultiplier);
     }
-
+    /// <summary>
+    /// Sets the player's speed to STAR MODE speed!
+    /// </summary>
+    public void StarModeSpeed() 
+    {
+        speedMultiplier = starModeMultiplier;
+        animator.SetFloat("Multiplier", speedMultiplier);
+    }
     /// <summary>
     /// Plays the appropriate animation sequence based on whether the player 
     /// got swiped at the end

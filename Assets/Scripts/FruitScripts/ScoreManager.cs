@@ -171,6 +171,7 @@ public class ScoreManager : Singleton<ScoreManager>
     private IEnumerator ActivateStarMode() 
     {
         isInStarMode = true;
+        player.StarModeSpeed();
         StarModeVisualChange();
         yield return null;
         float elapsedTime = 0;
@@ -185,6 +186,7 @@ public class ScoreManager : Singleton<ScoreManager>
 
         //Reused this method because it resets the Vitality to 0 and updates UI already
         isInStarMode = false;
+        player.NormalSpeed();
         Debug.Log("☆STAR MODE FINISHED!");
         LayerSwipeVitalityChange();
     }
