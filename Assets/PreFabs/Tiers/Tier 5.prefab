@@ -6832,6 +6832,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 511241900789092313}
     m_Modifications:
+    - target: {fileID: 2056405066308306040, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056405066308306040, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.844
+      objectReference: {fileID: 0}
     - target: {fileID: 2922806102543658633, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_Name
       value: trapdoor
@@ -6900,6 +6908,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.85
       objectReference: {fileID: 0}
+    - target: {fileID: 5114574748909500863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5ef63dbcdf189fb41aced955c8f7016d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

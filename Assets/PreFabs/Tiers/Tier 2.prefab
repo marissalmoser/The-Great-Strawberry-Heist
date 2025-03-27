@@ -4629,6 +4629,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2879338470175760604}
     m_Modifications:
+    - target: {fileID: 2056405066308306040, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.799
+      objectReference: {fileID: 0}
     - target: {fileID: 2922806102543658633, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_Name
       value: trapdoor
@@ -4688,10 +4692,6 @@ PrefabInstance:
     - target: {fileID: 3210080718088774863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3884086669759611792, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4069872960762496965, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_Size.x
