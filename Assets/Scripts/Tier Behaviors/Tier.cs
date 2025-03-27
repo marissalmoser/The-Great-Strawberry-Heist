@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tier : MonoBehaviour
@@ -58,7 +59,8 @@ public class Tier : MonoBehaviour
     public void Swipe()
     {
         StartCoroutine(MoveTier());
-        if(Trapdoor == null)
+        DisableCam();
+        if (Trapdoor == null)
         {
             return;
         }
@@ -68,12 +70,26 @@ public class Tier : MonoBehaviour
         }
 
         BackgroundBehavior.MoveBackgroundAction?.Invoke();
+
     }
 
 
     public IEnumerator SwipeCanceled(float timeRemaining)
-    { 
+    {
+        if(timeRemaining <= 0.8f)
+        {
+            //Does not call the cat anim if the player makes it to the next tier with
+            //  less than 0.8 seconds left. This would involve speeding up the anim 
+            //  which would look odd, and not worth it in my opinion.
+            yield return new WaitForSeconds(timeRemaining);
+            Swipe();
+            yield break;
+        }
+
+        timeRemaining -= 0.8f;
         yield return new WaitForSeconds(timeRemaining);
+        TimerSystem.CatSwipeAnim?.Invoke();
+        yield return new WaitForSeconds(0.8f);
         Swipe();
     }
 
@@ -82,28 +98,37 @@ public class Tier : MonoBehaviour
     /// </summary>
     private IEnumerator MoveTier()
     {
-        DisableCam();
-        float timeElapsed = 0f;
-        float totalDuration = _swipeEaseCurve.keys[_swipeEaseCurve.length - 1].time;
+        //DisableCam();
+        //float timeElapsed = 0f;
+        //float totalDuration = _swipeEaseCurve.keys[_swipeEaseCurve.length - 1].time;
 
-        float startPositionX = transform.position.x;
+        //float startPositionX = transform.position.x;
 
-        //randomply decides a direction
-        float targetPositionX = Random.Range(0,2) >= 1 ? startPositionX - 40f : startPositionX + 40f;
+        ////randomply decides a direction
+        //float targetPositionX = Random.Range(0,2) >= 1 ? startPositionX - 40f : startPositionX + 40f;
 
-        while (timeElapsed < totalDuration)
+        //while (timeElapsed < totalDuration)
+        //{
+        //    float t = _swipeEaseCurve.Evaluate(timeElapsed);
+
+        //    startPositionX = Mathf.Lerp(startPositionX, targetPositionX, t);
+
+        //    transform.position = new Vector3(startPositionX, transform.position.y, 0);
+
+        //    timeElapsed += Time.deltaTime;
+
+        //    yield return null;
+        //}
+        //transform.position = new Vector3(startPositionX, transform.position.y, 0);
+
+
+        //play cake swipe sounds
+        if (TierManager.Instance.IsInBottomTier())
         {
-            float t = _swipeEaseCurve.Evaluate(timeElapsed);
-
-            startPositionX = Mathf.Lerp(startPositionX, targetPositionX, t);
-
-            transform.position = new Vector3(startPositionX, transform.position.y, 0);
-
-            timeElapsed += Time.deltaTime;
-
-            yield return null;
+            SfxManager.Instance.PlaySFX("CakeSwiped");
         }
-        transform.position = new Vector3(startPositionX, transform.position.y, 0);
+        yield return new WaitForSeconds(1);
+        SfxManager.Instance.PlaySFX("CakeLand");
     }
 
     /// <summary>

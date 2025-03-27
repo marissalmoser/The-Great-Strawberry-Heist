@@ -495,8 +495,8 @@ GameObject:
   - component: {fileID: 2456352446055946264}
   - component: {fileID: 9031012562171733991}
   - component: {fileID: 2696359696749210422}
-  m_Layer: 6
-  m_Name: Square (3)
+  m_Layer: 9
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,8 +709,8 @@ GameObject:
   - component: {fileID: 6541545393051217934}
   - component: {fileID: 3881485910137893733}
   - component: {fileID: 5856924682929687185}
-  m_Layer: 6
-  m_Name: Square (2)
+  m_Layer: 9
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3826,6 +3826,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9193269327771333583}
     m_Modifications:
+    - target: {fileID: 2056405066308306040, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056405066308306040, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.801
+      objectReference: {fileID: 0}
     - target: {fileID: 2922806102543658633, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_Name
       value: trapdoor
@@ -3897,6 +3905,10 @@ PrefabInstance:
     - target: {fileID: 4069872960762496965, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
       propertyPath: m_Offset.y
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114574748909500863, guid: 9d9153e1cbeb54b48a7ef6de482fb19c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

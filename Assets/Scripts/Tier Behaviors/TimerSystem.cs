@@ -52,6 +52,7 @@ public class TimerSystem : MonoBehaviour
     [Header("Timer start text")]
     [Tooltip("Game object to be enabled when timer begins.")]
     [SerializeField] private GameObject startText;
+    [SerializeField] private int timeBonusMultiplier;
 
     private float currentTime;
     private float currentMaxTime;
@@ -59,7 +60,7 @@ public class TimerSystem : MonoBehaviour
     private bool triggeredTimerSound;
     private bool triggeredTimerMidAnim;
     public static bool DoMovePlayer;
-    public static Action StartGame;
+    public static Action StartGame, CatSwipeAnim;
 
     private Coroutine currentTimer;
 
@@ -89,7 +90,10 @@ public class TimerSystem : MonoBehaviour
     /// </summary>
     private void NextTier()
     {
-        tierTimes.RemoveAt(0);
+        if (tierTimes.Count != 0)
+        {
+            tierTimes.RemoveAt(0);
+        }
         SfxManager.Instance.StopSFX("TimerClick");
         SfxManager.Instance.StopSFX("CatHiss");
         SfxManager.Instance.PlaySFX("CatSad");
@@ -99,8 +103,9 @@ public class TimerSystem : MonoBehaviour
         if (tierTimes.Count <= 0)
         {
             StopAllCoroutines();
-            print("player made it to the strawberry");
             TierManager.EndSequence?.Invoke(false);
+            int timeBonus = Mathf.CeilToInt(currentMaxTime - currentTime) * timeBonusMultiplier;
+            ScoreManager.Instance.AddScore(timeBonus, 0);
             return;
         }
 
@@ -150,6 +155,7 @@ public class TimerSystem : MonoBehaviour
         triggeredIcing = false;
         triggeredTimerSound = false;
         triggeredTimerMidAnim = false;
+
         TimerUIAnimEvents.CancelAnim?.Invoke(false);
 
         //count until swipe shaking should start
@@ -190,6 +196,7 @@ public class TimerSystem : MonoBehaviour
             currentTime += 0.1f;
             UpdateTimerUI();
         }
+        CatSwipeAnim?.Invoke();
 
         //tier is swiped
         currentTime = 0;

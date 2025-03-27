@@ -225,7 +225,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         if(!wasSwiped)
         {
-            print("run heree");
             StartCoroutine(RunToStrawberry());
         }
     }
@@ -238,6 +237,7 @@ public class PlayerBehaviour : MonoBehaviour
         //makes player face right and disable their input
         transform.rotation = Quaternion.Euler(0, 0, 0);
         actions.Disable();
+        Invoke("CallStrawberrySound", 0.5f);
 
         while (inEnd)
         {
@@ -245,6 +245,14 @@ public class PlayerBehaviour : MonoBehaviour
             rb2d.velocity = new Vector2(playerSpeed, 0);
             yield return null;
         }
+    }
+
+    /// <summary>
+    /// Invoked in RunToStrawberry();
+    /// </summary>
+    void CallStrawberrySound()
+    {
+        SfxManager.Instance.PlaySFX("StrawberryPickup");
     }
 
     /// <summary>
@@ -284,11 +292,17 @@ public class PlayerBehaviour : MonoBehaviour
 
         rb2d.velocity = Vector2.zero;
 
-        //play swipe animation
-        animator.SetTrigger("Swipe");
-
         //Stop player movement and collisions
         canMove = false;
+
+        //play swipe animation
+        //TODO: Hamster Sound Here
+        animator.SetTrigger("Swipe");
+
+        //wait for anim look around
+        yield return new WaitForSeconds(1f);
+        SfxManager.Instance.PlaySFX("CatSwipe");
+
         hitbox.enabled = false;
         rb2d.isKinematic = true;
 
@@ -304,7 +318,7 @@ public class PlayerBehaviour : MonoBehaviour
                 isSpinning = true;
                 StartCoroutine(RotateForSeconds(playerMoveDuration - t, 400));
             }
-            t += Time.deltaTime / playerMoveDuration; 
+            t += Time.deltaTime / (playerMoveDuration - 1); 
             transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return new WaitForFixedUpdate();         
         }
@@ -321,8 +335,6 @@ public class PlayerBehaviour : MonoBehaviour
             StartCoroutine(DizzySwipeAnim());
             yield break;
         }
-
-        animator.SetTrigger("EndSwipe");
     }
 
     private IEnumerator DizzySwipeAnim()
@@ -354,6 +366,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         float elapsedTime = 0f;
         animator.SetTrigger("DizzySwipe");
+
+        //TODO: in this loop also move the player scale from 5 to 8 and back
 
         // Keep rotating the object while elapsed time is less than the duration
         while (elapsedTime < duration)
@@ -405,6 +419,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (invincibilitySecondsRemaining <= 0)
         {
             // Knocks hamster back in opposite of the direction it's facing
+            if(canMove)
+            {
+                animator.SetTrigger("Splat");
+            }
             KnockBack(!facingLeft);
         }
         StartCoroutine(FallingIcingCooldown());
@@ -422,7 +440,12 @@ public class PlayerBehaviour : MonoBehaviour
         if (invincibilitySecondsRemaining <= 0)
         {
             // Knocks hamster back in the direction the orange is moving
+            if (canMove)
+            {
+                animator.SetTrigger("Stun");
+            }
             KnockBack(direction);
+            SfxManager.Instance.PlaySFX("HitByOrange");
         }
     }
 
@@ -455,19 +478,44 @@ public class PlayerBehaviour : MonoBehaviour
             StartCoroutine(Dizzy());
         }
 
-        ////Plays the strawberry collection anim
-        //if(collision.gameObject.name.Contains("Strawberry"))
-        //{
-        //    rb2d.velocity = Vector2.zero;
-        //    collision.gameObject.SetActive(false);
-        //    animator.SetBool("Collect", true);
-        //}
+        //Wall bump functionality
+        if (collision.gameObject.name.Contains("Wall") && CanJump())
+        {
+            StartCoroutine(WallBump());
+        }
+    }
+
+    /// <summary>
+    /// Wall bump functionality
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator WallBump()
+    {
+        //TODO: play animation?
+        SfxManager.Instance.PlaySFX("HamsterWallBump");
+        canMove = false;
+
+        rb2d.velocity = new Vector2(facingLeft ? 8 : -8, 10);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(facingLeft ? 7 : -7, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(facingLeft ? 5 : -5, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(facingLeft ? 3 : -3, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        canMove = true;
+        rb2d.velocity = new Vector2(facingLeft ? 1.5f : -1.5f, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(facingLeft ? .8f : -.8f, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
+        rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+        yield return new WaitForSeconds(0.1f);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Plays the strawberry collection anim
-        if (collision.gameObject.name.Contains("Strawberry") && //isSpinning &&
+        if (collision.gameObject.name.Contains("Strawberry") &&
             (transform.position.x >= collision.transform.position.x))
         {
             inEnd = false;
@@ -530,7 +578,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public IEnumerator Dizzy()
     {
-        sr.color = new Color(1, 0, 1);
         float t = 0;
         while (t < _lengthOfDizzy)
         {
@@ -540,7 +587,6 @@ public class PlayerBehaviour : MonoBehaviour
         }
         dizzy = false;
         canMove = true;
-        sr.color = Color.white;
     }
 
     /// <summary>

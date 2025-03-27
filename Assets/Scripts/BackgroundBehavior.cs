@@ -8,37 +8,48 @@
 *****************************************************************************/
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class BackgroundBehavior : MonoBehaviour
 {
     public static Action MoveBackgroundAction;
     private Vector3 defaultPos;
 
+    [SerializeField] GameObject background;
     [Tooltip("How long the tier should float for before falling")]
     [SerializeField] private float coyoteTime;
     [Tooltip("How long the tier should take to fall")]
     [SerializeField] private float fallTime;
 
+    [SerializeField] List<PlayableDirector> tierSwipeAnims = new();
+
 void OnEnable()
     {
-        MoveBackgroundAction += CallMoveBackgroundCoroutine;
-        defaultPos = transform.position;
+        MoveBackgroundAction += CallTierTransition;
+        defaultPos = background.transform.position;
     }
 
     /// <summary>
     /// Called by the MoveBackground Action to start the coroutine that mves the 
     /// baclground.
     /// </summary>
-    private void CallMoveBackgroundCoroutine()
+    private void CallTierTransition()
     {
         defaultPos += new Vector3(0, 20, 0);
         StartCoroutine(MoveBackground());
+
+        if (tierSwipeAnims.Count != 0)
+        {
+            tierSwipeAnims[0].Play();
+            tierSwipeAnims.RemoveAt(0);
+        }
     }
 
     void OnDisable()
     {
-        MoveBackgroundAction -= CallMoveBackgroundCoroutine;
+        MoveBackgroundAction -= CallTierTransition;
     }
 
     /// <summary>
@@ -50,15 +61,15 @@ void OnEnable()
     {
         yield return new WaitForSeconds(coyoteTime);
 
-        Vector3 startPos = transform.position;
+        Vector3 startPos = background.transform.position;
         Vector3 endPos = defaultPos;
         float t = 0;
         while (t <= 1.0f)
         {
             t += Time.deltaTime / fallTime;
-            transform.position = Vector3.Lerp(startPos, endPos, t);
+            background.transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return new WaitForFixedUpdate();
         }
-        transform.position = endPos;
+        background.transform.position = endPos;
     }
 }
