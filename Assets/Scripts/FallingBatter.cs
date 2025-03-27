@@ -63,8 +63,11 @@ public class FallingBatter : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
         {
-            pb.GotHitByIcing();
-            GetComponent<Collider2D>().enabled = false;
+            if (!ScoreManager.Instance.IsInStarMode) 
+            {
+                pb.GotHitByIcing();
+                GetComponent<Collider2D>().enabled = false;
+            }
             Instantiate(explodingParticlePrefab, explodingParticlePos.transform.position, Quaternion.identity);
             SfxManager.Instance.StopSFX("IcingFalling");
             SfxManager.Instance.PlaySFX("IcingLand");

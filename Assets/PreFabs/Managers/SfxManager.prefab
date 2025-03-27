@@ -221,6 +221,15 @@ MonoBehaviour:
     pitch: 1
     doLoop: 0
     source: {fileID: 0}
+  - name: Candle
+    clips:
+    - {fileID: 8300000, guid: a74a5ccc81f9b894bbdb06ebf61a07d8, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 0.471
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
   _masterMixer: {fileID: 24100000, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   T1FruitSFXs:
   - {fileID: 8300000, guid: 930a724cd70d7d74d9ede93798ee2cdd, type: 3}

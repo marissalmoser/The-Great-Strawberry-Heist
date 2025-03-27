@@ -21,7 +21,7 @@ public class SlowBatter : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerBehaviour>())
+        if (collision.GetComponent<PlayerBehaviour>() && !ScoreManager.Instance.IsInStarMode)
         {
             //Debug.Log("slow");
             collision.GetComponent<PlayerBehaviour>().SlowPlayer();
@@ -34,7 +34,7 @@ public class SlowBatter : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerBehaviour>())
+        if (collision.GetComponent<PlayerBehaviour>() && !ScoreManager.Instance.IsInStarMode)
         {
             //Debug.Log("normal");
             collision.GetComponent<PlayerBehaviour>().NormalSpeed();
