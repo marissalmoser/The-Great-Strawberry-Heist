@@ -1312,6 +1312,7 @@ MonoBehaviour:
   _invincibilityFlashingSpeed: 0
   _invincibilityFlashingMinOpacity: 0
   _knockbackVelocity: {x: 0, y: 0}
+  multiplierChangePrefab: {fileID: 0}
 --- !u!212 &1342144091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2144,6 +2145,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 369607280430015455, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9945082
+      objectReference: {fileID: 0}
+    - target: {fileID: 369607280430015455, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 72.04304
+      objectReference: {fileID: 0}
+    - target: {fileID: 369607280430015455, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0009
+      objectReference: {fileID: 0}
+    - target: {fileID: 369607280430015455, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -36.524
+      objectReference: {fileID: 0}
     - target: {fileID: 1503917196059371530, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.061869174

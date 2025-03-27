@@ -1,11 +1,12 @@
-/*****************************************************************************
+/****************************************************************************
 // File Name :         FallingBatter.cs
 // Author :            Kadin Harris
 // Creation Date :     02/14/2025
 //
-// Brief Description :Behavior for the falling batter
+// Brief Description :Behavior for the falling batter,
 *****************************************************************************/
 using UnityEngine;
+using System.Collections; 
 
 public class FallingBatter : MonoBehaviour
 {
@@ -17,23 +18,31 @@ public class FallingBatter : MonoBehaviour
 
     private void Start()
     {
+        alienBar.SetActive(false);
         GetComponent<Rigidbody2D>().gravityScale = 0;
     }
-    //private void Update()
-    //{
-    //   if(Input.GetKey(KeyCode.E))
-    //   {
-    //        TriggerFall();
-    //   }
-    //}
 
     /// <summary>
     /// Makes the icing fall
     /// </summary>
     public void TriggerFall()
     {
-        GetComponent<Rigidbody2D>().gravityScale = 1;
-        alienBar.SetActive(true);
+        StartCoroutine(FlashAlienBar());
+    }
+
+    private IEnumerator FlashAlienBar()
+    {
+        Renderer barRenderer = alienBar.GetComponent<Renderer>();
+        if (barRenderer == null) yield break;
+
+        for (int i = 0; i < 6; i++) 
+        {
+            alienBar.SetActive(!alienBar.activeSelf);
+            yield return new WaitForSeconds(0.3f); 
+        }
+
+        alienBar.SetActive(false); 
+        GetComponent<Rigidbody2D>().gravityScale = 1; 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
