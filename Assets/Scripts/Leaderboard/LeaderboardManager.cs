@@ -48,12 +48,19 @@ public class LeaderboardManager : MonoBehaviour
         // await SignInAnonymously();
         await AddPlayer(playerName);
 
+        if(ScoreManager.Instance.GetScore() > 0)
+        {
+            score = ScoreManager.Instance.GetScore();
+        }
+
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardID, score);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
 
         AuthenticationService.Instance.SignOut(true);
 
         playerName = "";
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     async Task AddPlayer(string name)
