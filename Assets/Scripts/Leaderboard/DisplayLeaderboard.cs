@@ -59,6 +59,11 @@ public class DisplayLeaderboard : MonoBehaviour
 
                 //Debug.Log(int.Parse(score));
             }
+            else
+            {
+                names[i].text = "";
+                scores[i].text = "";
+            }
         }
     }
 }
