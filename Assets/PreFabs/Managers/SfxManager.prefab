@@ -230,6 +230,15 @@ MonoBehaviour:
     pitch: 1
     doLoop: 0
     source: {fileID: 0}
+  - name: DisappearingPlatform
+    clips:
+    - {fileID: 8300000, guid: dea2bc6396feffe46ac97ed05c191f86, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
   _masterMixer: {fileID: 24100000, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   T1FruitSFXs:
   - {fileID: 8300000, guid: 930a724cd70d7d74d9ede93798ee2cdd, type: 3}

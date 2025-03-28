@@ -56,6 +56,7 @@ public class DisapearingPlatforms : MonoBehaviour
     /// </summary>
     IEnumerator DisappearAndReappear()
     {
+        SfxManager.Instance.PlaySFX("DisappearingPlatform");
         float t = 0;
         float direction = 1;
         int shakeCount = 1;
@@ -79,6 +80,7 @@ public class DisapearingPlatforms : MonoBehaviour
         platformCollider.enabled = false;
 
         yield return new WaitForSeconds(reappearTime);
+        SfxManager.Instance.StopSFX("DisappearingPlatform");
         spriteRenderer.enabled = true;
         if (_shadow != null) _shadow.enabled = true;
         platformCollider.enabled = true;
