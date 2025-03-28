@@ -48,9 +48,9 @@ public class LeaderboardManager : MonoBehaviour
         // await SignInAnonymously();
         await AddPlayer(playerName);
 
-        if(ScoreManager.Instance.GetScore() > 0)
+        if(ScoreManager.highScore > 0)
         {
-            score = ScoreManager.Instance.GetScore();
+            score = ScoreManager.highScore;
         }
 
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardID, score);

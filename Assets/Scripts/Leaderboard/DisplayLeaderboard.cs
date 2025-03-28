@@ -49,10 +49,10 @@ public class DisplayLeaderboard : MonoBehaviour
 
                 int scoreStart = s.IndexOf("score") + 7;
                 // scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
-                string test = s.Substring(scoreStart, 4);
+                string test = s.Substring(scoreStart, 6);
                 if(test.Contains("."))
                 {
-                    test = test.Substring(0, 3);
+                    test = test.Substring(0, test.IndexOf("."));
                 }
                 scores[i].text = test;
                 //string score = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
