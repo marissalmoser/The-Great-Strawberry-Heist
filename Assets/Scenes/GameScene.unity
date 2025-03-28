@@ -714,6 +714,10 @@ PrefabInstance:
       propertyPath: ground.m_Bits
       value: 31936
       objectReference: {fileID: 0}
+    - target: {fileID: 5646211891768503454, guid: 198cba249da66ae418720c5cd6fa5b56, type: 3}
+      propertyPath: starModeMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8740119550933247783, guid: 198cba249da66ae418720c5cd6fa5b56, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.1875
@@ -1933,7 +1937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: starModeDuration
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: vitalityDecreasePoints
