@@ -341,6 +341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6529645051514947130, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3847020240388226975, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
@@ -1410,9 +1414,11 @@ MonoBehaviour:
     m_Bits: 256
   playerSpeed: 8
   slowMultipler: 0.5
+  starModeMultiplier: 0
   jumpHeight: 24
   fallingIcingSlowTime: 0
   rb2d: {fileID: 1342144088}
+  canMove: 0
   _invincibilityFramesInSeconds: 0
   _invincibilityFlashingSpeed: 0
   _lengthOfDizzy: 0
