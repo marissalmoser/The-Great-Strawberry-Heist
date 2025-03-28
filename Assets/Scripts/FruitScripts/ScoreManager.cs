@@ -13,6 +13,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
@@ -30,6 +31,8 @@ public class ScoreManager : Singleton<ScoreManager>
     //total vitality amount
     private float Vitalitymeter = 0;
     private bool isInStarMode;
+
+    public static int highScore;
 
     [SerializeField]
     [Tooltip("Maximum Vitality Meter")]
@@ -59,6 +62,7 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         ScoreText.text = "Score: " + Totalscore.ToString();
+        highScore = 0;
     }
    
     /// <summary>
@@ -103,6 +107,8 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         recentlyAddedScore = Mathf.RoundToInt(scoreAmt * multiplier);
         Totalscore += recentlyAddedScore;
+        highScore = Totalscore;
+
         ScoreText.text = "Score: " + Totalscore.ToString();
 
         if (!isInStarMode) 
