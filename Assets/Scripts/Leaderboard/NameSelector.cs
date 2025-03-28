@@ -44,16 +44,24 @@ public class NameSelector : MonoBehaviour
 
     private void Select_started(InputAction.CallbackContext obj)
     {
-        LeaderboardManager.Instance.UpdateName(letters[charIndex]);
-        ++nameIndex;
-        if(nameIndex >= 3)
+        //LeaderboardManager.Instance.UpdateName(letters[charIndex]);
+        //++nameIndex;
+        if(nameIndex < 3)
         {
-            nameIndex = 0;
-            int i = Random.Range(1, 11);
-            LeaderboardManager.Instance.AddScore(i * 100);
-            ClearName();
+            LeaderboardManager.Instance.UpdateName(letters[charIndex]);
+            ++nameIndex;
+            //nameIndex = 0;
+            //int i = Random.Range(1, 11);
+            //LeaderboardManager.Instance.AddScore(i * 100);
+            //ClearName();
+            DisplayName();
+            if(nameIndex == 3)
+            {
+                int i = Random.Range(1, 11);
+                LeaderboardManager.Instance.AddScore(i * 100);
+            }
         }
-        DisplayName();
+        //DisplayName();
     }
 
     private void Navigate_performed(InputAction.CallbackContext obj)
@@ -103,6 +111,16 @@ public class NameSelector : MonoBehaviour
 
     private void DisplayName()
     {
-        playerLetters[nameIndex].text = letters[charIndex].ToString();
+        if (nameIndex < 3)
+        {
+            playerLetters[nameIndex].text = letters[charIndex].ToString();
+        }
+    }
+
+    private void OnDisable()
+    {
+        actionMap.Disable();
+        navigate.performed -= Navigate_performed;
+        select.started -= Select_started;
     }
 }

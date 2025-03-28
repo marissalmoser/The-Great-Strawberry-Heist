@@ -31,6 +31,8 @@ public class ScoreManager : Singleton<ScoreManager>
     //total vitality amount
     private int Vitalitymeter = 0;
 
+    public static int highScore;
+
     [SerializeField]
     [Tooltip("Maximum Vitality Meter")]
     private int maxVitalityMeter = 100;
@@ -55,15 +57,7 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         ScoreText.text = "Score: " + Totalscore.ToString();
-
-        DontDestroyOnLoad(gameObject);
-
-        Scene currentScene = SceneManager.GetActiveScene();
-        //Destorys the game object when not in a scene that needs it
-        if(currentScene.name != "ScoreScene" || currentScene.name != "GameScene")
-        {
-            Destroy(gameObject);
-        }
+        highScore = 0;
     }
    
     /// <summary>
@@ -108,6 +102,7 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         recentlyAddedScore = Mathf.RoundToInt(scoreAmt * multiplier);
         Totalscore += recentlyAddedScore;
+        highScore = Totalscore;
         Vitalitymeter = Mathf.Min(vitalityAmt + Vitalitymeter, maxVitalityMeter);
 
         ScoreText.text = "Score: " + Totalscore.ToString();
@@ -155,14 +150,5 @@ public class ScoreManager : Singleton<ScoreManager>
         Vitalitymeter = 0;
         multiplierHit = true;
         ChangeVitality();
-    }
-
-    /// <summary>
-    /// Used to get the score for adding to the leaderboard
-    /// </summary>
-    /// <returns></returns>
-    public int GetScore()
-    {
-        return Totalscore;
     }
 }
