@@ -1051,6 +1051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tier 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6769046971064790186, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6911144639704588602, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0000005066395
@@ -1114,11 +1118,6 @@ GameObject:
 --- !u!95 &1017749042 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7582394945578899117, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
-  m_PrefabInstance: {fileID: 1017749038}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1017749044 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7776168701146253857, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
   m_PrefabInstance: {fileID: 1017749038}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1122453810 stripped
@@ -2039,7 +2038,7 @@ PlayableDirector:
   - key: {fileID: 3550634408262797114, guid: 3fa680040e8b60440ad20239f8b1f866, type: 2}
     value: {fileID: 103365240}
   - key: {fileID: 8570432701164115759, guid: 3fa680040e8b60440ad20239f8b1f866, type: 2}
-    value: {fileID: 1017749044}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &1847488612
