@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class Trapdoor : MonoBehaviour
 {
+    [SerializeField] private int scoreToAdd;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,6 +22,7 @@ public class Trapdoor : MonoBehaviour
             {
                 TimerSystem.DoMovePlayer = false;
                 TierManager.NextTierAction?.Invoke();
+                ScoreManager.Instance.AddScore(scoreToAdd, 0);
                 Destroy(this);
             }
         }     

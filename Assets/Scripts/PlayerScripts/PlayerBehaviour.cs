@@ -237,7 +237,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         if(!wasSwiped)
         {
-            print("run heree");
             StartCoroutine(RunToStrawberry());
         }
     }
@@ -274,7 +273,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void ReturnToMenu()
     {
         //TODO: go through high score secquence first
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
     }
 
     /// <summary>
@@ -348,8 +347,6 @@ public class PlayerBehaviour : MonoBehaviour
             StartCoroutine(DizzySwipeAnim());
             yield break;
         }
-
-        animator.SetTrigger("EndSwipe");
     }
 
     private IEnumerator DizzySwipeAnim()
