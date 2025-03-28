@@ -13,6 +13,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
@@ -59,6 +60,15 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         ScoreText.text = "Score: " + Totalscore.ToString();
+
+        DontDestroyOnLoad(gameObject);
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        //Destorys the game object when not in a scene that needs it
+        if(currentScene.name != "ScoreScene" || currentScene.name != "GameScene")
+        {
+            Destroy(gameObject);
+        }
     }
    
     /// <summary>
@@ -204,5 +214,14 @@ public class ScoreManager : Singleton<ScoreManager>
     public void DebugStarMode() 
     {
         StartCoroutine(ActivateStarMode());
+    }
+
+    /// <summary>
+    /// Used to get the score for adding to the leaderboard
+    /// </summary>
+    /// <returns></returns>
+    public int GetScore()
+    {
+        return Totalscore;
     }
 }

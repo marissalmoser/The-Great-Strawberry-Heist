@@ -52,6 +52,7 @@ public class TimerSystem : MonoBehaviour
     [Header("Timer start text")]
     [Tooltip("Game object to be enabled when timer begins.")]
     [SerializeField] private GameObject startText;
+    [SerializeField] private int timeBonusMultiplier;
 
     private float currentTime;
     private float currentMaxTime;
@@ -102,8 +103,9 @@ public class TimerSystem : MonoBehaviour
         if (tierTimes.Count <= 0)
         {
             StopAllCoroutines();
-            print("player made it to the strawberry");
             TierManager.EndSequence?.Invoke(false);
+            int timeBonus = Mathf.CeilToInt(currentMaxTime - currentTime) * timeBonusMultiplier;
+            ScoreManager.Instance.AddScore(timeBonus, 0);
             return;
         }
 
