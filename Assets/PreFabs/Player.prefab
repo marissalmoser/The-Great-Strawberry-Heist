@@ -212,9 +212,11 @@ MonoBehaviour:
     m_Bits: 256
   playerSpeed: 10
   slowMultipler: 0.5
+  starModeMultiplier: 1.75
   jumpHeight: 24
   fallingIcingSlowTime: 0
   rb2d: {fileID: 3168102203269571171}
+  canMove: 0
   _invincibilityFramesInSeconds: 1.25
   _invincibilityFlashingSpeed: 2000
   _lengthOfDizzy: 1

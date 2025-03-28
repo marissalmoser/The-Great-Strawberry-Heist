@@ -18,7 +18,15 @@ public class RollingFruit : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerBehaviour pb))
         {
-            pb.GotHitByOrange(_movesLeft);
+            if (!ScoreManager.Instance.IsInStarMode)
+            {
+                pb.GotHitByOrange(_movesLeft);
+            }
+            else 
+            {
+                DestroyFruit();
+            }
+            
         }
     }
 

@@ -1,4 +1,4 @@
-/*****************************************************************************
+﻿/*****************************************************************************
 // File Name :         FruitCollect.cs
 // Author :            Kadin Harris
 // Contributors:       Dalsten Yan
@@ -29,7 +29,8 @@ public class ScoreManager : Singleton<ScoreManager>
     private int Totalscore;
 
     //total vitality amount
-    private int Vitalitymeter = 0;
+    private float Vitalitymeter = 0;
+    private bool isInStarMode;
 
     public static int highScore;
 
@@ -42,7 +43,10 @@ public class ScoreManager : Singleton<ScoreManager>
     [SerializeField]
     [Tooltip("How much vitality points decrease on player being hit")]
     private int vitalityDecreasePoints = 10;
-    
+    [SerializeField]
+    [Tooltip("How long star mode lasts and how many seconds for the vitality bar to deplete until its empty")]
+    private float starModeDuration = 5;
+
     // Multiplier that can be changed in the Inspector
     [SerializeField]
     private float multiplier = 1f;
@@ -52,6 +56,7 @@ public class ScoreManager : Singleton<ScoreManager>
     private int recentlyAddedScore;
 
     public int RecentlyAddedScore { get => recentlyAddedScore; private set => recentlyAddedScore = value; }
+    public bool IsInStarMode { get => isInStarMode; private set => isInStarMode = value; }
 
     public void Start()
     {
@@ -103,10 +108,14 @@ public class ScoreManager : Singleton<ScoreManager>
         recentlyAddedScore = Mathf.RoundToInt(scoreAmt * multiplier);
         Totalscore += recentlyAddedScore;
         highScore = Totalscore;
-        Vitalitymeter = Mathf.Min(vitalityAmt + Vitalitymeter, maxVitalityMeter);
 
         ScoreText.text = "Score: " + Totalscore.ToString();
-        ChangeVitality();
+
+        if (!isInStarMode) 
+        {
+            Vitalitymeter = Mathf.Min(vitalityAmt + Vitalitymeter, maxVitalityMeter);
+            ChangeVitality();
+        }
     }
 
 
@@ -122,11 +131,19 @@ public class ScoreManager : Singleton<ScoreManager>
         //The min function ensures that the index is constrained to the max indices of the breakpoints, so even if the max cap of vitality is raised, it only ever stops at the lastmost multiplier
         breakpointMultiplierIndex = Mathf.Min(breakpoints.Count - 1 , breakpointMultiplierIndex);
 
-        ChangeMultiplier(breakpoints[breakpointMultiplierIndex]);
+        //When the player is in star mode, don't allow additional fruit pickups to add to vitality or change the multiplier (since it needs to be stuck at 2x briefly)
 
+        ChangeMultiplier(breakpoints[breakpointMultiplierIndex]);
         //--Vitality UI change--
-        BarFillImage.fillAmount = (float)Vitalitymeter / maxVitalityMeter;
+        BarFillImage.fillAmount = Vitalitymeter / maxVitalityMeter;
         MultiplierText.text = multiplier + "x";
+
+
+        //When Vitality meter is full/has reached the max vitality amount, start star mode
+        if (Vitalitymeter >= maxVitalityMeter)
+        {
+            StartCoroutine(ActivateStarMode());
+        }
     }
 
     [ContextMenu("Player Hit")]
@@ -147,8 +164,51 @@ public class ScoreManager : Singleton<ScoreManager>
     /// </summary>
     public void LayerSwipeVitalityChange() 
     {
-        Vitalitymeter = 0;
-        multiplierHit = true;
-        ChangeVitality();
+        if (!isInStarMode) 
+        {
+            Vitalitymeter = 0;
+            ChangeVitality();
+        }
+    }
+    /// <summary>
+    /// Runs an Enumerator that procedurally decreases Vitality meter and then resets the player's vitality to zero
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ActivateStarMode() 
+    {
+        isInStarMode = true;
+        player.StarModeSpeed();
+        SfxManager.Instance.PlaySFX("Candle");
+        StarModeVisualChange();
+        yield return null;
+        float elapsedTime = 0;
+        while (elapsedTime < starModeDuration) 
+        {
+            Vitalitymeter -= Time.deltaTime * (maxVitalityMeter / starModeDuration);
+            BarFillImage.fillAmount = Vitalitymeter / maxVitalityMeter;
+            yield return null;
+            elapsedTime += Time.deltaTime;
+        }
+
+        //Reused this method because it resets the Vitality to 0 and updates UI already
+        isInStarMode = false;
+        player.NormalSpeed();
+        SfxManager.Instance.StopSFX("Candle");
+        Debug.Log("☆STAR MODE FINISHED!");
+        LayerSwipeVitalityChange();
+    }
+    /// <summary>
+    /// TODO: Activates any IMMEDIATE visual/UI changes such as the vitality bar changing sprites/color or any other visual changes
+    /// </summary>
+    private void StarModeVisualChange() 
+    {
+        //can be removed later
+        Debug.Log("★STAR MODE ACTIVATED!");
+    }
+
+    [ContextMenu("Activate Star Mode")]
+    public void DebugStarMode() 
+    {
+        StartCoroutine(ActivateStarMode());
     }
 }

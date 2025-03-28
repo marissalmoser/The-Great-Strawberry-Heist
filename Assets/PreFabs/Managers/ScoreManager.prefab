@@ -55,4 +55,5 @@ MonoBehaviour:
   maxVitalityMeter: 100
   vitalityBreakpointInterval: 30
   vitalityDecreasePoints: 10
+  starModeSeconds: 5
   multiplier: 1
