@@ -452,10 +452,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (invincibilitySecondsRemaining <= 0)
         {
             // Knocks hamster back in the direction the orange is moving
-            if (canMove)
-            {
+            //if (canMove)
+            //{
                 animator.SetTrigger("Stun");
-            }
+            //}
             KnockBack(direction);
             SfxManager.Instance.PlaySFX("HitByOrange");
         }
