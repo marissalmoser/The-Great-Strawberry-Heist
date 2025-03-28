@@ -25,18 +25,11 @@ public class FallingBatter : MonoBehaviour
 
     private void Start()
     {
+        alienBar.SetActive(false);
         GetComponent<Rigidbody2D>().gravityScale = 0;
         sr = GetComponent<SpriteRenderer>();
         sr.enabled = false;
     }
-    //private void Update()
-    //{
-    //    if (Input.GetKey(KeyCode.E))
-    //    {
-    //        TriggerFall();
-    //    }
-    //}
-
     /// <summary>
     /// Makes the icing fall
     /// </summary>
@@ -47,16 +40,28 @@ public class FallingBatter : MonoBehaviour
 
     private IEnumerator IcingFall()
     {
-        sr.enabled = true;
-        alienBar.SetActive(true);
+        {
+            alienBar.SetActive(true);
+            sr.enabled = true;
+            Renderer barRenderer = alienBar.GetComponent<Renderer>();
 
-        yield return new WaitForSeconds(icingWaitTime);
+            yield return new WaitForSeconds(icingWaitTime);
+            
+            if (barRenderer == null) yield break;
 
-        GetComponent<BoxCollider2D>().enabled = true;
-        GetComponent<Animator>().SetTrigger("Fall");
-        GetComponent<Rigidbody2D>().gravityScale = 1;
+            // Flash effect using barRenderer
+            for (int i = 0; i < 6; i++)
+            {
+                barRenderer.enabled = !barRenderer.enabled;
+                yield return new WaitForSeconds(0.3f); // Wait for 0.3 seconds
+            }
 
-        SfxManager.Instance.PlaySFX("IcingFalling");
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<Animator>().SetTrigger("Fall");
+            GetComponent<Rigidbody2D>().gravityScale = 1;
+
+            SfxManager.Instance.PlaySFX("IcingFalling");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,5 +81,6 @@ public class FallingBatter : MonoBehaviour
             Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
             Destroy(gameObject);
         }
-    } 
+    }
+
 }
