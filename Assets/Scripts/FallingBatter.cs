@@ -60,6 +60,7 @@ public class FallingBatter : MonoBehaviour
             GetComponent<Animator>().SetTrigger("Fall");
             GetComponent<Rigidbody2D>().gravityScale = 1;
 
+            //TODO: if in right tier
             SfxManager.Instance.PlaySFX("IcingFalling");
         }
     }
@@ -81,7 +82,7 @@ public class FallingBatter : MonoBehaviour
 
         if ((layerToHit.value & (1 << collision.gameObject.layer)) > 0)
         {
-            Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(objectToSpawn, spawnPoint.position + new Vector3(0, 0.5f, 0), spawnPoint.rotation);
             Destroy(gameObject);
         }
     }
