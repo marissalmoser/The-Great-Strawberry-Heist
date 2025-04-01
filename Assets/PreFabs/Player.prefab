@@ -213,6 +213,7 @@ MonoBehaviour:
   playerSpeed: 10
   slowMultipler: 0.5
   starModeMultiplier: 1.75
+  afterImagesSpawnInterval: 0.25
   jumpHeight: 24
   fallingIcingSlowTime: 0
   rb2d: {fileID: 3168102203269571171}
@@ -223,6 +224,7 @@ MonoBehaviour:
   _invincibilityFlashingMinOpacity: 0
   _knockbackVelocity: {x: 6, y: 12}
   multiplierChangePrefab: {fileID: 8849869566059387272, guid: 5a268c78373cee04a81e2e2e29cc5693, type: 3}
+  afterImagePrefab: {fileID: 793357471159666964, guid: 8417cceccd035834aade5201f01bc1eb, type: 3}
 --- !u!95 &5175299643839234148
 Animator:
   serializedVersion: 5

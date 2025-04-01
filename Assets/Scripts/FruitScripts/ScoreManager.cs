@@ -176,11 +176,13 @@ public class ScoreManager : Singleton<ScoreManager>
     /// <returns></returns>
     private IEnumerator ActivateStarMode() 
     {
+        //Activation Logic
         isInStarMode = true;
-        player.StarModeSpeed();
-        SfxManager.Instance.PlaySFX("Candle");
+        player.StartStarMode();
         StarModeVisualChange();
         yield return null;
+
+        //Timer Logic
         float elapsedTime = 0;
         while (elapsedTime < starModeDuration) 
         {
@@ -190,10 +192,10 @@ public class ScoreManager : Singleton<ScoreManager>
             elapsedTime += Time.deltaTime;
         }
 
+        //De-Activation Logic
         //Reused this method because it resets the Vitality to 0 and updates UI already
         isInStarMode = false;
-        player.NormalSpeed();
-        SfxManager.Instance.StopSFX("Candle");
+        player.StopStarMode();
         Debug.Log("☆STAR MODE FINISHED!");
         LayerSwipeVitalityChange();
     }
