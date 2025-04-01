@@ -234,7 +234,7 @@ public class TimerSystem : MonoBehaviour
         while (fallingIcing[0].Count > 0 && fallingIcing[0][0].gameObject != null)
         {
             //trigger next in order splotch, then delete
-            fallingIcing[0][0].GetComponent<FallingBatter>().TriggerFall();
+            fallingIcing[0][0].GetComponent<FallingBatter>().TriggerFall(fallingIcing.Count);
             fallingIcing[0].RemoveAt(0);
 
             yield return new WaitForSeconds(delayFallingIcingTime);

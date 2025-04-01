@@ -62,6 +62,11 @@ public class TierManager : Singleton<TierManager>
         return nextSpawnPt;
     }
 
+    public int GetTierCount()
+    {
+        return tiers.Count;
+    }
+
     /// <summary>
     /// Called when the cat swipes the bottom cake tier. Duration is the pause while
     /// the camera shakes before the tier is swiped.
