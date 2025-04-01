@@ -12,6 +12,7 @@ using TMPro;
 
 public class NameSelector : MonoBehaviour
 {
+    [SerializeField] private TMP_Text scoreText;
     InputActionMap actionMap;
     InputAction navigate, select;
 
@@ -36,6 +37,8 @@ public class NameSelector : MonoBehaviour
         select.started += Select_started;
 
         nameIndex = 0; charIndex = 0;
+
+        scoreText.text = ScoreManager.highScore.ToString();
 
         ClearName();
 
