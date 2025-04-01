@@ -82,9 +82,13 @@ public class FallingBatter : MonoBehaviour
 
         if ((layerToHit.value & (1 << collision.gameObject.layer)) > 0)
         {
-            Instantiate(objectToSpawn, spawnPoint.position + new Vector3(0, 0.5f, 0), spawnPoint.rotation);
+            Instantiate(objectToSpawn, spawnPoint.position + new Vector3(0, 0.3f, 0), spawnPoint.rotation);
             Destroy(gameObject);
         }
     }
 
+    public void MoveBar()
+    {
+        alienBar.transform.localPosition = alienBar.transform.localPosition + new Vector3(0, -8, 0);
+    }
 }
