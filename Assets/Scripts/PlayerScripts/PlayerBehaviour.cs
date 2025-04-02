@@ -608,13 +608,14 @@ public class PlayerBehaviour : MonoBehaviour
         invincibilitySecondsRemaining = _invincibilityFramesInSeconds;
         yield return new WaitUntil(() => !inKnockback && !dizzy);
 
-        bool opacityGoingDown = true;
+        //bool opacityGoingDown = true;
+        animator.SetBool("iFrames", true);
         while (invincibilitySecondsRemaining > 0)
         {
             yield return null;
             invincibilitySecondsRemaining -= Time.deltaTime;
 
-            if (opacityGoingDown)
+            /*if (opacityGoingDown)
             {
                 sr.color = sr.color - new Color(0, 0, 0, _invincibilityFlashingSpeed / 255f * Time.deltaTime);
                 if (sr.color.a < _invincibilityFlashingMinOpacity / 255f)
@@ -629,9 +630,10 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     opacityGoingDown = true;
                 }
-            }
+            }*/
         }
-        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+        //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+        animator.SetBool("iFrames", false);
     }
 
     public IEnumerator Dizzy()
