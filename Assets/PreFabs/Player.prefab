@@ -222,7 +222,7 @@ MonoBehaviour:
   _starModeFinishedParticles: {fileID: 3851495394674572270}
   _invincibilityFramesInSeconds: 1.25
   _invincibilityFlashingSpeed: 2000
-  _lengthOfDizzy: 1.15
+  _lengthOfDizzy: 1
   _invincibilityFlashingMinOpacity: 0
   _knockbackVelocity: {x: 6, y: 12}
   multiplierChangePrefab: {fileID: 8849869566059387272, guid: 5a268c78373cee04a81e2e2e29cc5693, type: 3}
