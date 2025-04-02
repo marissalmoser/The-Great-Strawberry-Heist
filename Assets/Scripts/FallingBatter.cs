@@ -23,6 +23,8 @@ public class FallingBatter : MonoBehaviour
     [SerializeField] float icingWaitTime;
     SpriteRenderer sr;
 
+    int level = 0;
+
     private void Start()
     {
         alienBar.SetActive(false);
@@ -33,8 +35,9 @@ public class FallingBatter : MonoBehaviour
     /// <summary>
     /// Makes the icing fall
     /// </summary>
-    public void TriggerFall()
+    public void TriggerFall(int icingLevel)
     {
+        level = icingLevel;
         StartCoroutine(IcingFall());
     }
 
@@ -60,7 +63,10 @@ public class FallingBatter : MonoBehaviour
             GetComponent<Animator>().SetTrigger("Fall");
             GetComponent<Rigidbody2D>().gravityScale = 1;
 
-            SfxManager.Instance.PlaySFX("IcingFalling");
+            if(TierManager.Instance.GetTierCount() - 1 == level)
+            {
+                SfxManager.Instance.PlaySFX("IcingFalling");
+            }
         }
     }
 
@@ -74,16 +80,29 @@ public class FallingBatter : MonoBehaviour
                 GetComponent<Collider2D>().enabled = false;
             }
             Instantiate(explodingParticlePrefab, explodingParticlePos.transform.position, Quaternion.identity);
+
             SfxManager.Instance.StopSFX("IcingFalling");
             SfxManager.Instance.PlaySFX("IcingLand");
+
             Destroy(gameObject);
         }
 
         if ((layerToHit.value & (1 << collision.gameObject.layer)) > 0)
         {
-            Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(objectToSpawn, spawnPoint.position + new Vector3(0, 0.3f, 0), spawnPoint.rotation);
+
+            if (TierManager.Instance.GetTierCount() - 1 == level)
+            {
+                SfxManager.Instance.PlaySFX("IcingLand");
+            }
+            SfxManager.Instance.StopSFX("IcingFalling");
+
             Destroy(gameObject);
         }
     }
 
+    public void MoveBar()
+    {
+        alienBar.transform.localPosition = alienBar.transform.localPosition + new Vector3(0, -8, 0);
+    }
 }

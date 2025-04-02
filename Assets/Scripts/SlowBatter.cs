@@ -10,11 +10,6 @@ using UnityEngine;
 
 public class SlowBatter : MonoBehaviour
 {
-    private void Start()
-    {
-        SfxManager.Instance.StopSFX("IcingFalling");
-        SfxManager.Instance.PlaySFX("IcingLand");
-    }
     /// <summary>
     /// Slows the player
     /// </summary>

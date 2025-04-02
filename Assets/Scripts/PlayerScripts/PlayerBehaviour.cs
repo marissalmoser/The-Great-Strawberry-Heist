@@ -32,6 +32,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("A multipler for speeding the player up while in Star Mode")]
     [SerializeField] private float starModeMultiplier;
 
+    [Tooltip("Spawn an afterimage in star mode every __ seconds")]
+    [SerializeField] private float afterImagesSpawnInterval = 0.25f;
+
     private float speedMultiplier;
 
     [Tooltip("How far the player jumps into the air")]
@@ -71,7 +74,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Tooltip("Prefabs")]
     [SerializeField] private GameObject multiplierChangePrefab;
-
+    [SerializeField] private GameObject afterImagePrefab;
+    
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
     /// </summary>
@@ -197,6 +201,25 @@ public class PlayerBehaviour : MonoBehaviour
     {
         canMove = true;
     }
+
+    /// <summary>
+    /// All logic to start star mode for the player, including making afterimages
+    /// </summary>
+    public void StartStarMode() 
+    {
+        SfxManager.Instance.PlaySFX("Candle");
+        StarModeSpeed();
+        StartCoroutine(CreateAfterImages());
+    }
+
+    /// <summary>
+    /// All logic to finish star mode for the player, including destroying all of the afterimages
+    /// </summary>
+    public void StopStarMode() 
+    {
+        SfxManager.Instance.StopSFX("Candle");
+        NormalSpeed();
+    }
     
     public bool PlayerPlatformCheck()
     {
@@ -244,6 +267,21 @@ public class PlayerBehaviour : MonoBehaviour
         if(!wasSwiped)
         {
             StartCoroutine(RunToStrawberry());
+        }
+    }
+    /// <summary>
+    /// Coroutine that runs as long as star mode is active, creating afterimages every x intervals, and adding it to an afterimage container.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator CreateAfterImages()
+    {
+        var container = GameObject.Find("AfterImagesContainer");
+        while (ScoreManager.Instance.IsInStarMode) 
+        {
+            yield return new WaitForSeconds(afterImagesSpawnInterval);
+            Instantiate(afterImagePrefab, transform.position, Quaternion.identity)
+                .GetComponent<AfterImageBehavior>()
+                .Setup(sr.sprite, sr.color).transform.parent = container.transform;
         }
     }
 
