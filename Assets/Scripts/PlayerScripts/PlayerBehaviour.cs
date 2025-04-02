@@ -56,6 +56,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private SpriteRenderer sr;
     private Animator animator;
+    [SerializeField] private ParticleSystem _starModeFinishedParticles;
 
     [Header("Collision with obstacles")]
 
@@ -240,6 +241,9 @@ public class PlayerBehaviour : MonoBehaviour
     {
         speedMultiplier = BASE_MULTIPLER;
         animator.SetFloat("Multiplier", speedMultiplier);
+        if (animator.GetBool("StarMode"))
+            _starModeFinishedParticles.Play();
+        animator.SetBool("StarMode", false);
     }
     /// <summary>
     /// Sets the player's speed to STAR MODE speed!
@@ -248,6 +252,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         speedMultiplier = starModeMultiplier;
         animator.SetFloat("Multiplier", speedMultiplier);
+        animator.SetBool("StarMode", true);
+        _starModeFinishedParticles.Play();
     }
     /// <summary>
     /// Plays the appropriate animation sequence based on whether the player 
@@ -284,6 +290,8 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public IEnumerator RunToStrawberry()
     {
+        NormalSpeed();
+
         //makes player face right and disable their input
         transform.rotation = Quaternion.Euler(0, 0, 0);
         actions.Disable();
@@ -600,13 +608,14 @@ public class PlayerBehaviour : MonoBehaviour
         invincibilitySecondsRemaining = _invincibilityFramesInSeconds;
         yield return new WaitUntil(() => !inKnockback && !dizzy);
 
-        bool opacityGoingDown = true;
+        //bool opacityGoingDown = true;
+        animator.SetBool("iFrames", true);
         while (invincibilitySecondsRemaining > 0)
         {
             yield return null;
             invincibilitySecondsRemaining -= Time.deltaTime;
 
-            if (opacityGoingDown)
+            /*if (opacityGoingDown)
             {
                 sr.color = sr.color - new Color(0, 0, 0, _invincibilityFlashingSpeed / 255f * Time.deltaTime);
                 if (sr.color.a < _invincibilityFlashingMinOpacity / 255f)
@@ -621,9 +630,10 @@ public class PlayerBehaviour : MonoBehaviour
                 {
                     opacityGoingDown = true;
                 }
-            }
+            }*/
         }
-        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+        //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+        animator.SetBool("iFrames", false);
     }
 
     public IEnumerator Dizzy()
