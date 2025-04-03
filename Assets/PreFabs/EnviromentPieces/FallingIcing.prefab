@@ -109,6 +109,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   alienBar: {fileID: 7194688387576168104}
+  exclamationMark: {fileID: 549500327407309210}
   explodingParticlePos: {fileID: 8813915957885674089}
   explodingParticlePrefab: {fileID: 2383911123513375422, guid: 076efb7c188269a44859a9349852b72f, type: 3}
   icingWaitTime: 2
@@ -406,6 +407,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f870ba3a090c6044b9c0e447887b8d3d, type: 3}
+--- !u!1 &549500327407309210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5808020896712874490, guid: f870ba3a090c6044b9c0e447887b8d3d, type: 3}
+  m_PrefabInstance: {fileID: 6285348983175841888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9200662488014218925 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2924342834701430477, guid: f870ba3a090c6044b9c0e447887b8d3d, type: 3}
