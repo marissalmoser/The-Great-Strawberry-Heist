@@ -20,6 +20,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public TMP_Text ScoreText, MultiplierText;
     [Tooltip("The Fill Image from the multiplier bar")]
     public Image BarFillImage;
+    public GameObject BarFlame;
 
     [SerializeField]
     [Tooltip("The Multiplier magnitudes")]
@@ -196,7 +197,7 @@ public class ScoreManager : Singleton<ScoreManager>
         //Reused this method because it resets the Vitality to 0 and updates UI already
         isInStarMode = false;
         player.StopStarMode();
-        Debug.Log("☆STAR MODE FINISHED!");
+        StarModeVisualChange();
         LayerSwipeVitalityChange();
     }
     /// <summary>
@@ -205,7 +206,8 @@ public class ScoreManager : Singleton<ScoreManager>
     private void StarModeVisualChange() 
     {
         //can be removed later
-        Debug.Log("★STAR MODE ACTIVATED!");
+        BarFlame.SetActive(isInStarMode);
+        Debug.Log(isInStarMode ? "★STAR MODE ACTIVATED!" : "☆STAR MODE FINISHED!");
     }
 
     [ContextMenu("Activate Star Mode")]
