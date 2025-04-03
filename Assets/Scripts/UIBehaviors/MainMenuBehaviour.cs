@@ -61,11 +61,11 @@ public class MainMenuBehaviour : MonoBehaviour
     public void PressQuit()
     {
         //Quits out of the editor instead
-        if(EditorApplication.isPlaying)
-        {
-            EditorApplication.isPlaying = false;
-        }
-        else
+        //if(EditorApplication.isPlaying)
+        //{
+        //    EditorApplication.isPlaying = false;
+        //}
+        //else
         {
             Application.Quit();
         }
