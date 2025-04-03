@@ -217,8 +217,11 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public void StopStarMode() 
     {
-        SfxManager.Instance.StopSFX("Candle");
-        NormalSpeed();
+        if (ScoreManager.Instance.IsInStarMode)
+        {
+            SfxManager.Instance.StopSFX("Candle");
+            NormalSpeed();
+        }
     }
     
     public bool PlayerPlatformCheck()
@@ -290,12 +293,13 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public IEnumerator RunToStrawberry()
     {
-        NormalSpeed();
+        ScoreManager.Instance.EndStarMode();
 
         //makes player face right and disable their input
         transform.rotation = Quaternion.Euler(0, 0, 0);
+        rb2d.velocity = Vector3.zero;
         actions.Disable();
-        Invoke("CallStrawberrySound", 0.5f);
+        //Invoke("CallStrawberrySound", 0.5f);
 
         while (inEnd)
         {
@@ -306,9 +310,9 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// Invoked in RunToStrawberry();
+    /// Called via animation event
     /// </summary>
-    void CallStrawberrySound()
+    public void CallStrawberrySound()
     {
         SfxManager.Instance.PlaySFX("StrawberryPickup");
     }
