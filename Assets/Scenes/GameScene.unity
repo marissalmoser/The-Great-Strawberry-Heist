@@ -552,6 +552,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 381309458544652885}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
+      propertyPath: startDelayTime
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: fallingIcingTier1.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1456,6 +1460,7 @@ MonoBehaviour:
   fallingIcingSlowTime: 0
   rb2d: {fileID: 1342144088}
   canMove: 0
+  _starModeFinishedParticles: {fileID: 0}
   _invincibilityFramesInSeconds: 0
   _invincibilityFlashingSpeed: 0
   _lengthOfDizzy: 0
@@ -2356,9 +2361,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1815316564045476263, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: orthographic size
+      value: 12.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5862979321915109285, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: m_Name
       value: Tier 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445408479507673502, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445408479507673502, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8663444125898321133, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
       propertyPath: Trapdoor
