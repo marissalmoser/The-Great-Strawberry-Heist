@@ -13,19 +13,22 @@ public class HowToPlayAnimation : MonoBehaviour
 {
     [SerializeField] private string _gameScene;
     [SerializeField] private Animator _animator;
-    private enum State { Undefined, TutorialFadeIn, OnTutorial, ControlsFadeIn, OnControls, ControlsFadeOut }
+    private enum State { Undefined, TutorialFadeIn, OnTutorial, Controls1FadeIn, OnControls1, ControlsFadeOut,
+    Controls2FadeIn, OnControls2 }
     private State state;
     private AsyncOperation asyncOperation;
 
     private InputActionMap actionMap;
     private InputAction jump;
 
+    private bool canClick;
+
     private void Start()
     {
         actionMap = GetComponent<PlayerInput>().currentActionMap;
         jump = actionMap.FindAction("Jump");
 
-        jump.started += OnJump;
+        jump.started += Jump_started;
         state = State.TutorialFadeIn;
 
         // Loading game scene in the background because, might as well
@@ -34,22 +37,52 @@ public class HowToPlayAnimation : MonoBehaviour
     }
 
     /// <summary>
-    /// Uses hamster input map so that all valid jump buttons work to continue
     /// Continues scene progression when you press button after animation has finished
     /// </summary>
-    private void OnJump(InputAction.CallbackContext obj)
+    /// <param name="obj"></param>
+    private void Jump_started(InputAction.CallbackContext obj)
     {
         if (state == State.OnTutorial)
         {
-            _animator.Play("ControlsFadeIn");
-            state = State.ControlsFadeIn;
+            _animator.SetBool("clicked", true);
+            state = State.Controls1FadeIn;
         }
-        if (state == State.OnControls)
+        if (state == State.OnControls1)
         {
-            _animator.Play("ControlsFadeOut");
+            _animator.SetBool("clicked", false);
+            state = State.Controls2FadeIn;
+        }
+        if (state == State.OnControls2)
+        {
+            _animator.SetBool("clicked", true);
             state = State.ControlsFadeOut;
         }
     }
+
+    /// <summary>
+    /// Uses hamster input map so that all valid jump buttons work to continue
+    /// Continues scene progression when you press button after animation has finished
+    /// </summary>
+    //private void OnJump(InputAction.CallbackContext obj)
+    //{
+    //    if (state == State.OnTutorial)
+    //    {
+    //        _animator.SetBool("clicked", true);
+    //        state = State.Controls1FadeIn;
+    //    }
+    //    if (state == State.OnControls1)
+    //    {
+    //        _animator.SetBool("clicked", true);
+    //        state = State.Controls2FadeIn;
+    //    }
+    //    if (state == State.OnControls2)
+    //    {
+    //        _animator.SetBool("clicked", true);
+    //        state = State.ControlsFadeOut;
+    //    }
+
+    //    _animator.SetBool("clicked", false);
+    //}
 
     /// <summary>
     /// Called by animation events at the end of the animations
@@ -60,9 +93,13 @@ public class HowToPlayAnimation : MonoBehaviour
         {
             state = State.OnTutorial;
         }
-        if (state == State.ControlsFadeIn)
+        if (state == State.Controls1FadeIn)
         {
-            state = State.OnControls;
+            state = State.OnControls1;
+        }
+        if(state == State.Controls2FadeIn)
+        {
+            state = State.OnControls2;
         }
         if (state == State.ControlsFadeOut)
         {
@@ -76,6 +113,6 @@ public class HowToPlayAnimation : MonoBehaviour
     private void OnDisable()
     {
         actionMap.Disable();
-        jump.started -= OnJump;
+        jump.started -= Jump_started;
     }
 }
