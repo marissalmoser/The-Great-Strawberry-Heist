@@ -194,10 +194,17 @@ public class ScoreManager : Singleton<ScoreManager>
 
         //De-Activation Logic
         //Reused this method because it resets the Vitality to 0 and updates UI already
-        isInStarMode = false;
-        player.StopStarMode();
-        Debug.Log("☆STAR MODE FINISHED!");
+        EndStarMode();
         LayerSwipeVitalityChange();
+    }
+    /// <summary>
+    /// Ends star mode
+    /// </summary>
+    public void EndStarMode()
+    {
+        player.StopStarMode();
+        isInStarMode = false;
+        Debug.Log("☆STAR MODE FINISHED!");
     }
     /// <summary>
     /// TODO: Activates any IMMEDIATE visual/UI changes such as the vitality bar changing sprites/color or any other visual changes
