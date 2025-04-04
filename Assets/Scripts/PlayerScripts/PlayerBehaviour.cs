@@ -6,6 +6,7 @@
  * ***************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -297,7 +298,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         //makes player face right and disable their input
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        rb2d.velocity = Vector3.zero;
         actions.Disable();
         //Invoke("CallStrawberrySound", 0.5f);
 
@@ -578,17 +578,24 @@ public class PlayerBehaviour : MonoBehaviour
     {
         //Plays the strawberry collection anim
         if (collision.gameObject.name.Contains("Strawberry") &&
-            (transform.position.x >= collision.transform.position.x))
+            (transform.position.x >= collision.transform.position.x) && inEnd)
         {
             inEnd = false;
             isSpinning = false;
+            canMove = false;
             rb2d.velocity = Vector2.zero;
             rb2d.isKinematic = true;
-            collision.gameObject.SetActive(false);
-            transform.position = transform.position + new Vector3(0, 1.39f, 0);
-
-            animator.SetBool("Collect", true);
+            
+            StartCoroutine(WaitForCamera(collision.gameObject));
         }
+    }
+
+    private IEnumerator WaitForCamera(GameObject strawberry)
+    {
+        yield return new WaitUntil(() => !Camera.main.GetComponent<CinemachineBrain>().IsBlending);
+        transform.position = transform.position + new Vector3(0, 1.39f, 0);
+        strawberry.SetActive(false);
+        animator.SetBool("Collect", true);
     }
 
     /// <summary>
