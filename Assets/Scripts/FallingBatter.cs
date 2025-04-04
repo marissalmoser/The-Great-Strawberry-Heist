@@ -16,6 +16,7 @@ public class FallingBatter : MonoBehaviour
     
     [SerializeField] LayerMask layerToHit;
     [SerializeField] GameObject alienBar;
+    [SerializeField] GameObject exclamationMark;
     [SerializeField] GameObject explodingParticlePos;
     [SerializeField] GameObject explodingParticlePrefab;
 
@@ -28,6 +29,7 @@ public class FallingBatter : MonoBehaviour
     private void Start()
     {
         alienBar.SetActive(false);
+        exclamationMark.SetActive(false);
         GetComponent<Rigidbody2D>().gravityScale = 0;
         sr = GetComponent<SpriteRenderer>();
         sr.enabled = false;
@@ -45,6 +47,7 @@ public class FallingBatter : MonoBehaviour
     {
         {
             alienBar.SetActive(true);
+            exclamationMark.SetActive(true);
             sr.enabled = true;
             Renderer barRenderer = alienBar.GetComponent<Renderer>();
 
@@ -60,6 +63,7 @@ public class FallingBatter : MonoBehaviour
             }
 
             GetComponent<BoxCollider2D>().enabled = true;
+            exclamationMark.SetActive(false);
             GetComponent<Animator>().SetTrigger("Fall");
             GetComponent<Rigidbody2D>().gravityScale = 1;
 
