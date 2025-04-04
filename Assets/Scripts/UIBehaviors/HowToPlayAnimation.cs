@@ -7,6 +7,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class HowToPlayAnimation : MonoBehaviour
 {
@@ -16,8 +17,15 @@ public class HowToPlayAnimation : MonoBehaviour
     private State state;
     private AsyncOperation asyncOperation;
 
+    private InputActionMap actionMap;
+    private InputAction jump;
+
     private void Start()
     {
+        actionMap = GetComponent<PlayerInput>().currentActionMap;
+        jump = actionMap.FindAction("Jump");
+
+        jump.started += OnJump;
         state = State.TutorialFadeIn;
 
         // Loading game scene in the background because, might as well
@@ -29,7 +37,7 @@ public class HowToPlayAnimation : MonoBehaviour
     /// Uses hamster input map so that all valid jump buttons work to continue
     /// Continues scene progression when you press button after animation has finished
     /// </summary>
-    private void OnJump()
+    private void OnJump(InputAction.CallbackContext obj)
     {
         if (state == State.OnTutorial)
         {
@@ -60,5 +68,14 @@ public class HowToPlayAnimation : MonoBehaviour
         {
             asyncOperation.allowSceneActivation = true;
         }
+    }
+
+    /// <summary>
+    /// Disables the action map
+    /// </summary>
+    private void OnDisable()
+    {
+        actionMap.Disable();
+        jump.started -= OnJump;
     }
 }
