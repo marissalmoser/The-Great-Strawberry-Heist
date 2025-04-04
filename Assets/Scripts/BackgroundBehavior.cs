@@ -38,7 +38,7 @@ void OnEnable()
     private void CallTierTransition()
     {
         defaultPos += new Vector3(0, 20, 0);
-        StartCoroutine(MoveBackground());
+        //StartCoroutine(MoveBackground());
 
         if (tierSwipeAnims.Count != 0)
         {

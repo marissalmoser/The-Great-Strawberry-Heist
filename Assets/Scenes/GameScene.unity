@@ -377,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9209828615658576420, guid: a7dd9e3cdbe4cf94597dd0aff6ca5c9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.645594
+      value: 4.787737
       objectReference: {fileID: 0}
     - target: {fileID: 9209828615658576420, guid: a7dd9e3cdbe4cf94597dd0aff6ca5c9c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -684,8 +684,10 @@ PlayableDirector:
     value: {fileID: 773996936}
   - key: {fileID: 690422836803691994, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
     value: {fileID: 923437506}
-  - key: {fileID: -7381698593748768121, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
-    value: {fileID: 0}
+  - key: {fileID: -8663197357396884261, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
+    value: {fileID: 1541340659}
+  - key: {fileID: 7838754445717029715, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
+    value: {fileID: 612880041}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &417234733
@@ -772,6 +774,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 198cba249da66ae418720c5cd6fa5b56, type: 3}
+--- !u!95 &612880041 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 113132367368810496, guid: a7dd9e3cdbe4cf94597dd0aff6ca5c9c, type: 3}
+  m_PrefabInstance: {fileID: 338450379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &618594931 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8871133090673251142, guid: 9bc1dd99d5edf1b4db249918558d29ff, type: 3}
@@ -1142,7 +1149,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7095913846832368456, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1017749044}
   m_SourcePrefab: {fileID: 100100000, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
 --- !u!1 &1017749039 stripped
 GameObject:
@@ -1164,6 +1174,32 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7582394945578899117, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
   m_PrefabInstance: {fileID: 1017749038}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1017749043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7095913846832368456, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+  m_PrefabInstance: {fileID: 1017749038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1017749044
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017749043}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1122453810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2865912380715930782, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
@@ -1247,6 +1283,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 1907785512603710877, guid: 0572ed4261b6902469c26407b7889a91, type: 2}
     value: {fileID: 690458432}
+  - key: {fileID: -5621289409978920584, guid: 0572ed4261b6902469c26407b7889a91, type: 2}
+    value: {fileID: 1541340659}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1201976724 stripped
@@ -1594,6 +1632,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -2510416804874903472, guid: 3a5385f9e49b5c246b48ed4cd6ec9521, type: 2}
     value: {fileID: 1456480808}
+  - key: {fileID: -4325621190014135192, guid: 3a5385f9e49b5c246b48ed4cd6ec9521, type: 2}
+    value: {fileID: 1541340659}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1396476838
@@ -1871,6 +1911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541340658}
   - component: {fileID: 1541340657}
+  - component: {fileID: 1541340659}
   m_Layer: 0
   m_Name: extendedbackground1
   m_TagString: Untagged
@@ -1938,7 +1979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541340656}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.9949875, y: 56.76568, z: 0.093922675}
   m_LocalScale: {x: 3.5324624, y: 3.5324624, z: 3.5324624}
   m_ConstrainProportionsScale: 0
@@ -1946,6 +1987,27 @@ Transform:
   - {fileID: 338450380}
   m_Father: {fileID: 351084320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1541340659
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541340656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1600104748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2095,7 +2157,9 @@ PlayableDirector:
   - key: {fileID: 3550634408262797114, guid: 3fa680040e8b60440ad20239f8b1f866, type: 2}
     value: {fileID: 103365240}
   - key: {fileID: 8570432701164115759, guid: 3fa680040e8b60440ad20239f8b1f866, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1017749044}
+  - key: {fileID: 4064839927845074808, guid: 3fa680040e8b60440ad20239f8b1f866, type: 2}
+    value: {fileID: 1541340659}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &1847488612
@@ -2449,6 +2513,8 @@ PlayableDirector:
     value: {fileID: 103365240}
   - key: {fileID: 3340822865263956846, guid: 37abeaaa4a835b04687e85601bc20254, type: 2}
     value: {fileID: 665855137}
+  - key: {fileID: -3230987404772604232, guid: 37abeaaa4a835b04687e85601bc20254, type: 2}
+    value: {fileID: 1541340659}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &381309458544652885 stripped
