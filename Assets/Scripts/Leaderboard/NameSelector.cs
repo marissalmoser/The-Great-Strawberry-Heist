@@ -25,6 +25,9 @@ public class NameSelector : MonoBehaviour
     [SerializeField] private float navDelay;
     [SerializeField] private List<TMP_Text> playerLetters = new List<TMP_Text>();
 
+    [SerializeField] Color startingColor = Color.white;
+    [SerializeField] Color newColor = Color.black;
+
     /// <summary>
     /// Enables player input
     /// </summary>
@@ -92,16 +95,14 @@ public class NameSelector : MonoBehaviour
 
         Debug.Log("i = " + i);
 
-        Color startingColor = Color.white;
-        Color newColor = Color.black;
 
         while (i == nameIndex)
         {
-            float duration = .5f;
+            float duration = 0.1f;
             float elapsedTime = 0f;
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.0f);
             elapsedTime = 0f;
-            while (elapsedTime < duration)
+            while (elapsedTime <= duration)
             {
                 playerLetters[i].faceColor = Color.Lerp(startingColor, newColor, elapsedTime / duration);
                 elapsedTime += Time.deltaTime;
@@ -111,6 +112,8 @@ public class NameSelector : MonoBehaviour
             Color c = startingColor;
             startingColor = newColor;
             newColor = c;
+            yield return new WaitForSeconds(0.2f);
+
         }
 
         playerLetters[i].faceColor = Color.white;
