@@ -7,6 +7,7 @@ using Unity.Services.Core;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TMPro;
+using System.IO;
 
 public class DisplayLeaderboard : MonoBehaviour
 {
@@ -15,11 +16,15 @@ public class DisplayLeaderboard : MonoBehaviour
     [SerializeField] List<TMP_Text> names = new List<TMP_Text>();
     [SerializeField] List<TMP_Text> scores = new List<TMP_Text>();
 
+    private string filePath;
+
     private async void Awake()
     {
         await UnityServices.InitializeAsync();
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+        filePath = Application.dataPath + "/Blacklist.txt";
 
         InvokeRepeating("GetScores", 0, 5);
     }
@@ -41,11 +46,14 @@ public class DisplayLeaderboard : MonoBehaviour
             {
                 int nameStart = s.IndexOf("playerName") + 13;
                 names[i].text = s.Substring(nameStart, 3);
-                if(names[i].text.Equals("ASS"))
+                if(NeedsCensored(s.Substring(nameStart, 3)))
                 {
                     names[i].text = "???";
                 }
-                //Debug.Log(s.Substring(nameStart, 3));
+                else
+                {
+                    names[i].text = s.Substring(nameStart, 3);
+                }
 
                 int scoreStart = s.IndexOf("score") + 7;
                 // scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
@@ -65,5 +73,24 @@ public class DisplayLeaderboard : MonoBehaviour
                 scores[i].text = "";
             }
         }
+    }
+
+    /// <summary>
+    /// Checks if the name is one of the blacklisted names
+    /// </summary>
+    /// <param name="playerName"></param>
+    /// <returns></returns>
+    private bool NeedsCensored(string playerName)
+    {
+        string[] badNames = File.ReadAllLines(filePath);
+
+        foreach(string i in badNames)
+        {
+            if(playerName.Equals(i))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
