@@ -214,29 +214,33 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns></returns>
     public bool CanJump()
     {
-        var hit = Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
-        if (hit.collider != null)
+        var hits = Physics2D.BoxCastAll(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
+        foreach (var hit in hits)
         {
-            // Bounds check: hamster is entirely above the surface it is interacting with (rather than within)
-            // Velocity check: hamster is not currently jumping (needed because there are some platforms you can
-            //                 stand inside of and should be able to jump inside of)
-            bool canJump = (hitbox.bounds.min.y > hit.collider.bounds.max.y - 0.1f) || (Mathf.Abs(rb2d.velocity.y) < 0.01f);
-
-            // If you're landing on a disappearing platform, force it to be destroyed
-            // (Because buffered or well-timed jumps can foil velocity checks in OnCollision)
-            if (canJump && hit.collider.GetComponent<DisapearingPlatforms>() != null)
+            if (hit.collider != null)
             {
-                hit.collider.GetComponent<DisapearingPlatforms>().ForceDestruction();
-            }
+                // Bounds check: hamster is entirely above the surface it is interacting with (rather than within)
+                // Velocity check: hamster is not currently jumping (needed because there are some platforms you can
+                //                 stand inside of and should be able to jump inside of)
+                bool canJump = (hitbox.bounds.min.y > hit.collider.bounds.max.y - 0.1f) && (Mathf.Abs(rb2d.velocity.y) < 0.01f);
 
-            // If you're landing on a trapdoor, force it to register the collision
-            // (Because buffered or well-timed jumps can foil velocity checks in OnCollision)
-            if (canJump && hit.collider.GetComponent<Trapdoor>() != null)
-            {
-                hit.collider.GetComponent<Trapdoor>().CollisionLogic();
-            }
+                // If you're landing on a disappearing platform, force it to be destroyed
+                // (Because buffered or well-timed jumps can foil velocity checks in OnCollision)
+                if (canJump && hit.collider.GetComponent<DisapearingPlatforms>() != null)
+                {
+                    hit.collider.GetComponent<DisapearingPlatforms>().ForceDestruction();
+                }
 
-            return canJump;
+                // If you're landing on a trapdoor, force it to register the collision
+                // (Because buffered or well-timed jumps can foil velocity checks in OnCollision)
+                if (canJump && hit.collider.GetComponent<Trapdoor>() != null)
+                {
+                    hit.collider.GetComponent<Trapdoor>().CollisionLogic();
+                }
+
+                if (canJump)
+                    return canJump;
+            }
         }
         return false;
     }
