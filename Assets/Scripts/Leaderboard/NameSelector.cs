@@ -62,9 +62,16 @@ public class NameSelector : MonoBehaviour
         if(nameIndex < 3)
         {
             LeaderboardManager.Instance.UpdateName(letters[charIndex]);
+
+            playerLetters[nameIndex].faceColor = Color.white;
+            StopAllCoroutines();
+
             ++nameIndex;
+
             DisplayName();
-            if(nameIndex == 3)
+            StartCoroutine(FlashLetter());
+
+            if (nameIndex == 3)
             {
                 int i = Random.Range(1, 11);
                 LeaderboardManager.Instance.AddScore(i * 100);
@@ -95,12 +102,13 @@ public class NameSelector : MonoBehaviour
 
         Debug.Log("i = " + i);
 
+        bool doWait = false; ;
 
         while (i == nameIndex)
         {
-            float duration = 0.1f;
+            float duration = 1;
             float elapsedTime = 0f;
-            yield return new WaitForSeconds(0.0f);
+            yield return new WaitForSeconds(0.03f);
             elapsedTime = 0f;
             while (elapsedTime <= duration)
             {
@@ -112,16 +120,13 @@ public class NameSelector : MonoBehaviour
             Color c = startingColor;
             startingColor = newColor;
             newColor = c;
-            yield return new WaitForSeconds(0.2f);
 
+            if(doWait)
+                yield return new WaitForSeconds(0.3f);
+
+            doWait = !doWait;
         }
 
-        playerLetters[i].faceColor = Color.white;
-
-        if (i < 3)
-        {
-            StartCoroutine(FlashLetter());
-        }
     }
 
     /// <summary>
