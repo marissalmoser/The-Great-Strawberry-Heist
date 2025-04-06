@@ -21,7 +21,7 @@ public class DisplayLeaderboard : MonoBehaviour
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-        InvokeRepeating("GetScores", 0, 5);
+        InvokeRepeating("GetScores", 0, 1);
     }
 
     public async void GetScores()
@@ -65,5 +65,13 @@ public class DisplayLeaderboard : MonoBehaviour
                 scores[i].text = "";
             }
         }
+    }
+
+    /// <summary>
+    /// Signs the player out when the scene is exited
+    /// </summary>
+    private void OnDisable()
+    {
+        AuthenticationService.Instance.SignOut(true);
     }
 }
