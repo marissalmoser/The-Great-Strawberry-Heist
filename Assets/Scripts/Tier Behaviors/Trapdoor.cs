@@ -18,7 +18,7 @@ public class Trapdoor : MonoBehaviour
         if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb.velocity.y <= 0.5f)
+            if (rb.velocity.y <= 0.5f && !TimerSystem.TimeUp)
             {
                 CollisionLogic();
             }
@@ -27,6 +27,7 @@ public class Trapdoor : MonoBehaviour
 
     public void CollisionLogic()
     {
+        print("trapdoor");
         TimerSystem.DoMovePlayer = false;
         TierManager.NextTierAction?.Invoke();
         ScoreManager.Instance.AddScore(scoreToAdd, 0);
