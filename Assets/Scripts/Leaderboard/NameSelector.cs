@@ -109,7 +109,7 @@ public class NameSelector : MonoBehaviour
             float duration = 0.7f;
             float elapsedTime = 0f;
             elapsedTime = 0f;
-            while (elapsedTime <= duration)
+            while (elapsedTime <= duration && i < 3)
             {
                 playerLetters[i].faceColor = Color.Lerp(startingColor, newColor, elapsedTime / duration);
                 elapsedTime += Time.deltaTime;
