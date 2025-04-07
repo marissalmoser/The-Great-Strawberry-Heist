@@ -106,9 +106,8 @@ public class NameSelector : MonoBehaviour
 
         while (i == nameIndex)
         {
-            float duration = 1;
+            float duration = 0.7f;
             float elapsedTime = 0f;
-            yield return new WaitForSeconds(0.03f);
             elapsedTime = 0f;
             while (elapsedTime <= duration)
             {
@@ -122,7 +121,7 @@ public class NameSelector : MonoBehaviour
             newColor = c;
 
             if(doWait)
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.5f);
 
             doWait = !doWait;
         }
