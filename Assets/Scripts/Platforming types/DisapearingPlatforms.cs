@@ -22,6 +22,8 @@ public class DisapearingPlatforms : MonoBehaviour
     
     private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteRenderer _shadow;
+    [SerializeField] private GameObject _particles;
+    [SerializeField] private GameObject _particleShadow;
     private Collider2D platformCollider;
 
     [SerializeField] private float _shakeIntensity;
@@ -77,12 +79,16 @@ public class DisapearingPlatforms : MonoBehaviour
         }
         spriteRenderer.enabled = false;
         if (_shadow != null) _shadow.enabled = false;
+        _particles.SetActive(true);
+        _particleShadow.SetActive(true);
         platformCollider.enabled = false;
 
         yield return new WaitForSeconds(reappearTime);
         SfxManager.Instance.StopSFX("DisappearingPlatform");
         spriteRenderer.enabled = true;
         if (_shadow != null) _shadow.enabled = true;
+        _particles.SetActive(false);
+        _particleShadow.SetActive(false);
         platformCollider.enabled = true;
 
         CoroutineStarted = false;
