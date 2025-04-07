@@ -25,6 +25,12 @@ public class NameSelector : MonoBehaviour
     [SerializeField] private float navDelay;
     [SerializeField] private List<TMP_Text> playerLetters = new List<TMP_Text>();
 
+    [SerializeField] Color startingColor = Color.white;
+    [SerializeField] Color newColor = Color.black;
+
+    /// <summary>
+    /// Enables player input
+    /// </summary>
     private void Awake()
     {
         actionMap = GetComponent<PlayerInput>().currentActionMap;
@@ -43,30 +49,40 @@ public class NameSelector : MonoBehaviour
         ClearName();
 
         DisplayName();
+
+        StartCoroutine(FlashLetter());
     }
 
+    /// <summary>
+    /// Player input for selecting a letter
+    /// </summary>
+    /// <param name="obj"></param>
     private void Select_started(InputAction.CallbackContext obj)
     {
-        //LeaderboardManager.Instance.UpdateName(letters[charIndex]);
-        //++nameIndex;
         if(nameIndex < 3)
         {
             LeaderboardManager.Instance.UpdateName(letters[charIndex]);
+
+            playerLetters[nameIndex].faceColor = Color.white;
+            StopAllCoroutines();
+
             ++nameIndex;
-            //nameIndex = 0;
-            //int i = Random.Range(1, 11);
-            //LeaderboardManager.Instance.AddScore(i * 100);
-            //ClearName();
+
             DisplayName();
-            if(nameIndex == 3)
+            StartCoroutine(FlashLetter());
+
+            if (nameIndex == 3)
             {
                 int i = Random.Range(1, 11);
                 LeaderboardManager.Instance.AddScore(i * 100);
             }
         }
-        //DisplayName();
     }
 
+    /// <summary>
+    /// Player input for switching through the letters
+    /// </summary>
+    /// <param name="obj"></param>
     private void Navigate_performed(InputAction.CallbackContext obj)
     {
         if (!navigating)
@@ -76,6 +92,46 @@ public class NameSelector : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Has the letter flash colors so it's easier to tell what the current letter is
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator FlashLetter()
+    {
+        int i = nameIndex;
+
+        Debug.Log("i = " + i);
+
+        bool doWait = false; ;
+
+        while (i == nameIndex)
+        {
+            float duration = 0.7f;
+            float elapsedTime = 0f;
+            elapsedTime = 0f;
+            while (elapsedTime <= duration && i < 3)
+            {
+                playerLetters[i].faceColor = Color.Lerp(startingColor, newColor, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            Color c = startingColor;
+            startingColor = newColor;
+            newColor = c;
+
+            if(doWait)
+                yield return new WaitForSeconds(0.5f);
+
+            doWait = !doWait;
+        }
+
+    }
+
+    /// <summary>
+    /// Creates a delay between navigating through letters so it's harder to skip past an intended letter
+    /// </summary>
+    /// <returns></returns>
     IEnumerator FindLetter()
     {
         while(navigate.ReadValue<float>() != 0)
@@ -104,6 +160,9 @@ public class NameSelector : MonoBehaviour
         navigating = false;
     }
 
+    /// <summary>
+    /// Clears the name
+    /// </summary>
     private void ClearName()
     {
         foreach(TMP_Text i in playerLetters)
@@ -112,6 +171,9 @@ public class NameSelector : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the letters for a person's name
+    /// </summary>
     private void DisplayName()
     {
         if (nameIndex < 3)
@@ -120,6 +182,9 @@ public class NameSelector : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Disables the player input
+    /// </summary>
     private void OnDisable()
     {
         actionMap.Disable();
