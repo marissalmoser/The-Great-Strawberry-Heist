@@ -41,6 +41,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("How far the player jumps into the air")]
     [SerializeField] private float jumpHeight;
 
+    [Tooltip("How long it will continue trying to jump for after button press")]
+    [SerializeField] private float defaultSecondsOfJumpBuffer;
+
     [Tooltip("How long the player is slowed after being hit by icing")]
     [SerializeField] private float fallingIcingSlowTime; 
 
@@ -52,8 +55,11 @@ public class PlayerBehaviour : MonoBehaviour
     private bool inEnd = false;
     [SerializeField]
     private bool canMove = false;
+    private bool gameStarted = false;
     private bool facingLeft;
     private bool isSpinning;
+    private float secondsOfJumpBuffer;
+    private bool jumpBuffered;
 
     private SpriteRenderer sr;
     private Animator animator;
@@ -109,9 +115,9 @@ public class PlayerBehaviour : MonoBehaviour
     /// <param name="obj"></param>
     private void PlayerJump_performed(InputAction.CallbackContext obj)
     {
-        if (canMove && !inEnd)
+        if ((canMove && !inEnd) || !gameStarted)
         {
-            PlayerJump();
+            PlayerJump(true);
         }
     }
 
@@ -171,14 +177,35 @@ public class PlayerBehaviour : MonoBehaviour
     /// <summary>
     /// Causes the player to jump when the button is pressed
     /// </summary>
-    private void PlayerJump()
+    /// <returns>whether jump occurred</returns>
+    private bool PlayerJump(bool calledByPlayerInput)
     {
+        if (!gameStarted)
+        {
+            if (Application.isEditor)
+            {
+                Time.timeScale = 10;
+            }
+            return false;
+        }
         if(CanJump())
         {
             SfxManager.Instance.PlaySFX("HamsterJump");
             animator.SetBool("Jump", true);
-            rb2d.AddForce(new Vector2(rb2d.velocity.x, jumpHeight), ForceMode2D.Impulse);
+            jumpBuffered = false;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpHeight);
+            return true;
         }
+        else if (calledByPlayerInput && canMove)
+        {
+            secondsOfJumpBuffer = defaultSecondsOfJumpBuffer;
+            if (jumpBuffered == false)
+            {
+                jumpBuffered = true;
+                StartCoroutine(JumpBuffer());
+            }
+        }
+        return false;
     }
 
     /// <summary>
@@ -187,19 +214,58 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns></returns>
     public bool CanJump()
     {
-        var hit = Physics2D.BoxCast(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
-        if (hit.collider != null)
+        var hits = Physics2D.BoxCastAll(hitbox.bounds.center, hitbox.bounds.size * .95f, 0, Vector2.down, 0.1f, ground);
+        foreach (var hit in hits)
         {
-            // Bounds check: hamster is entirely above the surface it is interacting with (rather than within)
-            // Velocity check: hamster is not currently jumping (needed because there are some platforms you can
-            //                 stand inside of and should be able to jump inside of)
-            return (hitbox.bounds.min.y > hit.collider.bounds.max.y - 0.1f) || (Mathf.Abs(rb2d.velocity.y) < 0.01f);
+            if (hit.collider != null)
+            {
+                // Bounds check: hamster is entirely above the surface it is interacting with (rather than within)
+                // Velocity check: hamster is not currently jumping (needed because there are some platforms you can
+                //                 stand inside of and should be able to jump inside of)
+                bool canJump = (hitbox.bounds.min.y > hit.collider.bounds.max.y - 0.1f) && (Mathf.Abs(rb2d.velocity.y) < 0.01f);
+
+                // If you're landing on a disappearing platform, force it to be destroyed
+                // (Because buffered or well-timed jumps can foil velocity checks in OnCollision)
+                if (canJump && hit.collider.GetComponent<DisapearingPlatforms>() != null)
+                {
+                    hit.collider.GetComponent<DisapearingPlatforms>().ForceDestruction();
+                }
+
+                // If you're landing on a trapdoor, force it to register the collision
+                // (Because buffered or well-timed jumps can foil velocity checks in OnCollision)
+                if (canJump && hit.collider.GetComponent<Trapdoor>() != null)
+                {
+                    hit.collider.GetComponent<Trapdoor>().CollisionLogic();
+                }
+
+                if (canJump)
+                    return canJump;
+            }
         }
         return false;
     }
 
+    /// <summary>
+    /// Attempts to jump every frame until it succeeds or runs out of time
+    /// </summary>
+    private IEnumerator JumpBuffer()
+    {
+        while (secondsOfJumpBuffer > 0)
+        {
+            yield return null;
+            secondsOfJumpBuffer -= Time.deltaTime;
+            if (PlayerJump(false))
+            {
+                secondsOfJumpBuffer = 0;
+            }
+        }
+        jumpBuffered = false;
+    }
+
     private void StartGameplay()
     {
+        gameStarted = true;
+        Time.timeScale = 1;
         canMove = true;
     }
 

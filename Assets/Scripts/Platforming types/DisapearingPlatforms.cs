@@ -51,6 +51,15 @@ public class DisapearingPlatforms : MonoBehaviour
         }
     }
 
+    public void ForceDestruction()
+    {
+        if (!CoroutineStarted)
+        {
+            StartCoroutine(DisappearAndReappear());
+            CoroutineStarted = true;
+        }
+    }
+
     /// <summary>
     /// Disables and then enables components based on the disappear and reappear Time
     /// </summary>
