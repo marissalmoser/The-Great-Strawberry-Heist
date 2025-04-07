@@ -20,12 +20,17 @@ public class Trapdoor : MonoBehaviour
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb.velocity.y <= 0.5f)
             {
-                TimerSystem.DoMovePlayer = false;
-                TierManager.NextTierAction?.Invoke();
-                ScoreManager.Instance.AddScore(scoreToAdd, 0);
-                Destroy(this);
+                CollisionLogic();
             }
         }     
+    }
+
+    public void CollisionLogic()
+    {
+        TimerSystem.DoMovePlayer = false;
+        TierManager.NextTierAction?.Invoke();
+        ScoreManager.Instance.AddScore(scoreToAdd, 0);
+        Destroy(this);
     }
 
     public void DisableDoor()
