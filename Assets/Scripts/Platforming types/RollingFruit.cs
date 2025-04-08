@@ -13,6 +13,7 @@ public class RollingFruit : MonoBehaviour
 {
     [Tooltip("Value affects hamster knockback, not movement of orange")]
     [SerializeField] private bool _movesLeft;
+    [SerializeField] private GameObject _particlePrefab;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,6 +25,7 @@ public class RollingFruit : MonoBehaviour
             }
             else 
             {
+                Instantiate(_particlePrefab, transform.position, Quaternion.identity);
                 DestroyFruit();
             }
             

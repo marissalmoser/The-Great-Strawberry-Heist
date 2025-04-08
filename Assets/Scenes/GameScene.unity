@@ -1495,6 +1495,7 @@ MonoBehaviour:
   starModeMultiplier: 0
   afterImagesSpawnInterval: 0.25
   jumpHeight: 24
+  defaultSecondsOfJumpBuffer: 0
   fallingIcingSlowTime: 0
   rb2d: {fileID: 1342144088}
   canMove: 0
