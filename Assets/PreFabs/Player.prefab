@@ -214,9 +214,9 @@ MonoBehaviour:
   playerSpeed: 10
   slowMultipler: 0.5
   starModeMultiplier: 1.75
+  starModeTransitionSpeed: 0.25
   afterImagesSpawnInterval: 0.25
   jumpHeight: 24
-  bufferDistance: 2
   defaultSecondsOfJumpBuffer: 0.1
   fallingIcingSlowTime: 0
   rb2d: {fileID: 3168102203269571171}
