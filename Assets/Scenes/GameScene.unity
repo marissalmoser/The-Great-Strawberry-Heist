@@ -842,10 +842,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tier 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5585386418695945858, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5737400799922350544, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
       propertyPath: Trapdoor
       value: 
       objectReference: {fileID: 1404314045}
+    - target: {fileID: 7788323195725905662, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2099,6 +2107,72 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8997076762356145080, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
   m_PrefabInstance: {fileID: 690458426}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1675833758
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3596868594772921216, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_Name
+      value: L5LRollingFruit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 96.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512414420570170046, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200963162778218142, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_Radius
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200963162778218142, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6365611049139988311, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d68cfe88d7a5134ea9190a7345db072, type: 3}
 --- !u!1 &1761104523 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7168805915054054776, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
@@ -2551,3 +2625,4 @@ SceneRoots:
   - {fileID: 1874505109}
   - {fileID: 351084320}
   - {fileID: 1396476840}
+  - {fileID: 1675833758}
