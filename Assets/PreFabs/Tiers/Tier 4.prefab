@@ -2012,7 +2012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: moveTime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3462354049187795323, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Name
@@ -4213,7 +4213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: moveTime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3462354049187795323, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Name
