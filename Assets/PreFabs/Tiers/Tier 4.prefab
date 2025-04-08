@@ -2014,6 +2014,14 @@ PrefabInstance:
       propertyPath: moveTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: waitTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: delayStartTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3462354049187795323, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Name
       value: Moving Platform (2)
@@ -3769,6 +3777,10 @@ PrefabInstance:
     - target: {fileID: 1163108842042760540, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Size.y
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: moveTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3462354049187795323, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Name
