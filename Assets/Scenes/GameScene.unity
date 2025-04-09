@@ -342,6 +342,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+--- !u!224 &142971631 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2839303831635334562, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &142971632 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4161853898200416069, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
@@ -353,6 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &142971633 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1200525473539472857, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &338450379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1896,11 +1906,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7823065553234989148, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
   m_PrefabInstance: {fileID: 1456480803}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1498131817 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5656371650707992429, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
-  m_PrefabInstance: {fileID: 142971630}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1532694743 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1539689013968570729, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
@@ -2013,11 +2018,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!224 &1588678944 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1785781588804845693, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
-  m_PrefabInstance: {fileID: 142971630}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1600104748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2029,7 +2029,7 @@ PrefabInstance:
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: endPos
       value: 
-      objectReference: {fileID: 1588678944}
+      objectReference: {fileID: 142971631}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: BarFlame
       value: 
@@ -2037,7 +2037,7 @@ PrefabInstance:
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: startPos
       value: 
-      objectReference: {fileID: 1498131817}
+      objectReference: {fileID: 142971633}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: ScoreText
       value: 
