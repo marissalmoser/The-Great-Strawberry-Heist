@@ -73,6 +73,8 @@ public class DisapearingPlatforms : MonoBehaviour
         float direction = 1;
         int shakeCount = 1;
         float timeSinceLastShake = 0;
+        _particles.SetActive(true);
+        _particleShadow.SetActive(true);
         while (t < disappearTime)
         {
             yield return null;
@@ -89,8 +91,6 @@ public class DisapearingPlatforms : MonoBehaviour
         }
         spriteRenderer.enabled = false;
         if (_shadow != null) _shadow.enabled = false;
-        _particles.SetActive(true);
-        _particleShadow.SetActive(true);
         _particleSmoke.SetActive(true);
         platformCollider.enabled = false;
 
