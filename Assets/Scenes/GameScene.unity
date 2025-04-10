@@ -253,10 +253,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2596541379908027086, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3554721410270378785, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -341,17 +337,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6529645051514947130, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3847020240388226975, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
-    - {fileID: 2596541379908027086, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+--- !u!224 &142971631 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2839303831635334562, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &142971632 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4161853898200416069, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
@@ -363,6 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &142971633 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1200525473539472857, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &338450379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1497,6 +1497,7 @@ MonoBehaviour:
   starModeMultiplier: 0
   afterImagesSpawnInterval: 0.25
   jumpHeight: 24
+  defaultSecondsOfJumpBuffer: 0
   fallingIcingSlowTime: 0
   rb2d: {fileID: 1342144088}
   canMove: 0
@@ -1575,6 +1576,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1368496606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5482363439613265729, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1368496608 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4991893493412322252, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1372773338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2030,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: endPos
+      value: 
+      objectReference: {fileID: 142971631}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: BarFlame
+      value: 
+      objectReference: {fileID: 1368496606}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: startPos
+      value: 
+      objectReference: {fileID: 142971633}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 142971632}
@@ -2027,20 +2050,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: BarAnimator
+      value: 
+      objectReference: {fileID: 2112388249}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: BarFillImage
       value: 
       objectReference: {fileID: 940089767}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: FlameAnimator
+      value: 
+      objectReference: {fileID: 1368496608}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: MultiplierText
       value: 
       objectReference: {fileID: 406320700}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: FlameScalePoint
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: maxVitalityMeter
-      value: 90
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: starModeDuration
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: FlameScaleBreakpoint
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: vitalityDecreasePoints
@@ -2519,6 +2558,11 @@ PlayableDirector:
     value: {fileID: 1541340659}
   m_ExposedReferences:
     m_References: []
+--- !u!95 &2112388249 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7435613221958931007, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &381309458544652885 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8431598850673033458, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
@@ -2545,10 +2589,10 @@ SceneRoots:
   - {fileID: 1430083435}
   - {fileID: 394614298}
   - {fileID: 1600104748}
-  - {fileID: 142971630}
   - {fileID: 1847488612}
   - {fileID: 1879023218}
   - {fileID: 1208694921}
   - {fileID: 1874505109}
   - {fileID: 351084320}
   - {fileID: 1396476840}
+  - {fileID: 142971630}

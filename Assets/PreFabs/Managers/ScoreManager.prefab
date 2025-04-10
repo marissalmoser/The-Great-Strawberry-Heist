@@ -47,6 +47,13 @@ MonoBehaviour:
   ScoreText: {fileID: 0}
   MultiplierText: {fileID: 0}
   BarFillImage: {fileID: 0}
+  BarFlame: {fileID: 0}
+  BarAnimator: {fileID: 0}
+  startPos: {fileID: 0}
+  endPos: {fileID: 0}
+  FlameMoveTime: 1
+  FlameScaleBreakpoint: 0.3
+  FlameAnimator: {fileID: 0}
   breakpoints:
   - 1
   - 1.25
@@ -55,5 +62,5 @@ MonoBehaviour:
   maxVitalityMeter: 100
   vitalityBreakpointInterval: 30
   vitalityDecreasePoints: 10
-  starModeSeconds: 5
+  starModeDuration: 5
   multiplier: 1

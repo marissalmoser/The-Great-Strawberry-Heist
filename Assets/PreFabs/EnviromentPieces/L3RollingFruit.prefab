@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movesLeft: 1
+  _particlePrefab: {fileID: 6217087708629426663, guid: 18064cc21389f63459d21c57380c0d2d, type: 3}
 --- !u!95 &8568838175558675018
 Animator:
   serializedVersion: 5
