@@ -33,6 +33,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("A multipler for speeding the player up while in Star Mode")]
     [SerializeField] private float starModeMultiplier;
 
+    [Tooltip("Time for speed to transition between normal and star mode")]
+    [SerializeField] private float starModeTransitionSpeed;
+
     [Tooltip("Spawn an afterimage in star mode every __ seconds")]
     [SerializeField] private float afterImagesSpawnInterval = 0.25f;
 
@@ -136,6 +139,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             MovePlayer();
         }
+
+        print(speedMultiplier);
     }
 
     /// <summary>
@@ -309,7 +314,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public void NormalSpeed()
     {
-        speedMultiplier = BASE_MULTIPLER;
+        StartCoroutine(ChangeSpeedOverTime(speedMultiplier, BASE_MULTIPLER, starModeTransitionSpeed));
         animator.SetFloat("Multiplier", speedMultiplier);
         if (animator.GetBool("StarMode"))
             _starModeFinishedParticles.Play();
@@ -320,10 +325,23 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public void StarModeSpeed() 
     {
-        speedMultiplier = starModeMultiplier;
+        StartCoroutine(ChangeSpeedOverTime(speedMultiplier, starModeMultiplier, starModeTransitionSpeed));
         animator.SetFloat("Multiplier", speedMultiplier);
         animator.SetBool("StarMode", true);
         _starModeFinishedParticles.Play();
+    }
+    /// <summary>
+    /// Allows for player speed to be changed over time
+    /// </summary>
+    private IEnumerator ChangeSpeedOverTime(float original, float final, float duration)
+    {
+        float t = 0;
+        while (t < duration)
+        {
+            yield return null;
+            t += Time.deltaTime;
+            speedMultiplier = Mathf.Lerp(original, final, t / duration);
+        }
     }
     /// <summary>
     /// Plays the appropriate animation sequence based on whether the player 
