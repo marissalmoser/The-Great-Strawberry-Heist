@@ -396,7 +396,6 @@ public class PlayerBehaviour : MonoBehaviour
         //Invoke("CallStrawberrySound", 0.5f);
         animator.SetTrigger("RunToStraw");
         animator.SetFloat("Multiplier", 1);
-        CatSwipeAnimController.TriggerCatReact?.Invoke();
 
         while (inEnd)
         {
@@ -692,6 +691,8 @@ public class PlayerBehaviour : MonoBehaviour
         transform.position = transform.position + new Vector3(0, 1.39f, 0);
         strawberry.SetActive(false);
         animator.SetBool("Collect", true);
+
+        CatSwipeAnimController.TriggerCatReact?.Invoke();
     }
 
     /// <summary>
