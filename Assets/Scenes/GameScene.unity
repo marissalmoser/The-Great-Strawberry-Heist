@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Strawberry Tier
       objectReference: {fileID: 0}
+    - target: {fileID: 8804300869286152478, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: scoreToAdd
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -846,6 +850,10 @@ PrefabInstance:
       propertyPath: Trapdoor
       value: 
       objectReference: {fileID: 1404314045}
+    - target: {fileID: 6848474493064371597, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+      propertyPath: scoreToAdd
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -918,6 +926,10 @@ PrefabInstance:
     - target: {fileID: 1270952782958351528, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: m_Name
       value: Tier 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266698113731789405, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
+      propertyPath: scoreToAdd
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6179828266159084692, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: Trapdoor
@@ -1145,6 +1157,10 @@ PrefabInstance:
     - target: {fileID: 6911144639704588602, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590333470613116492, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+      propertyPath: scoreToAdd
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1493,6 +1509,7 @@ MonoBehaviour:
   playerSpeed: 8
   slowMultipler: 0.5
   starModeMultiplier: 0
+  starModeTransitionSpeed: 0
   afterImagesSpawnInterval: 0.25
   jumpHeight: 24
   defaultSecondsOfJumpBuffer: 0
@@ -1877,6 +1894,10 @@ PrefabInstance:
     - target: {fileID: 2879338470175760604, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782997404438227785, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
+      propertyPath: scoreToAdd
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 9018173712198131138, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
       propertyPath: m_Name
