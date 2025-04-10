@@ -141,7 +141,7 @@ public class TimerSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        startText.SetActive(true);
+        //startText.SetActive(true);
         currentTimer = StartCoroutine(TierTimer());
         StartGame?.Invoke();
     }
