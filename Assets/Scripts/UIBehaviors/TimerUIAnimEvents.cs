@@ -24,10 +24,10 @@ public class TimerUIAnimEvents : MonoBehaviour
 
         //set images to hidden
         Image[] sr = GetComponentsInChildren<Image>();
-        foreach (Image image in sr)
+        /*foreach (Image image in sr)
         {
             image.enabled = false;
-        }
+        }*/
 
         PlayTimerStart += TimerStart;
         PlayTimerMidpoint += TimerMidpoint;

@@ -137,7 +137,7 @@ public class TimerSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelayTime);
 
-        TimerUIAnimEvents.PlayTimerStart?.Invoke();
+        //TimerUIAnimEvents.PlayTimerStart?.Invoke();
 
         yield return new WaitForSeconds(1);
 
