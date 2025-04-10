@@ -2885,6 +2885,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2648888199715967578}
     m_Modifications:
+    - target: {fileID: 248165898952935645, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1743647295868421575, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
       propertyPath: m_Name
       value: DisapearingPlatform
@@ -2988,6 +2992,10 @@ PrefabInstance:
     - target: {fileID: 7983756547222681522, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913566156896501239, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 5.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5072,6 +5080,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2648888199715967578}
     m_Modifications:
+    - target: {fileID: 248165898952935645, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1743647295868421575, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
       propertyPath: m_Name
       value: DisapearingPlatform (1)
@@ -5175,6 +5187,10 @@ PrefabInstance:
     - target: {fileID: 7983756547222681522, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913566156896501239, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 5.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6702,6 +6718,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2648888199715967578}
     m_Modifications:
+    - target: {fileID: 248165898952935645, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1743647295868421575, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
       propertyPath: m_Name
       value: DisapearingPlatform (2)
@@ -6805,6 +6825,10 @@ PrefabInstance:
     - target: {fileID: 7983756547222681522, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913566156896501239, guid: 2ee2909708641df4a82b995e3a42e72c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 5.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
