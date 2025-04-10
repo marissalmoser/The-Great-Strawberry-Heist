@@ -186,6 +186,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3935498697394590538, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: isReactCat
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5606557238021027936, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06313133
@@ -1495,6 +1499,7 @@ MonoBehaviour:
   playerSpeed: 8
   slowMultipler: 0.5
   starModeMultiplier: 0
+  starModeTransitionSpeed: 0
   afterImagesSpawnInterval: 0.25
   jumpHeight: 24
   defaultSecondsOfJumpBuffer: 0
