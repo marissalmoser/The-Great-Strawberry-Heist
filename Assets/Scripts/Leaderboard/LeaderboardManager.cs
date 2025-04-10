@@ -6,6 +6,10 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Unity.Services.CloudSave;
+using Unity.Services.CloudSave.Models;
+using Unity.Services.CloudSave.Models.Data.Player;
+using SaveOptions = Unity.Services.CloudSave.Models.Data.Player.SaveOptions;
 
 public class LeaderboardManager : MonoBehaviour
 {
@@ -13,11 +17,16 @@ public class LeaderboardManager : MonoBehaviour
 
     string playerName = "";
 
+    // Used to keep track of the most recent score
+    private int scoreIndex;
+
     //ID of the leaderboard
     private const string LeaderboardID = "TGSHLeaderboard";
 
+    private int score;
+
     /// <summary>
-    /// Enables the Leaderboad SDK and allows the player to submit scores anonymously
+    /// Enables the authentication service to sign into the unity cloud.
     /// </summary>
     private async void Awake()
     {
@@ -32,6 +41,10 @@ public class LeaderboardManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        await GetRecentIndex();
+        AuthenticationService.Instance.SignOut(true);
     }
 
     /// <summary>
@@ -43,6 +56,10 @@ public class LeaderboardManager : MonoBehaviour
         playerName += letter;
     }
 
+    /// <summary>
+    /// Adds a score to the leaderboard
+    /// </summary>
+    /// <param name="score"></param>
     public async void AddScore(int score)
     {
         // await SignInAnonymously();
@@ -53,8 +70,12 @@ public class LeaderboardManager : MonoBehaviour
             score = ScoreManager.highScore;
         }
 
+        this.score = score;
+
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardID, score);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
+
+        await SaveRecentScore();
 
         AuthenticationService.Instance.SignOut(true);
 
@@ -63,6 +84,11 @@ public class LeaderboardManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
+    /// <summary>
+    /// Signs into the unity cloud and adds the player's name
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
     async Task AddPlayer(string name)
     {
         AuthenticationService.Instance.SignedIn += () =>
@@ -77,15 +103,43 @@ public class LeaderboardManager : MonoBehaviour
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
         await AuthenticationService.Instance.UpdatePlayerNameAsync(name);
-        Debug.Log("Done");
     }
 
-    public async void GetScores()
+    /// <summary>
+    /// Saves the index of the most recent score
+    /// </summary>
+    public async Task SaveRecentIndex()
     {
-        var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
-            LeaderboardID,
-            new GetScoresOptions { Limit = 5 } //Limits to top 5 scores
-        );
-        Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+        await GetRecentIndex();
+
+        var data = new Dictionary<string, object> { { "recentIndex", scoreIndex } };
+        await CloudSaveService.Instance.Data.Player.SaveAsync(data, new SaveOptions(new PublicWriteAccessClassOptions()));
+        ++scoreIndex;
+    }
+
+    public async Task SaveRecentScore()
+    {
+        await SaveRecentIndex();
+
+        var data = new Dictionary<string, object> { { scoreIndex.ToString(), playerName + score.ToString() } };
+        await CloudSaveService.Instance.Data.Player.SaveAsync(data, new SaveOptions(new PublicWriteAccessClassOptions()));
+
+        Debug.Log("Reached!!");
+    }
+
+
+    public async Task GetRecentIndex()
+    {
+        var playerData = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { "recentIndex" });
+        if (playerData.TryGetValue("recentIndex", out var keyName))
+        {
+            scoreIndex = keyName.Value.GetAs<int>();
+            Debug.Log(scoreIndex);
+        }
+        else
+        {
+            scoreIndex = 0;
+            Debug.Log("No current index so starting at 0");
+        }
     }
 }
