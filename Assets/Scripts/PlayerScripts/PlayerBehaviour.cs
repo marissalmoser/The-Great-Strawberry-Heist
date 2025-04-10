@@ -140,7 +140,7 @@ public class PlayerBehaviour : MonoBehaviour
             MovePlayer();
         }
 
-        print(speedMultiplier);
+        //print(speedMultiplier);
     }
 
     /// <summary>
@@ -384,6 +384,8 @@ public class PlayerBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, 0);
         actions.Disable();
         //Invoke("CallStrawberrySound", 0.5f);
+        animator.SetTrigger("RunToStraw");
+        animator.SetFloat("Multiplier", 1);
 
         while (inEnd)
         {

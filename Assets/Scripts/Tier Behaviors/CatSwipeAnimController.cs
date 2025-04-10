@@ -5,6 +5,7 @@ using UnityEngine;
 public class CatSwipeAnimController : MonoBehaviour
 {
     Animator anim;
+    [SerializeField] List<float> catTransformAmts = new();
 
     void OnEnable()
     {
@@ -14,7 +15,8 @@ public class CatSwipeAnimController : MonoBehaviour
 
     private void CatSwipe()
     {
-        transform.localPosition = transform.localPosition + new Vector3(-0.32f, 0, 0);
+        transform.localPosition = transform.localPosition + new Vector3(catTransformAmts[0], 0, 0);
+        catTransformAmts.RemoveAt(0);
         anim.SetTrigger("Swipe");
     }
 
