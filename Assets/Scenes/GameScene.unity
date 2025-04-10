@@ -578,7 +578,7 @@ PrefabInstance:
       objectReference: {fileID: 381309458544652885}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: startDelayTime
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: fallingIcingTier1.Array.size
