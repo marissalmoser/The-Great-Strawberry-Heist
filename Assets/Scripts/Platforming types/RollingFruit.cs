@@ -8,12 +8,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class RollingFruit : MonoBehaviour
 {
     [Tooltip("Value affects hamster knockback, not movement of orange")]
     [SerializeField] private bool _movesLeft;
     [SerializeField] private GameObject _particlePrefab;
+
+    [Tooltip("Score and Vitality for the Orange")]
+    [SerializeField] private int score = 500;
+    [SerializeField] private int vitality = 0;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,11 +30,17 @@ public class RollingFruit : MonoBehaviour
             }
             else 
             {
+                ScoreManager.Instance.AddScore(score, vitality, transform.position, false);
                 Instantiate(_particlePrefab, transform.position, Quaternion.identity);
                 DestroyFruit();
             }
             
         }
+    }
+    private void Awake()
+    {
+        score = 500;
+        vitality = 0;
     }
 
     /// <summary>

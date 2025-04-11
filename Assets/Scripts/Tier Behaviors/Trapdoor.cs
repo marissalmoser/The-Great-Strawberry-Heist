@@ -30,7 +30,7 @@ public class Trapdoor : MonoBehaviour
         print("trapdoor");
         TimerSystem.DoMovePlayer = false;
         TierManager.NextTierAction?.Invoke();
-        ScoreManager.Instance.AddScore(scoreToAdd, 0, transform.position);
+        ScoreManager.Instance.AddScore(scoreToAdd, 0, transform.position, false);
         Destroy(this);
     }
 

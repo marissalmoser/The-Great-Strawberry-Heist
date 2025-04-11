@@ -115,9 +115,18 @@ public class ScoreManager : Singleton<ScoreManager>
     /// <summary>
     /// Adds to total score when a fruit is collected
     /// </summary>
-    public void AddScore(int scoreAmt, int vitalityAmt, Vector3 spawnPosition)
+    public void AddScore(int scoreAmt, int vitalityAmt, Vector3 spawnPosition, bool EffectedByMultiplier = true)
     {
-        recentlyAddedScore = Mathf.RoundToInt(scoreAmt * multiplier);
+        if (EffectedByMultiplier == true)
+        {
+            recentlyAddedScore = Mathf.RoundToInt(scoreAmt * multiplier);
+        }
+        else
+        {
+            recentlyAddedScore = Mathf.RoundToInt(scoreAmt);
+        }
+        
+        
         Totalscore += recentlyAddedScore;
         highScore = Totalscore;
 
@@ -145,6 +154,10 @@ public class ScoreManager : Singleton<ScoreManager>
 
         //The min function ensures that the index is constrained to the max indices of the breakpoints, so even if the max cap of vitality is raised, it only ever stops at the lastmost multiplier
         breakpointMultiplierIndex = Mathf.Min(breakpoints.Count - 1 , breakpointMultiplierIndex);
+        if (breakpointMultiplierIndex < 0)
+        {
+            breakpointMultiplierIndex = 0;
+        }
 
         //When the player is in star mode, don't allow additional fruit pickups to add to vitality or change the multiplier (since it needs to be stuck at 2x briefly)
 
