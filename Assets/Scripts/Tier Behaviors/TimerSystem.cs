@@ -62,6 +62,7 @@ public class TimerSystem : MonoBehaviour
     private bool triggeredTimerSound;
     private bool triggeredTimerMidAnim;
     public static bool DoMovePlayer;
+    public static bool TimeUp;
     public static Action StartGame, CatSwipeAnim;
 
     private Coroutine currentTimer;
@@ -156,6 +157,7 @@ public class TimerSystem : MonoBehaviour
         triggeredIcing = false;
         triggeredTimerSound = false;
         triggeredTimerMidAnim = false;
+        TimeUp = false;
 
         TimerUIAnimEvents.CancelAnim?.Invoke(false);
 
@@ -188,18 +190,22 @@ public class TimerSystem : MonoBehaviour
         }
 
         //start tier swipe sequence
+        //TODO: call timeline
         TimerUIAnimEvents.PlayTimerAlarm?.Invoke();
         SfxManager.Instance.PlaySFX("CatHiss");
-        TierManager.SwipeTierAction?.Invoke(tierCamShakeDuration, playerMoveAfterSwipeTransitionTime);
+        TierManager.SwipeTierAction?.Invoke(tierCamShakeDuration, playerMoveAfterSwipeTransitionTime); 
+        
         while (currentTime < currentMaxTime)
         {
             yield return new WaitForSeconds(0.1f);
             currentTime += 0.1f;
             UpdateTimerUI();
         }
+
         CatSwipeAnim?.Invoke();
 
         //tier is swiped
+        TimeUp = true;
         currentTime = 0;
         tierTimes.RemoveAt(0);
 

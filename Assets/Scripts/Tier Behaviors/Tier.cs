@@ -69,10 +69,21 @@ public class Tier : MonoBehaviour
             Trapdoor.GetComponent<Trapdoor>().DisableDoor();
         }
 
-        BackgroundBehavior.MoveBackgroundAction?.Invoke();
+        BackgroundBehavior.StartTimelineAnim?.Invoke();
 
     }
 
+    /// <summary>
+    /// Disables the tier's trpdoor.
+    /// </summary>
+    public void DisableTrapdoor()
+
+    {
+        if (Trapdoor.GetComponent<Trapdoor>() != null)
+        {
+            Trapdoor.GetComponent<Trapdoor>().DisableDoor();
+        }
+    }
 
     public IEnumerator SwipeCanceled(float timeRemaining)
     {

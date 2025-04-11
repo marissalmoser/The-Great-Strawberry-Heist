@@ -98,6 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b7123375d67d841a363fedb3437a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catTransformAmts:
+  - -0.32
+  - -0.32
+  - -0.63
+  - -0.23
+  - -0.19
 --- !u!95 &113132367368810496
 Animator:
   serializedVersion: 5

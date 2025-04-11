@@ -186,6 +186,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3935498697394590538, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: isReactCat
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5606557238021027936, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06313133
@@ -732,6 +736,8 @@ PlayableDirector:
   - key: {fileID: -8663197357396884261, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
     value: {fileID: 1541340659}
   - key: {fileID: 7838754445717029715, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
+    value: {fileID: 612880041}
+  - key: {fileID: -3171483128728921976, guid: e12922e99a486da41b51ad6201d5e665, type: 2}
     value: {fileID: 612880041}
   m_ExposedReferences:
     m_References: []
