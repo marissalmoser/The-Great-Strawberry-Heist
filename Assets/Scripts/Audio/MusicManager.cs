@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : Singleton<MusicManager>
 {
 
     [Tooltip("(Don't assign to this list) Keeps track of all of the AudioSource objects")]
@@ -24,13 +24,10 @@ public class MusicManager : MonoBehaviour
     [Tooltip("Duration in seconds for the length of time that the old track fades out for")]
     [SerializeField] private float fadeOutDuration = 1.5f;
     private int musicIndex = 0;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _BGMs = GetComponentsInChildren<AudioSource>().ToList<AudioSource>();
-        //_musicSource.clip = _BGMs[0].MusicClip;
-        //_musicSource.playOnAwake = true;
-        //_musicSource.loop = true;
-        //_musicSource.Play();
     }
     [ContextMenu("Increase Tier and Switch Soundtracks")]
     /// <summary>

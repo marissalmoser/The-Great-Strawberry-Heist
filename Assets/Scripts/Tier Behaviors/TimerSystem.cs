@@ -105,7 +105,7 @@ public class TimerSystem : MonoBehaviour
             StopAllCoroutines();
             TierManager.EndSequence?.Invoke(false);
             int timeBonus = Mathf.CeilToInt(currentMaxTime - currentTime) * timeBonusMultiplier;
-            ScoreManager.Instance.AddScore(timeBonus, 0);
+            ScoreManager.Instance.AddScore(timeBonus, 0, transform.position);
             return;
         }
 

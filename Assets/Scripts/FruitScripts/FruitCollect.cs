@@ -22,10 +22,6 @@ public class FruitCollect : MonoBehaviour
     private int score;
     [SerializeField]
     private int vitality;
-    [SerializeField]
-    private GameObject textScorePrefab;
-
-
 
     ///<summary>
     /// Method to collect fruit 
@@ -35,10 +31,8 @@ public class FruitCollect : MonoBehaviour
       
         if (collision.TryGetComponent(out PlayerBehaviour pb))
         {
-            ScoreManager.Instance.AddScore(score, vitality);
+            ScoreManager.Instance.AddScore(score, vitality, transform.position);
             SfxManager.Instance.PlaySFX("FruitPickup");
-            var textObj = Instantiate(textScorePrefab, transform.position, Quaternion.identity).GetComponent<TextRise>();
-            textObj.SetRisingText("+" + ScoreManager.Instance.RecentlyAddedScore);
             Destroy(gameObject);
         }
     }

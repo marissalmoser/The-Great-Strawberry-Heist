@@ -91,6 +91,7 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     public void NextTier(float duration)
     {
+        MusicManager.Instance.PlayNextTrack();
         tiers[currentTier].DisableCam();
         StartCoroutine(tiers[currentTier].SwipeCanceled(duration));
         cakeTiers.RemoveAt(0);

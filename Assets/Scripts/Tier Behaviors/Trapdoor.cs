@@ -29,7 +29,7 @@ public class Trapdoor : MonoBehaviour
     {
         TimerSystem.DoMovePlayer = false;
         TierManager.NextTierAction?.Invoke();
-        ScoreManager.Instance.AddScore(scoreToAdd, 0);
+        ScoreManager.Instance.AddScore(scoreToAdd, 0, transform.position);
         Destroy(this);
     }
 
