@@ -32,7 +32,7 @@ public class SlowBatter : MonoBehaviour
         if (collision.GetComponent<PlayerBehaviour>() && !ScoreManager.Instance.IsInStarMode)
         {
             //Debug.Log("normal");
-            collision.GetComponent<PlayerBehaviour>().NormalSpeed();
+            collision.GetComponent<PlayerBehaviour>().NormalSpeed(false, false);
         }
     }
 }
