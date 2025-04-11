@@ -2390,6 +2390,10 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
+      propertyPath: textScorePrefab
+      value: 
+      objectReference: {fileID: 7082361868057328209, guid: 72747f9268357af43bd6b1ff3ac5c0fe, type: 3}
+    - target: {fileID: 3990704424520477542, guid: 5ee2ccecf6f22de438880794492fef30, type: 3}
       propertyPath: maxVitalityMeter
       value: 100
       objectReference: {fileID: 0}
@@ -2692,6 +2696,14 @@ PrefabInstance:
     - target: {fileID: 4399225678585399600, guid: 62509b03631c31246b0ccf2b0b1eaad9, type: 3}
       propertyPath: m_Name
       value: MusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309278350970941041, guid: 62509b03631c31246b0ccf2b0b1eaad9, type: 3}
+      propertyPath: fadeInDuration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309278350970941041, guid: 62509b03631c31246b0ccf2b0b1eaad9, type: 3}
+      propertyPath: fadeOutDuration
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 9169991890450929281, guid: 62509b03631c31246b0ccf2b0b1eaad9, type: 3}
       propertyPath: m_LocalPosition.x

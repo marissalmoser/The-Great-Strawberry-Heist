@@ -61,6 +61,9 @@ public class ScoreManager : Singleton<ScoreManager>
 
     private int recentlyAddedScore;
 
+    [SerializeField]
+    private GameObject textScorePrefab;
+
     public int RecentlyAddedScore { get => recentlyAddedScore; private set => recentlyAddedScore = value; }
     public bool IsInStarMode { get => isInStarMode; private set => isInStarMode = value; }
 
@@ -112,13 +115,16 @@ public class ScoreManager : Singleton<ScoreManager>
     /// <summary>
     /// Adds to total score when a fruit is collected
     /// </summary>
-    public void AddScore(int scoreAmt, int vitalityAmt)
+    public void AddScore(int scoreAmt, int vitalityAmt, Vector3 spawnPosition)
     {
         recentlyAddedScore = Mathf.RoundToInt(scoreAmt * multiplier);
         Totalscore += recentlyAddedScore;
         highScore = Totalscore;
 
         ScoreText.text = "Score: " + Totalscore.ToString();
+
+        var textObj = Instantiate(textScorePrefab, spawnPosition, Quaternion.identity).GetComponent<TextRise>();
+        textObj.SetRisingText("+" + recentlyAddedScore);
 
         if (!isInStarMode) 
         {
