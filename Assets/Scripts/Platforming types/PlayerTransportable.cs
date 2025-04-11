@@ -33,6 +33,10 @@ public class PlayerTransportable : MonoBehaviour
         if (collision.gameObject.activeInHierarchy)
         {
             collision.transform.parent = null;
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.transform.localScale = new Vector3(5, 5, 1);
+            }
         }
     }
 }
