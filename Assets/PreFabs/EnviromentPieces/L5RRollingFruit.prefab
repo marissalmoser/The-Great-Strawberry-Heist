@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movesLeft: 1
   _particlePrefab: {fileID: 6217087708629426663, guid: 18064cc21389f63459d21c57380c0d2d, type: 3}
+  score: 500
+  vitality: 0
 --- !u!95 &578671847069664140
 Animator:
   serializedVersion: 5

@@ -87,6 +87,10 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private GameObject multiplierChangePrefab;
     [SerializeField] private GameObject afterImagePrefab;
     
+    [Tooltip("Score and vitality for the strawberry")]
+    [SerializeField] private int score;
+    [SerializeField] private int vitality;
+
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
     /// </summary>
@@ -680,7 +684,8 @@ public class PlayerBehaviour : MonoBehaviour
             canMove = false;
             rb2d.velocity = Vector2.zero;
             rb2d.isKinematic = true;
-            
+            ScoreManager.Instance.AddScore(score, vitality, transform.position,false);
+
             StartCoroutine(WaitForCamera(collision.gameObject));
         }
     }
