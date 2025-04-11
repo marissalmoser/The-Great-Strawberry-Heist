@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8200963162778218142}
   - component: {fileID: 6732012390135048172}
   - component: {fileID: 578671847069664140}
+  - component: {fileID: 1362434784515833412}
   m_Layer: 0
   m_Name: L5RRollingFruit
   m_TagString: Untagged
@@ -157,3 +158,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &1362434784515833412
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596868594772921216}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5883996ef9db17342bf3965e51dca7a3, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

@@ -11,8 +11,8 @@ using UnityEngine;
 
 public class RollingFruitSpawner : MonoBehaviour
 {
-    [Tooltip("The specific fruit prefab you want to spawn at this point, with the animator set up")]
-    [SerializeField] private GameObject RollingFruitPrefab;
+    [Tooltip("The objects that need to be spawned, such as the orange itself")]
+    [SerializeField] private GameObject[] RollingFruitPrefabs;
 
     [Tooltip("Minimum time for another fruit to spawn")]
     [SerializeField] private int minWaitTime;
@@ -31,7 +31,8 @@ public class RollingFruitSpawner : MonoBehaviour
     {
         while( isSpawning )
         {
-            Instantiate(RollingFruitPrefab);
+            foreach (var prefab in RollingFruitPrefabs)
+                Instantiate(prefab);
 
             yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime + 1));
         }
