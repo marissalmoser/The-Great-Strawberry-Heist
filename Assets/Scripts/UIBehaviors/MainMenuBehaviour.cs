@@ -10,10 +10,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEditor;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainMenuBehaviour : MonoBehaviour
 {
     InputActionMap actionMap;
+    InputAction select;
 
     [SerializeField] private string nextScene;
     [SerializeField] private GameObject creditButton;
@@ -27,49 +29,20 @@ public class MainMenuBehaviour : MonoBehaviour
         actionMap = GetComponent<PlayerInput>().currentActionMap;
 
         actionMap.Enable();
+        select = actionMap.FindAction("Select");
+        select.started += Select_started;
     }
 
     /// <summary>
     /// Starts the game
     /// </summary>
-    public void PressStart()
+    /// <param name="obj"></param>
+    private void Select_started(InputAction.CallbackContext obj)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene(nextScene);
     }
 
-    /// <summary>
-    /// Selects the back button
-    /// </summary>
-    public void PressCredits()
-    {
-        //Sets the event system to select the back button
-        EventSystem.current.SetSelectedGameObject(backButton);
-    }
 
-    /// <summary>
-    /// Re-selects the credits button
-    /// </summary>
-    public void PressBack()
-    {
-        //Sets the event system to select the credit button
-        EventSystem.current.SetSelectedGameObject(creditButton);
-    }
-
-    /// <summary>
-    /// Quits out of the game
-    /// </summary>
-    public void PressQuit()
-    {
-        //Quits out of the editor instead
-        //if(EditorApplication.isPlaying)
-        //{
-        //    EditorApplication.isPlaying = false;
-        //}
-        //else
-        {
-            Application.Quit();
-        }
-    }
 
     /// <summary>
     /// Disables the action map
@@ -77,5 +50,6 @@ public class MainMenuBehaviour : MonoBehaviour
     private void OnDisable()
     {
         actionMap.Disable();
+        select.started -= Select_started;
     }
 }
