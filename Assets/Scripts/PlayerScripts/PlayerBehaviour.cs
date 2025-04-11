@@ -33,6 +33,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("A multipler for speeding the player up while in Star Mode")]
     [SerializeField] private float starModeMultiplier;
 
+    [Tooltip("Time for speed to transition between normal and star mode")]
+    [SerializeField] private float starModeTransitionSpeed;
+
     [Tooltip("Spawn an afterimage in star mode every __ seconds")]
     [SerializeField] private float afterImagesSpawnInterval = 0.25f;
 
@@ -55,6 +58,7 @@ public class PlayerBehaviour : MonoBehaviour
     private bool inEnd = false;
     [SerializeField]
     private bool canMove = false;
+    private bool inBump = false;
     private bool gameStarted = false;
     private bool facingLeft;
     private bool isSpinning;
@@ -132,10 +136,12 @@ public class PlayerBehaviour : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
 
-        if (canMove && !inEnd)
+        if (canMove && !inEnd && !inBump)
         {
             MovePlayer();
         }
+
+        //print(speedMultiplier);
     }
 
     /// <summary>
@@ -205,7 +211,16 @@ public class PlayerBehaviour : MonoBehaviour
                 StartCoroutine(JumpBuffer());
             }
         }
-        return false;
+        else if(inBump)
+        {
+            inBump = false;
+            SfxManager.Instance.PlaySFX("HamsterJump");
+            animator.SetBool("Jump", true);
+            jumpBuffered = false;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpHeight);
+            return true;
+        }
+            return false;
     }
 
     /// <summary>
@@ -309,7 +324,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public void NormalSpeed()
     {
-        speedMultiplier = BASE_MULTIPLER;
+        StartCoroutine(ChangeSpeedOverTime(speedMultiplier, BASE_MULTIPLER, starModeTransitionSpeed));
         animator.SetFloat("Multiplier", speedMultiplier);
         if (animator.GetBool("StarMode"))
             _starModeFinishedParticles.Play();
@@ -320,10 +335,23 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public void StarModeSpeed() 
     {
-        speedMultiplier = starModeMultiplier;
+        StartCoroutine(ChangeSpeedOverTime(speedMultiplier, starModeMultiplier, starModeTransitionSpeed));
         animator.SetFloat("Multiplier", speedMultiplier);
         animator.SetBool("StarMode", true);
         _starModeFinishedParticles.Play();
+    }
+    /// <summary>
+    /// Allows for player speed to be changed over time
+    /// </summary>
+    private IEnumerator ChangeSpeedOverTime(float original, float final, float duration)
+    {
+        float t = 0;
+        while (t < duration)
+        {
+            yield return null;
+            t += Time.deltaTime;
+            speedMultiplier = Mathf.Lerp(original, final, t / duration);
+        }
     }
     /// <summary>
     /// Plays the appropriate animation sequence based on whether the player 
@@ -346,10 +374,10 @@ public class PlayerBehaviour : MonoBehaviour
     private IEnumerator CreateAfterImages()
     {
         var container = GameObject.Find("AfterImagesContainer");
-        while (ScoreManager.Instance.IsInStarMode) 
+        while (ScoreManager.Instance.IsInStarMode)
         {
             yield return new WaitForSeconds(afterImagesSpawnInterval);
-            Instantiate(afterImagePrefab, transform.position, Quaternion.identity)
+            Instantiate(afterImagePrefab, transform.position, transform.rotation)
                 .GetComponent<AfterImageBehavior>()
                 .Setup(sr.sprite, sr.color).transform.parent = container.transform;
         }
@@ -366,6 +394,8 @@ public class PlayerBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, 0);
         actions.Disable();
         //Invoke("CallStrawberrySound", 0.5f);
+        animator.SetTrigger("RunToStraw");
+        animator.SetFloat("Multiplier", 1);
 
         while (inEnd)
         {
@@ -547,7 +577,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (invincibilitySecondsRemaining <= 0)
         {
             // Knocks hamster back in opposite of the direction it's facing
-            if(canMove)
+            if(canMove && !inEnd)
             {
                 animator.SetTrigger("Splat");
             }
@@ -568,10 +598,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (invincibilitySecondsRemaining <= 0)
         {
             // Knocks hamster back in the direction the orange is moving
-            //if (canMove)
-            //{
+            if (!inEnd)
+            {
                 animator.SetTrigger("Stun");
-            //}
+            }
             KnockBack(direction);
             SfxManager.Instance.PlaySFX("HitByOrange");
         }
@@ -619,9 +649,8 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns></returns>
     private IEnumerator WallBump()
     {
-        //TODO: play animation?
         SfxManager.Instance.PlaySFX("HamsterWallBump");
-        canMove = false;
+        inBump = true;
 
         rb2d.velocity = new Vector2(facingLeft ? 8 : -8, 10);
         yield return new WaitForSeconds(0.1f);
@@ -629,9 +658,9 @@ public class PlayerBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         rb2d.velocity = new Vector2(facingLeft ? 5 : -5, rb2d.velocity.y);
         yield return new WaitForSeconds(0.1f);
+        inBump = false;
         rb2d.velocity = new Vector2(facingLeft ? 3 : -3, rb2d.velocity.y);
         yield return new WaitForSeconds(0.1f);
-        canMove = true;
         rb2d.velocity = new Vector2(facingLeft ? 1.5f : -1.5f, rb2d.velocity.y);
         yield return new WaitForSeconds(0.1f);
         rb2d.velocity = new Vector2(facingLeft ? .8f : -.8f, rb2d.velocity.y);
@@ -662,6 +691,8 @@ public class PlayerBehaviour : MonoBehaviour
         transform.position = transform.position + new Vector3(0, 1.39f, 0);
         strawberry.SetActive(false);
         animator.SetBool("Collect", true);
+
+        CatSwipeAnimController.TriggerCatReact?.Invoke();
     }
 
     /// <summary>

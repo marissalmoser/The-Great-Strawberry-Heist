@@ -24,8 +24,10 @@ public class TimerSystem : MonoBehaviour
         "first index of the timers below is set for your tier.")]
     [SerializeField] bool testOneTier;
 
-    [Tooltip("Edit this to change the delay before the game starts (for the opening sequence)")]
+    [Tooltip("Edit this to change the delay before the game starts (for the opening sequence")]
     [SerializeField] float startDelayTime;
+    [Tooltip("Edit this to change when the ")]
+    [SerializeField] float startTimerAnimTime = 8.5f;
     [Tooltip("How long the timer for each tier should be. Assign a new index per tier. " +
         "You do not need a timer for the top strawberry 'tier'.")]
     [SerializeField] List<float> tierTimes = new List<float>();
@@ -60,6 +62,7 @@ public class TimerSystem : MonoBehaviour
     private bool triggeredTimerSound;
     private bool triggeredTimerMidAnim;
     public static bool DoMovePlayer;
+    public static bool TimeUp;
     public static Action StartGame, CatSwipeAnim;
 
     private Coroutine currentTimer;
@@ -135,13 +138,12 @@ public class TimerSystem : MonoBehaviour
     /// <returns></returns>
     IEnumerator StartDelay()
     {
-        yield return new WaitForSeconds(startDelayTime);
+        yield return new WaitForSeconds(startTimerAnimTime);
 
         TimerUIAnimEvents.PlayTimerStart?.Invoke();
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(startDelayTime - startTimerAnimTime);
 
-        startText.SetActive(true);
         currentTimer = StartCoroutine(TierTimer());
         StartGame?.Invoke();
     }
@@ -155,6 +157,7 @@ public class TimerSystem : MonoBehaviour
         triggeredIcing = false;
         triggeredTimerSound = false;
         triggeredTimerMidAnim = false;
+        TimeUp = false;
 
         TimerUIAnimEvents.CancelAnim?.Invoke(false);
 
@@ -187,18 +190,22 @@ public class TimerSystem : MonoBehaviour
         }
 
         //start tier swipe sequence
+        //TODO: call timeline
         TimerUIAnimEvents.PlayTimerAlarm?.Invoke();
         SfxManager.Instance.PlaySFX("CatHiss");
-        TierManager.SwipeTierAction?.Invoke(tierCamShakeDuration, playerMoveAfterSwipeTransitionTime);
+        TierManager.SwipeTierAction?.Invoke(tierCamShakeDuration, playerMoveAfterSwipeTransitionTime); 
+        
         while (currentTime < currentMaxTime)
         {
             yield return new WaitForSeconds(0.1f);
             currentTime += 0.1f;
             UpdateTimerUI();
         }
+
         CatSwipeAnim?.Invoke();
 
         //tier is swiped
+        TimeUp = true;
         currentTime = 0;
         tierTimes.RemoveAt(0);
 

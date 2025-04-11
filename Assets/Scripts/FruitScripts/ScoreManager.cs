@@ -18,8 +18,14 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : Singleton<ScoreManager>
 {
     public TMP_Text ScoreText, MultiplierText;
+    [Header("Multiplier Bar Variables")]
     [Tooltip("The Fill Image from the multiplier bar")]
     public Image BarFillImage;
+    public GameObject BarFlame;
+    public Animator BarAnimator;
+    public RectTransform startPos, endPos;
+    public float FlameMoveTime, FlameScaleBreakpoint;
+    public Animator FlameAnimator;
 
     [SerializeField]
     [Tooltip("The Multiplier magnitudes")]
@@ -81,6 +87,7 @@ public class ScoreManager : Singleton<ScoreManager>
             //plays sound if multiplier went up, loss sound if it went down
             if (!multiplierHit)
             {
+                BarAnimator.SetTrigger(newMultiplier + "Trigger");
                 switch (newMultiplier)
                 {
                     case 1.25f:
@@ -96,8 +103,10 @@ public class ScoreManager : Singleton<ScoreManager>
             }
             else
             {
+                BarAnimator.SetTrigger("HitTrigger");
                 SfxManager.Instance.PlaySFX("MultiplierLoss");
             }
+            
             multiplierHit = false;
         }
         multiplier = newMultiplier;
@@ -185,7 +194,7 @@ public class ScoreManager : Singleton<ScoreManager>
         //Activation Logic
         isInStarMode = true;
         player.StartStarMode();
-        StarModeVisualChange();
+        StartCoroutine(StarModeVisualChange());
         yield return null;
 
         //Timer Logic
@@ -201,7 +210,6 @@ public class ScoreManager : Singleton<ScoreManager>
         //De-Activation Logic
         //Reused this method because it resets the Vitality to 0 and updates UI already
         EndStarMode();
-        LayerSwipeVitalityChange();
     }
     /// <summary>
     /// Ends star mode
@@ -210,15 +218,34 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         player.StopStarMode();
         isInStarMode = false;
-        Debug.Log("☆STAR MODE FINISHED!");
+        LayerSwipeVitalityChange();
     }
     /// <summary>
-    /// TODO: Activates any IMMEDIATE visual/UI changes such as the vitality bar changing sprites/color or any other visual changes
+    /// TODO: Activates any IMMEDIATE visual/UI changes such as the vitality bar changing sprites/color or flame movement
     /// </summary>
-    private void StarModeVisualChange() 
+    private IEnumerator StarModeVisualChange() 
     {
+        var transform = BarFlame.GetComponent<RectTransform>();
+        transform.position = startPos.position;
         //can be removed later
-        Debug.Log("★STAR MODE ACTIVATED!");
+        BarFlame.SetActive(true);
+        bool doneTrigger = false;
+        float t = 0;
+        while (t <= 1.0f)
+        {
+            t += Time.deltaTime / starModeDuration;
+            if (!doneTrigger && t >= 1.0f - FlameScaleBreakpoint) 
+            {
+                doneTrigger = true;
+                FlameAnimator.SetBool("ScaleChange", true);
+            }
+            transform.position = Vector3.Lerp(startPos.position, endPos.position, t);
+            yield return null;
+
+        }
+        transform.position = endPos.position;
+        BarFlame.SetActive(false);
+        FlameAnimator.SetBool("ScaleChange", false);
     }
 
     [ContextMenu("Activate Star Mode")]

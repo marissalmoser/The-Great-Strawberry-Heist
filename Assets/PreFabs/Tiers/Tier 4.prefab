@@ -2010,6 +2010,18 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: moveTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: waitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: delayStartTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3462354049187795323, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Name
       value: Moving Platform (2)
@@ -3766,6 +3778,18 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: moveTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: waitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: delayStartTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3462354049187795323, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Name
       value: Moving Platform (4)
@@ -4207,6 +4231,18 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: moveTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: waitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754302073090371628, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
+      propertyPath: delayStartTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3462354049187795323, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Name
       value: Moving Platform (3)
@@ -4217,7 +4253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463037700833457300, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.6666665
+      value: -6.71
       objectReference: {fileID: 0}
     - target: {fileID: 5828888474501525185, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_Sprite
@@ -4257,7 +4293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6887949849979510489, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 14.65
       objectReference: {fileID: 0}
     - target: {fileID: 6887949849979510489, guid: 090e709e252e9f0469536dcbf33e752a, type: 3}
       propertyPath: m_LocalPosition.z

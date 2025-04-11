@@ -14,7 +14,7 @@ using UnityEngine.Playables;
 
 public class BackgroundBehavior : MonoBehaviour
 {
-    public static Action MoveBackgroundAction;
+    public static Action StartTimelineAnim;
     private Vector3 defaultPos;
 
     [SerializeField] GameObject background;
@@ -27,7 +27,7 @@ public class BackgroundBehavior : MonoBehaviour
 
 void OnEnable()
     {
-        MoveBackgroundAction += CallTierTransition;
+        StartTimelineAnim += CallTierTransition;
         defaultPos = background.transform.position;
     }
 
@@ -37,7 +37,7 @@ void OnEnable()
     /// </summary>
     private void CallTierTransition()
     {
-        defaultPos += new Vector3(0, 20, 0);
+        //defaultPos += new Vector3(0, 20, 0);
         //StartCoroutine(MoveBackground());
 
         if (tierSwipeAnims.Count != 0)
@@ -49,7 +49,7 @@ void OnEnable()
 
     void OnDisable()
     {
-        MoveBackgroundAction -= CallTierTransition;
+        StartTimelineAnim -= CallTierTransition;
     }
 
     /// <summary>
