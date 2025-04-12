@@ -61,6 +61,8 @@ public class ScoreManager : Singleton<ScoreManager>
 
     private int recentlyAddedScore;
 
+    private string currentStarTierMusic;
+
     [SerializeField]
     private GameObject textScorePrefab;
 
@@ -207,6 +209,8 @@ public class ScoreManager : Singleton<ScoreManager>
         //Activation Logic
         isInStarMode = true;
         player.StartStarMode();
+        //SfxManager.Instance.FadeOutSFX("StarModeTier" + TierManager.Instance.CurrentTier, starModeDuration);
+        currentStarTierMusic = "StarModeTier" + TierManager.Instance.GameTier;
         StartCoroutine(StarModeVisualChange());
         yield return null;
 
@@ -231,6 +235,10 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         player.StopStarMode();
         isInStarMode = false;
+        //Debug.Log("Star Tier String: " + currentStarTierMusic);
+        if(currentStarTierMusic != "")
+            SfxManager.Instance.StopSFX(currentStarTierMusic);
+        currentStarTierMusic = "";
         LayerSwipeVitalityChange();
     }
     /// <summary>
@@ -238,6 +246,7 @@ public class ScoreManager : Singleton<ScoreManager>
     /// </summary>
     private IEnumerator StarModeVisualChange() 
     {
+        SfxManager.Instance.PlaySFX(currentStarTierMusic);
         var transform = BarFlame.GetComponent<RectTransform>();
         transform.position = startPos.position;
         //can be removed later
