@@ -186,6 +186,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2193442247571035420, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b0501d32da1a48244a4b23d99f254d0f, type: 3}
     - target: {fileID: 3935498697394590538, guid: 7eeccfc322af89f44a8650c6d317068d, type: 3}
       propertyPath: isReactCat
       value: 1
@@ -1012,6 +1016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tier 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4275375786654187919, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36a4bd56010aa7f42a73791fda4c70cd, type: 3}
     - target: {fileID: 4438790237983323699, guid: d9d992627849de843b23ebc24d4ecffe, type: 3}
       propertyPath: m_Size.x
       value: 2
@@ -1153,6 +1161,10 @@ PrefabInstance:
       propertyPath: Trapdoor
       value: 
       objectReference: {fileID: 1761104523}
+    - target: {fileID: 8875302977144921695, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b0501d32da1a48244a4b23d99f254d0f, type: 3}
     - target: {fileID: 9193269327771333583, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6
@@ -1630,6 +1642,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 939507360695552590, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36a4bd56010aa7f42a73791fda4c70cd, type: 3}
     - target: {fileID: 1148975535474249138, guid: ef228ed22a3058f44957cf92cff558ee, type: 3}
       propertyPath: Trapdoor
       value: 
@@ -2579,6 +2595,10 @@ PrefabInstance:
       propertyPath: Trapdoor
       value: 
       objectReference: {fileID: 1532694743}
+    - target: {fileID: 2755950257243125579, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b0501d32da1a48244a4b23d99f254d0f, type: 3}
     - target: {fileID: 2879338470175760604, guid: bf760560d0194df4cb98395fdcfaac40, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
