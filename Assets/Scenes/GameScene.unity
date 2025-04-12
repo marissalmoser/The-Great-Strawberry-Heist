@@ -855,6 +855,14 @@ PrefabInstance:
       value: Player (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5646211891768503454, guid: 198cba249da66ae418720c5cd6fa5b56, type: 3}
+      propertyPath: score
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646211891768503454, guid: 198cba249da66ae418720c5cd6fa5b56, type: 3}
+      propertyPath: vitality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646211891768503454, guid: 198cba249da66ae418720c5cd6fa5b56, type: 3}
       propertyPath: ground.m_Bits
       value: 31936
       objectReference: {fileID: 0}
@@ -2237,6 +2245,8 @@ MonoBehaviour:
   _knockbackVelocity: {x: 0, y: 0}
   multiplierChangePrefab: {fileID: 0}
   afterImagePrefab: {fileID: 0}
+  score: 0
+  vitality: 0
 --- !u!212 &1342144091
 SpriteRenderer:
   m_ObjectHideFlags: 0
