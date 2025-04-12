@@ -87,6 +87,10 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private GameObject multiplierChangePrefab;
     [SerializeField] private GameObject afterImagePrefab;
     
+    [Tooltip("Score and vitality for the strawberry")]
+    [SerializeField] private int score;
+    [SerializeField] private int vitality;
+
     /// <summary>
     /// Enables the action map and inputs for the rest of the code
     /// </summary>
@@ -141,7 +145,7 @@ public class PlayerBehaviour : MonoBehaviour
             MovePlayer();
         }
 
-        //print(speedMultiplier);
+        print(speedMultiplier);
     }
 
     /// <summary>
@@ -302,7 +306,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (ScoreManager.Instance.IsInStarMode)
         {
             SfxManager.Instance.StopSFX("Candle");
-            NormalSpeed();
+            NormalSpeed(true, true);
         }
     }
     
@@ -322,13 +326,18 @@ public class PlayerBehaviour : MonoBehaviour
     /// <summary>
     /// Sets the player's speed back to normal
     /// </summary>
-    public void NormalSpeed()
+    public void NormalSpeed(bool disableStarMode, bool overTime)
     {
-        StartCoroutine(ChangeSpeedOverTime(speedMultiplier, BASE_MULTIPLER, starModeTransitionSpeed));
+        if (overTime)
+            StartCoroutine(ChangeSpeedOverTime(speedMultiplier, BASE_MULTIPLER, starModeTransitionSpeed));
+        else
+            speedMultiplier = BASE_MULTIPLER;
         animator.SetFloat("Multiplier", speedMultiplier);
-        if (animator.GetBool("StarMode"))
+        if (disableStarMode && (animator.GetBool("StarMode")))
+        {
             _starModeFinishedParticles.Play();
-        animator.SetBool("StarMode", false);
+            animator.SetBool("StarMode", false);
+        }
     }
     /// <summary>
     /// Sets the player's speed to STAR MODE speed!
@@ -351,6 +360,7 @@ public class PlayerBehaviour : MonoBehaviour
             yield return null;
             t += Time.deltaTime;
             speedMultiplier = Mathf.Lerp(original, final, t / duration);
+            animator.SetFloat("Multiplier", speedMultiplier);
         }
     }
     /// <summary>
@@ -459,6 +469,12 @@ public class PlayerBehaviour : MonoBehaviour
 
         //wait for anim look around
         yield return new WaitForSeconds(1f);
+        if (!TimerSystem.DoMovePlayer)
+        {
+            canMove = true;
+            animator.Play("PlayerIdle");
+            yield break;
+        }
         SfxManager.Instance.PlaySFX("CatSwipe");
 
         hitbox.enabled = false;
@@ -590,7 +606,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         SlowPlayer();
         yield return new WaitForSeconds(fallingIcingSlowTime);
-        NormalSpeed();
+        NormalSpeed(false, true);
     }
 
     public void GotHitByOrange(bool direction)
@@ -680,7 +696,8 @@ public class PlayerBehaviour : MonoBehaviour
             canMove = false;
             rb2d.velocity = Vector2.zero;
             rb2d.isKinematic = true;
-            
+            ScoreManager.Instance.AddScore(score, vitality, transform.position,false);
+
             StartCoroutine(WaitForCamera(collision.gameObject));
         }
     }
