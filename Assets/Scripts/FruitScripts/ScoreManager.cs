@@ -252,14 +252,16 @@ public class ScoreManager : Singleton<ScoreManager>
         //can be removed later
         BarFlame.SetActive(true);
         bool doneTrigger = false;
+        float breakpointTriggerTime = 1.0f - FlameScaleBreakpoint;
         float t = 0;
         while (t <= 1.0f)
         {
             t += Time.deltaTime / starModeDuration;
-            if (!doneTrigger && t >= 1.0f - FlameScaleBreakpoint) 
+            if (!doneTrigger && t >= breakpointTriggerTime) 
             {
                 doneTrigger = true;
                 FlameAnimator.SetBool("ScaleChange", true);
+                SfxManager.Instance.FadeOutSFX(currentStarTierMusic, FlameScaleBreakpoint * starModeDuration);
             }
             transform.position = Vector3.Lerp(startPos.position, endPos.position, t);
             yield return null;
