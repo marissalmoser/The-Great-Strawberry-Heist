@@ -96,8 +96,8 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     public void InitiateNextTier() 
     {
-        GameTier++;
-        Debug.Log("Tier Changed to: " + GameTier);
+        GameTier = Mathf.Min(GameTier + 1, 5);
+        //Debug.Log("Tier Changed to: " + GameTier);
         MusicManager.Instance.PlayNextTrack();
     }
 
