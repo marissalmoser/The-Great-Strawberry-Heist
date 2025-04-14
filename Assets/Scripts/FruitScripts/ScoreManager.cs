@@ -228,7 +228,7 @@ public class ScoreManager : Singleton<ScoreManager>
         //Reused this method because it resets the Vitality to 0 and updates UI already
         EndStarMode();
 
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         isInStarMode = false;
     }
     /// <summary>
