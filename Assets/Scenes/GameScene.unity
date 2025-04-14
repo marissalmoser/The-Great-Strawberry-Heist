@@ -3012,6 +3012,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2801074129756890357, guid: cfbbbd396b5e2334fa68da74e1247f12, type: 3}
+      propertyPath: _SFXs.Array.data[22].clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 35e2e5d73dac0f647b29039c8e0d4336, type: 3}
     - target: {fileID: 5029202375146417190, guid: cfbbbd396b5e2334fa68da74e1247f12, type: 3}
       propertyPath: m_Name
       value: SfxManager

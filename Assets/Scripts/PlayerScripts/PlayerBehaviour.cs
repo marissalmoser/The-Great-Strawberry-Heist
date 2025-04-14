@@ -145,7 +145,7 @@ public class PlayerBehaviour : MonoBehaviour
             MovePlayer();
         }
 
-        print(speedMultiplier);
+        //print(speedMultiplier);
     }
 
     /// <summary>
@@ -294,6 +294,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void StartStarMode() 
     {
         SfxManager.Instance.PlaySFX("Candle");
+        Debug.Log("Current Tier: " + TierManager.Instance.GameTier);
         StarModeSpeed();
         StartCoroutine(CreateAfterImages());
     }
