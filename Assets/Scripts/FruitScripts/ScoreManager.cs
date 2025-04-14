@@ -227,17 +227,19 @@ public class ScoreManager : Singleton<ScoreManager>
         //De-Activation Logic
         //Reused this method because it resets the Vitality to 0 and updates UI already
         EndStarMode();
+
+        yield return new WaitForSeconds(0.5f);
+        isInStarMode = false;
     }
     /// <summary>
-    /// Ends star mode
+    /// Ends star mode visuals
     /// </summary>
     public void EndStarMode()
     {
         player.StopStarMode();
-        isInStarMode = false;
         //Debug.Log("Star Tier String: " + currentStarTierMusic);
         if(currentStarTierMusic != "")
-            SfxManager.Instance.StopSFX(currentStarTierMusic);
+            SfxManager.Instance.FadeOutSFX(currentStarTierMusic, 1);
         currentStarTierMusic = "";
         LayerSwipeVitalityChange();
     }
@@ -261,7 +263,8 @@ public class ScoreManager : Singleton<ScoreManager>
             {
                 doneTrigger = true;
                 FlameAnimator.SetBool("ScaleChange", true);
-                SfxManager.Instance.FadeOutSFX(currentStarTierMusic, FlameScaleBreakpoint * starModeDuration);
+                if(currentStarTierMusic != "")
+                    SfxManager.Instance.FadeOutSFX(currentStarTierMusic, FlameScaleBreakpoint * starModeDuration);
             }
             transform.position = Vector3.Lerp(startPos.position, endPos.position, t);
             yield return null;
