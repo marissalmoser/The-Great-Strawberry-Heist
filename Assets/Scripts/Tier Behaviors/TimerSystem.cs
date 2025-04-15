@@ -146,6 +146,7 @@ public class TimerSystem : MonoBehaviour
 
         currentTimer = StartCoroutine(TierTimer());
         StartGame?.Invoke();
+        MusicManager.StartBGMusic?.Invoke();
     }
 
     /// <summary>

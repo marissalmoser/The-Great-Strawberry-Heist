@@ -294,7 +294,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void StartStarMode() 
     {
         SfxManager.Instance.PlaySFX("Candle");
-        Debug.Log("Current Tier: " + TierManager.Instance.GameTier);
+        //Debug.Log("Current Tier: " + TierManager.Instance.GameTier);
         StarModeSpeed();
         StartCoroutine(CreateAfterImages());
     }
@@ -422,6 +422,11 @@ public class PlayerBehaviour : MonoBehaviour
     public void CallStrawberrySound()
     {
         SfxManager.Instance.PlaySFX("StrawberryPickup");
+    }
+
+    public void CallWinMusic()
+    {
+        WinMusic.TriggerWinMusic?.Invoke();
     }
 
     /// <summary>
