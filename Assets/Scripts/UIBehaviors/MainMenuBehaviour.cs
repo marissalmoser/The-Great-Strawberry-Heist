@@ -10,12 +10,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEditor;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MainMenuBehaviour : MonoBehaviour
 {
     InputActionMap actionMap;
 
     [SerializeField] private string nextScene;
+    [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject creditButton;
     [SerializeField] private GameObject backButton;
 
@@ -34,7 +36,9 @@ public class MainMenuBehaviour : MonoBehaviour
     /// </summary>
     public void PressStart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+        startButton.GetComponent<Button>().interactable = false;
+        TransitionManager.Instance.WhiteboardIn(nextScene);
     }
 
     /// <summary>

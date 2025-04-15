@@ -430,7 +430,8 @@ public class PlayerBehaviour : MonoBehaviour
     public void ReturnToMenu()
     {
         //TODO: go through high score secquence first
-        UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
+        TransitionManager.Instance.CircleOut("ScoreScene");
     }
 
     /// <summary>
