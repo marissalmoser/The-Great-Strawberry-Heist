@@ -7,6 +7,16 @@ public class CircleTransition : MonoBehaviour
 {
     [SerializeField] private TransitionManager tm;
 
+    public void FadeOutMainMenu()
+    {
+        StartCoroutine(tm.FadeOut(0.25f, true, "HowToPlay"));
+    }
+
+    public void DisableWhiteboard()
+    {
+        tm.WhiteboardOut();
+    }
+
     public void LoadScene()
     {
         tm.LoadScene();

@@ -8,6 +8,8 @@ public class TransitionManager : MonoBehaviour
 {
     public static TransitionManager Instance;
     private bool fadeIn;
+    private bool hideWhiteboardInstant;
+    private bool hideWhiteboardWithAnim;
     [SerializeField] private Image _fade;
     [SerializeField] private Image _whiteboard;
     [SerializeField] private Image _whiteboardB;
@@ -41,22 +43,48 @@ public class TransitionManager : MonoBehaviour
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
-    private IEnumerator FadeIn(float seconds)
+    private IEnumerator FadeIn(float seconds, bool fadeWhiteboard)
     {
-        //if (fade.color.a == 0) { yield break; }
-        _fade.color = new Color(_fade.color.r, _fade.color.g, _fade.color.b, 1);
+        Image toFade;
+        if (fadeWhiteboard)
+        {
+            toFade = _whiteboardB;
+        }
+        else
+        {
+            toFade = _fade;
+        }
+
+        toFade.color = new Color(toFade.color.r, toFade.color.g, toFade.color.b, 1);
         yield return null;
         yield return null;
         float alpha = 1;
         float t = 0;
-        Vector3 color = new Vector3(_fade.color.r, _fade.color.g, _fade.color.b);
+        Vector3 color = new Vector3(toFade.color.r, toFade.color.g, toFade.color.b);
         while (alpha > 0)
         {
             t += Time.deltaTime / seconds;
             alpha = 1 - Mathf.Lerp(0, 1, t);
-            _fade.color = new Color(color.x, color.y, color.z, alpha);
+            toFade.color = new Color(color.x, color.y, color.z, alpha);
             yield return null;
         }
+
+        if (fadeWhiteboard)
+        {
+            _whiteboard.gameObject.SetActive(true);
+            _whiteboard.GetComponent<Animator>().Play("WhiteboardTransitionB");
+        }
+    }
+
+    /// <summary>
+    /// Brings in whiteboard on main menu
+    /// </summary>
+    /// <param name="scene"></param>
+    public void WhiteboardIn(string scene)
+    {
+        _whiteboard.gameObject.SetActive(true);
+        _whiteboard.GetComponent<Animator>().Play("WhiteboardTransitionF");
+        nextSceneToLoad = scene;
     }
 
     /// <summary>
@@ -64,7 +92,7 @@ public class TransitionManager : MonoBehaviour
     /// </summary>
     /// <param name="scene"></param>
     /// <returns></returns>
-    public IEnumerator WhiteboardIn(string scene)
+    /*public IEnumerator WhiteboardIn(string scene)
     {
         whiteboardSpeedCurrent = _whiteboardDropdownSpeed;
         _whiteboard.transform.localPosition = new Vector3(0, 1080);
@@ -104,7 +132,7 @@ public class TransitionManager : MonoBehaviour
         }
 
         SceneManager.LoadScene(scene);
-    }
+    }*/
 
     /// <summary>
     /// Fades to white and loads scene
@@ -112,18 +140,48 @@ public class TransitionManager : MonoBehaviour
     /// <param name="seconds"></param>
     /// <param name="scene"></param>
     /// <returns></returns>
-    public IEnumerator FadeOut(float seconds, string scene)
+    public IEnumerator FadeOut(float seconds, bool fadeWhiteboard, string scene)
     {
+        Image toFade;
+        if (fadeWhiteboard)
+        {
+            toFade = _whiteboardB;
+        }
+        else
+        {
+            toFade = _fade;
+        }
+
         float alpha = 0;
         float t = 0;
         while (alpha < 1)
         {
             t += Time.deltaTime / seconds;
             alpha = Mathf.Lerp(0, 1, t);
-            _fade.color = new Color(_fade.color.r, _fade.color.g, _fade.color.b, alpha);
+            toFade.color = new Color(toFade.color.r, toFade.color.g, toFade.color.b, alpha);
             yield return null;
         }
-        fadeIn = true;
+
+        if (!fadeWhiteboard)
+        {
+            fadeIn = true;
+        }
+        else
+        {
+            hideWhiteboardInstant = true;
+        }
+        SceneManager.LoadScene(scene);
+    }
+
+    /// <summary>
+    /// Sets up whiteboard sprites for beginning of game scene
+    /// </summary>
+    /// <param name="scene"></param>
+    public void CutOutWhiteboard(string scene)
+    {
+        _whiteboard.gameObject.SetActive(true);
+        _whiteboardB.color = Color.white;
+        hideWhiteboardWithAnim = true;
         SceneManager.LoadScene(scene);
     }
 
@@ -139,10 +197,19 @@ public class TransitionManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Called by circle animation event
+    /// Disables whiteboard
+    /// </summary>
+    public void WhiteboardOut()
+    {
+        _whiteboard.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Called by circle and whiteboard animation events
     /// </summary>
     public void LoadScene()
     {
+        _whiteboard.gameObject.SetActive(false);
         SceneManager.LoadScene(nextSceneToLoad);
     }
 
@@ -162,12 +229,21 @@ public class TransitionManager : MonoBehaviour
     /// </summary>
     private void SceneHasBeenLoaded()
     {
-        _whiteboard.gameObject.SetActive(false);
-        _whiteboardB.gameObject.SetActive(false);
         _circle.gameObject.SetActive(false);
+        if (hideWhiteboardInstant)
+        {
+            _whiteboardB.color = new Color(1, 1, 1, 0);
+            _whiteboard.gameObject.SetActive(false);
+            hideWhiteboardInstant = false;
+        }
+        if (hideWhiteboardWithAnim)
+        {
+            StartCoroutine(FadeIn(0.25f, true));
+            hideWhiteboardWithAnim = false;
+        }
         if (fadeIn)
         {
-            StartCoroutine(FadeIn(0.25f));
+            StartCoroutine(FadeIn(0.25f, false));
             fadeIn = false;
         }
     }

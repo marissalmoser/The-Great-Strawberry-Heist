@@ -61,7 +61,7 @@ public class LeaderboardManager : MonoBehaviour
         playerName = "";
 
         //UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-        StartCoroutine(TransitionManager.Instance.FadeOut(0.25f, "MainMenu"));
+        StartCoroutine(TransitionManager.Instance.FadeOut(0.25f, false, "MainMenu"));
     }
 
     async Task AddPlayer(string name)

@@ -38,7 +38,7 @@ public class MainMenuBehaviour : MonoBehaviour
     {
         //UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
         startButton.GetComponent<Button>().interactable = false;
-        StartCoroutine(TransitionManager.Instance.WhiteboardIn(nextScene));
+        TransitionManager.Instance.WhiteboardIn(nextScene);
     }
 
     /// <summary>
