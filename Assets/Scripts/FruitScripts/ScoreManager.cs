@@ -53,6 +53,9 @@ public class ScoreManager : Singleton<ScoreManager>
     [SerializeField]
     [Tooltip("How long star mode lasts and how many seconds for the vitality bar to deplete until its empty")]
     private float starModeDuration = 5;
+    [SerializeField]
+    [Tooltip("How long star mode lasts after the visuals end")]
+    private float starModeEndBuffer = 0.5f;
 
     // Multiplier that can be changed in the Inspector
     [SerializeField]
@@ -231,7 +234,7 @@ public class ScoreManager : Singleton<ScoreManager>
         //Reused this method because it resets the Vitality to 0 and updates UI already
         EndStarMode();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(starModeEndBuffer);
 
         isInStarMode = false;
     }
