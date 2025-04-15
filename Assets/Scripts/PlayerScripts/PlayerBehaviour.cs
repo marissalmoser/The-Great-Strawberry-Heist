@@ -385,7 +385,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IEnumerator CreateAfterImages()
     {
         var container = GameObject.Find("AfterImagesContainer");
-        while (ScoreManager.Instance.IsInStarMode)
+        while (ScoreManager.Instance.DoStarModeVisuals)
         {
             yield return new WaitForSeconds(afterImagesSpawnInterval);
             Instantiate(afterImagePrefab, transform.position, transform.rotation)
