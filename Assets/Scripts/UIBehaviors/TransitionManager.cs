@@ -18,6 +18,9 @@ public class TransitionManager : MonoBehaviour
     private float whiteboardSpeedCurrent;
     private string nextSceneToLoad;
 
+    /// <summary>
+    /// Sets up singleton
+    /// </summary>
     void Start()
     {
         if (Instance == null)
@@ -33,7 +36,11 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
-    // Fades from current screen color to transparent
+    /// <summary>
+    /// Fades from white to transparent
+    /// </summary>
+    /// <param name="seconds"></param>
+    /// <returns></returns>
     private IEnumerator FadeIn(float seconds)
     {
         //if (fade.color.a == 0) { yield break; }
@@ -53,6 +60,11 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Whiteboard comes in like a projector screen, loads next scene
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <returns></returns>
     public IEnumerator WhiteboardIn(string scene)
     {
         whiteboardSpeedCurrent = _whiteboardDropdownSpeed;
@@ -95,7 +107,12 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    // Fades to black (or other color value) and loads scene
+    /// <summary>
+    /// Fades to white and loads scene
+    /// </summary>
+    /// <param name="seconds"></param>
+    /// <param name="scene"></param>
+    /// <returns></returns>
     public IEnumerator FadeOut(float seconds, string scene)
     {
         float alpha = 0;
@@ -111,23 +128,10 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    // Cuts to black and then loads scene, if seconds != 0
-    // Cuts directly to scene if seconds == 0 (used for title screen play button)
-    public IEnumerator CutOut(float seconds, float color, string scene)
-    {
-        if (seconds != 0)
-        {
-            _fade.color = Color.black;
-        }
-        float t = 0;
-        while (t < 1)
-        {
-            t += Time.deltaTime / seconds;
-            yield return null;
-        }
-        SceneManager.LoadScene(scene);
-    }
-
+    /// <summary>
+    /// Circle exit animation for game scene
+    /// </summary>
+    /// <param name="scene"></param>
     public void CircleOut(string scene)
     {
         _circle.gameObject.SetActive(true);
@@ -135,14 +139,16 @@ public class TransitionManager : MonoBehaviour
         fadeIn = true;
     }
 
+    /// <summary>
+    /// Called by circle animation event
+    /// </summary>
     public void LoadScene()
     {
         SceneManager.LoadScene(nextSceneToLoad);
     }
 
     /// <summary>
-    /// This function is auto-called by Unity when a new scene finishes loading
-    /// It tells the StageManager to set up the level from the current checkpoint
+    /// This function is called by Unity when a new scene finishes loading
     /// </summary>
     private void OnSceneLoaded(Scene scene, LoadSceneMode lsm)
     {
@@ -152,7 +158,9 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
-    // Runs whenever a scene loads, a new scene or the same one
+    /// <summary>
+    /// Runs when scene loads
+    /// </summary>
     private void SceneHasBeenLoaded()
     {
         _whiteboard.gameObject.SetActive(false);
