@@ -44,18 +44,17 @@ public class TransitionManager : MonoBehaviour
     private IEnumerator FadeIn(float seconds)
     {
         //if (fade.color.a == 0) { yield break; }
-        _fade.color = new Color(1, 1, 1, 1);
+        _fade.color = new Color(_fade.color.r, _fade.color.g, _fade.color.b, 1);
         yield return null;
         yield return null;
         float alpha = 1;
         float t = 0;
-        float color = _fade.color.r;
+        Vector3 color = new Vector3(_fade.color.r, _fade.color.g, _fade.color.b);
         while (alpha > 0)
         {
-            print("aaaa" + Time.deltaTime / seconds);
             t += Time.deltaTime / seconds;
             alpha = 1 - Mathf.Lerp(0, 1, t);
-            _fade.color = new Color(color, color, color, alpha);
+            _fade.color = new Color(color.x, color.y, color.z, alpha);
             yield return null;
         }
     }
@@ -121,7 +120,7 @@ public class TransitionManager : MonoBehaviour
         {
             t += Time.deltaTime / seconds;
             alpha = Mathf.Lerp(0, 1, t);
-            _fade.color = new Color(1, 1, 1, alpha);
+            _fade.color = new Color(_fade.color.r, _fade.color.g, _fade.color.b, alpha);
             yield return null;
         }
         fadeIn = true;
