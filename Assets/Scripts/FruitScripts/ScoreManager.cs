@@ -61,6 +61,8 @@ public class ScoreManager : Singleton<ScoreManager>
 
     private int recentlyAddedScore;
 
+    private string currentStarTierMusic;
+
     [SerializeField]
     private GameObject textScorePrefab;
 
@@ -207,6 +209,8 @@ public class ScoreManager : Singleton<ScoreManager>
         //Activation Logic
         isInStarMode = true;
         player.StartStarMode();
+        //SfxManager.Instance.FadeOutSFX("StarModeTier" + TierManager.Instance.CurrentTier, starModeDuration);
+        currentStarTierMusic = "StarModeTier" + TierManager.Instance.GameTier;
         StartCoroutine(StarModeVisualChange());
         yield return null;
 
@@ -223,14 +227,20 @@ public class ScoreManager : Singleton<ScoreManager>
         //De-Activation Logic
         //Reused this method because it resets the Vitality to 0 and updates UI already
         EndStarMode();
+
+        yield return new WaitForSeconds(0.5f);
+        isInStarMode = false;
     }
     /// <summary>
-    /// Ends star mode
+    /// Ends star mode visuals
     /// </summary>
     public void EndStarMode()
     {
         player.StopStarMode();
-        isInStarMode = false;
+        //Debug.Log("Star Tier String: " + currentStarTierMusic);
+        if(currentStarTierMusic != "")
+            SfxManager.Instance.FadeOutSFX(currentStarTierMusic, 1);
+        currentStarTierMusic = "";
         LayerSwipeVitalityChange();
     }
     /// <summary>
@@ -238,19 +248,23 @@ public class ScoreManager : Singleton<ScoreManager>
     /// </summary>
     private IEnumerator StarModeVisualChange() 
     {
+        SfxManager.Instance.PlaySFX(currentStarTierMusic);
         var transform = BarFlame.GetComponent<RectTransform>();
         transform.position = startPos.position;
         //can be removed later
         BarFlame.SetActive(true);
         bool doneTrigger = false;
+        float breakpointTriggerTime = 1.0f - FlameScaleBreakpoint;
         float t = 0;
         while (t <= 1.0f)
         {
             t += Time.deltaTime / starModeDuration;
-            if (!doneTrigger && t >= 1.0f - FlameScaleBreakpoint) 
+            if (!doneTrigger && t >= breakpointTriggerTime) 
             {
                 doneTrigger = true;
                 FlameAnimator.SetBool("ScaleChange", true);
+                if(currentStarTierMusic != "")
+                    SfxManager.Instance.FadeOutSFX(currentStarTierMusic, FlameScaleBreakpoint * starModeDuration);
             }
             transform.position = Vector3.Lerp(startPos.position, endPos.position, t);
             yield return null;
