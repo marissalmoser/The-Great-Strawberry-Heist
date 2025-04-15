@@ -237,9 +237,22 @@ public class ScoreManager : Singleton<ScoreManager>
     public void EndStarMode()
     {
         player.StopStarMode();
-        //Debug.Log("Star Tier String: " + currentStarTierMusic);
-        if(currentStarTierMusic != "")
-            SfxManager.Instance.FadeOutSFX(currentStarTierMusic, 1);
+        Debug.Log("[ENDING STAR MODE] Star Tier String: " + currentStarTierMusic);
+        if (currentStarTierMusic != "") 
+        {
+            try
+            {
+                SfxManager.Instance.FadeOutSFX(currentStarTierMusic, 1);
+            }
+            catch (System.Exception error)
+            {
+                Debug.LogError("Error Thrown in Score Manager's EndStarMode(): " + error);
+                Debug.Break();
+            }
+            
+            
+        }
+            
         currentStarTierMusic = "";
         LayerSwipeVitalityChange();
     }
