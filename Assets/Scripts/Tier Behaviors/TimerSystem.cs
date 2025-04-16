@@ -110,6 +110,7 @@ public class TimerSystem : MonoBehaviour
             TierManager.EndSequence?.Invoke(false);
             int timeBonus = Mathf.CeilToInt(currentMaxTime - currentTime) * timeBonusMultiplier;
             ScoreManager.Instance.AddScore(timeBonus, 0, transform.position);
+            MusicManager.StopBGMusic?.Invoke();
             return;
         }
 
@@ -223,6 +224,7 @@ public class TimerSystem : MonoBehaviour
         {
             print("time ran out in the last tier!");
             TierManager.EndSequence?.Invoke(true);
+            MusicManager.StopBGMusic?.Invoke();
             yield break;
         }
 

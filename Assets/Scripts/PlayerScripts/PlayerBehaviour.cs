@@ -399,7 +399,9 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public IEnumerator RunToStrawberry()
     {
-        ScoreManager.Instance.EndStarMode();
+        //prevents null ref error on top tier
+        if(ScoreManager.Instance.IsInStarMode)
+            ScoreManager.Instance.EndStarMode();
 
         //makes player face right and disable their input
         transform.rotation = Quaternion.Euler(0, 0, 0);

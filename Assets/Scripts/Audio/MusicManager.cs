@@ -25,13 +25,13 @@ public class MusicManager : Singleton<MusicManager>
     [Tooltip("Duration in seconds for the length of time that the old track fades out for")]
     [SerializeField] private float fadeOutDuration = 1.5f;
     private int musicIndex = 0;
-    public static Action StartBGMusic;
+    public static Action StartBGMusic, StopBGMusic;
     protected override void Awake()
     {
         base.Awake();
         _BGMs = GetComponentsInChildren<AudioSource>().ToList<AudioSource>();
         StartBGMusic += StartMusic;
-        WinMusic.TriggerWinMusic += FadeOutTrack;
+        StopBGMusic += FadeOutTrack;
     }
     [ContextMenu("Increase Tier and Switch Soundtracks")]
     /// <summary>
@@ -39,7 +39,6 @@ public class MusicManager : Singleton<MusicManager>
     /// </summary>
     public void PlayNextTrack() 
     {
-        print("PLAY NEXT TRACK");
         StopAllCoroutines();
         FadeOutTrack();
         musicIndex = (musicIndex + 1) % _BGMs.Count;
@@ -88,11 +87,17 @@ public class MusicManager : Singleton<MusicManager>
 
     private void StartMusic()
     {
-        foreach(var track in _BGMs)
+        _BGMs[0].volume = maxVolume;
+
+        foreach (var track in _BGMs)
         {
             track.Play();
         }
+    }
 
-        _BGMs[0].volume = maxVolume;
+    private void OnDisable()
+    {
+        StartBGMusic -= StartMusic;
+        StopBGMusic -= FadeOutTrack;
     }
 }

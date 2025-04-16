@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170055477011132720}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.42296535, y: 2.2471313, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56374f017a513b4395b7a6996f31b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOutDuration: 0.75
+  Instance: {fileID: 0}
+  fadeOutDuration: 2
   WinTriggerSFX: {fileID: 7275960005378873551}
   IntroSecquenceSFX: {fileID: 6612689351787887876}
   WinMusicLoop: {fileID: 7554050127984209539}

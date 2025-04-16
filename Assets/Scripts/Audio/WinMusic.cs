@@ -5,8 +5,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WinMusic : Singleton<WinMusic>
+public class WinMusic : MonoBehaviour
 {
+    public WinMusic Instance;
     bool isDestroying;
     [SerializeField] float fadeOutDuration = 0.75f;
     float winMusicVol;
@@ -18,22 +19,22 @@ public class WinMusic : Singleton<WinMusic>
     //fades out bg music and starts win music loop
     public static Action TriggerWinMusic;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        SceneManager.sceneLoaded += StopMusic;
-        TriggerWinMusic += StartWinMusic;
-        winMusicVol = WinMusicLoop.volume;
-        WinMusicLoop.Play();
-
-        if (Instance == this)
+        if (Instance == null)
         {
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+
+        SceneManager.sceneLoaded += SwitchMusic;
+        TriggerWinMusic += StartWinMusic;
+        winMusicVol = WinMusicLoop.volume;
+        WinMusicLoop.Play();
     }
 
 
@@ -54,13 +55,14 @@ public class WinMusic : Singleton<WinMusic>
 
         if (targetVolume <= 0)
         {
-            audioSource.Stop();
+            audioSource.Stop(); //doesnt work cus its pass by value parem
+            audioSource.volume = start;
         }
 
         yield break;
     }
 
-    private void StopMusic(Scene scene, LoadSceneMode arg1)
+    private void SwitchMusic(Scene scene, LoadSceneMode arg1)
     {
         if (!isDestroying && scene.name == "GameScene")
         {
@@ -76,7 +78,7 @@ public class WinMusic : Singleton<WinMusic>
 
         if(scene.name == "HowToPlay")
         {
-            StartCoroutine(StartFade(WinMusicLoop, winMusicVol * 0.75f, 2));
+            StartCoroutine(StartFade(WinMusicLoop, winMusicVol * 0.4f, 1));
         }
     }
 
@@ -92,9 +94,7 @@ public class WinMusic : Singleton<WinMusic>
 
         WinTriggerSFX.Play();
 
-        yield return new WaitForSeconds(WinTriggerSFX.clip.length - 0.1f);
-
-        print(WinTriggerSFX.clip.length - 0.1f);
+        yield return new WaitForSeconds(WinTriggerSFX.clip.length - 0.3f);
 
         WinMusicLoop.Play();
     }
@@ -102,5 +102,11 @@ public class WinMusic : Singleton<WinMusic>
     private void StopLoopingMusic()
     {
         WinMusicLoop.Stop();
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= SwitchMusic;
+        TriggerWinMusic -= StartWinMusic;
     }
 }

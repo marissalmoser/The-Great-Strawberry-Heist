@@ -215,8 +215,14 @@ public class ScoreManager : Singleton<ScoreManager>
         isInStarMode = true;
         doStarModeVisuals = true;
         player.StartStarMode();
+
         //SfxManager.Instance.FadeOutSFX("StarModeTier" + TierManager.Instance.CurrentTier, starModeDuration);
-        currentStarTierMusic = "StarModeTier" + TierManager.Instance.GameTier;
+        //game tier set to 6 fix
+        if(TierManager.Instance.GameTier >= 5)
+            currentStarTierMusic = "StarModeTier5";
+        else
+            currentStarTierMusic = "StarModeTier" + TierManager.Instance.GameTier;
+
         StartCoroutine(StarModeVisualChange());
         yield return null;
 
