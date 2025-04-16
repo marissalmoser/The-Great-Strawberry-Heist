@@ -33,6 +33,10 @@ public class CatSwipeAnimController : MonoBehaviour
         {
             anim.SetTrigger("react");
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnDisable()

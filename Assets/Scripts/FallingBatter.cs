@@ -107,6 +107,6 @@ public class FallingBatter : MonoBehaviour
 
     public void MoveBar()
     {
-        alienBar.transform.localPosition = alienBar.transform.localPosition + new Vector3(0, -8, 0);
+        alienBar.transform.localPosition = alienBar.transform.localPosition + new Vector3(0, -6, 0);
     }
 }
