@@ -14,6 +14,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Diagnostics;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
@@ -249,6 +250,20 @@ public class ScoreManager : Singleton<ScoreManager>
     /// </summary>
     public void EndStarMode()
     {
+        UnityEngine.Debug.Log("[ENDING STAR MODE] Star Tier String: " + currentStarTierMusic);
+        if (currentStarTierMusic != "")
+        {
+            try
+            {
+                SfxManager.Instance.FadeOutSFX(currentStarTierMusic, 1);
+            }
+            catch (System.Exception error)
+            {
+                UnityEngine.Debug.LogError("Error Thrown in Score Manager's EndStarMode(): " + error);
+                UnityEngine.Debug.Break();
+            }
+        }
+
         player.StopStarMode();
         doStarModeVisuals = false;
         //Debug.Log("Star Tier String: " + currentStarTierMusic);

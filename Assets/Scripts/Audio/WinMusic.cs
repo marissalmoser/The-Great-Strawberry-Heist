@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class WinMusic : MonoBehaviour
 {
     public static WinMusic Instance;
-    bool isDestroying;
+
     [SerializeField] float fadeOutDuration = 0.75f;
     float winMusicVol;
 
@@ -68,13 +68,12 @@ public class WinMusic : MonoBehaviour
 
     private void SwitchMusic(Scene scene, LoadSceneMode arg1)
     {
-        if (!isDestroying && scene.name == "GameScene")
+        if (scene.name == "GameScene")
         {
-            isDestroying = true;
-
             //fade out music
             StartCoroutine(StartFade(WinMusicLoop, 0, fadeOutDuration));
             Invoke("StopLoopingMusic", fadeOutDuration + 1);
+            print("FADE WIN LOOP");
 
             //start intro track
             IntroSecquenceSFX.Play();
