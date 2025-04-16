@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class WinMusic : MonoBehaviour
 {
-    public WinMusic Instance;
+    public static WinMusic Instance;
     bool isDestroying;
     [SerializeField] float fadeOutDuration = 0.75f;
     float winMusicVol;
@@ -25,12 +25,16 @@ public class WinMusic : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            StartSetup();
         }
         else
         {
             Destroy(gameObject);
         }
+    }
 
+    private void StartSetup()
+    {
         SceneManager.sceneLoaded += SwitchMusic;
         TriggerWinMusic += StartWinMusic;
         winMusicVol = WinMusicLoop.volume;
