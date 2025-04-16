@@ -136,6 +136,12 @@ public class SfxManager : Singleton<SfxManager>
     public void SFXTierChange(int SFXindex) 
     {
         _SFXs[0].clips = AllFruitSFXs[SFXindex];
+        string debugMessage = "Fruit SFX are now set to: ";
+        foreach (var sfx in _SFXs[0].clips) 
+        {
+            debugMessage += sfx.name + ", ";
+        }
+        Debug.Log(debugMessage);
     }
 
     #region mixer functions

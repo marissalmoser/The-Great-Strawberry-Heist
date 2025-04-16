@@ -32,8 +32,8 @@ public class HowToPlayAnimation : MonoBehaviour
         state = State.TutorialFadeIn;
 
         // Loading game scene in the background because, might as well
-        //asyncOperation = SceneManager.LoadSceneAsync(_gameScene);
-        //asyncOperation.allowSceneActivation = false;
+        asyncOperation = SceneManager.LoadSceneAsync(_gameScene);
+        asyncOperation.allowSceneActivation = false;
     }
 
     /// <summary>
@@ -103,8 +103,7 @@ public class HowToPlayAnimation : MonoBehaviour
         }
         if (state == State.ControlsFadeOut)
         {
-            TransitionManager.Instance.CutOutWhiteboard(_gameScene);
-            //asyncOperation.allowSceneActivation = true;
+            asyncOperation.allowSceneActivation = true;
         }
     }
 
