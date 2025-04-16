@@ -23,6 +23,8 @@ public class TierManager : Singleton<TierManager>
 
     private int currentTier = 0;    //0 is bottom tier
 
+    private int gameTier = 1;
+
     [Tooltip("Edit this to change how big each shake is when a tier is swiped")]
     [SerializeField] float tierCamShakeAmplitude;
     [Tooltip("Edit this to change how often the camera shakes when a tier is swiped")]
@@ -32,6 +34,8 @@ public class TierManager : Singleton<TierManager>
     public static Action NextTierAction;
     public static Action<float> SwipeCanceledAction;
     public static Action<bool> EndSequence;
+
+    public int GameTier { get => gameTier; private set => gameTier = value; }
 
     protected override void Awake()
     {
@@ -78,7 +82,8 @@ public class TierManager : Singleton<TierManager>
             return;
         }
 
-        if(IsInBottomTier())
+
+        if (IsInBottomTier())
         {
             nextSpawnPt = tiers[1].GetTierSpawn().position;
         }
@@ -87,11 +92,21 @@ public class TierManager : Singleton<TierManager>
     }
 
     /// <summary>
+    /// Increments the current Game Tier and calls methods that modify behaviors when a tier changes
+    /// </summary>
+    public void InitiateNextTier() 
+    {
+        GameTier = Mathf.Min(GameTier + 1, 5);
+        //Debug.Log("Tier Changed to: " + GameTier);
+        MusicManager.Instance.PlayNextTrack();
+    }
+
+    /// <summary>
     /// Called when the payer passes into the next cake tier
     /// </summary>
     public void NextTier(float duration)
     {
-        MusicManager.Instance.PlayNextTrack();
+        InitiateNextTier();
         tiers[currentTier].DisableCam();
         StartCoroutine(tiers[currentTier].SwipeCanceled(duration));
         cakeTiers.RemoveAt(0);
@@ -121,6 +136,8 @@ public class TierManager : Singleton<TierManager>
         {
             yield break;
         }
+
+        InitiateNextTier();
 
         if (currentTier == 0)
         {

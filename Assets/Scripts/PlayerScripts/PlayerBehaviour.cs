@@ -145,7 +145,7 @@ public class PlayerBehaviour : MonoBehaviour
             MovePlayer();
         }
 
-        print(speedMultiplier);
+        //print(speedMultiplier);
     }
 
     /// <summary>
@@ -294,6 +294,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void StartStarMode() 
     {
         SfxManager.Instance.PlaySFX("Candle");
+        Debug.Log("Current Tier: " + TierManager.Instance.GameTier);
         StarModeSpeed();
         StartCoroutine(CreateAfterImages());
     }
@@ -384,7 +385,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IEnumerator CreateAfterImages()
     {
         var container = GameObject.Find("AfterImagesContainer");
-        while (ScoreManager.Instance.IsInStarMode)
+        while (ScoreManager.Instance.DoStarModeVisuals)
         {
             yield return new WaitForSeconds(afterImagesSpawnInterval);
             Instantiate(afterImagePrefab, transform.position, transform.rotation)
@@ -429,7 +430,8 @@ public class PlayerBehaviour : MonoBehaviour
     public void ReturnToMenu()
     {
         //TODO: go through high score secquence first
-        UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
+        TransitionManager.Instance.CircleOut("ScoreScene");
     }
 
     /// <summary>
