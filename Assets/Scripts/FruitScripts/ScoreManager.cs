@@ -37,6 +37,7 @@ public class ScoreManager : Singleton<ScoreManager>
     //total vitality amount
     private float Vitalitymeter = 0;
     private bool isInStarMode;
+    private bool doStarModeVisuals;
 
     public static int highScore;
 
@@ -52,6 +53,9 @@ public class ScoreManager : Singleton<ScoreManager>
     [SerializeField]
     [Tooltip("How long star mode lasts and how many seconds for the vitality bar to deplete until its empty")]
     private float starModeDuration = 5;
+    [SerializeField]
+    [Tooltip("How long star mode lasts after the visuals end")]
+    private float starModeEndBuffer = 0.5f;
 
     // Multiplier that can be changed in the Inspector
     [SerializeField]
@@ -61,11 +65,14 @@ public class ScoreManager : Singleton<ScoreManager>
 
     private int recentlyAddedScore;
 
+    private string currentStarTierMusic;
+
     [SerializeField]
     private GameObject textScorePrefab;
 
     public int RecentlyAddedScore { get => recentlyAddedScore; private set => recentlyAddedScore = value; }
     public bool IsInStarMode { get => isInStarMode; private set => isInStarMode = value; }
+    public bool DoStarModeVisuals { get => doStarModeVisuals; private set => doStarModeVisuals = value; }
 
     public void Start()
     {
@@ -206,7 +213,10 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         //Activation Logic
         isInStarMode = true;
+        doStarModeVisuals = true;
         player.StartStarMode();
+        //SfxManager.Instance.FadeOutSFX("StarModeTier" + TierManager.Instance.CurrentTier, starModeDuration);
+        currentStarTierMusic = "StarModeTier" + TierManager.Instance.GameTier;
         StartCoroutine(StarModeVisualChange());
         yield return null;
 
@@ -223,14 +233,22 @@ public class ScoreManager : Singleton<ScoreManager>
         //De-Activation Logic
         //Reused this method because it resets the Vitality to 0 and updates UI already
         EndStarMode();
+
+        yield return new WaitForSeconds(starModeEndBuffer);
+
+        isInStarMode = false;
     }
     /// <summary>
-    /// Ends star mode
+    /// Ends star mode visuals
     /// </summary>
     public void EndStarMode()
     {
         player.StopStarMode();
-        isInStarMode = false;
+        doStarModeVisuals = false;
+        //Debug.Log("Star Tier String: " + currentStarTierMusic);
+        if (currentStarTierMusic != "")
+            SfxManager.Instance.FadeOutSFX(currentStarTierMusic, 1);
+        currentStarTierMusic = "";
         LayerSwipeVitalityChange();
     }
     /// <summary>
@@ -238,19 +256,23 @@ public class ScoreManager : Singleton<ScoreManager>
     /// </summary>
     private IEnumerator StarModeVisualChange() 
     {
+        SfxManager.Instance.PlaySFX(currentStarTierMusic);
         var transform = BarFlame.GetComponent<RectTransform>();
         transform.position = startPos.position;
         //can be removed later
         BarFlame.SetActive(true);
         bool doneTrigger = false;
+        float breakpointTriggerTime = 1.0f - FlameScaleBreakpoint;
         float t = 0;
         while (t <= 1.0f)
         {
             t += Time.deltaTime / starModeDuration;
-            if (!doneTrigger && t >= 1.0f - FlameScaleBreakpoint) 
+            if (!doneTrigger && t >= breakpointTriggerTime) 
             {
                 doneTrigger = true;
                 FlameAnimator.SetBool("ScaleChange", true);
+                if(currentStarTierMusic != "")
+                    SfxManager.Instance.FadeOutSFX(currentStarTierMusic, FlameScaleBreakpoint * starModeDuration);
             }
             transform.position = Vector3.Lerp(startPos.position, endPos.position, t);
             yield return null;
