@@ -61,6 +61,7 @@ public class TimerSystem : MonoBehaviour
     private bool triggeredIcing;
     private bool triggeredTimerSound;
     private bool triggeredTimerMidAnim;
+    private bool triggeredCatAnim;
     public static bool DoMovePlayer;
     public static bool TimeUp;
     public static Action StartGame, CatSwipeAnim;
@@ -158,6 +159,7 @@ public class TimerSystem : MonoBehaviour
         triggeredIcing = false;
         triggeredTimerSound = false;
         triggeredTimerMidAnim = false;
+        triggeredCatAnim = false;
         TimeUp = false;
 
         TimerUIAnimEvents.CancelAnim?.Invoke(false);
@@ -201,9 +203,15 @@ public class TimerSystem : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             currentTime += 0.1f;
             UpdateTimerUI();
+
+            if (!triggeredCatAnim && (currentMaxTime - currentTime) <= 0.2f)
+            {
+                triggeredCatAnim = true;
+                CatSwipeAnim?.Invoke();
+            }
         }
 
-        CatSwipeAnim?.Invoke();
+        //CatSwipeAnim?.Invoke();
 
         //tier is swiped
         TimeUp = true;

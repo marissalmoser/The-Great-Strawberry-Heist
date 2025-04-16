@@ -37,6 +37,7 @@ public class ScoreManager : Singleton<ScoreManager>
     //total vitality amount
     private float Vitalitymeter = 0;
     private bool isInStarMode;
+    private bool doStarModeVisuals;
 
     public static int highScore;
 
@@ -52,6 +53,9 @@ public class ScoreManager : Singleton<ScoreManager>
     [SerializeField]
     [Tooltip("How long star mode lasts and how many seconds for the vitality bar to deplete until its empty")]
     private float starModeDuration = 5;
+    [SerializeField]
+    [Tooltip("How long star mode lasts after the visuals end")]
+    private float starModeEndBuffer = 0.5f;
 
     // Multiplier that can be changed in the Inspector
     [SerializeField]
@@ -68,6 +72,7 @@ public class ScoreManager : Singleton<ScoreManager>
 
     public int RecentlyAddedScore { get => recentlyAddedScore; private set => recentlyAddedScore = value; }
     public bool IsInStarMode { get => isInStarMode; private set => isInStarMode = value; }
+    public bool DoStarModeVisuals { get => doStarModeVisuals; private set => doStarModeVisuals = value; }
 
     public void Start()
     {
@@ -208,6 +213,7 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         //Activation Logic
         isInStarMode = true;
+        doStarModeVisuals = true;
         player.StartStarMode();
         //SfxManager.Instance.FadeOutSFX("StarModeTier" + TierManager.Instance.CurrentTier, starModeDuration);
         currentStarTierMusic = "StarModeTier" + TierManager.Instance.GameTier;
@@ -228,7 +234,8 @@ public class ScoreManager : Singleton<ScoreManager>
         //Reused this method because it resets the Vitality to 0 and updates UI already
         EndStarMode();
 
-        //yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(starModeEndBuffer);
+
         isInStarMode = false;
     }
     /// <summary>
@@ -237,8 +244,9 @@ public class ScoreManager : Singleton<ScoreManager>
     public void EndStarMode()
     {
         player.StopStarMode();
+        doStarModeVisuals = false;
         //Debug.Log("Star Tier String: " + currentStarTierMusic);
-        if(currentStarTierMusic != "")
+        if (currentStarTierMusic != "")
             SfxManager.Instance.FadeOutSFX(currentStarTierMusic, 1);
         currentStarTierMusic = "";
         LayerSwipeVitalityChange();
