@@ -15,6 +15,8 @@ public class NameSelector : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     InputActionMap actionMap;
     InputAction navigate, select;
+    [SerializeField] List<float> xPositions = new List<float>();
+    [SerializeField] private GameObject arrows;
 
     bool navigating = false;
 
@@ -51,6 +53,8 @@ public class NameSelector : MonoBehaviour
         DisplayName();
 
         StartCoroutine(FlashLetter());
+
+        arrows.transform.position = new Vector2(xPositions[nameIndex], arrows.transform.position.y);
     }
 
     /// <summary>
@@ -75,6 +79,10 @@ public class NameSelector : MonoBehaviour
             {
                 int i = Random.Range(1, 11);
                 LeaderboardManager.Instance.AddScore(i * 100);
+            }
+            else
+            {
+                arrows.transform.position = new Vector2(xPositions[nameIndex], arrows.transform.position.y);
             }
         }
     }
