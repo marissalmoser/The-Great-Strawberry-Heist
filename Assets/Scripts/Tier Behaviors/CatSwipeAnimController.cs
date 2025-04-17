@@ -23,7 +23,6 @@ public class CatSwipeAnimController : MonoBehaviour
         {
             transform.localPosition = transform.localPosition + new Vector3(catTransformAmts[0], 0, 0);
             catTransformAmts.RemoveAt(0);
-            print("swipe trigger HERE");
             anim.SetTrigger("Swipe");
         }
     }
@@ -33,6 +32,10 @@ public class CatSwipeAnimController : MonoBehaviour
         if(isReactCat)
         {
             anim.SetTrigger("react");
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

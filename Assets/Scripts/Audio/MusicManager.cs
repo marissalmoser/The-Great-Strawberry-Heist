@@ -4,6 +4,7 @@
  *    Date Created: 3/3/25
  *    Description: Music manager singleton. Call to start a tier's music.
  *******************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +25,13 @@ public class MusicManager : Singleton<MusicManager>
     [Tooltip("Duration in seconds for the length of time that the old track fades out for")]
     [SerializeField] private float fadeOutDuration = 1.5f;
     private int musicIndex = 0;
+    public static Action StartBGMusic, StopBGMusic;
     protected override void Awake()
     {
         base.Awake();
         _BGMs = GetComponentsInChildren<AudioSource>().ToList<AudioSource>();
+        StartBGMusic += StartMusic;
+        StopBGMusic += FadeOutTrack;
     }
     [ContextMenu("Increase Tier and Switch Soundtracks")]
     /// <summary>
@@ -79,5 +83,21 @@ public class MusicManager : Singleton<MusicManager>
             yield return new WaitForSeconds(incrementalWaitDuration);
         }
         currentTrack.volume = targetVolume;
+    }
+
+    private void StartMusic()
+    {
+        _BGMs[0].volume = maxVolume;
+
+        foreach (var track in _BGMs)
+        {
+            track.Play();
+        }
+    }
+
+    private void OnDisable()
+    {
+        StartBGMusic -= StartMusic;
+        StopBGMusic -= FadeOutTrack;
     }
 }
