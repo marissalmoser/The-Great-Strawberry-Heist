@@ -16,6 +16,10 @@ public class DisplayLeaderboard : MonoBehaviour
     [SerializeField] List<TMP_Text> names = new List<TMP_Text>();
     [SerializeField] List<TMP_Text> scores = new List<TMP_Text>();
 
+    [SerializeField] float timeBeforeSwap;
+
+    private bool top5;
+
     private string filePath;
 
     private async void Awake()
@@ -26,53 +30,115 @@ public class DisplayLeaderboard : MonoBehaviour
 
         filePath = Application.dataPath + "/Blacklist.txt";
 
-        InvokeRepeating("GetScores", 0, 5);
+        top5 = true;
+
+        InvokeRepeating("GetScores", 0, 1);
+        InvokeRepeating("SwapBetween", timeBeforeSwap, timeBeforeSwap);
     }
 
+    /// <summary>
+    /// Switches between 1-5 and 6-10
+    /// </summary>
+    private void SwapBetween()
+    {
+        top5 = !top5;
+    }
+
+    /// <summary>
+    /// Displays the scores
+    /// </summary>
     public async void GetScores()
     {
         if (LeaderboardsService.Instance != null)
         {
-            for (int i = 0; i < 5; ++i)
+            if (top5)
             {
-                var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
-                    LeaderboardID,
-                    new GetScoresOptions { Offset = i, Limit = i + 1 } //Limits to top 5 scores
-                );
-                Debug.Log(JsonConvert.SerializeObject(scoresResponse));
-
-                string s = JsonConvert.SerializeObject(scoresResponse);
-
-                //Debug.Log(s.IndexOf("playerName"));
-                if (s.IndexOf("playerName") != -1)
+                for (int i = 0; i < 5; ++i)
                 {
-                    int nameStart = s.IndexOf("playerName") + 13;
-                    names[i].text = s.Substring(nameStart, 3);
-                    if (NeedsCensored(s.Substring(nameStart, 3)))
+                    var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
+                        LeaderboardID,
+                        new GetScoresOptions { Offset = i, Limit = i + 1 } //Limits to top 5 scores
+                    );
+                    //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+
+                    string s = JsonConvert.SerializeObject(scoresResponse);
+
+                    //Debug.Log(s.IndexOf("playerName"));
+                    if (s.IndexOf("playerName") != -1)
                     {
-                        names[i].text = "???";
+                        int nameStart = s.IndexOf("playerName") + 13;
+                        names[i].text = s.Substring(nameStart, 3);
+                        if (NeedsCensored(s.Substring(nameStart, 3)))
+                        {
+                            names[i].text = "???";
+                        }
+                        else
+                        {
+                            names[i].text = s.Substring(nameStart, 3);
+                        }
+
+                        int scoreStart = s.IndexOf("score") + 7;
+                        // scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+                        string test = s.Substring(scoreStart, 6);
+                        if (test.Contains("."))
+                        {
+                            test = test.Substring(0, test.IndexOf("."));
+                        }
+                        scores[i].text = test;
+                        //string score = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+
+                        //Debug.Log(int.Parse(score));
                     }
                     else
                     {
-                        names[i].text = s.Substring(nameStart, 3);
+                        names[i].text = "";
+                        scores[i].text = "";
                     }
-
-                    int scoreStart = s.IndexOf("score") + 7;
-                    // scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
-                    string test = s.Substring(scoreStart, 6);
-                    if (test.Contains("."))
-                    {
-                        test = test.Substring(0, test.IndexOf("."));
-                    }
-                    scores[i].text = test;
-                    //string score = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
-
-                    //Debug.Log(int.Parse(score));
                 }
-                else
+            }
+            else
+            {
+                for (int i = 5; i < 10; ++i)
                 {
-                    names[i].text = "";
-                    scores[i].text = "";
+                    var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
+                        LeaderboardID,
+                        new GetScoresOptions { Offset = i, Limit = i + 1 } //Limits to top 5 scores
+                    );
+                    //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+
+                    string s = JsonConvert.SerializeObject(scoresResponse);
+
+                    //Debug.Log(s.IndexOf("playerName"));
+                    if (s.IndexOf("playerName") != -1)
+                    {
+                        int nameStart = s.IndexOf("playerName") + 13;
+                        names[i - 5].text = s.Substring(nameStart, 3);
+                        if (NeedsCensored(s.Substring(nameStart, 3)))
+                        {
+                            names[i - 5].text = "???";
+                        }
+                        else
+                        {
+                            names[i - 5].text = s.Substring(nameStart, 3);
+                        }
+
+                        int scoreStart = s.IndexOf("score") + 7;
+                        // scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+                        string test = s.Substring(scoreStart, 6);
+                        if (test.Contains("."))
+                        {
+                            test = test.Substring(0, test.IndexOf("."));
+                        }
+                        scores[i - 5].text = test;
+                        //string score = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+
+                        //Debug.Log(int.Parse(score));
+                    }
+                    else
+                    {
+                        names[i - 5].text = "";
+                        scores[i - 5].text = "";
+                    }
                 }
             }
         }
