@@ -16,6 +16,7 @@ public class StrawberryShineSound : MonoBehaviour
     void Start()
     {
         Invoke("ChangeStrawberryRange", 7.5f);
+        source.volume = source.volume / 4;
     }
 
     /// <summary>
@@ -32,7 +33,7 @@ public class StrawberryShineSound : MonoBehaviour
     /// </summary>
     public void PlayShine()
     {
-        float randomPitch = Random.Range(0.95f, 1.05f);
+        float randomPitch = Random.Range(0.98f, 1.02f);
         source.pitch = randomPitch;
         source.Play();
     }

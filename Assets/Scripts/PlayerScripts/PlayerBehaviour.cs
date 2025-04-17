@@ -294,7 +294,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void StartStarMode() 
     {
         SfxManager.Instance.PlaySFX("Candle");
-        Debug.Log("Current Tier: " + TierManager.Instance.GameTier);
+        //Debug.Log("Current Tier: " + TierManager.Instance.GameTier);
         StarModeSpeed();
         StartCoroutine(CreateAfterImages());
     }
@@ -399,7 +399,9 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     public IEnumerator RunToStrawberry()
     {
-        ScoreManager.Instance.EndStarMode();
+        //prevents null ref error on top tier
+        if(ScoreManager.Instance.IsInStarMode)
+            ScoreManager.Instance.EndStarMode();
 
         //makes player face right and disable their input
         transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -422,6 +424,11 @@ public class PlayerBehaviour : MonoBehaviour
     public void CallStrawberrySound()
     {
         SfxManager.Instance.PlaySFX("StrawberryPickup");
+    }
+
+    public void CallWinMusic()
+    {
+        WinMusic.TriggerWinMusic?.Invoke();
     }
 
     /// <summary>

@@ -43,7 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 83e1846377cf77e4392fddea3ee47dca, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
   Loop: 1
@@ -171,8 +171,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   m_audioClip: {fileID: 8300000, guid: e47b0f56f7fb51b4092ab9c9b94d056f, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.45
+  m_PlayOnAwake: 0
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -299,7 +299,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   m_audioClip: {fileID: 8300000, guid: be33e1163f6574a44b71264ba882ce42, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
   Loop: 1
@@ -434,9 +434,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _BGMs: []
-  timeIncrements: 100
   maxVolume: 0.45
-  fadeInDuration: 3
+  timeIncrements: 100
+  fadeInDuration: 1.5
   fadeOutDuration: 1.5
 --- !u!1 &5061944787116916040
 GameObject:
@@ -481,7 +481,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 71dc7cb1260de464db38b200448af055, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
   Loop: 1
@@ -609,7 +609,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
   m_audioClip: {fileID: 8300000, guid: db51429ff0a9d0e449ba4f3e66a882ec, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
   Loop: 1

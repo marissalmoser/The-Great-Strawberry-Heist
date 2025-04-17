@@ -96,7 +96,13 @@ public class TierManager : Singleton<TierManager>
     /// </summary>
     public void InitiateNextTier() 
     {
-        GameTier = Mathf.Min(GameTier + 1, 5);
+        //min function was causing it to call tier 5 music twice when they get to the strawberry "sixth" tier
+        GameTier++;
+        if (GameTier > 5)
+        {
+            //Debug.Log("Tier Changed to: " + GameTier);
+            return;
+        }
         //Debug.Log("Tier Changed to: " + GameTier);
         MusicManager.Instance.PlayNextTrack();
     }
