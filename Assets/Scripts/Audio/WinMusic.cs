@@ -83,6 +83,12 @@ public class WinMusic : MonoBehaviour
         {
             StartCoroutine(StartFade(WinMusicLoop, winMusicVol * 0.4f, 1));
         }
+
+        if (scene.name == "MainMenu" && !WinMusicLoop.isPlaying)
+        {
+            WinMusicLoop.volume = winMusicVol;
+            WinMusicLoop.Play();
+        }
     }
 
     private void StartWinMusic()

@@ -70,7 +70,8 @@ public class PauseMenuBehavior : MonoBehaviour
     /// <param name="context"></param>
     private void RestartGame(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("GameScene");
     }
 
     /// <summary>
