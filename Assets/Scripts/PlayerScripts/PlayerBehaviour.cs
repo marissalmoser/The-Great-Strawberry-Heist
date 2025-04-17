@@ -254,7 +254,7 @@ public class PlayerBehaviour : MonoBehaviour
                 // (Because buffered or well-timed jumps can foil velocity checks in OnCollision)
                 if (canJump && hit.collider.GetComponent<Trapdoor>() != null)
                 {
-                    hit.collider.GetComponent<Trapdoor>().CollisionLogic();
+                    hit.collider.GetComponent<Trapdoor>().TryCollisionLogic();
                 }
 
                 if (canJump)

@@ -11,6 +11,7 @@ using UnityEngine;
 public class Trapdoor : MonoBehaviour
 {
     [SerializeField] private int scoreToAdd;
+    bool hasTriggered = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,18 +21,27 @@ public class Trapdoor : MonoBehaviour
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb.velocity.y <= 0.5f && !TimerSystem.TimeUp)
             {
-                CollisionLogic();
+                TryCollisionLogic();
             }
         }     
     }
 
     public void CollisionLogic()
     {
-        print("trapdoor");
+        print("CollisionLogic");
         TimerSystem.DoMovePlayer = false;
         TierManager.NextTierAction?.Invoke();
         ScoreManager.Instance.AddScore(scoreToAdd, 0, transform.position, false);
         Destroy(this);
+    }
+
+    public void TryCollisionLogic()
+    {
+        if(!hasTriggered)
+        {
+            hasTriggered = true;
+            CollisionLogic();
+        }
     }
 
     public void DisableDoor()
