@@ -41,9 +41,15 @@ public class DisplayLeaderboard : MonoBehaviour
     /// </summary>
     private void SwapBetween()
     {
-        top5 = !top5;
         LeaderboardAnimController lac = FindObjectOfType<LeaderboardAnimController>();
         lac.StartAnim();
+        StartCoroutine(SlightDelay());
+    }
+
+    IEnumerator SlightDelay()
+    {
+        yield return new WaitForSeconds(.02f);
+        top5 = !top5;
     }
 
     /// <summary>
