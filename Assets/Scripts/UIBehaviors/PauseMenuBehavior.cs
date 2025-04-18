@@ -65,13 +65,13 @@ public class PauseMenuBehavior : MonoBehaviour
     }
 
     /// <summary>
-    /// Restarts the game scene and sets the time scale back to 1.
+    /// Goes back to the main menu
     /// </summary>
     /// <param name="context"></param>
     private void RestartGame(InputAction.CallbackContext context)
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("GameScene");
     }
 
     /// <summary>
