@@ -65,6 +65,7 @@ public class NameSelector : MonoBehaviour
     {
         if(nameIndex < 3)
         {
+            navigating = false;
             LeaderboardManager.Instance.UpdateName(letters[charIndex]);
 
             playerLetters[nameIndex].faceColor = Color.white;
