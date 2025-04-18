@@ -45,7 +45,7 @@ public class HighestScore : MonoBehaviour
             new GetScoresOptions { Limit = 1 } //Limits to top 5 scores
         );
 
-        Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+        //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
 
         string s = JsonConvert.SerializeObject(scoresResponse);
 

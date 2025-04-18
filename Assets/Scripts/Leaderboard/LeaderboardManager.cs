@@ -54,7 +54,7 @@ public class LeaderboardManager : MonoBehaviour
         }
 
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardID, score);
-        Debug.Log(JsonConvert.SerializeObject(scoreResponse));
+        //Debug.Log(JsonConvert.SerializeObject(scoreResponse));
 
         AuthenticationService.Instance.SignOut(true);
 
@@ -68,15 +68,22 @@ public class LeaderboardManager : MonoBehaviour
     {
         AuthenticationService.Instance.SignedIn += () =>
         {
-            Debug.Log("Signed in as: " + AuthenticationService.Instance.PlayerId);
+           // Debug.Log("Signed in as: " + AuthenticationService.Instance.PlayerId);
         };
         AuthenticationService.Instance.SignInFailed += s =>
         {
             // Take some action here...
-            Debug.Log(s);
+           // Debug.Log(s);
         };
 
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        try
+        {
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
+        catch
+        {
+            Debug.Log("Player is already signed in");
+        }
         await AuthenticationService.Instance.UpdatePlayerNameAsync(name);
         Debug.Log("Done");
     }
@@ -87,6 +94,6 @@ public class LeaderboardManager : MonoBehaviour
             LeaderboardID,
             new GetScoresOptions { Limit = 5 } //Limits to top 5 scores
         );
-        Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+      //  Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 }
