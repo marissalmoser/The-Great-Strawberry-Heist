@@ -42,6 +42,8 @@ public class DisplayLeaderboard : MonoBehaviour
     private void SwapBetween()
     {
         top5 = !top5;
+        LeaderboardAnimController lac = FindObjectOfType<LeaderboardAnimController>();
+        lac.StartAnim();
     }
 
     /// <summary>
