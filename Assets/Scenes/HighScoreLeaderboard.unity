@@ -954,7 +954,7 @@ MonoBehaviour:
   - {fileID: 2082083115}
   - {fileID: 115234332}
   - {fileID: 1782560283}
-  timeBeforeSwap: 5
+  timeBeforeSwap: 15
 --- !u!4 &697368551
 Transform:
   m_ObjectHideFlags: 0
