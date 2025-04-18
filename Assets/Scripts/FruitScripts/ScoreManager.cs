@@ -78,7 +78,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        ScoreText.text = "Score: " + Totalscore.ToString();
+        ScoreText.text = Totalscore.ToString();
         highScore = 0;
     }
    
@@ -138,7 +138,7 @@ public class ScoreManager : Singleton<ScoreManager>
         Totalscore += recentlyAddedScore;
         highScore = Totalscore;
 
-        ScoreText.text = "Score: " + Totalscore.ToString();
+        ScoreText.text = Totalscore.ToString();
 
         var textObj = Instantiate(textScorePrefab, spawnPosition, Quaternion.identity).GetComponent<TextRise>();
         textObj.SetRisingText("+" + recentlyAddedScore);
