@@ -15,9 +15,10 @@ public class WinMusic : MonoBehaviour
     [SerializeField] AudioSource WinTriggerSFX;
     [SerializeField] AudioSource IntroSecquenceSFX;
     [SerializeField] AudioSource WinMusicLoop;
+    [SerializeField] AudioSource NewHighScore;
 
     //fades out bg music and starts win music loop
-    public static Action TriggerWinMusic;
+    public static Action TriggerWinMusic, PlayNewHighScoreSFX;
 
     private void Awake()
     {
@@ -37,8 +38,14 @@ public class WinMusic : MonoBehaviour
     {
         SceneManager.sceneLoaded += SwitchMusic;
         TriggerWinMusic += StartWinMusic;
+        PlayNewHighScoreSFX += NewHSsfx;
         winMusicVol = WinMusicLoop.volume;
         WinMusicLoop.Play();
+    }
+
+    private void NewHSsfx()
+    {
+        NewHighScore.PlayOneShot(NewHighScore.clip);
     }
 
 
@@ -116,5 +123,6 @@ public class WinMusic : MonoBehaviour
     {
         SceneManager.sceneLoaded -= SwitchMusic;
         TriggerWinMusic -= StartWinMusic;
+        PlayNewHighScoreSFX -= NewHSsfx;
     }
 }

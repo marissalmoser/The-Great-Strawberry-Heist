@@ -55,6 +55,11 @@ public class LeaderboardManager : MonoBehaviour
 
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardID, score);
         //Debug.Log(JsonConvert.SerializeObject(scoreResponse));
+        if(scoreResponse != null && scoreResponse.Rank < 10)
+        {
+            //play leaderboard sound
+            WinMusic.PlayNewHighScoreSFX?.Invoke();
+        }
 
         AuthenticationService.Instance.SignOut(true);
 
