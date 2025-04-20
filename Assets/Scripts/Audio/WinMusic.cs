@@ -73,7 +73,6 @@ public class WinMusic : MonoBehaviour
             //fade out music
             StartCoroutine(StartFade(WinMusicLoop, 0, fadeOutDuration));
             Invoke("StopLoopingMusic", fadeOutDuration + 1);
-            print("FADE WIN LOOP");
 
             //start intro track
             IntroSecquenceSFX.Play();
@@ -81,7 +80,7 @@ public class WinMusic : MonoBehaviour
 
         if(scene.name == "HowToPlay")
         {
-            StartCoroutine(StartFade(WinMusicLoop, winMusicVol * 0.4f, 1));
+            StartCoroutine(StartFade(WinMusicLoop, 0, 1));
         }
 
         if (scene.name == "MainMenu" && !WinMusicLoop.isPlaying)

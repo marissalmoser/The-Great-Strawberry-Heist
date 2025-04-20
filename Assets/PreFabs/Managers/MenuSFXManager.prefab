@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8137856926095849621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2162063844960817243}
+  - component: {fileID: 3436400875040942224}
+  m_Layer: 0
+  m_Name: MenuSFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2162063844960817243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137856926095849621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.733151, y: 87.55157, z: -0.14489153}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3436400875040942224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137856926095849621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f597537c670b6b429b791d52b907b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _SFXs:
+  - name: Leaderboard
+    clips:
+    - {fileID: 8300000, guid: cd82f573c71cd2a43871cfd47c6f0c9f, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: WB_Write
+    clips:
+    - {fileID: 8300000, guid: 00ece3af98c72664c852cb7d8a8bfa8d, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: WB_Erase
+    clips:
+    - {fileID: 8300000, guid: 2df53b761a67b7149b3d7ca5c44b461c, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: Menuing
+    clips:
+    - {fileID: 8300000, guid: 9834bb7dfdedfad4189a4ac3ce92d2cf, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 24300002, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  _masterMixer: {fileID: 24100000, guid: f50f0c234c0d7fd4f82756c476dd3e4e, type: 2}
+  T1FruitSFXs: []
+  T2FruitSFXs: []
+  T3FruitSFXs: []
+  T4FruitSFXs: []
+  T5FruitSFXs: []
