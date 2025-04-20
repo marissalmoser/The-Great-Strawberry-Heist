@@ -32,6 +32,7 @@ public class LeaderboardAnimController : MonoBehaviour
         first = !first;
         oneToFive.SetActive(first);
         sixToTen.SetActive(!first);
+        SfxManager.Instance.PlaySFX("WB_Write");
     }
 
     public void StartAnim()
@@ -39,6 +40,7 @@ public class LeaderboardAnimController : MonoBehaviour
         //oneToFive.SetActive(false);
         //sixToTen.SetActive(false);
         animator.SetBool("wipe", true);
+        SfxManager.Instance.PlaySFX("WB_Erase");
     }
 
     public void DisableScreens()
