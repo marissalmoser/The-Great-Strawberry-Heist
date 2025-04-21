@@ -31,6 +31,7 @@ public class RollingFruit : MonoBehaviour
             else 
             {
                 ScoreManager.Instance.AddScore(score, vitality, transform.position, false);
+                SfxManager.Instance.PlaySFX("OrangeExplode");
                 Instantiate(_particlePrefab, transform.position, Quaternion.identity);
                 DestroyFruit();
             }

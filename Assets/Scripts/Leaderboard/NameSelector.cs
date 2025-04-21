@@ -30,15 +30,11 @@ public class NameSelector : MonoBehaviour
     [SerializeField] Color startingColor = Color.white;
     [SerializeField] Color newColor = Color.black;
 
-    public static bool good;
-
     /// <summary>
     /// Enables player input
     /// </summary>
     private void Awake()
     {
-        good = false;
-
         actionMap = GetComponent<PlayerInput>().currentActionMap;
         actionMap.Enable();
 
@@ -67,30 +63,29 @@ public class NameSelector : MonoBehaviour
     /// <param name="obj"></param>
     private void Select_started(InputAction.CallbackContext obj)
     {
-        if (good)
+        if(nameIndex < 3)
         {
-            if (nameIndex < 3)
+            SfxManager.Instance.PlaySFX("Menuing");
+
+            navigating = false;
+            LeaderboardManager.Instance.UpdateName(letters[charIndex]);
+
+            playerLetters[nameIndex].faceColor = Color.white;
+            StopAllCoroutines();
+
+            ++nameIndex;
+
+            DisplayName();
+            StartCoroutine(FlashLetter());
+
+            if (nameIndex == 3)
             {
-                navigating = false;
-                LeaderboardManager.Instance.UpdateName(letters[charIndex]);
-
-                playerLetters[nameIndex].faceColor = Color.white;
-                StopAllCoroutines();
-
-                ++nameIndex;
-
-                DisplayName();
-                StartCoroutine(FlashLetter());
-
-                if (nameIndex == 3)
-                {
-                    int i = Random.Range(1, 11);
-                    LeaderboardManager.Instance.AddScore(i * 100);
-                }
-                else
-                {
-                    arrows.transform.position = new Vector2(xPositions[nameIndex], arrows.transform.position.y);
-                }
+                int i = Random.Range(1, 11);
+                LeaderboardManager.Instance.AddScore(i * 100);
+            }
+            else
+            {
+                arrows.transform.position = new Vector2(xPositions[nameIndex], arrows.transform.position.y);
             }
         }
     }

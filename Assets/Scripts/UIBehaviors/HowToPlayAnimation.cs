@@ -116,4 +116,14 @@ public class HowToPlayAnimation : MonoBehaviour
         actionMap.Disable();
         jump.started -= Jump_started;
     }
+
+    public void PlayWriteSFX()
+    {
+        SfxManager.Instance.PlaySFX("WB_Write");
+    }
+
+    public void PlayEraseSFX()
+    {
+        SfxManager.Instance.PlaySFX("WB_Erase");
+    }
 }
