@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class WinMusic : MonoBehaviour
@@ -41,6 +42,7 @@ public class WinMusic : MonoBehaviour
         PlayNewHighScoreSFX += NewHSsfx;
         winMusicVol = WinMusicLoop.volume;
         WinMusicLoop.Play();
+        Cursor.visible = false;
     }
 
     private void NewHSsfx()
