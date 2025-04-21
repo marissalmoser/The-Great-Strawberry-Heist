@@ -22,6 +22,8 @@ public class MainMenuBehaviour : MonoBehaviour
     [SerializeField] private GameObject creditButton;
     [SerializeField] private GameObject backButton;
 
+    bool hasSelected = false;
+
     /// <summary>
     /// Enables action map
     /// </summary>
@@ -40,7 +42,12 @@ public class MainMenuBehaviour : MonoBehaviour
     /// <param name="obj"></param>
     private void Select_started(InputAction.CallbackContext obj)
     {
-        TransitionManager.Instance.WhiteboardIn(nextScene);
+        if(!hasSelected)
+        {
+            hasSelected = true;
+            SfxManager.Instance.PlaySFX("Menuing");
+            TransitionManager.Instance.WhiteboardIn(nextScene);
+        }
     }
 
     /// <summary>

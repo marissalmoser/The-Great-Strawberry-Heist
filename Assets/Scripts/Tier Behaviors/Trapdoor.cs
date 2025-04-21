@@ -28,7 +28,6 @@ public class Trapdoor : MonoBehaviour
 
     public void CollisionLogic()
     {
-        print("CollisionLogic");
         TimerSystem.DoMovePlayer = false;
         TierManager.NextTierAction?.Invoke();
         ScoreManager.Instance.AddScore(scoreToAdd, 0, transform.position, false);

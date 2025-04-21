@@ -65,6 +65,8 @@ public class NameSelector : MonoBehaviour
     {
         if(nameIndex < 3)
         {
+            SfxManager.Instance.PlaySFX("Menuing");
+
             navigating = false;
             LeaderboardManager.Instance.UpdateName(letters[charIndex]);
 
