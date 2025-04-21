@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Jump any Button
+  m_text: 'Press any Button
 
     to Start'
   m_isRightToLeft: 0
