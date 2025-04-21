@@ -23,6 +23,7 @@ public class LeaderboardManager : MonoBehaviour
     {
         await UnityServices.InitializeAsync(); //Waits for the initialize to
                                                //finish before continuing
+        NameSelector.good = true;
 
         if (Instance != null && Instance != this)
         {
