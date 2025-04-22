@@ -38,6 +38,7 @@ public class NameSelector : MonoBehaviour
     private void Awake()
     {
         good = false;
+        StartCoroutine(delayABit());
         actionMap = GetComponent<PlayerInput>().currentActionMap;
         actionMap.Enable();
 
@@ -58,6 +59,12 @@ public class NameSelector : MonoBehaviour
         StartCoroutine(FlashLetter());
 
         arrows.transform.position = new Vector2(xPositions[nameIndex], arrows.transform.position.y);
+    }
+
+    IEnumerator delayABit()
+    {
+        yield return new WaitForSeconds(.02f);
+        good = true;
     }
 
     /// <summary>
