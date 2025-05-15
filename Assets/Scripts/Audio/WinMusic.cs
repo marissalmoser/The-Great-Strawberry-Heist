@@ -87,10 +87,10 @@ public class WinMusic : MonoBehaviour
             IntroSecquenceSFX.Play();
         }
 
-        if(scene.name == "HowToPlay")
+        /*if(scene.name == "HowToPlay")
         {
             StartCoroutine(StartFade(WinMusicLoop, 0, 1));
-        }
+        }*/
 
         if (scene.name == "MainMenu" && !WinMusicLoop.isPlaying)
         {

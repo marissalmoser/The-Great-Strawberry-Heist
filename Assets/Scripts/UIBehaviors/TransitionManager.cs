@@ -134,13 +134,18 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }*/
 
-    /// <summary>
-    /// Fades to white and loads scene
-    /// </summary>
-    /// <param name="seconds"></param>
-    /// <param name="scene"></param>
-    /// <returns></returns>
-    public IEnumerator FadeOut(float seconds, bool fadeWhiteboard, string scene)
+    public void FadeOut(float seconds, bool fadeWhiteboard)
+    {
+        StartCoroutine(FadeOut(seconds, fadeWhiteboard, nextSceneToLoad));
+    }
+
+        /// <summary>
+        /// Fades to white and loads scene
+        /// </summary>
+        /// <param name="seconds"></param>
+        /// <param name="scene"></param>
+        /// <returns></returns>
+        public IEnumerator FadeOut(float seconds, bool fadeWhiteboard, string scene)
     {
         Image toFade;
         if (fadeWhiteboard)
