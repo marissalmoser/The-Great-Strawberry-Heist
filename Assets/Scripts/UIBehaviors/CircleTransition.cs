@@ -9,7 +9,7 @@ public class CircleTransition : MonoBehaviour
 
     public void FadeOutMainMenu()
     {
-        StartCoroutine(tm.FadeOut(0.25f, true, "HowToPlay"));
+        tm.FadeOut(0.25f, true);
     }
 
     public void DisableWhiteboard()
