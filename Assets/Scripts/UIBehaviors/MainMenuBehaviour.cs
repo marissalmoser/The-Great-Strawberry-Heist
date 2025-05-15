@@ -51,6 +51,40 @@ public class MainMenuBehaviour : MonoBehaviour
     }
 
     /// <summary>
+    /// Selects the back button
+    /// </summary>
+    public void PressCredits()
+    {
+        //Sets the event system to select the back button
+        EventSystem.current.SetSelectedGameObject(backButton);
+    }
+
+    /// <summary>
+    /// Re-selects the credits button
+    /// </summary>
+    public void PressBack()
+    {
+        //Sets the event system to select the credit button
+        EventSystem.current.SetSelectedGameObject(creditButton);
+    }
+
+    /// <summary>
+    /// Quits out of the game
+    /// </summary>
+    public void PressQuit()
+    {
+        //Quits out of the editor instead
+        //if(EditorApplication.isPlaying)
+        //{
+        //    EditorApplication.isPlaying = false;
+        //}
+        //else
+        {
+            Application.Quit();
+        }
+    }
+
+    /// <summary>
     /// Disables the action map
     /// </summary>
     private void OnDisable()
