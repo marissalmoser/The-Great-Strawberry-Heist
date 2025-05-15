@@ -526,8 +526,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: HowToPlay
   startButton: {fileID: 0}
+  htpButton: {fileID: 0}
+  leaderButton: {fileID: 0}
   creditButton: {fileID: 0}
-  backButton: {fileID: 917215273}
+  pressAnyForMainMenuFade: 0
+  pressAnyForMainMenuWhiteboard: 0
 --- !u!4 &852388356
 Transform:
   m_ObjectHideFlags: 0
