@@ -16,6 +16,7 @@ public class DisplayLeaderboard : MonoBehaviour
 
     [SerializeField] List<TMP_Text> names = new List<TMP_Text>();
     [SerializeField] List<TMP_Text> scores = new List<TMP_Text>();
+    [SerializeField] List<TMP_Text> nums = new List<TMP_Text>();
 
     [SerializeField] float timeBeforeSwap;
 
@@ -102,8 +103,9 @@ public class DisplayLeaderboard : MonoBehaviour
                         LeaderboardID,
                         new GetScoresOptions { Offset = scrollIndex + i, Limit = scrollIndex + i + 1 } //Limits to top 5 scores
                     );
-                    //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+                //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
 
+                    nums[i].text = (scrollIndex + i + 1).ToString();
                     string s = JsonConvert.SerializeObject(scoresResponse);
 
                     //Debug.Log(s.IndexOf("playerName"));
