@@ -21,8 +21,7 @@ public class DisplayLeaderboard : MonoBehaviour
 
     InputActionMap actionMap;
     InputAction scroll;
-
-    private bool top5;
+    //private bool top5;
 
     private string filePath;
 
@@ -44,7 +43,7 @@ public class DisplayLeaderboard : MonoBehaviour
 
         filePath = Application.dataPath + "/Blacklist.txt";
 
-        top5 = true;
+       // top5 = true;
         scrollIndex = 0;
 
         InvokeRepeating("GetScores", 0, 1);
@@ -66,7 +65,7 @@ public class DisplayLeaderboard : MonoBehaviour
                 ++scrollIndex;
             }
 
-            Debug.Log(scrollIndex);
+            canScroll = false;
 
             StartCoroutine(SlightDelay());
         }
@@ -85,7 +84,7 @@ public class DisplayLeaderboard : MonoBehaviour
     IEnumerator SlightDelay()
     {
         yield return new WaitForSeconds(.02f);
-        //top5 = !top5;
+        canScroll = true;
     }
 
     /// <summary>
@@ -95,8 +94,8 @@ public class DisplayLeaderboard : MonoBehaviour
     {
         if (LeaderboardsService.Instance != null)
         {
-            if (top5)
-            {
+            //if (top5)
+            //{
                 for (int i = 0; i < + 5; ++i)
                 {
                     var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
@@ -138,53 +137,53 @@ public class DisplayLeaderboard : MonoBehaviour
                         names[i].text = "";
                         scores[i].text = "";
                     }
-                }
+                //}
             }
-            else
-            {
-                for (int i = 5; i < 10; ++i)
-                {
-                    var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
-                        LeaderboardID,
-                        new GetScoresOptions { Offset = i, Limit = i + 1 } //Limits to top 5 scores
-                    );
-                    //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+            //else
+            //{
+            //    for (int i = 5; i < 10; ++i)
+            //    {
+            //        var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
+            //            LeaderboardID,
+            //            new GetScoresOptions { Offset = i, Limit = i + 1 } //Limits to top 5 scores
+            //        );
+            //        //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
 
-                    string s = JsonConvert.SerializeObject(scoresResponse);
+            //        string s = JsonConvert.SerializeObject(scoresResponse);
 
-                    //Debug.Log(s.IndexOf("playerName"));
-                    if (s.IndexOf("playerName") != -1)
-                    {
-                        int nameStart = s.IndexOf("playerName") + 13;
-                        names[i - 5].text = s.Substring(nameStart, 3);
-                        if (NeedsCensored(s.Substring(nameStart, 3)))
-                        {
-                            names[i - 5].text = "???";
-                        }
-                        else
-                        {
-                            names[i - 5].text = s.Substring(nameStart, 3);
-                        }
+            //        //Debug.Log(s.IndexOf("playerName"));
+            //        if (s.IndexOf("playerName") != -1)
+            //        {
+            //            int nameStart = s.IndexOf("playerName") + 13;
+            //            names[i - 5].text = s.Substring(nameStart, 3);
+            //            if (NeedsCensored(s.Substring(nameStart, 3)))
+            //            {
+            //                names[i - 5].text = "???";
+            //            }
+            //            else
+            //            {
+            //                names[i - 5].text = s.Substring(nameStart, 3);
+            //            }
 
-                        int scoreStart = s.IndexOf("score") + 7;
-                        // scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
-                        string test = s.Substring(scoreStart, 6);
-                        if (test.Contains("."))
-                        {
-                            test = test.Substring(0, test.IndexOf("."));
-                        }
-                        scores[i - 5].text = test;
-                        //string score = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+            //            int scoreStart = s.IndexOf("score") + 7;
+            //            // scores[i].text = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
+            //            string test = s.Substring(scoreStart, 6);
+            //            if (test.Contains("."))
+            //            {
+            //                test = test.Substring(0, test.IndexOf("."));
+            //            }
+            //            scores[i - 5].text = test;
+            //            //string score = s.Substring(scoreStart, (s.IndexOf("}]}") - scoreStart - 2));
 
-                        //Debug.Log(int.Parse(score));
-                    }
-                    else
-                    {
-                        names[i - 5].text = "";
-                        scores[i - 5].text = "";
-                    }
-                }
-            }
+            //            //Debug.Log(int.Parse(score));
+            //        }
+            //        else
+            //        {
+            //            names[i - 5].text = "";
+            //            scores[i - 5].text = "";
+            //        }
+            //    }
+            //}
         }
     }
 
