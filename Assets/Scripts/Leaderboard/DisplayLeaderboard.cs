@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TMPro;
 using System.IO;
+using UnityEngine.InputSystem;
 
 public class DisplayLeaderboard : MonoBehaviour
 {
@@ -18,12 +19,25 @@ public class DisplayLeaderboard : MonoBehaviour
 
     [SerializeField] float timeBeforeSwap;
 
+    InputActionMap actionMap;
+    InputAction scroll;
+
     private bool top5;
 
     private string filePath;
 
+    private int scrollIndex; //Used to keep track of how far up or down the leaderboard is
+    private bool canScroll;
+
     private async void Awake()
     {
+        actionMap = GetComponent<PlayerInput>().currentActionMap;
+        actionMap.Enable();
+        scroll = actionMap.FindAction("Scroll");
+        scroll.performed += Scroll_performed;
+
+        canScroll = true;
+
         await UnityServices.InitializeAsync();
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
@@ -31,25 +45,47 @@ public class DisplayLeaderboard : MonoBehaviour
         filePath = Application.dataPath + "/Blacklist.txt";
 
         top5 = true;
+        scrollIndex = 0;
 
         InvokeRepeating("GetScores", 0, 1);
-        InvokeRepeating("SwapBetween", timeBeforeSwap, timeBeforeSwap);
+        //InvokeRepeating("SwapBetween", timeBeforeSwap, timeBeforeSwap);
+    }
+
+    private void Scroll_performed(InputAction.CallbackContext obj)
+    {
+        if (canScroll)
+        {
+            float scrollValue = scroll.ReadValue<float>();
+
+            if (scrollValue > 0 && scrollIndex > 0)
+            {
+                --scrollIndex;
+            }
+            else if (scrollValue < 0 && scrollIndex < 5)
+            {
+                ++scrollIndex;
+            }
+
+            Debug.Log(scrollIndex);
+
+            StartCoroutine(SlightDelay());
+        }
     }
 
     /// <summary>
     /// Switches between 1-5 and 6-10
     /// </summary>
-    private void SwapBetween()
-    {
-        LeaderboardAnimController lac = FindObjectOfType<LeaderboardAnimController>();
-        lac.StartAnim();
-        StartCoroutine(SlightDelay());
-    }
+    //private void SwapBetween()
+    //{
+    //    LeaderboardAnimController lac = FindObjectOfType<LeaderboardAnimController>();
+    //    lac.StartAnim();
+    //    StartCoroutine(SlightDelay());
+    //}
 
     IEnumerator SlightDelay()
     {
         yield return new WaitForSeconds(.02f);
-        top5 = !top5;
+        //top5 = !top5;
     }
 
     /// <summary>
@@ -61,11 +97,11 @@ public class DisplayLeaderboard : MonoBehaviour
         {
             if (top5)
             {
-                for (int i = 0; i < 5; ++i)
+                for (int i = 0; i < + 5; ++i)
                 {
                     var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
                         LeaderboardID,
-                        new GetScoresOptions { Offset = i, Limit = i + 1 } //Limits to top 5 scores
+                        new GetScoresOptions { Offset = scrollIndex + i, Limit = scrollIndex + i + 1 } //Limits to top 5 scores
                     );
                     //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
 
@@ -177,5 +213,7 @@ public class DisplayLeaderboard : MonoBehaviour
     private void OnDisable()
     {
         AuthenticationService.Instance.SignOut(true);
+        actionMap.Disable();
+        scroll.performed -= Scroll_performed;
     }
 }
