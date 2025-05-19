@@ -103,7 +103,7 @@ public class HowToPlayAnimation : MonoBehaviour
         }
         if (state == State.ControlsFadeOut)
         {
-            TransitionManager.Instance.CutOutWhiteboard(_gameScene);
+            TransitionManager.Instance.CutOutWhiteboard("MainMenu");
             //asyncOperation.allowSceneActivation = true;
         }
     }
