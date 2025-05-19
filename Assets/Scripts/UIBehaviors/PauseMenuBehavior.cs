@@ -15,7 +15,7 @@ public class PauseMenuBehavior : MonoBehaviour
     [SerializeField] private GameObject pauseCanvas;
 
     private InputActionMap MenuActions;
-    private InputAction pause, quit, restart;
+    private InputAction pause;
 
     bool isPaused;
     public static Action<bool> PauseGame;
@@ -26,15 +26,15 @@ public class PauseMenuBehavior : MonoBehaviour
         MenuActions.Enable();
 
         pause = MenuActions.FindAction("PauseGame");
-        quit = MenuActions.FindAction("Quit");
-        restart = MenuActions.FindAction("Restart");
+        //quit = MenuActions.FindAction("Quit");
+        //restart = MenuActions.FindAction("Restart");
 
         pause.performed += TogglePause;
-        restart.performed += RestartGame;
-        quit.performed += ConfirmQuit;
+        //restart.performed += RestartGame;
+        //quit.performed += ConfirmQuit;
 
-        quit.Disable();
-        restart.Disable();
+        //quit.Disable();
+        //restart.Disable();
     }
 
     /// <summary>
@@ -50,16 +50,18 @@ public class PauseMenuBehavior : MonoBehaviour
         if(isPaused)
         {
             pauseCanvas.SetActive(true);
-            restart.Enable();
-            quit.Enable();
+            //restart.Enable();
+            //quit.Enable();
+            SfxManager.Instance.PauseAllSFX();
             Time.timeScale = 0;
         }
         //unpausing game
         else
         {
-            restart.Disable();
-            quit.Disable();
+            //restart.Disable();
+            //quit.Disable();
             Time.timeScale = 1;
+            SfxManager.Instance.ResumeAllSFX();
             pauseCanvas.SetActive(false);
         }
     }
@@ -68,7 +70,7 @@ public class PauseMenuBehavior : MonoBehaviour
     /// Goes back to the main menu
     /// </summary>
     /// <param name="context"></param>
-    private void RestartGame(InputAction.CallbackContext context)
+    public void RestartGame()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("GameScene");
@@ -78,17 +80,25 @@ public class PauseMenuBehavior : MonoBehaviour
     /// Quits the game application;
     /// </summary>
     /// <param name="context"></param>
-    private void ConfirmQuit(InputAction.CallbackContext context)
+    public void ConfirmQuit()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
         //Application.Quit();
     }
+    /// <summary>
+    /// Loads the HowToPlay scene 
+    /// </summary>
+    public void GoToHowToPlay() 
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("HowToPlay");
+    }
 
     private void OnDisable()
     {
         pause.performed -= TogglePause;
-        restart.performed -= RestartGame;
-        quit.performed -= ConfirmQuit;
+        //restart.performed -= RestartGame;
+        //quit.performed -= ConfirmQuit;
     }
 }
