@@ -68,6 +68,7 @@ public class PlayerBehaviour : MonoBehaviour
     private SpriteRenderer sr;
     private Animator animator;
     [SerializeField] private ParticleSystem _starModeFinishedParticles;
+    [SerializeField] private PauseMenuBehavior _pauseMenu;
 
     [Header("Collision with obstacles")]
 
@@ -190,6 +191,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns>whether jump occurred</returns>
     private bool PlayerJump(bool calledByPlayerInput)
     {
+        if (_pauseMenu.IsPaused()) return false;
         if (!gameStarted)
         {
             TimerSystem.SkipIntro?.Invoke();

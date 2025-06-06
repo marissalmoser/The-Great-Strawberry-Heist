@@ -95,6 +95,11 @@ public class PauseMenuBehavior : MonoBehaviour
         SceneManager.LoadScene("HowToPlay");
     }
 
+    public bool IsPaused()
+    {
+        return isPaused;
+    }
+
     private void OnDisable()
     {
         pause.performed -= TogglePause;
