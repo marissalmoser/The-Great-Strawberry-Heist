@@ -74,9 +74,9 @@ public class FallingBatter : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.TryGetComponent(out PlayerBehaviour pb))
+        if (collision.TryGetComponent(out PlayerBehaviour pb))
         {
             if (!ScoreManager.Instance.IsInStarMode) 
             {

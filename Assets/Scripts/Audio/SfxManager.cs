@@ -44,6 +44,27 @@ public class SfxManager : Singleton<SfxManager>
     }
 
     /// <summary>
+    /// Pauses all SFXs
+    /// </summary>
+    public void PauseAllSFX() 
+    {
+        foreach (SFX sfx in _SFXs) 
+        {
+            sfx.source.Pause();
+        }
+    }
+    /// <summary>
+    /// Unpauses all SFXs
+    /// </summary>
+    public void ResumeAllSFX()
+    {
+        foreach (SFX sfx in _SFXs)
+        {
+            sfx.source.UnPause();
+        }
+    }
+
+    /// <summary>
     /// Adds all the Fruit sound effect arrays to the master sound effect array.
     /// </summary>
     private void FruitSFXSetup() 
