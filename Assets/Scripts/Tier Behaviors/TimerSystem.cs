@@ -60,6 +60,7 @@ public class TimerSystem : MonoBehaviour
     [Header("Intro skip timings")]
     [SerializeField] private PlayableDirector introCutscene;
     [SerializeField] private GameObject skipGraphic;
+    [SerializeField] private AudioSource timerSound;
     [SerializeField] private float startDelayTimeAfterSkip;
     [SerializeField] private float introSoundFadeOutDuration;
 
@@ -179,7 +180,8 @@ public class TimerSystem : MonoBehaviour
         // Skipping includes:
         // Manually hiding the skip graphic early
         // Stopping regular start delay coroutine and replacing it to correct the timing
-        // Canceling timer anim and making sure it has become visible
+        // Canceling timer anim and making sure it becomes visible
+        // Preventing the timer sound from playing
         // Fading out the opening pan sound effect
         if (introCutscene.time < startDelayTime - startDelayTimeAfterSkip)
         {
@@ -188,6 +190,7 @@ public class TimerSystem : MonoBehaviour
             StopCoroutine(currentTimer);
             TimerUIAnimEvents.CancelAnim.Invoke(true);
             TimerUIAnimEvents.TimerVisible.Invoke(true);
+            timerSound.playOnAwake = false;
             if (WinMusic.Instance != null)
             {
                 WinMusic.CutOffIntro.Invoke(introSoundFadeOutDuration);
