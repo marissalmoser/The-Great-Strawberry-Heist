@@ -11,6 +11,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class TimerSystem : MonoBehaviour
@@ -56,6 +57,12 @@ public class TimerSystem : MonoBehaviour
     [SerializeField] private GameObject startText;
     [SerializeField] private int timeBonusMultiplier;
 
+    [Header("Intro skip timings")]
+    [SerializeField] private PlayableDirector introCutscene;
+    [SerializeField] private GameObject skipGraphic;
+    [SerializeField] private float startDelayTimeAfterSkip;
+    [SerializeField] private float introSoundFadeOutDuration;
+
     private float currentTime;
     private float currentMaxTime;
     private bool triggeredIcing;
@@ -64,12 +71,13 @@ public class TimerSystem : MonoBehaviour
     private bool triggeredCatAnim;
     public static bool DoMovePlayer;
     public static bool TimeUp;
-    public static Action StartGame, CatSwipeAnim;
+    public static Action StartGame, SkipIntro, CatSwipeAnim;
 
     private Coroutine currentTimer;
 
     private void Start()
     {
+        SkipIntro += SkipStartDelay;
         TierManager.NextTierAction += NextTier;
 
         //add falling icing to main list
@@ -146,9 +154,56 @@ public class TimerSystem : MonoBehaviour
 
         yield return new WaitForSeconds(startDelayTime - startTimerAnimTime);
 
+        StartDelayFinished();
+    }
+
+    /// <summary>
+    /// Code that sets up and starts the game
+    /// </summary>
+    private void StartDelayFinished()
+    {
         currentTimer = StartCoroutine(TierTimer());
         StartGame?.Invoke();
         MusicManager.StartBGMusic?.Invoke();
+    }
+
+    /// <summary>
+    /// Called to skip the intro cutscene
+    /// </summary>
+    private void SkipStartDelay()
+    {
+        // Detaches listener because multiple presses shouldn't keep trying to skip        
+        SkipIntro -= SkipStartDelay;
+
+        // Only skips if cutscene has not reached the point it would skip to
+        // Skipping includes:
+        // Manually hiding the skip graphic early
+        // Stopping regular start delay coroutine and replacing it to correct the timing
+        // Canceling timer anim and making sure it has become visible
+        // Fading out the opening pan sound effect
+        if (introCutscene.time < startDelayTime - startDelayTimeAfterSkip)
+        {
+            introCutscene.time = startDelayTime - startDelayTimeAfterSkip;
+            skipGraphic.SetActive(false);
+            StopCoroutine(currentTimer);
+            TimerUIAnimEvents.CancelAnim.Invoke(true);
+            TimerUIAnimEvents.TimerVisible.Invoke(true);
+            if (WinMusic.Instance != null)
+            {
+                WinMusic.CutOffIntro.Invoke(introSoundFadeOutDuration);
+            }
+            StartCoroutine(StartDelayAfterSkip());
+        }
+    }
+
+    /// <summary>
+    /// Waits for proper time after a skip, then starts games
+    /// </summary>
+    private IEnumerator StartDelayAfterSkip()
+    {
+        yield return new WaitForSeconds(startDelayTimeAfterSkip);
+        TimerUIAnimEvents.CancelAnim.Invoke(false);
+        StartDelayFinished();
     }
 
     /// <summary>
@@ -265,5 +320,9 @@ public class TimerSystem : MonoBehaviour
     private void OnDisable()
     {
         TierManager.NextTierAction -= NextTier;
+        if (SkipIntro != null)
+        {
+            SkipIntro -= SkipStartDelay;
+        }
     }
 }

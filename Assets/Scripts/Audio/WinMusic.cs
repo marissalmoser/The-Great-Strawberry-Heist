@@ -20,6 +20,7 @@ public class WinMusic : MonoBehaviour
 
     //fades out bg music and starts win music loop
     public static Action TriggerWinMusic, PlayNewHighScoreSFX;
+    public static Action<float> CutOffIntro;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class WinMusic : MonoBehaviour
         SceneManager.sceneLoaded += SwitchMusic;
         TriggerWinMusic += StartWinMusic;
         PlayNewHighScoreSFX += NewHSsfx;
+        CutOffIntro += SkipIntro;
         winMusicVol = WinMusicLoop.volume;
         WinMusicLoop.Play();
         Cursor.visible = false;
@@ -73,6 +75,11 @@ public class WinMusic : MonoBehaviour
         }
 
         yield break;
+    }
+
+    private void SkipIntro(float duration)
+    {
+        StartCoroutine(StartFade(IntroSecquenceSFX, 0, duration));
     }
 
     private void SwitchMusic(Scene scene, LoadSceneMode arg1)
@@ -126,5 +133,6 @@ public class WinMusic : MonoBehaviour
         SceneManager.sceneLoaded -= SwitchMusic;
         TriggerWinMusic -= StartWinMusic;
         PlayNewHighScoreSFX -= NewHSsfx;
+        CutOffIntro -= SkipIntro;
     }
 }

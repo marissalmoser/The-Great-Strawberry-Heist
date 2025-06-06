@@ -54,6 +54,7 @@ public class TransitionManager : MonoBehaviour
         {
             toFade = _fade;
         }
+        toFade.gameObject.SetActive(true);
 
         toFade.color = new Color(toFade.color.r, toFade.color.g, toFade.color.b, 1);
         yield return null;
@@ -156,6 +157,7 @@ public class TransitionManager : MonoBehaviour
         {
             toFade = _fade;
         }
+        toFade.gameObject.SetActive(true);
 
         float alpha = 0;
         float t = 0;
@@ -185,7 +187,7 @@ public class TransitionManager : MonoBehaviour
     public void CutOutWhiteboard(string scene)
     {
         _whiteboard.gameObject.SetActive(true);
-        _whiteboardB.color = Color.white;
+        _whiteboardB.gameObject.SetActive(true); //_whiteboardB.color = Color.white;
         hideWhiteboardWithAnim = true;
         SceneManager.LoadScene(scene);
     }
@@ -237,7 +239,7 @@ public class TransitionManager : MonoBehaviour
         _circle.gameObject.SetActive(false);
         if (hideWhiteboardInstant)
         {
-            _whiteboardB.color = new Color(1, 1, 1, 0);
+            _whiteboardB.gameObject.SetActive(false); //_whiteboardB.color = new Color(1, 1, 1, 0);
             _whiteboard.gameObject.SetActive(false);
             hideWhiteboardInstant = false;
         }

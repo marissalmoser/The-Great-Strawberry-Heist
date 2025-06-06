@@ -16,7 +16,7 @@ public class TimerUIAnimEvents : MonoBehaviour
 {
     Animator anim;
     public static Action PlayTimerStart, PlayTimerMidpoint, PlayTimerAlarm;
-    public static Action<bool> CancelAnim;
+    public static Action<bool> CancelAnim, TimerVisible;
 
     void Start()
     {
@@ -33,6 +33,7 @@ public class TimerUIAnimEvents : MonoBehaviour
         PlayTimerMidpoint += TimerMidpoint;
         PlayTimerAlarm += TimerAlarm;
         CancelAnim += StopAnims;
+        TimerVisible += ShowTimer;
     }
 
     /// <summary>
@@ -51,10 +52,15 @@ public class TimerUIAnimEvents : MonoBehaviour
         anim.SetTrigger("Start");
 
         //set images to visible
+        ShowTimer(true);
+    }
+
+    private void ShowTimer(bool input)
+    {
         Image[] sr = GetComponentsInChildren<Image>();
         foreach (Image image in sr)
         {
-            image.enabled = true;
+            image.enabled = input;
         }
     }
 
@@ -80,5 +86,6 @@ public class TimerUIAnimEvents : MonoBehaviour
         PlayTimerMidpoint -= TimerMidpoint;
         PlayTimerAlarm -= TimerAlarm;
         CancelAnim -= StopAnims;
+        TimerVisible -= ShowTimer;
     }
 }

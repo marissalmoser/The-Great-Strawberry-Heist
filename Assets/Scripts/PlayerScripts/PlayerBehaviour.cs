@@ -192,10 +192,11 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (!gameStarted)
         {
-            if (Application.isEditor)
+            TimerSystem.SkipIntro?.Invoke();
+            /*if (Application.isEditor)
             {
                 Time.timeScale = 10;
-            }
+            }*/
             return false;
         }
         if(CanJump())
