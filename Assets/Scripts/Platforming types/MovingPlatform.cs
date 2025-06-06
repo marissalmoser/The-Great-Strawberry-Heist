@@ -24,12 +24,14 @@ public class MovingPlatform : MonoBehaviour
     [Tooltip("Game Object positioned where the platform should move to")]
     [SerializeField] GameObject endPosGO;
 
+    Coroutine coroutine;
     bool isMoving;
 
     private void Start()
     {
         isMoving = true;
-        StartCoroutine(MovePlatform());
+        coroutine = StartCoroutine(MovePlatform());
+        TimerSystem.StartGame += StopAndRestart;
     }
 
     /// <summary>
@@ -80,5 +82,16 @@ public class MovingPlatform : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
 
+    }
+
+    private void StopAndRestart()
+    {
+        StopCoroutine(coroutine);
+        coroutine = StartCoroutine(MovePlatform());
+    }
+
+    private void OnDestroy()
+    {
+        TimerSystem.StartGame -= StopAndRestart;
     }
 }

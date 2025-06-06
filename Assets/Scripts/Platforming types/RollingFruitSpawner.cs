@@ -19,12 +19,14 @@ public class RollingFruitSpawner : MonoBehaviour
     [Tooltip("Maximum time for another fruit to spawn")]
     [SerializeField] private int maxWaitTime;
 
+    Coroutine coroutine;
     bool isSpawning;
 
     void Start()
     {
         isSpawning = true;
-        StartCoroutine(RollingFruit() );
+        coroutine = StartCoroutine(RollingFruit());
+        TimerSystem.StartGame += StopAndRestart;
     }
 
     IEnumerator RollingFruit()
@@ -36,5 +38,20 @@ public class RollingFruitSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime + 1));
         }
+    }
+
+    private void StopAndRestart()
+    {
+        StopCoroutine(coroutine);
+        foreach (var rf in FindObjectsOfType<RollingFruit>())
+        {
+            Destroy(rf.gameObject);
+        }
+        coroutine = StartCoroutine(RollingFruit());
+    }
+
+    private void OnDestroy()
+    {
+        TimerSystem.StartGame -= StopAndRestart;
     }
 }
