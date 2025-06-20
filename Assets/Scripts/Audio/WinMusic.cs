@@ -42,7 +42,7 @@ public class WinMusic : MonoBehaviour
         PlayNewHighScoreSFX += NewHSsfx;
         winMusicVol = WinMusicLoop.volume;
         WinMusicLoop.Play();
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     private void NewHSsfx()
