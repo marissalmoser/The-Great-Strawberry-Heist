@@ -191,6 +191,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns>whether jump occurred</returns>
     private bool PlayerJump(bool calledByPlayerInput)
     {
+        print(_pauseMenu);
         if (_pauseMenu.IsPaused()) return false;
         if (!gameStarted)
         {

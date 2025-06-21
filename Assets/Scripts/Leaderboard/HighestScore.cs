@@ -26,13 +26,15 @@ public class HighestScore : MonoBehaviour
     /// </summary>
     private async void Awake()
     {
-        highestScore.gameObject.SetActive(true);
-        noHighestScore.gameObject.SetActive(false);
+        DisplayHighestScore();
 
-        await UnityServices.InitializeAsync();
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        //highestScore.gameObject.SetActive(true);
+        //noHighestScore.gameObject.SetActive(false);
 
-        InvokeRepeating("DisplayHighestScore", 0, 1);
+        //await UnityServices.InitializeAsync();
+        //await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+        //InvokeRepeating("DisplayHighestScore", 0, 1);
     }
 
     /// <summary>
@@ -40,38 +42,53 @@ public class HighestScore : MonoBehaviour
     /// </summary>
     private async void DisplayHighestScore()
     {
-        var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
-            LeaderboardID,
-            new GetScoresOptions { Limit = 1 } //Limits to top 5 scores
-        );
+        //var scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(
+        //    LeaderboardID,
+        //    new GetScoresOptions { Limit = 1 } //Limits to top 5 scores
+        //);
 
-        //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+        ////Debug.Log(JsonConvert.SerializeObject(scoresResponse));
 
-        string s = JsonConvert.SerializeObject(scoresResponse);
+        //string s = JsonConvert.SerializeObject(scoresResponse);
 
-        if (s.IndexOf("playerName") != -1)
+        //if (s.IndexOf("playerName") != -1)
+        //{
+        //    int scoreStart = s.IndexOf("score") + 7;
+        //    string test = s.Substring(scoreStart, 6);
+        //    if (test.Contains("."))
+        //    {
+        //        test = test.Substring(0, test.IndexOf("."));
+        //    }
+        //    highestScore.text = test;
+        //    try
+        //    {
+        //        highestScore.gameObject.SetActive(true);
+        //        noHighestScore.gameObject.SetActive(false);
+        //    } catch { }
+        //}
+        //else
+        //{
+        //    try
+        //    {
+        //        highestScore.gameObject.SetActive(false);
+        //        noHighestScore.gameObject.SetActive(true);
+        //    }
+        //    catch { }
+        //}
+
+        //there is a recent score
+        if(ScoreManager.highScore > 0)
         {
-            int scoreStart = s.IndexOf("score") + 7;
-            string test = s.Substring(scoreStart, 6);
-            if (test.Contains("."))
-            {
-                test = test.Substring(0, test.IndexOf("."));
-            }
-            highestScore.text = test;
-            try
-            {
-                highestScore.gameObject.SetActive(true);
-                noHighestScore.gameObject.SetActive(false);
-            } catch { }
+            highestScore.text = ScoreManager.highScore.ToString();
+            highestScore.gameObject.SetActive(true);
+            noHighestScore.gameObject.SetActive(false);
         }
+
+        //There is not a recent score
         else
         {
-            try
-            {
-                highestScore.gameObject.SetActive(false);
-                noHighestScore.gameObject.SetActive(true);
-            }
-            catch { }
+            highestScore.gameObject.SetActive(false);
+            noHighestScore.gameObject.SetActive(true);
         }
     }
 
@@ -80,6 +97,6 @@ public class HighestScore : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        AuthenticationService.Instance.SignOut(true);
+        //AuthenticationService.Instance.SignOut(true);
     }
 }

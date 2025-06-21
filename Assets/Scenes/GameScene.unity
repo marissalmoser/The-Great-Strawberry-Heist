@@ -1008,6 +1008,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 381309458544652885}
     - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
+      propertyPath: timerSound
+      value: 
+      objectReference: {fileID: 242327134}
+    - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
+      propertyPath: skipGraphic
+      value: 
+      objectReference: {fileID: 705646534}
+    - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
+      propertyPath: introCutscene
+      value: 
+      objectReference: {fileID: 769425420}
+    - target: {fileID: 8718068460259829238, guid: 67a1254c1c2640042ab4e2344f094e15, type: 3}
       propertyPath: startDelayTime
       value: 11.75
       objectReference: {fileID: 0}
@@ -1323,6 +1335,10 @@ PrefabInstance:
       propertyPath: vitality
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5646211891768503454, guid: 198cba249da66ae418720c5cd6fa5b56, type: 3}
+      propertyPath: _pauseMenu
+      value: 
+      objectReference: {fileID: 1985569317}
     - target: {fileID: 5646211891768503454, guid: 198cba249da66ae418720c5cd6fa5b56, type: 3}
       propertyPath: ground.m_Bits
       value: 31936
@@ -1710,6 +1726,11 @@ GameObject:
 Animator:
   m_CorrespondingSourceObject: {fileID: 3726987548916815191, guid: 4ef52968273363647a991a6ef2c88733, type: 3}
   m_PrefabInstance: {fileID: 690458426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &705646534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1354667172132890717, guid: 8e4a59284b6bc904a9c51afa2fc5ce00, type: 3}
+  m_PrefabInstance: {fileID: 142971630}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &769425419
 GameObject:
@@ -2764,6 +2785,7 @@ MonoBehaviour:
   rb2d: {fileID: 1342144088}
   canMove: 0
   _starModeFinishedParticles: {fileID: 0}
+  _pauseMenu: {fileID: 0}
   _invincibilityFramesInSeconds: 0
   _invincibilityFlashingSpeed: 0
   _lengthOfDizzy: 0
