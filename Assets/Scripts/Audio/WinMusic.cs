@@ -44,7 +44,7 @@ public class WinMusic : MonoBehaviour
         CutOffIntro += SkipIntro;
         winMusicVol = WinMusicLoop.volume;
         WinMusicLoop.Play();
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     private void NewHSsfx()
