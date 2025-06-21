@@ -75,6 +75,8 @@ public class TransitionManager : MonoBehaviour
             _whiteboard.gameObject.SetActive(true);
             _whiteboard.GetComponent<Animator>().Play("WhiteboardTransitionB");
         }
+
+        toFade.gameObject.SetActive(false);
     }
 
     /// <summary>
