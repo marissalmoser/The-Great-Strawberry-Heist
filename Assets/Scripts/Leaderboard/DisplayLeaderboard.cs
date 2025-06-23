@@ -42,7 +42,7 @@ public class DisplayLeaderboard : MonoBehaviour
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-        filePath = Application.streamingAssetsPath + "/Blacklist.txt";
+        filePath = Application.dataPath + "/Blacklist.txt";
 
        // top5 = true;
         scrollIndex = 0;
