@@ -92,17 +92,40 @@ public class WinMusic : MonoBehaviour
 
             //start intro track
             IntroSecquenceSFX.Play();
-        }
 
-        /*if(scene.name == "HowToPlay")
+            //subscribe to pause
+            PauseMenuBehavior.PauseGame += PauseTracks;
+        }
+        else
         {
-            StartCoroutine(StartFade(WinMusicLoop, 0, 1));
-        }*/
+            //unsub from pause if not null
+            PauseMenuBehavior.PauseGame -= PauseTracks;
+        }
 
         if (scene.name == "MainMenu" && !WinMusicLoop.isPlaying)
         {
             WinMusicLoop.volume = winMusicVol;
             WinMusicLoop.Play();
+        }
+        else if (scene.name == "MainMenu" && IntroSecquenceSFX.isPlaying)
+        {
+            IntroSecquenceSFX.Stop();
+            WinMusicLoop.volume = winMusicVol;
+            WinMusicLoop.Play();
+        }
+    }
+
+    private void PauseTracks(bool isPaused)
+    {
+        if(isPaused)
+        {
+            //pause tracks
+            IntroSecquenceSFX.Pause();
+            StopLoopingMusic();
+        }
+        else
+        {
+            IntroSecquenceSFX.UnPause();
         }
     }
 

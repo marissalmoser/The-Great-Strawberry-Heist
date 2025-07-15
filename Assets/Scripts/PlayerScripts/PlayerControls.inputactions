@@ -288,6 +288,28 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "ce7ed3a8-0121-4e21-8a78-1a9c2f2230b5",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d1b7ce3-4927-40f8-8799-d70beb6a3ec9",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "ArrowKeys",
                     "id": "fd8cb8cc-0ed0-420b-9a2b-4416d49a5835",
                     "path": "2DVector",

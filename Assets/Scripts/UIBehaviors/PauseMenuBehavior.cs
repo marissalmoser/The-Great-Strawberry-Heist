@@ -43,11 +43,16 @@ public class PauseMenuBehavior : MonoBehaviour
     /// </summary>
     private void TogglePause(InputAction.CallbackContext context)
     {
+        TogglePauseFunctionality();
+    }
+
+    public void TogglePauseFunctionality()
+    {
         isPaused = !isPaused;
         PauseGame?.Invoke(isPaused);
 
         //pausing game
-        if(isPaused)
+        if (isPaused)
         {
             pauseCanvas.SetActive(true);
             //restart.Enable();
