@@ -42,7 +42,7 @@ public class NameSelector : MonoBehaviour
         actionMap = GetComponent<PlayerInput>().currentActionMap;
         actionMap.Enable();
 
-        navigate = actionMap.FindAction("Navigate");
+        navigate = actionMap.FindAction("Scroll");
         select = actionMap.FindAction("Select");
 
         navigate.performed += Navigate_performed;
