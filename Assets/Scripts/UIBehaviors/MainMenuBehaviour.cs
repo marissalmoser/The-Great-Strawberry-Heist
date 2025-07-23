@@ -89,6 +89,7 @@ public class MainMenuBehaviour : MonoBehaviour
             lastPosition = 0;
             hasSelected = true;
             SfxManager.Instance.PlaySFX("Menuing");
+            TransitionManager.Instance.StopAllCoroutines();
             StartCoroutine(TransitionManager.Instance.FadeOut(0.25f, false, "GameScene"));
         }
     }
@@ -100,6 +101,7 @@ public class MainMenuBehaviour : MonoBehaviour
             lastPosition = 1;
             hasSelected = true;
             SfxManager.Instance.PlaySFX("Menuing");
+            TransitionManager.Instance.StopAllCoroutines();
             TransitionManager.Instance.WhiteboardIn("HowToPlay");
         }
     }
@@ -111,6 +113,7 @@ public class MainMenuBehaviour : MonoBehaviour
             lastPosition = 2;
             hasSelected = true;
             SfxManager.Instance.PlaySFX("Menuing");
+            TransitionManager.Instance.StopAllCoroutines();
             StartCoroutine(TransitionManager.Instance.FadeOut(0.25f, false, "HighScoreLeaderboard"));
         }
     }
@@ -122,6 +125,7 @@ public class MainMenuBehaviour : MonoBehaviour
             lastPosition = 3;
             hasSelected = true;
             SfxManager.Instance.PlaySFX("Menuing");
+            TransitionManager.Instance.StopAllCoroutines();
             TransitionManager.Instance.WhiteboardIn("Credits");
         }
     }
